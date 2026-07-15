@@ -1,0 +1,173 @@
+code_uai,nom_etablissement,nature_uai,statut,academie,dep,commune,code_insee,code_postal,adresse_postale,lat,lon
+0940114N,Lycée polyvalent Antoine de Saint-Exupéry,lycée polyvalent,public,Créteil,94,Créteil,94028,94000,2 rue Henri Matisse,48.78269526922529,2.4615747865777506
+0941930M,Lycée polyvalent Johannes Gutenberg,lycée polyvalent,public,Créteil,94,Créteil,94028,94000,16 rue de Saussure,48.76974261722545,2.4711703520991506
+0770938B,Lycée polyvalent André Malraux,lycée polyvalent,public,Créteil,77,Montereau-Fault-Yonne,77305,77130,4 avenue du Lycée,48.3940334599328,2.959274568126143
+0770931U,Lycée Pierre de Coubertin,lycée polyvalent,public,Créteil,77,Meaux,77284,77335,Chaussée de Paris,48.955102129539654,2.8671973622331977
+0932121A,Lycée polyvalent Suger,lycée polyvalent,public,Créteil,93,Saint-Denis,93066,93200,6 avenue LEROY DES BARRES,48.92890025392054,2.3666278457683654
+0772688D,Lycée polyvalent de Serris Émilie du Châtelet,lycée polyvalent,public,Créteil,77,Serris,77449,77700,35 cours du Danube,48.85680242516287,2.778926580285108
+0772312V,Lycée polyvalent Flora Tristan,lycée polyvalent,public,Créteil,77,Montereau-Fault-Yonne,77305,77130,12 avenue du 8 Mai 1945,48.37742624453432,2.945380298354958
+0940134K,Lycée professionnel Val de Bièvre,lycée professionnel,public,Créteil,94,Gentilly,94037,94257,17 rue d'Arcueil,48.81341688178158,2.3453674139456435
+0931739K,Lycée professionnel Jean Moulin,lycée professionnel,public,Créteil,93,Rosny-sous-Bois,93064,93110,2 rue MISSAK MANOUCHIAN,48.86331073938611,2.4949129693529817
+0771663P,Lycée George Sand,lycée d'enseignement général et technologique,public,Créteil,77,Le Mée-sur-Seine,77285,77350,RUE DE LA MARE AU DIABLE,48.550093457831764,2.6367077746382903
+0771996B,Lycée polyvalent Honoré de Balzac,lycée d'enseignement général et technologique,public,Créteil,77,Mitry-Mory,77294,77290,9 rue Paul Langevin,48.973078796899124,2.651612015619635
+0932577W,Lycée Germaine Tillion,lycée d'enseignement général et technologique,public,Créteil,93,Le Bourget,93013,93350,48 bis rue ANIZAN CAVILLON,48.934753151970135,2.419802820395747
+0941918Z,Lycée polyvalent Christophe Colomb,lycée polyvalent,public,Créteil,94,Sucy-en-Brie,94071,94370,154 rue de Boissy,48.759563451086045,2.5261158036914377
+0941974K,Lycée polyvalent Robert Schuman,lycée polyvalent,public,Créteil,94,Charenton-le-Pont,94018,94220,2 rue DE L'EMBARCADERE,48.8184186264776,2.412790953648731
+0941301D,Lycée polyvalent Fréderic Mistral,lycée polyvalent,public,Créteil,94,Fresnes,94034,94260,7 rue Frédéric Mistral,48.76122613706585,2.328688497832819
+0771436T,Campus Bougainville,"lycée d'enseignement général, technologique et professionnel agricole",public,Créteil,77,Brie-Comte-Robert,77053,77257,Route departementale 319,48.68541804243584,2.6272732084605788
+0940140S,Lycée professionnel Gourdou Leseurre,lycée professionnel,public,Créteil,94,Saint-Maur-des-Fossés,94068,94100,50 boulevard DE CHAMPIGNY,48.80209659868827,2.5067094253197815
+0940319L,Établissement régional d'enseignement adapté - LEA - François Cavanna,lycée d’enseignement adapté,public,Créteil,94,Nogent-sur-Marne,94052,94130,3 avenue de Joinville,48.83498386464911,2.4735928520869215
+0930136T,Lycée polyvalent Claude Nicolas Ledoux,lycée professionnel,public,Créteil,93,Les Pavillons-sous-Bois,93057,93320,1 boulevard de Paris,48.913886445675615,2.4919661979623395
+0941952L,Lycée polyvalent François Arago,lycée polyvalent,public,Créteil,94,Villeneuve-Saint-Georges,94078,94190,36 avenue de l'Europe,48.730784017182465,2.4579412438695334
+0932221J,Lycée polyvalent Blaise Pascal,lycée polyvalent,public,Créteil,93,Villemomble,93077,93250,18 rue MARC VIEVILLE,48.882270887269236,2.5112979907000073
+0932267J,Lycée polyvalent Liberté,lycée polyvalent,public,Créteil,93,Romainville,93063,93230,27 A rue de la Liberté,48.882034300863076,2.4289848722414473
+0940118T,Lycée polyvalent Louis Armand,lycée polyvalent,public,Créteil,94,Nogent-sur-Marne,94052,94130,173 boulevard DE STRASBOURG,48.8467161140249,2.4913060633969635
+0940132H,Lycée professionnel Gabriel Péri,lycée professionnel,public,Créteil,94,Champigny-sur-Marne,94017,94500,41 avenue Boileau,48.80639438892424,2.5454130479978945
+0940145X,Lycée professionnel Camille Claudel,lycée professionnel,public,Créteil,94,Vitry-sur-Seine,94081,94400,4 rue des carrières,48.79927411894196,2.392590514011896
+0770342D,Lycée d'enseignement adapté Léopold Bellan,établissement régional d’enseignement adapté,public,Créteil,77,Chamigny,77078,77260,Domaine DE L'ANGE GARDIEN,48.98022117117861,3.145269903416594
+0940115P,Lycée Romain-Rolland,lycée d'enseignement général et technologique,public,Créteil,94,Ivry-sur-Seine,94041,94200,17 rue LUCIEN NADAIRE,48.80143544126474,2.3936695095016853
+0771357G,Lycée d'enseignement général technologique et professionnel agricole La Bretonnière,"lycée d'enseignement général, technologique et professionnel agricole",public,Créteil,77,Chailly-en-Brie,77070,77120,La Bretonnière,48.81341738428854,3.1503720861693494
+0940124Z,Lycée Hector Berlioz,lycée d'enseignement général et technologique,public,Créteil,94,Vincennes,94080,94307,8 avenue Quinson,48.8467900679428,2.4269005402491595
+0940121W,Lycée d'Arsonval,lycée d'enseignement général et technologique,public,Créteil,94,Saint-Maur-des-Fossés,94068,94107,65 rue DU PONT DE CRETEIL,48.802928331916775,2.4719285569079275
+0772223Y,Lycée polyvalent René Descartes,lycée polyvalent,public,Créteil,77,Champs-sur-Marne,77083,77420,4 boulevard COPERNIC,48.84485873497132,2.5859255385350295
+0940585A,Lycée polyvalent François Mansart,lycée polyvalent,public,Créteil,94,Saint-Maur-des-Fossés,94068,94100,25 avenue de la banque,48.790607475928766,2.497342821197465
+0931233K,Lycée professionnel Jean-Baptiste Clément,lycée professionnel,public,Créteil,93,Gagny,93032,93220,25 rue DES TROIS NOYERS,48.88765281024767,2.54211943265557
+0771995A,Lycée professionnel le Champ de Claye,lycée professionnel,public,Créteil,77,Claye-Souilly,77118,77410,71 rue Pasteur,48.93829001463312,2.6761344969569216
+0940742W,Lycée polyvalent Guillaume Budé,lycée polyvalent,public,Créteil,94,Limeil-Brévannes,94044,94456,2 voie Georges Pompidou,48.743740806816575,2.510720424025152
+0932120Z,Lycée polyvalent Henri Sellier,lycée polyvalent,public,Créteil,93,Livry-Gargan,93046,93190,73 avenue DU COLONEL FABIEN,48.91828460658835,2.5160126332917607
+0940743X,Lycée polyvalent Marianne,lycée polyvalent,public,Créteil,94,Villeneuve-le-Roi,94077,94290,48 avenue le Foll,48.730688677911516,2.4261920598500555
+0771336J,Lycée polyvalent les Pannevelles,lycée polyvalent,public,Créteil,77,Provins,77379,77481,Route DE CHALAUTRE LA PETITE,48.550737843247305,3.302437989116911
+0932119Y,Lycée polyvalent Eugène Henaff,lycée polyvalent,public,Créteil,93,Bagnolet,93006,93170,55 avenue Raspail,48.874883930460726,2.4307211572569147
+0941355M,Lycée professionnel Paul Bert,lycée polyvalent,public,Créteil,94,Maisons-Alfort,94046,94700,1 rue DU GUE AUX AUROCHS,48.81499680233944,2.4243206489988234
+0770934X,Lycée polyvalent Léonard de Vinci,lycée polyvalent,public,Créteil,77,Melun,77288,77011,2 bis rue EDOUARD BRANLY,48.55108679994959,2.659903143940967
+0932046U,Lycée polyvalent Léonard de Vinci,lycée polyvalent,public,Créteil,93,Tremblay-en-France,93073,93290,115 route DES PETITS PONTS,48.96688565446974,2.5736285046437746
+0941232D,Lycée professionnel Jean Macé,lycée professionnel,public,Créteil,94,Choisy-le-Roi,94022,94600,103 rue Mirabeau,48.76366534654903,2.4216977518899667
+0770927P,Lycée international François 1er,lycée d'enseignement général,public,Créteil,77,Fontainebleau,77186,77300,11 rue Victor Hugo,48.409272245652154,2.6958841068316453
+0930122C,Lycée Condorcet,lycée d'enseignement général et technologique,public,Créteil,93,Montreuil,93048,93105,31 rue DESIRE CHEVALIER,48.85750093339525,2.445528654993236
+0770922J,Lycée Gaston Bachelard,lycée d'enseignement général et technologique,public,Créteil,77,Chelles,77108,77505,32 avenue de l'Europe,48.88331912136845,2.6127267806892163
+0932034F,Lycée Wolfgang Amadeus Mozart,lycée d'enseignement général et technologique,public,Créteil,93,Le Blanc-Mesnil,93007,93150,10 avenue Charles de Gaulle,48.94385962587952,2.4679598905818585
+0930120A,Lycée Jacques Feyder,lycée d'enseignement général et technologique,public,Créteil,93,Épinay-sur-Seine,93031,93801,10 rue Henri Wallon,48.95509744548008,2.320839880589892
+0940129E,Lycée polyvalent Jean Macé,lycée polyvalent,public,Créteil,94,Vitry-sur-Seine,94081,94407,34 Rue Jules Ferry,48.80173033946394,2.4004245248126694
+0931198X,Lycée professionnel Alfred Costes,lycée professionnel,public,Créteil,93,Bobigny,93008,93000,146 avenue Henri Barbusse,48.90870421236245,2.428207966993259
+0941975L,Lycée Pierre Brossolette,lycée polyvalent,public,Créteil,94,Le Kremlin-Bicêtre,94043,94270,5 rue Pierre Brossolette,48.814998435549086,2.3593949795551112
+0932260B,Lycée polyvalent Georges Brassens,lycée polyvalent,public,Créteil,93,Villepinte,93078,93420,3 bd de la Pépinière,48.95658796652309,2.5345864777464833
+0940122X,Lycée polyvalent Condorcet,lycée polyvalent,public,Créteil,94,Saint-Maur-des-Fossés,94068,94214,1 avenue Condorcet,48.795848462976586,2.5119401789125138
+0932123C,Lycée polyvalent André Sabatier,lycée polyvalent,public,Créteil,93,Bobigny,93008,93000,140 rue de la République,48.90760294292736,2.429229614654312
+0771027Y,Lycée polyvalent Frédéric Joliot-Curie,lycée polyvalent,public,Créteil,77,Dammarie-les-Lys,77152,77190,168 rue F JOLIOT CURIE,48.519074047945075,2.648301348133944
+0770933W,Lycée Jacques Amyot,lycée d'enseignement général et technologique,public,Créteil,77,Melun,77288,77000,6 bis rue Michelet,48.545460734625166,2.659210751824193
+0931024H,Lycée professionnel Jean-Pierre Timbaud,lycée professionnel,public,Créteil,93,Aubervilliers,93001,93300,103 avenue de la République,48.90482942151991,2.391049172456102
+0941474S,Lycée polyvalent Darius Milhaud,lycée polyvalent,public,Créteil,94,Le Kremlin-Bicêtre,94043,94276,80 rue DU PROFESSEUR BERGONIE,48.80228099461428,2.350712236765382
+0932118X,Lycée polyvalent Jean Moulin,lycée polyvalent,public,Créteil,93,Le Blanc-Mesnil,93007,93150,2 avenue Charles de Gaulle,48.94360563734647,2.468681946930074
+0932074Z,Lycée polyvalent Marcel Cachin,lycée polyvalent,public,Créteil,93,Saint-Ouen-sur-Seine,93070,93400,11 rue MARCEL CACHIN,48.91757977838111,2.338313850349661
+0940112L,Lycée polyvalent Louise Michel,lycée polyvalent,public,Créteil,94,Champigny-sur-Marne,94017,94500,7 rue PIERRE MARIE DERRIEN,48.81689804996231,2.4955995038961625
+0940126B,Lycée polyvalent Maximilien Perret,lycée polyvalent,public,Créteil,94,Alfortville,94002,94141,Place SAN BENEDETTO DEL TRONTO,48.78664176268498,2.4237637613102048
+0770943G,Lycée professionnel Benjamin Franklin,lycée professionnel,public,Créteil,77,La Rochette,77389,77000,Rue DE LA FORET - LA ROCHETTE,48.50937890988075,2.6634363481038346
+0932282A,Lycée polyvalent Léo Lagrange,lycée polyvalent,public,Créteil,93,Bondy,93010,93140,29 RUE GEORGES ELIE,48.906196397624925,2.4915023903058637
+0940113M,Lycée polyvalent Langevin Wallon,lycée polyvalent,public,Créteil,94,Champigny-sur-Marne,94017,94507,126 avenue Roger Salengro,48.816826741365325,2.498317131240832
+0932073Y,Lycée polyvalent Paul Robert,lycée polyvalent,public,Créteil,93,Les Lilas,93045,93260,2 rue du Château,48.883301628498906,2.4213428839711324
+0940119U,Lycée Paul Doumer,lycée polyvalent,public,Créteil,94,Le Perreux-sur-Marne,94058,94170,2 rue PAUL DOUMER,48.833681465754296,2.508872238357299
+0771658J,Lycée polyvalent du Gué à Tresmes,lycée polyvalent,public,Créteil,77,Congis-sur-Thérouanne,77126,77440,1 ROUTE DE CONGIS,49.02049045715237,2.9657519883324985
+0772228D,Lycée polyvalent Charles de Gaulle,lycée polyvalent,public,Créteil,77,Longperrier,77259,77230,6 place JEAN MERMOZ,49.048625372566065,2.668843018556321
+0771880A,Lycée professionnel Charles Baudelaire,lycée professionnel,public,Créteil,77,Meaux,77284,77333,Boulevard DU CHEVALIER BAYARD,48.95450640962863,2.914051656596103
+0772120L,Lycée Jean Moulin,lycée d'enseignement général et technologique,public,Créteil,77,Torcy,77468,77200,6 AVENUE JEAN MOULIN - TORCY,48.83607944975962,2.6576433910619786
+0930124E,Lycée Marcelin Berthelot,lycée d'enseignement général et technologique,public,Créteil,93,Pantin,93055,93500,110 avenue Jean Jaurès,48.90541136947215,2.394260520870352
+0930118Y,Lycée Jean Renoir,lycée d'enseignement général et technologique,public,Créteil,93,Bondy,93010,93141,11 rue Fremin,48.90301247946519,2.47330599009689
+0930127H,Lycée Clémenceau,lycée d'enseignement général et technologique,public,Créteil,93,Villemomble,93077,93250,130 rue DE NEUILLY,48.87693481107562,2.5245952712770765
+0930123D,Lycée Olympe de Gouges,lycée d'enseignement général et technologique,public,Créteil,93,Noisy-le-Sec,93053,93130,RUE DE MONTREUIL A CLAYE,48.88927848551092,2.471321521299963
+0771512A,Lycée Van Dongen,lycée d'enseignement général et technologique,public,Créteil,77,Lagny-sur-Marne,77243,77400,45 rue JEAN MERMOZ,48.86783583652336,2.719144935356008
+0772685A,Lycée Samuel Beckett,lycée d'enseignement général et technologique,public,Créteil,77,La Ferté-sous-Jouarre,77183,77260,19 rue DU LION,48.94343942555177,3.1315196407779538
+0931565W,Lycée Flora Tristan,lycée d'enseignement général et technologique,public,Créteil,93,Noisy-le-Grand,93051,93166,27 RUE DES HAUTS ROSEAUX,48.84372546299013,2.574112902703786
+0772292Y,Lycée Martin Luther King,lycée d'enseignement général et technologique,public,Créteil,77,Bussy-Saint-Georges,77058,77600,21 avenue du Général de Gaulle,48.84002483297081,2.7179296097548233
+0931738J,Lycée professionnel Arthur Rimbaud,lycée professionnel,public,Créteil,93,La Courneuve,93027,93120,112 avenue Jean Jaurès,48.9216818786026,2.4083710672020717
+0931193S,Lycée professionnel Hélène Boucher,lycée professionnel,public,Créteil,93,Tremblay-en-France,93073,93290,70 avenue GILBERT BERGER,48.95033268562586,2.578836532741558
+0931430Z,Lycée Jacques Brel,lycée d'enseignement général et technologique,public,Créteil,93,La Courneuve,93027,93120,4 rue DULCIE SEPTEMBER,48.929624886331744,2.400326472996749
+0932638M,Lycée polyvalent international de l'Est parisien,lycée polyvalent,public,Créteil,93,Noisy-le-Grand,93051,93160,"1, promenade Marco-Polo",48.841621947798245,2.5405863314456787
+0941294W,Lycée polyvalent Adolphe Chérioux,lycée polyvalent,public,Créteil,94,Vitry-sur-Seine,94081,94401,195 rue Julian Grimau,48.78045270942322,2.3733277666370354
+0772310T,Lycée polyvalent Simone Signoret,lycée polyvalent,public,Créteil,77,Vaux-le-Pénil,77487,77000,Place DU 14 JUILLET,48.53091007605829,2.6726315665095157
+0932116V,Lycée polyvalent Eugénie Cotton,lycée polyvalent,public,Créteil,93,Montreuil,93048,93100,58 avenue FAIDHERBE,48.866878653427094,2.4369279971695375
+0940137N,Lycée professionnel la Source,lycée polyvalent,public,Créteil,94,Nogent-sur-Marne,94052,94130,54 avenue de la Source,48.830184203953856,2.465733598651929
+0940117S,Lycée Édouard Branly,lycée d'enseignement général,public,Créteil,94,Nogent-sur-Marne,94052,94130,8 rue BAUYN DE PERREUSE,48.83523004014952,2.4826050782584668
+0930130L,Lycée professionnel Condorcet,lycée professionnel,public,Créteil,93,Montreuil,93048,93101,31 rue DESIRE CHEVALIER,48.85750093339525,2.445528654993236
+0932117W,Lycée polyvalent Lucie Aubrac,lycée polyvalent,public,Créteil,93,Pantin,93055,93500,51 rue Victor Hugo,48.89395126138246,2.408073793087787
+0770942F,Lycée polyvalent Thibaut de Champagne,lycée polyvalent,public,Créteil,77,Provins,77379,77160,3 rue du Collège,48.56122970638866,3.292234142318948
+0932030B,Lycée polyvalent Maurice Utrillo,lycée polyvalent,public,Créteil,93,Stains,93072,93240,152 rue JEAN DURAND,48.95257590227558,2.3694117398901255
+0932026X,Lycée polyvalent Alfred Nobel,lycée polyvalent,public,Créteil,93,Clichy-sous-Bois,93014,93390,20 allée DE GAGNY,48.90343886871677,2.548190117189201
+0772230F,Lycée polyvalent Blaise Pascal,lycée polyvalent,public,Créteil,77,Brie-Comte-Robert,77053,77253,15 allée DU COMMANDANT GUESNET,48.69823378289177,2.595324045901765
+0932126F,Lycée polyvalent François Rabelais,lycée polyvalent,public,Créteil,93,Dugny,93030,93440,Rue FRANCOIS RABELAIS,48.94908080001653,2.4172891234396072
+0942269F,Lycée Pauline Roland,lycée polyvalent,public,Créteil,94,Chevilly-Larue,94021,94550,17 avenue DU GENERAL DE GAULLE,48.77285638144974,2.3401106946732
+0930135S,Lycée professionnel Simone Weil,lycée professionnel,public,Créteil,93,Pantin,93055,93500,6 rue DELIZY,48.89544091786192,2.4096103845694055
+0941298A,Lycée professionnel Jules Michelet,lycée professionnel,public,Créteil,94,Fontenay-sous-Bois,94033,94120,2-4 rue Béranger,48.852087694925295,2.4731761275858335
+0931613Y,Lycée Louise Michel,lycée d'enseignement général et technologique,public,Créteil,93,Bobigny,93008,93000,70 avenue Jean Jaurès,48.902080737124066,2.440758244161289
+0930117X,Lycée Le Corbusier,lycée d'enseignement général et technologique,public,Créteil,93,Aubervilliers,93001,93533,44 rue Léopold Rechossière,48.91446163195137,2.3902951798257757
+0930834B,Lycée Voillaume,lycée d'enseignement général et technologique,public,Créteil,93,Aulnay-sous-Bois,93005,93604,136 rue DE MITRY,48.94454426421222,2.5082514034395587
+0931272C,Lycée Gustave Eiffel,lycée d'enseignement général et technologique,public,Créteil,93,Gagny,93032,93220,16 CHEMIN DE LA RENARDIERE,48.88870710130037,2.5412578188344055
+0932783V,Lycée Joséphine Baker,lycée polyvalent,public,Créteil,93,Saint-Denis,93066,93200,"2-10, rue d'Amiens",48.95327463878157,2.368387362801961
+0772342C,Lycée polyvalent Clément Ader,lycée polyvalent,public,Créteil,77,Tournan-en-Brie,77470,77220,74 RUE GEORGES CLEMENCEAU,48.74289262798635,2.749278337472371
+0931779D,Lycée de l'horticulture et du paysage Jeanne Baret,lycée polyvalent,public,Créteil,93,Montreuil,93048,93512,16 rue PAUL DOUMER,48.85968843096663,2.456572927550601
+0770924L,Campus scolaire de Coulommiers,lycée polyvalent,public,Créteil,77,Coulommiers,77131,77527,6 rue des Templiers,48.824500986490555,3.0929269915167716
+0930133P,Lycée professionnel Théodore Monod,lycée professionnel,public,Créteil,93,Noisy-le-Sec,93053,93130,187 rue DE BREMENT,48.88744786715092,2.4665425279205513
+0932122B,Lycée polyvalent d'Alembert,lycée polyvalent,public,Créteil,93,Aubervilliers,93001,93300,7 rue DU COMMANDANT L'HERMINIER,48.917325474367935,2.3866879579661195
+0772296C,Lycée polyvalent de la Mare Carrée,lycée polyvalent,public,Créteil,77,Moissy-Cramayel,77296,77550,70 rue de la Mare Carrée,48.62843877012857,2.5793521471418255
+0772332S,Lycée polyvalent Sonia Delaunay,lycée polyvalent,public,Créteil,77,Cesson,77067,77240,1 rue du Lycée,48.57265222109859,2.608798566040047
+0772277G,Lycée polyvalent Henri Becquerel,lycée polyvalent,public,Créteil,77,Nangis,77327,77370,1 boulevard HENRI ROUSSELLE,48.55121929286351,3.0074521985914986
+0932129J,Lycée polyvalent d'application de l'ENNA,lycée polyvalent,public,Créteil,93,Saint-Denis,93066,93201,Place du 8 Mai 1945,48.93942848556531,2.355881902782786
+0770920G,Lycée La Fayette,lycée polyvalent,public,Créteil,77,Champagne-sur-Seine,77079,77430,Place DES CELESTINS,48.40330437773726,2.7976540778951264
+0770944H,Lycée professionnel Auguste Perdonnet,lycée professionnel,public,Créteil,77,Thorigny-sur-Marne,77464,77400,1 allée du Château,48.88732929973339,2.7281192981058764
+0930833A,Lycée Jean Zay,lycée d'enseignement général et technologique,public,Créteil,93,Aulnay-sous-Bois,93005,93604,Avenue du Maréchal Juin,48.936149484824476,2.5034290582623515
+0772127U,Lycée Galilée,lycée d'enseignement général et technologique,public,Créteil,77,Combs-la-Ville,77122,77385,Avenue André Malraux,48.652191439656086,2.56174477575254
+0772229E,Lycée Jean Vilar,lycée d'enseignement général et technologique,public,Créteil,77,Meaux,77284,77100,83 avenue Salvador Allende,48.95461335102046,2.894789005848248
+0770687D,ERPD - Internat d'excellence,école régionale du premier degré,public,Créteil,77,Saint-Mammès,77419,77670,13 rue du Capitaine Ballot,48.384575490303504,2.814971307466238
+0931585T,Lycée André Boulloche,lycée d'enseignement général et technologique,public,Créteil,93,Livry-Gargan,93046,93190,18 boulevard GUTENBERG,48.912601851382945,2.5195514632061218
+0932031C,Lycée Charles de Gaulle,lycée d'enseignement général et technologique,public,Créteil,93,Rosny-sous-Bois,93064,93110,102 rue LAVOISIER,48.861770086102105,2.4914930230858734
+0940116R,Lycée Eugène Delacroix,lycée d'enseignement général et technologique,public,Créteil,94,Maisons-Alfort,94046,94704,5 rue Pierre et Marie Curie,48.810789057415114,2.4259112918900176
+0930116W,Lycée Henri Wallon,lycée d'enseignement général et technologique,public,Créteil,93,Aubervilliers,93001,93300,146 rue Jacques Salvator,48.9113525929103,2.38832462792748
+0772243V,Lycée Camille Claudel,lycée d'enseignement général et technologique,public,Créteil,77,Pontault-Combault,77373,77340,Place d'Anyama,48.7874049161568,2.599490220817385
+0932291K,Lycée polyvalent Nicolas-Joseph Cugnot,lycée polyvalent,public,Créteil,93,Neuilly-sur-Marne,93050,93330,55 boulevard LOUIS ARMAND,48.861536325966085,2.520260925956096
+0770945J,Lycée professionnel Gustave Eiffel,lycée professionnel,public,Créteil,77,Varennes-sur-Seine,77482,77130,4 avenue D'ORMES,48.37385618033897,2.92676770386737
+0772276F,Lycée polyvalent Jehan de Chelles,lycée polyvalent,public,Créteil,77,Chelles,77108,77500,47 rue DES CITES,48.88858428761421,2.612639890504011
+0941951K,Lycée polyvalent Marx Dormoy,lycée polyvalent,public,Créteil,94,Champigny-sur-Marne,94017,94507,500 rue du Professeur Paul Milli,48.81546613843271,2.5352958923708515
+0932222K,Lycée polyvalent René Cassin,lycée polyvalent,public,Créteil,93,Le Raincy,93062,93340,16 allée DES BOSQUETS,48.899692014794915,2.518773070699601
+0931584S,Lycée polyvalent Jean Rostand,lycée polyvalent,public,Créteil,93,Villepinte,93078,93420,8 rue PIERRE AUDAT,48.96013097773987,2.5465449256491284
+0930119Z,Lycée polyvalent Eugène Delacroix,lycée polyvalent,public,Créteil,93,Drancy,93029,93700,4 rue DU DOCTEUR SCHWEITZER,48.92500721472923,2.457936453412501
+0942130E,Lycée polyvalent Montaleau,lycée polyvalent,public,Créteil,94,Sucy-en-Brie,94071,94371,2 bis rue Pierre Semard,48.769902945113586,2.516878385669346
+0930129K,Lycée professionnel Madeleine Vionnet,lycée professionnel,public,Créteil,93,Bondy,93010,93140,1 rue JULES GUESDE,48.90434100653329,2.472955598811062
+0930125F,Lycée Paul Éluard,lycée d'enseignement général et technologique,public,Créteil,93,Saint-Denis,93066,93206,15 avenue Jean Moulin,48.9412972594893,2.364486504485791
+0932667U,Lycée polyvalent Rosa-Parks,lycée polyvalent,public,Créteil,93,Saint-Denis,93066,93210,70 avenue George Sand,48.91522069997389,2.3652006377705472
+0942531R,Lycée polyvalent Vincennes,lycée polyvalent,public,Créteil,94,Vincennes,94080,94300,106 rue de la Jarry,48.8496097281551,2.448567030724825
+0930126G,Lycée polyvalent Auguste Blanqui,lycée polyvalent,public,Créteil,93,Saint-Ouen-sur-Seine,93070,93404,54 rue Charles Schmidt,48.90303260775702,2.333941143279612
+0931735F,Lycée polyvalent Louise Michel,lycée polyvalent,public,Créteil,93,Épinay-sur-Seine,93031,93800,12 rue Jean-Baptiste Clément,48.96140266408877,2.299037673653177
+0770918E,Lycée Uruguay France,lycée polyvalent,public,Créteil,77,Avon,77014,77211,1 avenue DES MARRONNIERS,48.409730744143,2.7363395879461994
+0930138V,Lycée professionnel Frédéric Bartholdi,lycée professionnel,public,Créteil,93,Saint-Denis,93066,93200,12 rue de la Liberté,48.943352734923394,2.365792462246213
+0930831Y,Lycée professionnel Aristide Briand,lycée professionnel,public,Créteil,93,Le Blanc-Mesnil,93007,93155,120 avenue Aristide Briand,48.94482961709546,2.449369198095032
+0771171E,Lycée professionnel Louis Lumière,lycée professionnel,public,Créteil,77,Chelles,77108,77501,04 rue LOUIS LUMIERE,48.8795999213396,2.612279937835049
+0941413A,Lycée polyvalent Léon Blum,lycée polyvalent,public,Créteil,94,Créteil,94028,94000,5 rue JEAN GABIN,48.77979890015114,2.445193431335082
+0940580V,Lycée de Cachan,lycée polyvalent,public,Créteil,94,Cachan,94016,94230,63 avenue du Président Wilson,48.78867682535173,2.324774506773462
+0941972H,Lycée polyvalent Fernand Léger,lycée polyvalent,public,Créteil,94,Ivry-sur-Seine,94041,94200,15 avenue Henri Barbusse,48.80923063748388,2.377952143775689
+0940141T,Lycée professionnel Jacques Brel,lycée polyvalent,public,Créteil,94,Choisy-le-Roi,94022,94600,90 avenue d'Alfortville,48.77325875116557,2.4149129113760606
+0930128J,Lycée professionnel Denis Papin,lycée professionnel,public,Créteil,93,La Courneuve,93027,93120,34 avenue Michelet,48.92887989557298,2.3863947991490666
+0940171A,Établissement régional d'enseignement adapté Stendhal,établissement régional d’enseignement adapté,public,Créteil,94,Bonneuil-sur-Marne,94011,94380,6 rue Désiré Dautier,48.774946732869964,2.4870864032837714
+0930121B,Lycée Jean Jaurès,lycée d'enseignement général et technologique,public,Créteil,93,Montreuil,93048,93105,1 rue DOMBASLE,48.86361437262422,2.449169863763747
+0941347D,Lycée Pablo Picasso,lycée d'enseignement général et technologique,public,Créteil,94,Fontenay-sous-Bois,94033,94120,2 avenue Pablo Picasso,48.855748717849075,2.4863687107756998
+0930830X,Lycée Albert Schweitzer,lycée d'enseignement général et technologique,public,Créteil,93,Le Raincy,93062,93342,11 allée Valère Lefebvre,48.8987046198562,2.5112323841622235
+0770926N,Lycée François Couperin,lycée d'enseignement général et technologique,public,Créteil,77,Fontainebleau,77186,77305,Route HURTAULT,48.39905368078548,2.6868318330322696
+0940120V,Lycée Marcelin Berthelot,lycée d'enseignement général et technologique,public,Créteil,94,Saint-Maur-des-Fossés,94068,94100,6 boulevard Maurice Berteaux,48.810377748900095,2.470063843147651
+0772188K,Lycée Pierre Mendès France,lycée d'enseignement général et technologique,public,Créteil,77,Savigny-le-Temple,77445,77176,11 avenue de l'Europe,48.596423943238705,2.5770936432589657
+0772751X,Lycée polyvalent Charlotte Delbo,lycée polyvalent,public,Créteil,77,Dammartin-en-Goële,77153,77230,2 avenue ROBERT BADINTER,49.06567966934639,2.679086028744148
+0772244W,Lycée professionnel Antonin Carême,lycée polyvalent,public,Créteil,77,Savigny-le-Temple,77445,77176,1 place GUSTAVE COURBET,48.59529887019934,2.5776695792323916
+0771940R,Lycée polyvalent Simone Veil,lycée polyvalent,public,Créteil,77,Noisiel,77337,77186,1 avenue Pierre Mendès France,48.8407880173237,2.6163182274782533
+0772225A,Lycée professionnel Lino Ventura,lycée professionnel,public,Créteil,77,Ozoir-la-Ferrière,77350,77831,Avenue MARCEL PAGNOL,48.759211383960206,2.6912421942760685
+0940138P,Lycée des métiers Armand Guillaumin,lycée professionnel,public,Créteil,94,Orly,94054,94310,10 rue Pierre Corneille,48.74890738659517,2.403196381256488
+0930846P,Lycée professionnel Voillaume,lycée professionnel,public,Créteil,93,Aulnay-sous-Bois,93005,93601,136 rue DE MITRY,48.94454426421222,2.5082514034395587
+0941018W,Lycée polyvalent Édouard Branly,lycée polyvalent,public,Créteil,94,Créteil,94028,94000,33 rue DU PETIT BOIS,48.783884965626555,2.4669439734030068
+0932048W,Lycée polyvalent Blaise Cendrars,lycée polyvalent,public,Créteil,93,Sevran,93071,93270,12 avenue LEON JOUHAUX,48.939573054461775,2.5387766314700504
+0770940D,Lycée polyvalent Étienne Bezout,lycée polyvalent,public,Créteil,77,Nemours,77333,77791,31 avenue ETIENNE DAILLY,48.26198129575448,2.7119741963317705
+0940123Y,Lycée Guillaume Apollinaire,lycée d'enseignement général et technologique,public,Créteil,94,Thiais,94073,94320,42 rue du pavé de Grignon,48.756951300656354,2.400208301462324
+0771763Y,Lycée Charles le Chauve,lycée d'enseignement général et technologique,public,Créteil,77,Roissy-en-Brie,77390,77680,4 rue J. BODIN DE BOISMORTIER,48.79924111309776,2.648171578531452
+0770930T,Lycée Henri Moissan,lycée d'enseignement général et technologique,public,Créteil,77,Meaux,77284,77100,20 cours de Verdun,48.9587066334898,2.87505516661365
+0771997C,Lycée professionnel Jacques Prévert,lycée professionnel,public,Créteil,77,Combs-la-Ville,77122,77380,7 avenue Jean Jaurès,48.65522404672208,2.564065406447481
+0940143V,Lycée professionnel Jean Moulin,lycée professionnel,public,Créteil,94,Vincennes,94080,94307,8 rue du Docteur Lebel,48.84655197901299,2.431285467310649
+0772294A,Lycée Emily Brontë,lycée d'enseignement général et technologique,public,Créteil,77,Lognes,77258,77185,1 ESPLANADE FRANCOIS MITTERAND,48.83952918117187,2.648902400842065
+0941470M,Lycée polyvalent Champlain,lycée d'enseignement général et technologique,public,Créteil,94,Chennevières-sur-Marne,94019,94430,61 rue DES BORDES,48.79882528150389,2.5564423463815262
+0932229T,Lycée polyvalent Paul Le Rolland,lycée polyvalent,public,Créteil,93,Drancy,93029,93700,136 avenue DE CASTELNAU,48.92467426514844,2.4616792007868313
+0772295B,Lycée polyvalent La Tour des Dames,lycée polyvalent,public,Créteil,77,Rozay-en-Brie,77393,77540,Rue DE VILPRES,48.6794389507492,2.964056166580102
+0932047V,Lycée polyvalent Évariste Galois,lycée polyvalent,public,Créteil,93,Noisy-le-Grand,93051,93165,32 avenue MONTAIGNE,48.844976450093746,2.5389338989234025
