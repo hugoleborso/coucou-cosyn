@@ -1,0 +1,295 @@
+{
+ "organes": [
+  {
+   "nom": "Demi-fagot de jante AV-a (4 arcs + rayons captifs)",
+   "bbox_mm": [
+    198.0,
+    120.0,
+    54.0
+   ],
+   "volume_L": 0.850176
+  },
+  {
+   "nom": "Demi-fagot de jante AV-b (4 arcs + rayons captifs)",
+   "bbox_mm": [
+    198.0,
+    120.0,
+    54.0
+   ],
+   "volume_L": 0.850176
+  },
+  {
+   "nom": "Demi-fagot de jante AR-a (4 arcs + rayons captifs)",
+   "bbox_mm": [
+    198.0,
+    120.0,
+    54.0
+   ],
+   "volume_L": 0.850176
+  },
+  {
+   "nom": "Demi-fagot de jante AR-b (4 arcs + rayons captifs)",
+   "bbox_mm": [
+    198.0,
+    120.0,
+    54.0
+   ],
+   "volume_L": 0.850176
+  },
+  {
+   "nom": "Moyeu a secteurs + disque AV",
+   "bbox_mm": [
+    144.00000000000003,
+    144.00000000000003,
+    102.00000000000001
+   ],
+   "volume_L": 0.288144
+  },
+  {
+   "nom": "Moyeu a secteurs + disque AR",
+   "bbox_mm": [
+    144.00000000000003,
+    144.00000000000003,
+    102.00000000000001
+   ],
+   "volume_L": 0.288144
+  },
+  {
+   "nom": "Module arriere (BdP, bras monobranche, mat rabattu, pedalier)",
+   "bbox_mm": [
+    474.00000000000006,
+    138.0,
+    150.0
+   ],
+   "volume_L": 1.262736
+  },
+  {
+   "nom": "Manivelles + pedales pliantes (demontees)",
+   "bbox_mm": [
+    180.0,
+    96.0,
+    30.0
+   ],
+   "volume_L": 0.23328
+  },
+  {
+   "nom": "Module avant (fourche monobras + tube de direction)",
+   "bbox_mm": [
+    246.0,
+    96.0,
+    474.00000000000006
+   ],
+   "volume_L": 0.878472
+  },
+  {
+   "nom": "Ensemble cintre (colonne + demi-cintres + leviers)",
+   "bbox_mm": [
+    288.00000000000006,
+    150.0,
+    72.00000000000001
+   ],
+   "volume_L": 0.6784560000000001
+  },
+  {
+   "nom": "Poutre principale retractee",
+   "bbox_mm": [
+    234.0,
+    48.0,
+    48.0
+   ],
+   "volume_L": 0.438048
+  },
+  {
+   "nom": "Tige de selle retractee + selle rabattue",
+   "bbox_mm": [
+    252.0,
+    144.00000000000003,
+    90.0
+   ],
+   "volume_L": 1.9556640000000003
+  },
+  {
+   "nom": "Trousse (outils, pompe, sangles)",
+   "bbox_mm": [
+    192.0,
+    78.0,
+    48.0
+   ],
+   "volume_L": 0.718848
+  }
+ ],
+ "volume_solide_L": 10.142496,
+ "sac_L": 26.754000000000005,
+ "rangement": [
+  {
+   "nom": "Module avant (fourche monobras + tube de direction)",
+   "pos_mm": [
+    0,
+    0,
+    0
+   ],
+   "dim_mm": [
+    395,
+    205,
+    80
+   ]
+  },
+  {
+   "nom": "Module arriere (BdP, bras monobranche, mat rabattu, pedalier)",
+   "pos_mm": [
+    10,
+    80,
+    0
+   ],
+   "dim_mm": [
+    395,
+    125,
+    115
+   ]
+  },
+  {
+   "nom": "Tige de selle retractee + selle rabattue",
+   "pos_mm": [
+    0,
+    0,
+    10
+   ],
+   "dim_mm": [
+    210,
+    120,
+    75
+   ]
+  },
+  {
+   "nom": "Ensemble cintre (colonne + demi-cintres + leviers)",
+   "pos_mm": [
+    0,
+    0,
+    80
+   ],
+   "dim_mm": [
+    240,
+    125,
+    60
+   ]
+  },
+  {
+   "nom": "Moyeu a secteurs + disque AV",
+   "pos_mm": [
+    270,
+    30,
+    0
+   ],
+   "dim_mm": [
+    120,
+    120,
+    85
+   ]
+  },
+  {
+   "nom": "Moyeu a secteurs + disque AR",
+   "pos_mm": [
+    210,
+    50,
+    0
+   ],
+   "dim_mm": [
+    85,
+    120,
+    120
+   ]
+  },
+  {
+   "nom": "Demi-fagot de jante AV-a (4 arcs + rayons captifs)",
+   "pos_mm": [
+    0,
+    190,
+    0
+   ],
+   "dim_mm": [
+    165,
+    45,
+    100
+   ]
+  },
+  {
+   "nom": "Demi-fagot de jante AV-b (4 arcs + rayons captifs)",
+   "pos_mm": [
+    170,
+    190,
+    0
+   ],
+   "dim_mm": [
+    165,
+    45,
+    100
+   ]
+  },
+  {
+   "nom": "Demi-fagot de jante AR-a (4 arcs + rayons captifs)",
+   "pos_mm": [
+    360,
+    40,
+    10
+   ],
+   "dim_mm": [
+    45,
+    165,
+    100
+   ]
+  },
+  {
+   "nom": "Demi-fagot de jante AR-b (4 arcs + rayons captifs)",
+   "pos_mm": [
+    240,
+    0,
+    100
+   ],
+   "dim_mm": [
+    165,
+    100,
+    45
+   ]
+  },
+  {
+   "nom": "Trousse (outils, pompe, sangles)",
+   "pos_mm": [
+    40,
+    160,
+    100
+   ],
+   "dim_mm": [
+    160,
+    65,
+    40
+   ]
+  },
+  {
+   "nom": "Poutre principale retractee",
+   "pos_mm": [
+    0,
+    0,
+    0
+   ],
+   "dim_mm": [
+    195,
+    40,
+    40
+   ]
+  },
+  {
+   "nom": "Manivelles + pedales pliantes (demontees)",
+   "pos_mm": [
+    210,
+    0,
+    20
+   ],
+   "dim_mm": [
+    150,
+    25,
+    80
+   ]
+  }
+ ],
+ "non_ranges": []
+}

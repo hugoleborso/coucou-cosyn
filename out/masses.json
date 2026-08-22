@@ -1,0 +1,224 @@
+{
+ "items": [
+  {
+   "groupe": "Roues",
+   "designation": "Jante : 8 arcs extrudes 7075-T6 24x22x1.5",
+   "kg": 0.9717160208508497,
+   "type": "C",
+   "u": 0.05
+  },
+  {
+   "groupe": "Roues",
+   "designation": "Tenons coniques d'arc (8/roue, 7075 usine)",
+   "kg": 0.144,
+   "type": "E",
+   "u": 0.2
+  },
+  {
+   "groupe": "Roues",
+   "designation": "Cordon captif aramide 4 mm + embouts",
+   "kg": 0.07,
+   "type": "E",
+   "u": 0.2
+  },
+  {
+   "groupe": "Roues",
+   "designation": "Rayons inox 32 x \u00d81.8/1.6 + ecrous",
+   "kg": 0.298062873918244,
+   "type": "C",
+   "u": 0.08
+  },
+  {
+   "groupe": "Roues",
+   "designation": "Inserts de siege de rayon (32/roue)",
+   "kg": 0.0768,
+   "type": "E",
+   "u": 0.2
+  },
+  {
+   "groupe": "Roues",
+   "designation": "Moyeu a brides ecartables + came + roulements",
+   "kg": 0.58,
+   "type": "E",
+   "u": 0.15
+  },
+  {
+   "groupe": "Roues",
+   "designation": "Bande de roulement PU alveolaire + cordage",
+   "kg": 0.4037040413289413,
+   "type": "C",
+   "u": 0.12
+  },
+  {
+   "groupe": "Roues",
+   "designation": "Disque de frein \u00d8140 + visserie",
+   "kg": 0.18,
+   "type": "E",
+   "u": 0.1
+  },
+  {
+   "groupe": "Cadre",
+   "designation": "Poutre principale 3 etages + douilles",
+   "kg": 0.6327916167505016,
+   "type": "C",
+   "u": 0.05
+  },
+  {
+   "groupe": "Cadre",
+   "designation": "Bras arriere monobranche + hauban + mat",
+   "kg": 0.7554995330171586,
+   "type": "C",
+   "u": 0.05
+  },
+  {
+   "groupe": "Cadre",
+   "designation": "Tube de direction + jeu de direction",
+   "kg": 0.23400471675433046,
+   "type": "C",
+   "u": 0.1
+  },
+  {
+   "groupe": "Cadre",
+   "designation": "Fourche monobras + te",
+   "kg": 0.4791284009885969,
+   "type": "C",
+   "u": 0.12
+  },
+  {
+   "groupe": "Cadre",
+   "designation": "Tourillons de roue AV/AR + ecrous centraux",
+   "kg": 0.21,
+   "type": "E",
+   "u": 0.15
+  },
+  {
+   "groupe": "Cadre",
+   "designation": "Raccords colles-goupilles (6)",
+   "kg": 0.27,
+   "type": "E",
+   "u": 0.2
+  },
+  {
+   "groupe": "Cadre",
+   "designation": "Boitier de pedalier (axe + roulements)",
+   "kg": 0.18,
+   "type": "E",
+   "u": 0.1
+  },
+  {
+   "groupe": "Cadre",
+   "designation": "Expandeurs coniques + leviers (5)",
+   "kg": 0.275,
+   "type": "E",
+   "u": 0.2
+  },
+  {
+   "groupe": "Cadre",
+   "designation": "Charnieres mat de selle + poutre (2)",
+   "kg": 0.15,
+   "type": "E",
+   "u": 0.2
+  },
+  {
+   "groupe": "Poste de pilotage",
+   "designation": "Colonne de direction 2 etages",
+   "kg": 0.11628400202377565,
+   "type": "C",
+   "u": 0.05
+  },
+  {
+   "groupe": "Poste de pilotage",
+   "designation": "Demi-cintres repliables + charniere",
+   "kg": 0.25842291278048657,
+   "type": "C",
+   "u": 0.15
+  },
+  {
+   "groupe": "Poste de pilotage",
+   "designation": "Poignees + leviers de frein",
+   "kg": 0.15,
+   "type": "E",
+   "u": 0.1
+  },
+  {
+   "groupe": "Selle",
+   "designation": "Tige de selle 3 etages",
+   "kg": 0.13687647218689714,
+   "type": "C",
+   "u": 0.05
+  },
+  {
+   "groupe": "Selle",
+   "designation": "Selle compacte + chariot",
+   "kg": 0.22,
+   "type": "E",
+   "u": 0.1
+  },
+  {
+   "groupe": "Transmission",
+   "designation": "Manivelles 152 mm demontables (vis auto-extractibles)",
+   "kg": 0.27379076877933173,
+   "type": "C",
+   "u": 0.15
+  },
+  {
+   "groupe": "Transmission",
+   "designation": "Plateau 34 d. + araignee",
+   "kg": 0.1,
+   "type": "E",
+   "u": 0.1
+  },
+  {
+   "groupe": "Transmission",
+   "designation": "Chaine 1/2 x 3/32 (86 maillons)",
+   "kg": 0.25,
+   "type": "E",
+   "u": 0.08
+  },
+  {
+   "groupe": "Transmission",
+   "designation": "Roue libre 12 d. + tendeur",
+   "kg": 0.13,
+   "type": "E",
+   "u": 0.12
+  },
+  {
+   "groupe": "Transmission",
+   "designation": "Pedales pliantes (paire)",
+   "kg": 0.19,
+   "type": "E",
+   "u": 0.1
+  },
+  {
+   "groupe": "Freinage",
+   "designation": "Etriers mecaniques a disque (2)",
+   "kg": 0.21,
+   "type": "E",
+   "u": 0.1
+  },
+  {
+   "groupe": "Freinage",
+   "designation": "Cables + gaines + butees",
+   "kg": 0.11,
+   "type": "E",
+   "u": 0.15
+  },
+  {
+   "groupe": "Suspension",
+   "designation": "Elements elastomere AV + AR (30 mm)",
+   "kg": 0.22,
+   "type": "E",
+   "u": 0.2
+  },
+  {
+   "groupe": "Divers",
+   "designation": "Visserie, butees, temoins, protections",
+   "kg": 0.15,
+   "type": "E",
+   "u": 0.25
+  }
+ ],
+ "total_kg": 8.426081359379115,
+ "ecart_type_kg": 0.1949556545820092,
+ "objectif_kg": 8.0
+}

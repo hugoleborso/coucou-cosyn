@@ -1,0 +1,340 @@
+
+
+####################################################################################################
+# Validation du solveur elements finis   [test_fem.py]
+####################################################################################################
+cas                                    FEM      analytique   ecart rel
+console flexion w            -9.159786e-03   -9.159786e-03    1.89e-16
+console torsion               1.424856e-02    1.424856e-02    1.22e-16
+traction                      2.706717e-04    2.706717e-04    0.00e+00
+bi-appuyee                   -5.724866e-03   -5.724866e-03    0.00e+00
+treillis effort              -5.773503e+03   -5.773503e+03    1.58e-16
+treillis fleche              -6.349206e-04   -6.349206e-04    1.71e-16
+tension-only desactivation    0.000000e+00    0.000000e+00    0.00e+00
+
+7/7 cas de validation OK
+
+
+####################################################################################################
+# Parametrage et geometrie cycle   [params.py]
+####################################################################################################
+Empattement            : 980 mm
+Roue OD                : 500 mm
+Chasse (trail)         : 41.7 mm
+Axe AV                 : [605.   0. -15.]
+Axe AR                 : [-375.    0.  -15.]
+Base tube direction    : [464.2   0.  265. ]
+Haut tube direction    : [415.3   0.  406.8]
+Developpement          : 4.45 m/tour (21.4 km/h a 80 tr/min)
+Volume sac utile       : 26.8 L
+
+
+####################################################################################################
+# Verification structurelle du cadre   [c02_cadre.py]
+####################################################################################################
+========================================================================================================
+CADRE COSYN-30 -- verification par elements finis (poutres 3D, eta_joint = 0.6)
+========================================================================================================
+cas de charge                         element critique  sigma_VM   limite  CS obt.  CS exige  verdict
+--------------------------------------------------------------------------------------------------------
+F1 statique assis                     tds1                    61      503     8.22      1.50       OK
+F2 choc trottoir AV                   tds1                   182      503     2.76      1.25       OK
+F3 choc trottoir AR                   tds1                   194      503     2.59      1.25       OK
+F4 pedalage danseuse (ISO 4210-6)     DL->SM                 253      503     1.99      1.50       OK
+F5 freinage AV limite basculement     BAR->BL                175      503     2.88      1.50       OK
+F6 cintre 600 N (ISO 4210-5 stat.)    BAR->BL                171      503     2.93      1.50       OK
+F6b cintre +/-270 N (ISO 4210-5, 1e5 cy.)col2                    95      185     1.95      1.40       OK
+F7 fatigue pedalage (1e6 cy. = 5000 km)poutre1                 95      138     1.46      1.40       OK
+--------------------------------------------------------------------------------------------------------
+
+Raideurs caracteristiques
+  k_BdP_lateral_N_mm                    156.9   velo de ville acier : 60-90 N/mm
+  k_torsion_direction_Nm_deg             39.2   VTT alu : 60-110 N.m/deg
+  deplacement_cintre_200N_mm              3.3   
+  fleche_selle_800N_mm                    2.8   
+
+Sensibilite au rendement des emmanchements telescopiques
+   eta     k_BdP   k_torsion  sigma max F4
+  0.35     144.3        36.1           253
+  0.50     153.1        38.3           253
+  0.60     156.9        39.2           253
+  0.75     160.8        40.1           253
+  1.00     164.9        41.1           253
+
+Masse des tubes modelises : 2557 g (hors raccords, roulements, accastillage)
+
+Flou residuel des emmanchements (jeu de coulissement non rattrape)
+liaison         recouvr.  jeu diam.  basculement  flou au cintre
+poutre 1-2           58mm        60um       0.059d           0.54mm
+poutre 2-3           58mm        60um       0.059d           0.36mm
+colonne 1-2          58mm        60um       0.059d           0.22mm
+CUMUL                                                      1.12mm   -> a annuler par expandeur conique
+
+
+####################################################################################################
+# Roue deployable a jante segmentee   [c03_roue.py]
+####################################################################################################
+====================================================================================================
+ROUE DEPLOYABLE -- resultats elements finis (8 arcs, 32 rayons, T0=700 N)
+====================================================================================================
+cas                            P[N]   Tmax   Tmin det.   f_rad   f_lat    k_rad     sVM
+                                       [N]    [N]         [mm]    [mm]   [N/mm]   [MPa]
+----------------------------------------------------------------------------------------------------
+W1 statique roue AR             643    736    555    0    0.17   -0.00     3720      93
+W2 choc vertical AV (k=3.2)    1020    757    470    0    0.22   -0.00     4608     124
+W3 choc vertical AR (k=2.5)    1606    790    337    0    0.30   -0.00     5410     172
+W4 virage appuye AR            1028    901    142    0    0.22    1.22     4629     208
+W5 freinage AV 0.45 g           574    897    423    0    0.18    0.00     3252      92
+W6 nid de poule oblique AV      829    910    188    0    0.20    1.22     4220     191
+----------------------------------------------------------------------------------------------------
+sVM = contrainte locale au siege de rayon (Kt = 1.8)
+Limite elastique jante 7075-T6 : 503 MPa -> CS statique = 2.42
+  cas EXTREME  : 208 MPa vs Re = 503 MPa
+  cas COURANT  : 93 MPa (W1) vs limite d'endurance 159 MPa -> CS = 1.71
+  (le cumul de dommage reel sur spectre est traite en c07_fatigue.py)
+
+Flambement de l'anneau de jante sous precontrainte
+  charge radiale repartie      q = 15428 N/m
+  charge critique (joints -55%) q_cr = 83021 N/m
+  marge au flambement          = 5.4
+  compression circonferentielle = 3510 N
+
+Mecanisme de mise en tension (ecartement des brides)
+  k_spoke_N_m              1919139.739
+  L_spoke_mm                  209.533
+  allongement_rayon_mm          0.365
+  ecartement_bride_mm           2.548
+  course_came_mm                5.095
+  F_axial_bride_N            1603.563
+  effort_main_moyen_N          46.632
+  effort_main_pic_N           102.589
+  sensibilite_N_par_0p1mm      27.478
+
+Joints de jante -- cas dimensionnant : W4 virage appuye AR
+   theta     N[N]   M[N.m]    V[N]   e[mm]   noyau  ferme   p max  p mini
+      45     3722     3.12      74    0.84    7.59   True    34.2    27.4
+      90     3719     3.26      58    0.88    7.59   True    34.3    27.2
+     135     3715     3.17      43    0.85    7.59   True    34.2    27.3
+     180     3714     3.13      30    0.84    7.59   True    34.1    27.3
+     225     3735     8.43     155    2.26    7.59   True    40.1    21.7
+     270     3595    15.39     133    4.28    7.59   True    46.5    12.9
+     315     3752     7.92      47    2.11    7.59   True    39.6    22.4
+     360     3726     2.89      76    0.77    7.59   True    34.0    27.7
+  p mini > 0 sur tous les joints => la portee reste integralement en compression,
+  le tenon conique ne travaille jamais en traction.
+
+Sensibilite a la precontrainte des rayons T0
+  T0 [N]   Tmin W6   Tmax W6  det.  sVM [MPa]  sig.loc  marge flamb. effort main
+     500        79       711     0        101      181           7.5          60
+     560        48       770     0        102      183           6.7          71
+     620       108       830     0        104      187           6.1          84
+     680       168       890     0        106      190           5.5          98
+     740       228       950     0        107      193           5.1         113
+     800       288      1010     0        109      197           4.7         128
+     880       368      1090     0        112      202           4.3         151
+
+Sensibilite au nombre d'arcs de jante (a 24 rayons)
+  N arcs    Tmin     sVM  sig.loc  marge flamb.
+       4     190     105      190           5.4
+       8     188     106      191           5.4
+
+
+####################################################################################################
+# Emmanchements telescopiques   [c04_telescopes.py]
+####################################################################################################
+================================================================================================================
+EMMANCHEMENTS TELESCOPIQUES -- verification
+================================================================================================================
+liaison         M env.  V env.  recouv.  e mini  p matage  CS mat. jeu ->flou F expand.   C vis  p exp.
+                 [N.m]     [N]     [mm]    [mm]     [MPa]                [mm]       [N]   [N.m]   [MPa]
+----------------------------------------------------------------------------------------------------------------
+Poutre 1-2       237.4     426       58      20       8.8     2.86       0.54      1117     1.3     2.8
+Poutre 2-3       162.2     127       58      15       6.6     3.78       0.36      1163     1.4     3.3
+Selle 1-2        165.1     490       52      21      10.5     2.39       0.35      1577     1.9     5.9
+Selle 2-3         82.5     490       52      13       6.8     3.70       0.18      1919     2.3     8.6
+Direction 1-2    141.1     195       58      16       7.3     3.44       0.22      2644     3.2     9.3
+----------------------------------------------------------------------------------------------------------------
+pression de matage admissible retenue : 25 MPa (Al 7075 anodise dur 50 um sur bague PA66-CF, marge exigee 1.6)
+
+Courses telescopiques
+organe                etages   deploye   replie   ratio
+poutre principale          3      534mm     217mm    2.47
+tige de selle              3      453mm     186mm    2.44
+colonne direction          2      247mm     152mm    1.62
+
+Sequence de verrouillage (1 geste par liaison)
+   1. Deployer la poutre jusqu'a l'index de butee (gorge usinee)
+   2. Rabattre le levier d'expandeur : le cone 8 deg dilate la douille fendue et annule le jeu
+   3. Idem colonne de direction, puis tige de selle
+   4. Le temoin rouge disparait quand le levier est en position sur-centree
+
+
+####################################################################################################
+# Bilan de masse   [c05_masses.py]
+####################################################################################################
+============================================================================================
+BILAN DE MASSE COSYN-30
+============================================================================================
+
+ROUES  (2724 g)
+   [C] Jante : 8 arcs extrudes 7075-T6 24x22x1.5                972 g   +/-  5%
+   [E] Tenons coniques d'arc (8/roue, 7075 usine)               144 g   +/- 20%
+   [E] Cordon captif aramide 4 mm + embouts                      70 g   +/- 20%
+   [C] Rayons inox 32 x Ø1.8/1.6 + ecrous                       298 g   +/-  8%
+   [E] Inserts de siege de rayon (32/roue)                       77 g   +/- 20%
+   [E] Moyeu a brides ecartables + came + roulements            580 g   +/- 15%
+   [C] Bande de roulement PU alveolaire + cordage               404 g   +/- 12%
+   [E] Disque de frein Ø140 + visserie                          180 g   +/- 10%
+
+CADRE  (3186 g)
+   [C] Poutre principale 3 etages + douilles                    633 g   +/-  5%
+   [C] Bras arriere monobranche + hauban + mat                  755 g   +/-  5%
+   [C] Tube de direction + jeu de direction                     234 g   +/- 10%
+   [C] Fourche monobras + te                                    479 g   +/- 12%
+   [E] Tourillons de roue AV/AR + ecrous centraux               210 g   +/- 15%
+   [E] Raccords colles-goupilles (6)                            270 g   +/- 20%
+   [E] Boitier de pedalier (axe + roulements)                   180 g   +/- 10%
+   [E] Expandeurs coniques + leviers (5)                        275 g   +/- 20%
+   [E] Charnieres mat de selle + poutre (2)                     150 g   +/- 20%
+
+POSTE DE PILOTAGE  (525 g)
+   [C] Colonne de direction 2 etages                            116 g   +/-  5%
+   [C] Demi-cintres repliables + charniere                      258 g   +/- 15%
+   [E] Poignees + leviers de frein                              150 g   +/- 10%
+
+SELLE  (357 g)
+   [C] Tige de selle 3 etages                                   137 g   +/-  5%
+   [E] Selle compacte + chariot                                 220 g   +/- 10%
+
+TRANSMISSION  (944 g)
+   [C] Manivelles 152 mm demontables (vis auto-extractibles)     274 g   +/- 15%
+   [E] Plateau 34 d. + araignee                                 100 g   +/- 10%
+   [E] Chaine 1/2 x 3/32 (86 maillons)                          250 g   +/-  8%
+   [E] Roue libre 12 d. + tendeur                               130 g   +/- 12%
+   [E] Pedales pliantes (paire)                                 190 g   +/- 10%
+
+FREINAGE  (320 g)
+   [E] Etriers mecaniques a disque (2)                          210 g   +/- 10%
+   [E] Cables + gaines + butees                                 110 g   +/- 15%
+
+SUSPENSION  (220 g)
+   [E] Elements elastomere AV + AR (30 mm)                      220 g   +/- 20%
+
+DIVERS  (150 g)
+   [E] Visserie, butees, temoins, protections                   150 g   +/- 25%
+
+============================================================================================
+TOTAL                                                         8426 g   +/- 195 g
+Objectif                                                      8000 g
+Marge                                                         -426 g (-5.3 %)
+Probabilite de tenir 8,00 kg (loi normale sur les incertitudes) : 1 %
+============================================================================================
+
+Repartition
+  Cadre                3186 g   37.8 %  ###############
+  Roues                2724 g   32.3 %  #############
+  Transmission          944 g   11.2 %  ####
+  Poste de pilotage     525 g    6.2 %  ##
+  Selle                 357 g    4.2 %  ##
+  Freinage              320 g    3.8 %  ##
+  Suspension            220 g    2.6 %  #
+  Divers                150 g    1.8 %  #
+
+Leviers d'allegement identifies
+   Fourche + poutre en carbone stratifie                +250 g   gain net apres surdimensionnement des zones d'appui
+   Jante 7075 -> jante carbone enroulee                 +240 g   necessite de repenser le tenon conique (insert titane colle)
+   Bande alveolaire -> boyau pneumatique repliable       +90 g   gagne aussi 64 W de resistance au roulement, perd l'increvabilite
+   Chaine -> courroie crantee + poulies                  -50 g   plus lourd mais supprime le graissage
+   Suppression de la suspension elastomere              +220 g   DECONSEILLE : multiplie par 2.7 les efforts de choc
+
+
+####################################################################################################
+# Encombrement / rangement dans le sac   [c06_encombrement.py]
+####################################################################################################
+================================================================================================
+ENCOMBREMENT -- organes replies
+================================================================================================
+organe                                                   encombrement (mm) volume solide  remplissage
+Demi-fagot de jante AV-a (4 arcs + rayons captifs)     198 x   120 x    54        0.85 L         66 %
+Demi-fagot de jante AV-b (4 arcs + rayons captifs)     198 x   120 x    54        0.85 L         66 %
+Demi-fagot de jante AR-a (4 arcs + rayons captifs)     198 x   120 x    54        0.85 L         66 %
+Demi-fagot de jante AR-b (4 arcs + rayons captifs)     198 x   120 x    54        0.85 L         66 %
+Moyeu a secteurs + disque AV                         144 x   144 x   102        0.29 L         14 %
+Moyeu a secteurs + disque AR                         144 x   144 x   102        0.29 L         14 %
+Module arriere (BdP, bras monobranche, mat rabattu, pedalier)     474 x   138 x   150        1.26 L         13 %
+Manivelles + pedales pliantes (demontees)            180 x    96 x    30        0.23 L         45 %
+Module avant (fourche monobras + tube de direction)     246 x    96 x   474        0.88 L          8 %
+Ensemble cintre (colonne + demi-cintres + leviers)     288 x   150 x    72        0.68 L         22 %
+Poutre principale retractee                          234 x    48 x    48        0.44 L         81 %
+Tige de selle retractee + selle rabattue             252 x   144 x    90        1.96 L         60 %
+Trousse (outils, pompe, sangles)                     192 x    78 x    48        0.72 L        100 %
+------------------------------------------------------------------------------------------------
+VOLUME SOLIDE CUMULE                                                             10.14 L
+
+Strategie de rangement retenue : encombrant d'abord
+Rangement dans sac 30 L compact (volume utile) : 490 x 280 x 195 mm = 26.8 L
+  taux de remplissage solide : 38 %
+  tous les organes sont ranges
+  voxels occupes             : 37 %
+  volume reellement occupe   : 486 x 282 x 174 mm = 23.8 L
+
+Plan de rangement (coin bas-avant du sac, cotes en mm)
+organe                                                x      y      z     dx     dy     dz
+Module avant (fourche monobras + tube de direction)      0      0      0    395    205     80
+Module arriere (BdP, bras monobranche, mat rabattu, pedalier)     10     80      0    395    125    115
+Tige de selle retractee + selle rabattue              0      0     10    210    120     75
+Ensemble cintre (colonne + demi-cintres + leviers)      0      0     80    240    125     60
+Moyeu a secteurs + disque AV                        270     30      0    120    120     85
+Moyeu a secteurs + disque AR                        210     50      0     85    120    120
+Demi-fagot de jante AV-a (4 arcs + rayons captifs)      0    190      0    165     45    100
+Demi-fagot de jante AV-b (4 arcs + rayons captifs)    170    190      0    165     45    100
+Demi-fagot de jante AR-a (4 arcs + rayons captifs)    360     40     10     45    165    100
+Demi-fagot de jante AR-b (4 arcs + rayons captifs)    240      0    100    165    100     45
+Trousse (outils, pompe, sangles)                     40    160    100    160     65     40
+Poutre principale retractee                           0      0      0    195     40     40
+Manivelles + pedales pliantes (demontees)           210      0     20    150     25     80
+
+
+####################################################################################################
+# Tenue en fatigue sur spectre   [c07_fatigue.py]
+####################################################################################################
+====================================================================================================
+FATIGUE SUR SPECTRE -- objectif 8000 km et 3000 montages
+====================================================================================================
+
+CADRE -- element le plus sollicite en service : tds1
+  contrainte de reference (assis, 1 g) : 61 MPa
+bloc                                   sigma_a       cycles    N rupture    dommage
+pedalage regulier (assis)                  61M      1.8e+06     2.44e+08     0.0074
+pedalage en cote / demarrage              129M     1.44e+05      2.4e+05     0.5996
+CUMUL DE MINER                                                               0.6070
+  -> duree de vie estimee : 13,181 km (coefficient 1.6 sur l'objectif)
+
+JANTE -- contrainte locale de reference (roue AR, 1 g) : 77 MPa
+bloc                                   sigma_a       cycles    N rupture    dommage
+rotation de roue, chaussee lisse           77M     5.09e+06     4.53e+08     0.0112
+chaussee degradee (30 % du parcours)      122M     1.53e+06     9.64e+06     0.1584
+joints de chaussee, pave                  168M      6.4e+04     6.72e+05     0.0953
+trottoir monte/descendu                   245M      4.8e+03     2.67e+04     0.1799
+nid de poule franc                        321M          400     2.35e+03     0.1705
+CUMUL DE MINER                                                               0.6154
+  -> duree de vie estimee : 12,999 km
+
+RAYONS -- tension 555 a 736 N par tour de roue (R = 0.75)
+  amplitude 45 MPa, moyenne 321 MPa, Kf = 2.2
+  N a rupture = 2.55e+10 cycles ; besoin 5.09e+06 cycles -> coefficient 5012.8
+
+CYCLES DE MONTAGE (3000 deploiements = ~2 par jour pendant 4 ans)
+   Tenon conique de jante        matage Al/Al anodise dur          usure d'emmanchement : jeu <0.05 mm apres 3000 cycles (essai a mener)
+   Expandeur conique de poutre   traction du tirant M6             acier 42CrMo4, sigma_a = 92 MPa -> illimite
+   Came de tension de moyeu      contact hertzien came/poussoir    acier cemente 58 HRC, p_max = 1100 MPa -> 1e6 cycles admissibles
+   Cordon captif aramide         flexion alternee r = 25 mm        remplacement preventif tous les 2000 cycles (piece d'usure declaree)
+
+
+####################################################################################################
+# Generation des plans SVG   [c08_plans.py]
+####################################################################################################
+plans/01-vue-generale.svg genere
+plans/02-roue-deployable.svg genere
+plans/03-emmanchement-telescopique.svg genere
+plans/04-plan-de-rangement.svg genere
