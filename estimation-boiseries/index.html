@@ -1,0 +1,758 @@
+<title>Boiseries du Bois des Petits</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+  :root {
+    --ground:      #EDF0EA;
+    --surface:     #F9FAF6;
+    --surface-alt: #E4E8DF;
+    --ink:         #171C17;
+    --ink-soft:    #3D473C;
+    --muted:       #667065;
+    --line:        #CBD2C4;
+    --line-soft:   #DDE2D6;
+    --accent:      #2F5B46;
+    --accent-soft: #4C7C64;
+    --signal:      #A2551A;
+    --signal-soft: #C98A4B;
+    --bar-a:       #4C7C64;
+    --bar-b:       #7E8F53;
+    --bar-c:       #A2551A;
+
+    --f-display: "Zilla Slab", "Bitter", Georgia, serif;
+    --f-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+    --f-mono: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+
+    --measure: 68ch;
+    --pad: clamp(1.1rem, 4vw, 3rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:      #12150F;
+      --surface:     #1A1E16;
+      --surface-alt: #232820;
+      --ink:         #E9EDE3;
+      --ink-soft:    #C2CAB9;
+      --muted:       #8B9585;
+      --line:        #333A2E;
+      --line-soft:   #272D22;
+      --accent:      #86BCA0;
+      --accent-soft: #6FA88B;
+      --signal:      #DE9A56;
+      --signal-soft: #B0743A;
+      --bar-a:       #6FA88B;
+      --bar-b:       #A3B36A;
+      --bar-c:       #DE9A56;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground:      #12150F;
+    --surface:     #1A1E16;
+    --surface-alt: #232820;
+    --ink:         #E9EDE3;
+    --ink-soft:    #C2CAB9;
+    --muted:       #8B9585;
+    --line:        #333A2E;
+    --line-soft:   #272D22;
+    --accent:      #86BCA0;
+    --accent-soft: #6FA88B;
+    --signal:      #DE9A56;
+    --signal-soft: #B0743A;
+    --bar-a:       #6FA88B;
+    --bar-b:       #A3B36A;
+    --bar-c:       #DE9A56;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: clamp(1rem, 0.97rem + 0.15vw, 1.075rem);
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 0 var(--pad) 5rem;
+  }
+
+  /* ---------- masthead ---------- */
+
+  .masthead {
+    border-bottom: 2px solid var(--ink);
+    padding: clamp(2rem, 6vw, 3.5rem) 0 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .eyebrow {
+    font-family: var(--f-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin: 0;
+  }
+  .masthead h1 {
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: clamp(2.2rem, 1.4rem + 3.6vw, 3.9rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .standfirst {
+    max-width: var(--measure);
+    font-size: 1.1em;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .stamp {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.6rem;
+    font-family: var(--f-mono);
+    font-size: 0.76rem;
+    color: var(--muted);
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--line-soft);
+  }
+  .stamp b { color: var(--ink-soft); font-weight: 500; }
+
+  /* ---------- sections ---------- */
+
+  section { padding-top: clamp(2.5rem, 6vw, 4rem); }
+
+  h2 {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: clamp(1.45rem, 1.15rem + 1.1vw, 2.05rem);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    margin: 0 0 0.35rem;
+    text-wrap: balance;
+  }
+  h3 {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: 1.18rem;
+    margin: 2rem 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .kicker {
+    font-family: var(--f-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 0.75rem;
+  }
+  p, li { max-width: var(--measure); }
+  p { margin: 0 0 1rem; }
+  ul, ol { padding-left: 1.15rem; margin: 0 0 1rem; }
+  li { margin-bottom: 0.45rem; }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--signal);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  strong { font-weight: 600; }
+  .num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+
+  /* ---------- callout ---------- */
+
+  .callout {
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--signal);
+    background: var(--surface);
+    padding: 1.1rem 1.25rem;
+    margin: 1.5rem 0;
+    max-width: var(--measure);
+  }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout .kicker { color: var(--signal); }
+
+  /* ---------- tables ---------- */
+
+  .scroller { overflow-x: auto; margin: 1.4rem 0; border-block: 1px solid var(--line); }
+  table { border-collapse: collapse; width: 100%; min-width: 34rem; font-size: 0.93rem; }
+  caption {
+    text-align: left;
+    font-family: var(--f-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-bottom: 0.6rem;
+  }
+  th, td { padding: 0.55rem 0.9rem 0.55rem 0; text-align: left; vertical-align: top; }
+  th {
+    font-family: var(--f-mono);
+    font-weight: 500;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  tbody tr { border-bottom: 1px solid var(--line-soft); }
+  tbody tr:last-child { border-bottom: 0; }
+  td.n { font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.total td { border-top: 2px solid var(--ink); font-weight: 600; padding-top: 0.7rem; }
+  .unit { color: var(--muted); font-size: 0.85em; }
+
+  /* ---------- scenario cards ---------- */
+
+  .scenarios { display: grid; gap: 1rem; margin: 1.75rem 0 0; }
+  @media (min-width: 52rem) { .scenarios { grid-template-columns: repeat(3, 1fr); } }
+
+  .scenario {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 1.15rem 1.2rem 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .scenario .tag {
+    font-family: var(--f-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .scenario h3 { margin: 0; font-size: 1.22rem; }
+  .scenario .range {
+    font-family: var(--f-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 1.28rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .scenario .mid { font-family: var(--f-mono); font-size: 0.8rem; color: var(--muted); }
+  .scenario p { font-size: 0.93rem; margin: 0.3rem 0 0; color: var(--ink-soft); max-width: none; }
+  .swatch { width: 2.5rem; height: 4px; }
+
+  /* ---------- range chart ---------- */
+
+  .chart { margin: 2rem 0 0.5rem; }
+  .chart-row {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.45rem 0;
+  }
+  .chart-label { font-family: var(--f-mono); font-size: 0.78rem; color: var(--ink-soft); }
+  .track {
+    position: relative;
+    height: 1.55rem;
+    background: var(--surface-alt);
+  }
+  .span {
+    position: absolute;
+    top: 0; bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 0.45rem;
+  }
+  .span span {
+    font-family: var(--f-mono);
+    font-size: 0.68rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--surface);
+    white-space: nowrap;
+  }
+  .axis {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: 0.9rem;
+    margin-top: 0.25rem;
+  }
+  .ticks {
+    position: relative;
+    height: 1.1rem;
+    font-family: var(--f-mono);
+    font-size: 0.68rem;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    padding-top: 0.3rem;
+  }
+  .ticks span {
+    position: absolute;
+    top: 0.3rem;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+  .ticks span:first-child { transform: none; }
+  .ticks span:last-child { transform: translateX(-100%); }
+
+  /* ---------- firm list ---------- */
+
+  .dist {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--f-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+  .dist i {
+    display: block;
+    height: 3px;
+    background: var(--accent-soft);
+  }
+  .badge {
+    display: inline-block;
+    font-family: var(--f-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.07em;
+    padding: 0.1rem 0.38rem;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .firm-name { font-weight: 600; }
+  .firm-meta { color: var(--muted); font-size: 0.82rem; font-family: var(--f-mono); }
+
+  /* ---------- steps ---------- */
+
+  ol.steps { list-style: none; padding: 0; counter-reset: s; margin-top: 1.25rem; }
+  ol.steps > li {
+    counter-increment: s;
+    display: grid;
+    grid-template-columns: 2.4rem 1fr;
+    gap: 0.9rem;
+    padding: 0.9rem 0;
+    border-top: 1px solid var(--line-soft);
+    max-width: calc(var(--measure) + 3.3rem);
+    margin: 0;
+  }
+  ol.steps > li::before {
+    content: counter(s, decimal-leading-zero);
+    font-family: var(--f-mono);
+    font-size: 0.85rem;
+    color: var(--signal);
+    padding-top: 0.12rem;
+  }
+  ol.steps b { font-family: var(--f-display); font-size: 1.05rem; display: block; margin-bottom: 0.15rem; }
+  ol.steps p { margin: 0; font-size: 0.95rem; color: var(--ink-soft); }
+
+  details {
+    border-top: 1px solid var(--line-soft);
+    padding: 0.75rem 0;
+    max-width: var(--measure);
+  }
+  summary { cursor: pointer; font-weight: 600; font-family: var(--f-display); }
+  details p { margin-top: 0.6rem; font-size: 0.95rem; }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--ink);
+    font-size: 0.86rem;
+    color: var(--muted);
+  }
+  footer a { color: var(--accent); }
+  footer ul { columns: 2; column-gap: 2.5rem; padding-left: 1.1rem; }
+  @media (max-width: 40rem) { footer ul { columns: 1; } }
+  footer li { max-width: none; font-size: 0.82rem; margin-bottom: 0.3rem; }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Chiffrage préparatoire — sans devis d'entreprise</p>
+    <h1>Boiseries du Bois&nbsp;des&nbsp;Petits</h1>
+    <p class="standfirst">Ce que devraient coûter les boiseries de la maison de mamie, poste par poste, avec les prix pratiqués en 2026 et la liste vérifiée des entreprises capables de le faire à moins de six kilomètres.</p>
+    <div class="stamp">
+      <span><b>Adresse</b> 21 rue du Bois des Petits, 88200 Saint-Étienne-lès-Remiremont</span>
+      <span><b>Date</b> 23 août 2026</span>
+      <span><b>Devise</b> € TTC</span>
+    </div>
+  </header>
+
+  <section>
+    <p class="kicker">Avant de lire les chiffres</p>
+    <h2>Ce document n'est pas un devis, et il repose sur un inventaire supposé</h2>
+    <p>Les photos des boiseries ne sont pas arrivées avec la demande — rien n'a été transmis. Le chiffrage ci-dessous s'appuie donc sur un <strong>inventaire type</strong> de maison ancienne vosgienne de 110 m², détaillé ligne par ligne juste en dessous. Chaque poste est chiffré à l'unité : dès que tu m'envoies les photos et le vrai comptage (nombre de fenêtres, de volets, de portes, marches d'escalier, mètres de lambris), les totaux se recalculent en quelques minutes.</p>
+    <p>Les prix unitaires viennent des barèmes nationaux 2026 des guides de travaux, pas de devis locaux : aucune entreprise de Remiremont ne publie ses tarifs. Ils servent à savoir si un devis reçu est normal, élevé ou suspect — pas à remplacer ce devis.</p>
+    <div class="callout">
+      <p class="kicker">La question qui change tout</p>
+      <p>Si la maison est antérieure à 1949 — ce qui est probable pour une maison de famille du secteur — les anciennes couches de peinture peuvent contenir du <strong>plomb</strong>. Un décapage manuel de boiseries plombées se facture 70 à 100 €/m², contre 25 à 45 €/m² pour un décapage chimique ordinaire. C'est le seul paramètre capable de doubler la facture du scénario A. À poser en première question à chaque artisan.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">Hypothèse de travail</p>
+    <h2>L'inventaire retenu</h2>
+    <p>Composition typique d'une maison de bourg vosgienne, R+1 avec combles. C'est la colonne « quantité » qu'il faut corriger avec les photos.</p>
+    <div class="scroller">
+      <table>
+        <caption>Inventaire supposé — à confirmer sur photos</caption>
+        <thead>
+          <tr><th>Poste</th><th>Quantité</th><th>Remarque</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Fenêtres bois</td><td class="n">8</td><td>2 vantaux, ~120 × 120 cm</td></tr>
+          <tr><td>Portes-fenêtres bois</td><td class="n">2</td><td>séjour et cuisine</td></tr>
+          <tr><td>Paires de volets battants bois</td><td class="n">8</td><td>persiennés ou pleins</td></tr>
+          <tr><td>Porte d'entrée bois</td><td class="n">1</td><td>souvent d'origine, à conserver si possible</td></tr>
+          <tr><td>Portes intérieures bois</td><td class="n">9</td><td>2 faces + chambranle chacune</td></tr>
+          <tr><td>Escalier bois</td><td class="n">15 marches</td><td>+ rampe, limon et balustres</td></tr>
+          <tr><td>Plinthes</td><td class="n">90 ml</td><td>rez-de-chaussée + étage</td></tr>
+          <tr><td>Lambris mural et de plafond</td><td class="n">35 m²</td><td>couloir, sous-pente, plafond de cuisine</td></tr>
+          <tr><td>Boiseries extérieures</td><td class="n">40 m²</td><td>avant-toit, planches de rive, bardage de pignon</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">Référence 2026</p>
+    <h2>La grille de prix unitaires</h2>
+    <p>Fourchettes TTC, TVA 10 % (taux de la rénovation d'un logement de plus de deux ans), main-d'œuvre et fournitures comprises. Le bas de fourchette correspond à un support sain et à un artisan local à faible structure ; le haut, à un support dégradé, à du décapage complet et à une entreprise avec salariés.</p>
+
+    <h3>Entretenir — remise en peinture ou en lasure</h3>
+    <div class="scroller">
+      <table>
+        <caption>Peinture et finition sur boiseries existantes</caption>
+        <thead><tr><th>Prestation</th><th>Unité</th><th>Bas</th><th>Haut</th></tr></thead>
+        <tbody>
+          <tr><td>Volets battants : dépose, décapage, 2 couches, repose</td><td class="unit">la paire</td><td class="n">180 €</td><td class="n">320 €</td></tr>
+          <tr><td>Fenêtre bois, dormant + ouvrants, 2 faces</td><td class="unit">l'unité</td><td class="n">120 €</td><td class="n">250 €</td></tr>
+          <tr><td>Porte-fenêtre bois</td><td class="unit">l'unité</td><td class="n">160 €</td><td class="n">300 €</td></tr>
+          <tr><td>Porte d'entrée, 2 faces</td><td class="unit">l'unité</td><td class="n">150 €</td><td class="n">350 €</td></tr>
+          <tr><td>Porte intérieure, 2 faces + chambranle</td><td class="unit">l'unité</td><td class="n">80 €</td><td class="n">200 €</td></tr>
+          <tr><td>Plinthes, ponçage + peinture</td><td class="unit">le ml</td><td class="n">8,50 €</td><td class="n">15 €</td></tr>
+          <tr><td>Escalier, ponçage + vitrification</td><td class="unit">la marche</td><td class="n">60 €</td><td class="n">115 €</td></tr>
+          <tr><td>Rampe, limon et balustres</td><td class="unit">forfait</td><td class="n">250 €</td><td class="n">600 €</td></tr>
+          <tr><td>Lambris, ponçage + lasure ou vitrification</td><td class="unit">le m²</td><td class="n">25 €</td><td class="n">45 €</td></tr>
+          <tr><td>Boiseries extérieures, lasure 2 à 3 couches</td><td class="unit">le m²</td><td class="n">15 €</td><td class="n">25 €</td></tr>
+          <tr><td>Échafaudage pour les débords de toit</td><td class="unit">forfait</td><td class="n">400 €</td><td class="n">1 200 €</td></tr>
+          <tr><td>Supplément décapage complet (chimique)</td><td class="unit">le m² développé</td><td class="n">25 €</td><td class="n">45 €</td></tr>
+          <tr><td>Supplément décapage manuel si peinture au plomb</td><td class="unit">le m² développé</td><td class="n">70 €</td><td class="n">100 €</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Remplacer — menuiseries neuves</h3>
+    <div class="scroller">
+      <table>
+        <caption>Fourniture et pose, dépose de l'ancien comprise</caption>
+        <thead><tr><th>Prestation</th><th>Unité</th><th>Bas</th><th>Haut</th></tr></thead>
+        <tbody>
+          <tr><td>Fenêtre bois double vitrage, 2 vantaux 120 × 120</td><td class="unit">l'unité</td><td class="n">600 €</td><td class="n">1 200 €</td></tr>
+          <tr><td>Porte-fenêtre bois double vitrage</td><td class="unit">l'unité</td><td class="n">900 €</td><td class="n">1 500 €</td></tr>
+          <tr><td>Porte d'entrée bois sur mesure</td><td class="unit">l'unité</td><td class="n">1 900 €</td><td class="n">3 500 €</td></tr>
+          <tr><td>Volets battants bois neufs</td><td class="unit">la paire</td><td class="n">400 €</td><td class="n">800 €</td></tr>
+          <tr><td>Porte intérieure bois posée</td><td class="unit">l'unité</td><td class="n">250 €</td><td class="n">600 €</td></tr>
+          <tr><td>Réparation ponctuelle : greffe de bois, mastic, quincaillerie</td><td class="unit">l'unité</td><td class="n">50 €</td><td class="n">200 €</td></tr>
+          <tr><td>Main-d'œuvre menuisier</td><td class="unit">l'heure</td><td class="n">40 €</td><td class="n">70 €</td></tr>
+          <tr><td>Main-d'œuvre peintre</td><td class="unit">l'heure</td><td class="n">35 €</td><td class="n">55 €</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">Trois arbitrages possibles</p>
+    <h2>Ce que ça donne, du plus léger au plus lourd</h2>
+
+    <div class="scenarios">
+      <article class="scenario">
+        <div class="swatch" style="background: var(--bar-a);"></div>
+        <span class="tag">Scénario A</span>
+        <h3>Tout garder, tout repeindre</h3>
+        <div class="range">7 400 – 14 800 €</div>
+        <div class="mid">cœur de fourchette ≈ 10 500 €</div>
+        <p>Les boiseries sont saines. On ponce, on répare au mastic, on remet deux couches partout, dedans comme dehors. Aucune menuiserie déposée définitivement, aucune aide mobilisable — et c'est le scénario qui préserve le cachet de la maison.</p>
+      </article>
+      <article class="scenario">
+        <div class="swatch" style="background: var(--bar-b);"></div>
+        <span class="tag">Scénario B</span>
+        <h3>Décaper et réparer sérieusement</h3>
+        <div class="range">13 000 – 26 500 €</div>
+        <div class="mid">cœur de fourchette ≈ 19 000 €</div>
+        <p>Les peintures cloquent, quelques pièces de bois sont mortes. Décapage complet, greffes de bois par un menuisier, remplacement des trois fenêtres les plus atteintes et de deux paires de volets. C'est le scénario le plus probable sur une maison qui n'a pas été reprise depuis vingt ans.</p>
+      </article>
+      <article class="scenario">
+        <div class="swatch" style="background: var(--bar-c);"></div>
+        <span class="tag">Scénario C</span>
+        <h3>Changer les menuiseries extérieures</h3>
+        <div class="range">16 000 – 32 000 €</div>
+        <div class="mid">cœur ≈ 24 000 €, moins 1 000 à 2 300 € d'aides</div>
+        <p>Toutes les fenêtres, la porte d'entrée et les volets sont remplacés en bois neuf, l'intérieur est rénové. Seul scénario qui ouvre droit à MaPrimeRénov', aux CEE et à la TVA à 5,5 %, et le seul qui fasse gagner du confort thermique l'hiver.</p>
+      </article>
+    </div>
+
+    <div class="chart">
+      <div class="chart-row">
+        <div class="chart-label">Scénario A</div>
+        <div class="track"><div class="span" style="left:21.1%; right:57.7%; background: var(--bar-a);"><span>7,4 k – 14,8 k</span></div></div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-label">Scénario B</div>
+        <div class="track"><div class="span" style="left:37.1%; right:24.3%; background: var(--bar-b);"><span>13 k – 26,5 k</span></div></div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-label">Scénario C</div>
+        <div class="track"><div class="span" style="left:45.7%; right:8.6%; background: var(--bar-c);"><span>16 k – 32 k</span></div></div>
+      </div>
+      <div class="axis">
+        <div></div>
+        <div class="ticks"><span style="left:0%">0 €</span><span style="left:28.6%">10 k</span><span style="left:57.1%">20 k</span><span style="left:85.7%">30 k</span><span style="left:100%">35 k</span></div>
+      </div>
+    </div>
+
+    <h3>Le détail du scénario A, ligne par ligne</h3>
+    <div class="scroller">
+      <table>
+        <caption>Scénario A — remise en peinture intégrale, TTC</caption>
+        <thead><tr><th>Poste</th><th>Base de calcul</th><th>Bas</th><th>Haut</th></tr></thead>
+        <tbody>
+          <tr><td>Volets battants</td><td class="unit">8 paires × 180–320 €</td><td class="n">1 440 €</td><td class="n">2 560 €</td></tr>
+          <tr><td>Fenêtres</td><td class="unit">8 × 120–250 €</td><td class="n">960 €</td><td class="n">2 000 €</td></tr>
+          <tr><td>Portes-fenêtres</td><td class="unit">2 × 160–300 €</td><td class="n">320 €</td><td class="n">600 €</td></tr>
+          <tr><td>Porte d'entrée</td><td class="unit">1 × 150–350 €</td><td class="n">150 €</td><td class="n">350 €</td></tr>
+          <tr><td>Portes intérieures</td><td class="unit">9 × 80–200 €</td><td class="n">720 €</td><td class="n">1 800 €</td></tr>
+          <tr><td>Plinthes</td><td class="unit">90 ml × 8,50–15 €</td><td class="n">765 €</td><td class="n">1 350 €</td></tr>
+          <tr><td>Escalier + rampe</td><td class="unit">15 marches × 60–115 € + forfait</td><td class="n">1 150 €</td><td class="n">2 325 €</td></tr>
+          <tr><td>Lambris</td><td class="unit">35 m² × 25–45 €</td><td class="n">875 €</td><td class="n">1 575 €</td></tr>
+          <tr><td>Extérieurs + échafaudage</td><td class="unit">40 m² × 15–25 € + forfait</td><td class="n">1 000 €</td><td class="n">2 200 €</td></tr>
+          <tr class="total"><td>Total scénario A</td><td class="unit">TVA 10 % comprise</td><td class="n">7 380 €</td><td class="n">14 760 €</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Pour rescaler sans moi</h3>
+    <p>Chaque élément en plus ou en moins bouge le total d'un montant connu : une fenêtre repeinte vaut <span class="num">120 à 250 €</span>, une paire de volets <span class="num">180 à 320 €</span>, une porte intérieure <span class="num">80 à 200 €</span>, une marche d'escalier <span class="num">60 à 115 €</span>, un mètre de plinthe <span class="num">8,50 à 15 €</span>. Compte les éléments sur les photos, multiplie, additionne.</p>
+  </section>
+
+  <section>
+    <p class="kicker">Le tissu d'artisans autour de la maison</p>
+    <h2>Qui peut faire ça, et à quelle distance</h2>
+    <p>Entreprises actives, extraites du répertoire officiel des entreprises (Insee / annuaire-entreprises.data.gouv.fr) sur les codes menuiserie bois et peinture, puis géocodées depuis l'adresse de mamie. Les distances sont à vol d'oiseau. La qualification RGE provient du fichier ADEME des entreprises RGE : elle est <strong>obligatoire</strong> pour toucher MaPrimeRénov' et pour obtenir la TVA à 5,5 %.</p>
+
+    <h3>Menuisiers</h3>
+    <div class="scroller">
+      <table>
+        <caption>Menuiserie bois — fenêtres, volets, portes, escaliers</caption>
+        <thead><tr><th>Entreprise</th><th>Commune</th><th>Distance</th><th>Taille</th><th>Signe distinctif</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="firm-name">Menuiserie des Ormes</span><div class="firm-meta">Siren 820 682 409</div></td>
+            <td>St-Étienne-lès-R.</td>
+            <td><span class="dist"><i style="width:9px"></i>1,0 km</span></td>
+            <td class="unit">1–2 sal.</td>
+            <td><span class="badge">RGE menuiseries</span> le choix par défaut : voisin, qualifié, fait bois et PVC</td>
+          </tr>
+          <tr>
+            <td><span class="firm-name">Joseph Grosdemange</span><div class="firm-meta">Siren 751 642 364</div></td>
+            <td>St-Étienne-lès-R.</td>
+            <td><span class="dist"><i style="width:5px"></i>0,5 km</span></td>
+            <td class="unit">artisan seul</td>
+            <td>le plus proche de tous — bien pour des réparations ponctuelles</td>
+          </tr>
+          <tr>
+            <td><span class="firm-name">Aquila / Xilome</span><div class="firm-meta">Siren 808 175 145</div></td>
+            <td>St-Étienne-lès-R.</td>
+            <td><span class="dist"><i style="width:11px"></i>1,2 km</span></td>
+            <td class="unit">6–9 sal.</td>
+            <td>charpente et menuiserie d'atelier : bardage, avant-toits, pièces sur mesure</td>
+          </tr>
+          <tr>
+            <td><span class="firm-name">Laurent Roussilhe</span><div class="firm-meta">Siren en activité depuis 1993</div></td>
+            <td>St-Étienne-lès-R.</td>
+            <td><span class="dist"><i style="width:15px"></i>1,6 km</span></td>
+            <td class="unit">artisan seul</td>
+            <td>plus de trente ans sur la commune</td>
+          </tr>
+          <tr>
+            <td><span class="firm-name">Zone Fermeture (H. Yadigar)</span><div class="firm-meta">Siren 418 331 609</div></td>
+            <td>Remiremont</td>
+            <td><span class="dist"><i style="width:23px"></i>2,5 km</span></td>
+            <td class="unit">1–2 sal.</td>
+            <td><span class="badge">RGE menuiseries</span> spécialiste fermetures : volets, portes</td>
+          </tr>
+          <tr>
+            <td><span class="firm-name">Demangel Frères</span><div class="firm-meta">Siren 344 248 752</div></td>
+            <td>Dommartin-lès-R.</td>
+            <td><span class="dist"><i style="width:30px"></i>3,2 km</span></td>
+            <td class="unit">3–5 sal.</td>
+            <td>maison fondée en 1988, capacité de chantier complet</td>
+          </tr>
+          <tr>
+            <td><span class="firm-name">Aurélien Rougieux</span><div class="firm-meta">Siren 509 530 697</div></td>
+            <td>St-Étienne-lès-R.</td>
+            <td><span class="dist"><i style="width:20px"></i>~2 km</span></td>
+            <td class="unit">1–2 sal.</td>
+            <td><span class="badge">RGE menuiseries</span> troisième devis RGE utile pour la mise en concurrence</td>
+          </tr>
+          <tr>
+            <td><span class="firm-name">Ets Denis GLE</span><div class="firm-meta">Siren 382 669 331</div></td>
+            <td>Vecoux</td>
+            <td><span class="dist"><i style="width:53px"></i>5,7 km</span></td>
+            <td class="unit">6–9 sal.</td>
+            <td>fabrication de menuiseries : la carte à jouer pour du sur-mesure à l'identique</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Peintres</h3>
+    <div class="scroller">
+      <table>
+        <caption>Peinture et vitrerie — boiseries intérieures et extérieures</caption>
+        <thead><tr><th>Entreprise</th><th>Commune</th><th>Distance</th><th>Taille</th><th>Signe distinctif</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="firm-name">Aquarello</span><div class="firm-meta">Siren 399 539 642</div></td>
+            <td>St-Étienne-lès-R.</td>
+            <td><span class="dist"><i style="width:8px"></i>0,9 km</span></td>
+            <td class="unit">6–9 sal.</td>
+            <td>la plus étoffée du secteur immédiat, en activité depuis 1995</td>
+          </tr>
+          <tr>
+            <td><span class="firm-name">Jean Cholez</span><div class="firm-meta">rue de la Moselotte</div></td>
+            <td>St-Étienne-lès-R.</td>
+            <td><span class="dist"><i style="width:8px"></i>0,9 km</span></td>
+            <td class="unit">artisan seul</td>
+            <td>à deux rues, installé depuis 2000</td>
+          </tr>
+          <tr>
+            <td><span class="firm-name">Les Nuances du Peintre</span><div class="firm-meta">Siren 834 718 256</div></td>
+            <td>St-Étienne-lès-R.</td>
+            <td><span class="dist"><i style="width:11px"></i>1,2 km</span></td>
+            <td class="unit">1–2 sal.</td>
+            <td>jeune structure, souvent plus réactive sur les petits lots</td>
+          </tr>
+          <tr>
+            <td><span class="firm-name">Christian Trotzier</span><div class="firm-meta">rue Charles de Gaulle</div></td>
+            <td>Remiremont</td>
+            <td><span class="dist"><i style="width:17px"></i>1,8 km</span></td>
+            <td class="unit">artisan seul</td>
+            <td>en centre-ville de Remiremont</td>
+          </tr>
+          <tr>
+            <td><span class="firm-name">Pro'Décor</span><div class="firm-meta">Siren 499 481 273</div></td>
+            <td>Dommartin-lès-R.</td>
+            <td><span class="dist"><i style="width:35px"></i>3,8 km</span></td>
+            <td class="unit">6–9 sal.</td>
+            <td><span class="badge">RGE isolation</span> équipe complète, utile si façade et boiseries partent ensemble</td>
+          </tr>
+          <tr>
+            <td><span class="firm-name">Michaël Georgeon</span><div class="firm-meta">Siren actif depuis 2009</div></td>
+            <td>Vecoux</td>
+            <td><span class="dist"><i style="width:51px"></i>5,5 km</span></td>
+            <td class="unit">artisan seul</td>
+            <td>met explicitement la peinture sur boiseries en avant dans son offre</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <p class="kicker">Comment répartir les demandes</p>
+      <p>Trois devis suffisent, mais ils doivent être comparables : demande à chacun de chiffrer <strong>exactement le même inventaire</strong>, avec le même nombre de couches et la même mention du décapage. Le bon panachage : un menuisier RGE voisin, une entreprise de peinture avec salariés, et un artisan seul — les écarts entre les trois t'apprendront plus sur le juste prix que n'importe quel barème.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">Ce que l'État et l'intercommunalité peuvent reprendre</p>
+    <h2>TVA et aides</h2>
+    <p>La maison a manifestement plus de deux ans : la TVA est à <strong>10 %</strong> sur l'ensemble des travaux d'entretien et de rénovation des boiseries. Elle tombe à <strong>5,5 %</strong> uniquement sur les menuiseries remplacées atteignant Uw ≤ 1,3 W/m².K, posées par une entreprise RGE — donc uniquement dans le scénario C.</p>
+    <ul>
+      <li><strong>MaPrimeRénov' 2026, fenêtres :</strong> 100 € par équipement pour les ménages très modestes, 80 € pour les modestes, 40 € pour les intermédiaires ; réservé au remplacement d'un <em>simple</em> vitrage, dépense plafonnée à 1 000 € HT par fenêtre, artisan RGE obligatoire. Sur dix ouvertures, cela représente 400 à 1 000 €.</li>
+      <li><strong>CEE :</strong> 10 à 20 € par m² de fenêtre remplacée, cumulables, à demander <em>avant</em> la signature du devis.</li>
+      <li><strong>OPAH de la CCPVM :</strong> Saint-Étienne-lès-Remiremont fait partie des dix communes couvertes depuis l'été 2024. Logement de plus de quinze ans, travaux d'économie d'énergie ou d'adaptation au vieillissement. L'opérateur est URBAM Conseil — 03 29 64 05 90, vosges@urbam.fr — avec des permanences gratuites dans les communes.</li>
+      <li><strong>France Rénov' Hautes-Vosges :</strong> le conseiller local instruit les dossiers et vérifie le plan de financement, gratuitement, avant tout engagement.</li>
+    </ul>
+    <p>Ordre à respecter : conseil France Rénov' ou URBAM d'abord, dépôt des demandes d'aide ensuite, <strong>signature du devis en dernier</strong>. Un devis signé avant le dépôt fait perdre les aides.</p>
+  </section>
+
+  <section>
+    <p class="kicker">Ce qui fait déraper un devis de boiseries</p>
+    <h2>Les cinq pièges</h2>
+    <details>
+      <summary>La surface développée, jamais la surface vue</summary>
+      <p>Un volet de 1,20 × 1,40 m compte 1,68 m² de face, mais 3,4 m² développés pour une paire peinte des deux côtés — et bien plus s'il est persienné, où chaque lame se peint séparément. Un devis au m² sans mention du mode de calcul est ininterprétable : exige le détail.</p>
+    </details>
+    <details>
+      <summary>Le décapage caché dans « préparation du support »</summary>
+      <p>C'est le poste qui varie du simple au quadruple. Fais écrire noir sur blanc la méthode : égrenage léger, décapage chimique, décapage thermique ou traitement plomb. Deux devis identiques en apparence peuvent différer de 6 000 € sur cette seule ligne.</p>
+    </details>
+    <details>
+      <summary>L'échafaudage et l'accès</summary>
+      <p>Avant-toits, planches de rive et fenêtres d'étage exigent un échafaudage : 400 à 1 200 € pour une maison, parfois facturé à part. Vérifie s'il est inclus, et s'il est mutualisable avec d'autres travaux — repeindre les boiseries hautes en même temps qu'un ravalement fait économiser une installation entière.</p>
+    </details>
+    <details>
+      <summary>La saison</summary>
+      <p>Une peinture ou une lasure extérieure ne se pose pas en dessous de 10 °C ni sur bois humide. Dans la vallée de la Moselle, la fenêtre utile va de mai à septembre. Les carnets des artisans du secteur se remplissent au printemps : demander les devis à l'automne pour un chantier au printemps suivant donne accès à de meilleurs prix et à plus de choix.</p>
+    </details>
+    <details>
+      <summary>Réparer plutôt que remplacer</summary>
+      <p>Une fenêtre bois ancienne se répare pour 50 à 200 € — greffe de bois, mastic, réglage de quincaillerie — contre 600 à 1 200 € en remplacement. Sur une maison de famille, la menuiserie d'origine est souvent en chêne ou en sapin de pays, d'une qualité que le neuf d'entrée de gamme n'égale pas. Fais évaluer chaque ouverture individuellement avant d'arbitrer en bloc.</p>
+    </details>
+  </section>
+
+  <section>
+    <p class="kicker">Dans l'ordre</p>
+    <h2>La marche à suivre</h2>
+    <ol class="steps">
+      <li>
+        <div><b>Photographier et compter</b><p>Chaque façade en entier, puis chaque menuiserie de près, plus les zones abîmées : pieds de volets, bas de dormants, appuis. Noter les dimensions et l'année approximative de la maison.</p></div>
+      </li>
+      <li>
+        <div><b>Faire vérifier le plomb</b><p>Si la maison est antérieure à 1949, un constat de risque d'exposition au plomb lève l'incertitude la plus coûteuse du dossier avant même de demander les devis.</p></div>
+      </li>
+      <li>
+        <div><b>Appeler France Rénov' ou URBAM Conseil</b><p>Gratuit, sans engagement, et cela conditionne l'éligibilité aux aides. C'est aussi là qu'on saura si l'OPAH couvre une partie du scénario retenu.</p></div>
+      </li>
+      <li>
+        <div><b>Demander trois devis sur le même inventaire</b><p>Un menuisier RGE voisin, une entreprise de peinture avec salariés, un artisan seul. Même liste, mêmes quantités, même nombre de couches — sinon la comparaison ne veut rien dire.</p></div>
+      </li>
+      <li>
+        <div><b>Comparer ligne à ligne contre la grille ci-dessus</b><p>Un poste 40 % au-dessus de la fourchette n'est pas forcément excessif : il peut révéler un travail que les autres ont oublié de prévoir. C'est cette question-là qu'il faut poser.</p></div>
+      </li>
+    </ol>
+  </section>
+
+  <footer>
+    <p><strong>Méthode.</strong> Entreprises et adresses : API Recherche d'entreprises (Insee) et fichier ADEME des entreprises RGE, consultés le 23 août 2026. Distances : géocodage de la Base Adresse Nationale, à vol d'oiseau depuis le 21 rue du Bois des Petits. Prix unitaires : barèmes nationaux 2026 des guides de travaux listés ci-dessous, exprimés en TTC. Aucun devis d'entreprise locale n'a été sollicité : ces montants encadrent une négociation, ils ne l'anticipent pas.</p>
+    <ul>
+      <li><a href="https://www.travauxavenue.com/peinture-revetement/guide-prix/prix-peinture-boiseries/">Travaux Avenue — prix peinture de boiseries</a></li>
+      <li><a href="https://www.prix-travaux-m2.com/prix-peinture-volets-bois.php">Prix Travaux m² — peinture de volets bois</a></li>
+      <li><a href="https://www.monsieurpeinture.com/prix-travaux-de-peinture/">Monsieur Peinture — grille 2026</a></li>
+      <li><a href="https://www.travauxavenue.com/amenagement-interieur/guide-travaux/escalier/prix-renovation-escalier-bois/">Travaux Avenue — rénovation d'escalier bois</a></li>
+      <li><a href="https://www.travaux.com/sols-carrelage/guide-des-prix/prix-de-la-renovation-du-parquet">Travaux.com — ponçage et vitrification</a></li>
+      <li><a href="https://www.prix-travaux-m2.com/prix-pose-lambris.php">Prix Travaux m² — lambris</a></li>
+      <li><a href="https://www.travauxbtp.fr/blog/prix-fenetre-bois-double-vitrage">Travaux BTP — fenêtre bois double vitrage</a></li>
+      <li><a href="https://www.prix-pose.com/volets-bois">Prix Pose — volets bois</a></li>
+      <li><a href="https://www.ootravaux.fr/construction-renovation/menuiserie/porte-entree/devis-porte-bois.html">Ootravaux — porte d'entrée bois</a></li>
+      <li><a href="https://www.travaux.com/peinture/guide-des-prix/prix-decapage-peinture-m2">Travaux.com — décapage de peinture</a></li>
+      <li><a href="https://www.ecodepol.fr/blog/deplombage-batiment-ancien">Ecodepol — déplombage du bâti ancien</a></li>
+      <li><a href="https://www.travaux.com/fenetre-porte/guide-des-prix/tarif-horaire-menuisier">Travaux.com — tarif horaire menuisier</a></li>
+      <li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F23568">Service-Public — TVA sur travaux de rénovation</a></li>
+      <li><a href="https://www.effy.fr/aide-energetique/ma-prime-renov/fenetres-parois-vitrees">Effy — MaPrimeRénov' fenêtres 2026</a></li>
+      <li><a href="https://www.ccpvm.fr/au-quotidien/urbanisme/aides-pour-lamelioration-de-lhabitat/">CCPVM — OPAH et aides à l'habitat</a></li>
+      <li><a href="https://annuaire-entreprises.data.gouv.fr/">Annuaire des entreprises — data.gouv.fr</a></li>
+    </ul>
+  </footer>
+
+</div>
