@@ -1,0 +1,1355 @@
+<title>Traversée de Madère</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap">
+
+<style>
+:root{
+  --bg:#EDF1EF;
+  --card:#FFFFFF;
+  --card-2:#E3EAE7;
+  --sea:#CADFE3;
+  --land:#EAEFE8;
+  --relief:#CBD8CB;
+  --line:#C7D3CE;
+  --line-2:#DCE4E0;
+  --text:#0F1B20;
+  --text-2:#48595F;
+  --text-3:#7A8B8E;
+  --accent:#0B6E75;
+  --accent-2:#0E8A8C;
+  --accent-wash:#D4E7E7;
+  --hike:#3F6B3C;
+  --drive:#B4532B;
+  --fly:#5E63A6;
+  --warn:#C2410C;
+  --warn-wash:#F7E2D5;
+  --ok:#3F6B3C;
+  --shadow:0 1px 2px rgba(15,27,32,.06),0 8px 24px -14px rgba(15,27,32,.28);
+  --ff-ui:"Archivo",system-ui,-apple-system,sans-serif;
+  --ff-read:"Newsreader",Georgia,serif;
+  --ff-mono:"JetBrains Mono",ui-monospace,monospace;
+}
+:root:not([data-theme="light"]) {}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B1417;
+    --card:#131F24;
+    --card-2:#1A2A30;
+    --sea:#0A1A20;
+    --land:#1B2C2E;
+    --relief:#26393A;
+    --line:#2A3C41;
+    --line-2:#213237;
+    --text:#E6EEEB;
+    --text-2:#A2B4B5;
+    --text-3:#75888A;
+    --accent:#4FC3C2;
+    --accent-2:#6FD6D3;
+    --accent-wash:#0F3438;
+    --hike:#7FB86D;
+    --drive:#E08A5E;
+    --fly:#9DA2EC;
+    --warn:#F0904F;
+    --warn-wash:#3A241A;
+    --ok:#7FB86D;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -16px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0B1417;
+  --card:#131F24;
+  --card-2:#1A2A30;
+  --sea:#0A1A20;
+  --land:#1B2C2E;
+  --relief:#26393A;
+  --line:#2A3C41;
+  --line-2:#213237;
+  --text:#E6EEEB;
+  --text-2:#A2B4B5;
+  --text-3:#75888A;
+  --accent:#4FC3C2;
+  --accent-2:#6FD6D3;
+  --accent-wash:#0F3438;
+  --hike:#7FB86D;
+  --drive:#E08A5E;
+  --fly:#9DA2EC;
+  --warn:#F0904F;
+  --warn-wash:#3A241A;
+  --ok:#7FB86D;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -16px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:var(--ff-ui);font-size:15px;line-height:1.45;
+  padding-bottom:64px;
+}
+.shell{max-width:1260px;margin:0 auto;padding:0 clamp(14px,3vw,26px)}
+.mono{font-family:var(--ff-mono)}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+
+/* ---------- masthead ---------- */
+.mast{display:flex;flex-wrap:wrap;gap:18px 26px;align-items:flex-end;justify-content:space-between;padding:26px 0 18px}
+.kicker{font-family:var(--ff-mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3)}
+h1{font-size:clamp(30px,5.4vw,50px);font-weight:700;letter-spacing:-.03em;line-height:.94;margin:7px 0 9px;text-wrap:balance}
+h1 span{color:var(--accent)}
+.who{display:flex;flex-wrap:wrap;gap:6px 16px;font-family:var(--ff-mono);font-size:11.5px;color:var(--text-2)}
+.who b{color:var(--text);font-weight:500}
+.metrics{display:flex;gap:8px;flex-wrap:wrap}
+.metric{background:var(--card);border:1px solid var(--line-2);border-radius:8px;padding:9px 13px;min-width:78px;box-shadow:var(--shadow)}
+.metric u{display:block;text-decoration:none;font-family:var(--ff-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:3px}
+.metric b{font-family:var(--ff-mono);font-size:19px;font-weight:500;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.metric b s{text-decoration:none;font-size:11px;color:var(--text-3);margin-left:2px}
+
+/* ---------- tabs ---------- */
+.tabswrap{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--line)}
+.tabs{display:flex;gap:1px;overflow-x:auto;scrollbar-width:none;max-width:1260px;margin:0 auto;padding:0 clamp(14px,3vw,26px)}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:12px 15px 10px;font-size:13.5px;font-weight:600;color:var(--text-3);border-bottom:2px solid transparent;white-space:nowrap;display:flex;align-items:center;gap:7px;transition:color .15s}
+.tab:hover{color:var(--text-2)}
+.tab[aria-selected="true"]{color:var(--text);border-bottom-color:var(--accent)}
+.tab i{font-family:var(--ff-mono);font-style:normal;font-size:9.5px;color:var(--text-3);letter-spacing:.08em}
+.tab[aria-selected="true"] i{color:var(--accent)}
+.tab em{font-style:normal;font-family:var(--ff-mono);font-size:10px;background:var(--warn);color:#fff;border-radius:99px;padding:1px 5px;line-height:1.5}
+
+.view{padding:22px 0 10px}
+.view[hidden]{display:none}
+.vhead{margin-bottom:16px;max-width:70ch}
+.vhead h2{font-size:clamp(19px,2.6vw,24px);font-weight:700;letter-spacing:-.02em}
+.vhead p{font-size:13.5px;color:var(--text-2);margin-top:4px}
+
+/* ---------- generic card ---------- */
+.card{background:var(--card);border:1px solid var(--line-2);border-radius:10px;box-shadow:var(--shadow)}
+
+/* ---------- day rail ---------- */
+.rail{display:flex;gap:5px;overflow-x:auto;padding:2px 0 12px;scrollbar-width:thin}
+.rchip{flex:0 0 auto;border:1px solid var(--line);border-radius:7px;padding:5px 9px;font-family:var(--ff-mono);font-size:11.5px;color:var(--text-2);background:var(--card);transition:all .13s}
+.rchip:hover{border-color:var(--text-3)}
+.rchip b{font-weight:500;color:var(--text)}
+.rchip[aria-pressed="true"]{background:var(--text);border-color:var(--text);color:var(--bg)}
+.rchip[aria-pressed="true"] b{color:var(--bg)}
+.rchip i{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:5px;vertical-align:1px}
+.rchip.k-hike i{background:var(--hike)}.rchip.k-chill i{background:var(--accent)}.rchip.k-move i{background:var(--drive)}
+
+/* ---------- map ---------- */
+.mapgrid{display:grid;grid-template-columns:minmax(0,1fr) 336px;gap:16px;align-items:start}
+.mapcard{position:relative;overflow:hidden;background:var(--sea);border:1px solid var(--line-2);border-radius:10px;box-shadow:var(--shadow)}
+#map{display:block;width:100%;height:auto;touch-action:none;cursor:grab}
+#map.dragging{cursor:grabbing}
+.maptools{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:4px;z-index:2}
+.mt{width:29px;height:29px;background:var(--card);border:1px solid var(--line);border-radius:7px;font-size:15px;line-height:1;color:var(--text-2);display:grid;place-items:center;box-shadow:var(--shadow)}
+.mt:hover{color:var(--text);border-color:var(--text-3)}
+.mt.wide{width:auto;padding:0 9px;font-family:var(--ff-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+.legend{display:flex;flex-wrap:wrap;gap:5px 14px;padding:9px 12px;border-top:1px solid var(--line-2);background:var(--card);font-family:var(--ff-mono);font-size:10.5px;color:var(--text-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.legend i.sq{border-radius:2px;transform:rotate(45deg)}
+.legend u{display:inline-block;width:15px;height:0;border-top-width:2.5px;border-top-style:solid;text-decoration:none}
+
+/* svg map internals */
+#map .coast{fill:var(--land);stroke:var(--text-2);stroke-width:1.3;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+#map .halo{fill:none;stroke:var(--text-3);stroke-width:1;vector-effect:non-scaling-stroke}
+#map .relief{fill:var(--relief);stroke:none;opacity:.8}
+#map .relief.lo{opacity:.42}
+#map .relief.hi{opacity:1}
+#map .ridge{fill:none;stroke:var(--text-3);stroke-width:1;stroke-dasharray:1 4;stroke-linecap:round;opacity:.65;vector-effect:non-scaling-stroke}
+#map .geolab{font-family:var(--ff-mono);fill:var(--text-3);letter-spacing:.18em;text-transform:uppercase;pointer-events:none;font-size:calc(9px*var(--zf,1))}
+#map .seg-line{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;transition:opacity .18s,stroke-width .18s}
+#map .seg-hit{fill:none;stroke:transparent;stroke-width:16;stroke-linecap:round;vector-effect:non-scaling-stroke;cursor:pointer}
+#map .seg.m-hike .seg-line{stroke:var(--hike);stroke-width:3.4}
+#map .seg.m-car .seg-line{stroke:var(--drive);stroke-width:2.2;stroke-dasharray:7 5}
+#map .seg.m-boat .seg-line{stroke:var(--accent);stroke-width:2.2;stroke-dasharray:2 5}
+#map .seg.m-plane .seg-line{stroke:var(--fly);stroke-width:1.8;stroke-dasharray:2 6}
+#map .seg.is-dim .seg-line{opacity:.13}
+#map .seg.is-on .seg-line{stroke-width:5}
+#map .seg:hover .seg-line{stroke-width:5.4;opacity:1}
+#map .seg.is-sel .seg-line{stroke-width:5.6}
+#map .pl{cursor:pointer}
+#map .pl-i,#map .pl-l{transform:scale(var(--zf,1))}
+#map .pl-hit{fill:transparent}
+#map .pl-dot{stroke:var(--card);stroke-width:1.5}
+#map .pl-lab{font-family:var(--ff-mono);font-size:11px;fill:var(--text);paint-order:stroke;stroke:var(--card);stroke-width:3.4;stroke-linejoin:round;pointer-events:none;transition:opacity .15s}
+#map .pl:not(.lab-off):not(.is-dim) .pl-lab{pointer-events:auto}
+#map .pl.is-dim{opacity:.18}
+#map .pl.is-dim .pl-lab{opacity:0}
+#map .pl.lab-off .pl-lab{opacity:0}
+#map .pl:hover .pl-lab{opacity:1}
+#map .pl.is-sel .pl-dot{stroke:var(--text);stroke-width:2}
+#map .pl-ring{fill:none;stroke:var(--text);stroke-width:1.6;opacity:0;vector-effect:non-scaling-stroke}
+#map .pl:focus{outline:none}
+#map .pl:focus-visible .pl-ring{opacity:1;stroke:var(--accent);stroke-width:2}
+#map .pl.is-sel .pl-ring{opacity:1}
+#map .scalebar{stroke:var(--text-3);stroke-width:1.2;vector-effect:non-scaling-stroke}
+#map .scaletxt{font-family:var(--ff-mono);font-size:calc(9px*var(--zf,1));fill:var(--text-3)}
+
+/* ---------- side panel ---------- */
+.side{position:sticky;top:58px;display:flex;flex-direction:column;gap:10px}
+.pnl{padding:15px 16px}
+.pnl .ptype{display:flex;font-family:var(--ff-mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:flex;justify-content:space-between;gap:8px}
+.pnl h3{font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.1;margin:6px 0 8px;text-wrap:balance}
+.pnl .prose{font-family:var(--ff-read);font-size:15px;line-height:1.5;color:var(--text-2)}
+.pnl .prose+.prose{margin-top:7px}
+.facts{display:flex;flex-wrap:wrap;gap:6px;margin:11px 0}
+.fact{background:var(--card-2);border-radius:6px;padding:6px 9px;min-width:62px}
+.fact u{display:block;text-decoration:none;font-family:var(--ff-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
+.fact b{font-family:var(--ff-mono);font-size:13.5px;font-weight:500;font-variant-numeric:tabular-nums}
+.plist{list-style:none;margin-top:10px;border-top:1px solid var(--line-2)}
+.plist li{display:flex;gap:9px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--line-2);font-size:13px}
+.plist li em{font-style:normal;font-family:var(--ff-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);flex:0 0 58px;padding-top:2px}
+.plist button{text-align:left;font-size:13px;color:var(--accent);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+.plist button:hover{color:var(--accent-2)}
+.note{border-left:2px solid var(--accent);background:var(--accent-wash);padding:8px 10px;border-radius:0 6px 6px 0;font-size:12.5px;margin-top:10px;color:var(--text)}
+.note.warn{border-left-color:var(--warn);background:var(--warn-wash)}
+.note b{font-weight:600}
+.side .pnl .go{margin-top:12px;display:flex;gap:6px;flex-wrap:wrap}
+.mini{border:1px solid var(--line);border-radius:6px;padding:5px 10px;font-family:var(--ff-mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-2)}
+.mini:hover{border-color:var(--text);color:var(--text)}
+
+/* booking control */
+.bookrow{margin-top:12px;border-top:1px solid var(--line-2);padding-top:11px}
+.bookrow .lbl{font-family:var(--ff-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:6px}
+.seg3{display:flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.seg3 button{flex:1;padding:6px 4px;font-family:var(--ff-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);border-right:1px solid var(--line)}
+.seg3 button:last-child{border-right:0}
+.seg3 button:hover{background:var(--card-2)}
+.seg3 button[aria-pressed="true"]{background:var(--text);color:var(--bg)}
+.seg3 button.ok[aria-pressed="true"]{background:var(--ok);color:#fff}
+.seg3 button.wait[aria-pressed="true"]{background:var(--warn);color:#fff}
+
+/* ---------- calendar ---------- */
+.calbar{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.calnav{display:flex;align-items:center;gap:2px;border:1px solid var(--line);border-radius:7px;background:var(--card)}
+.calnav button{width:30px;height:30px;color:var(--text-2);font-size:14px}
+.calnav button:hover{color:var(--text)}
+.calnav span{padding:0 12px;font-size:14px;font-weight:600;letter-spacing:-.01em;min-width:132px;text-align:center}
+.callegend{display:flex;gap:5px 13px;flex-wrap:wrap;font-family:var(--ff-mono);font-size:10.5px;color:var(--text-2);margin-left:auto}
+.callegend span{display:inline-flex;align-items:center;gap:6px}
+.callegend i{width:9px;height:9px;border-radius:2px;display:inline-block}
+
+.calgrid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:1px;background:var(--line-2);border:1px solid var(--line-2);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.dow{background:var(--card-2);padding:7px 8px;font-family:var(--ff-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);text-align:left}
+.cell{background:var(--card);min-height:104px;padding:7px 8px 8px;text-align:left;display:flex;flex-direction:column;gap:4px;position:relative;transition:background .13s}
+.cell.out{background:var(--card-2);color:var(--text-3)}
+.cell.plain{cursor:default}
+.cell.act{cursor:pointer}
+.cell.act:hover{background:var(--accent-wash)}
+.cell .dnum{font-family:var(--ff-mono);font-size:12.5px;font-variant-numeric:tabular-nums;color:var(--text-3);display:flex;align-items:center;justify-content:space-between;gap:6px}
+.cell.out .dnum{opacity:.55}
+.cell .dnum b{font-weight:500;color:var(--text)}
+.cell .dnum s{text-decoration:none;font-family:var(--ff-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--bg);background:var(--text);border-radius:3px;padding:1px 4px}
+.cell.today{box-shadow:inset 0 0 0 2px var(--accent)}
+.cell.sel{box-shadow:inset 0 0 0 2px var(--text)}
+.stripe{height:3px;border-radius:2px;width:100%}
+.stripe.k-hike{background:var(--hike)}.stripe.k-chill{background:var(--accent)}.stripe.k-move{background:var(--drive)}
+.cell .ctitle{font-size:12.5px;font-weight:600;line-height:1.2;letter-spacing:-.01em}
+.cell .cmeta{font-family:var(--ff-mono);font-size:10px;color:var(--text-2);font-variant-numeric:tabular-nums;line-height:1.5;margin-top:auto}
+.cell .cmeta u{text-decoration:none;color:var(--text-3)}
+.dl{margin-top:auto;display:flex;flex-direction:column;gap:3px}
+.dlchip{display:flex;align-items:center;gap:5px;font-family:var(--ff-mono);font-size:10px;padding:3px 5px;border-radius:4px;background:var(--warn-wash);color:var(--text);line-height:1.3;text-align:left;width:100%}
+.dlchip:hover{outline:1px solid var(--warn)}
+.dlchip.clear{background:var(--card-2);color:var(--text-3);text-decoration:line-through}
+.dlchip b{font-weight:500}
+
+.calsplit{display:grid;grid-template-columns:minmax(0,1fr) 336px;gap:16px;align-items:start;margin-top:16px}
+.trip{display:flex;flex-direction:column}
+.trow{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:11px 12px;border-bottom:1px solid var(--line-2);text-align:left;transition:background .13s}
+.trow:first-child{border-top:1px solid var(--line-2)}
+.trow:hover{background:var(--card-2)}
+.trow[aria-pressed="true"]{background:var(--accent-wash)}
+.trow .tj{font-family:var(--ff-mono);font-size:12.5px;font-weight:500}
+.trow .tj u{display:block;text-decoration:none;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);font-weight:400}
+.trow .tt{font-size:14.5px;font-weight:600;letter-spacing:-.01em;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.trow .ts{display:block;font-family:var(--ff-read);font-size:13.5px;color:var(--text-2);margin-top:2px}
+.trow .tm{font-family:var(--ff-mono);font-size:10.5px;color:var(--text-2);text-align:right;font-variant-numeric:tabular-nums;line-height:1.6;white-space:nowrap}
+.pill{font-family:var(--ff-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border-radius:99px;border:1px solid currentColor}
+.pill.k-hike{color:var(--hike)}.pill.k-chill{color:var(--accent)}.pill.k-move{color:var(--drive)}
+
+.chart{padding:14px 16px 10px}
+.chart h4,.infocard h4{font-family:var(--ff-mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3);margin-bottom:10px}
+.bars{display:flex;gap:4px;align-items:flex-end;height:96px}
+.bcol{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;height:100%}
+.bcol .bv{font-family:var(--ff-mono);font-size:9px;color:var(--text-2);font-variant-numeric:tabular-nums}
+.bcol .bb{width:100%;background:var(--hike);border-radius:2px 2px 0 0;min-height:2px;transition:background .13s}
+.bcol.zero .bb{background:var(--line);min-height:2px}
+.bcol:hover .bb{background:var(--accent)}
+.bcol[aria-pressed="true"] .bb{background:var(--text)}
+.blabs{display:flex;gap:4px;margin-top:5px}
+.blabs span{flex:1;text-align:center;font-family:var(--ff-mono);font-size:9px;color:var(--text-3)}
+
+/* ---------- options ---------- */
+.optset{margin-bottom:26px}
+.optset .oq{font-size:17px;font-weight:700;letter-spacing:-.02em;margin-bottom:3px}
+.optset .oh{font-family:var(--ff-mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:5px}
+.optset .osub{font-size:13px;color:var(--text-2);margin-bottom:11px;max-width:66ch}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:10px}
+.opt{position:relative;display:flex;flex-direction:column;padding:16px 15px 14px;text-align:left;border:1px solid var(--line-2);border-radius:10px;background:var(--card);box-shadow:var(--shadow);transition:border-color .15s,transform .15s}
+.opt:hover{border-color:var(--text-3)}
+.opt[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent),var(--shadow)}
+.opt[aria-pressed="true"]::after{content:"retenu";position:absolute;top:-8px;left:13px;background:var(--accent);color:#fff;font-family:var(--ff-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;border-radius:99px}
+.opt .oname{display:block;font-size:15.5px;font-weight:700;letter-spacing:-.01em;margin-bottom:5px}
+.opt .odesc{display:block;font-family:var(--ff-read);font-size:14px;line-height:1.45;color:var(--text-2)}
+.opt .oprice{display:block;font-family:var(--ff-mono);font-size:10.5px;color:var(--text-3);margin-top:auto;padding-top:9px;letter-spacing:.03em}
+
+/* ---------- todo ---------- */
+.prog{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.pbar{flex:1;height:5px;background:var(--line);border-radius:99px;overflow:hidden}
+.pbar i{display:block;height:100%;background:var(--ok);width:0;transition:width .3s}
+.pnum{font-family:var(--ff-mono);font-size:11.5px;color:var(--text-2);white-space:nowrap;font-variant-numeric:tabular-nums}
+.grp{margin-bottom:22px}
+.ghead{display:flex;align-items:center;gap:9px;padding-bottom:6px;border-bottom:1.5px solid var(--text);margin-bottom:3px;flex-wrap:wrap}
+.gdate{font-size:15.5px;font-weight:700;letter-spacing:-.01em}
+.gcount{font-family:var(--ff-mono);font-size:10.5px;color:var(--text-3);margin-left:auto}
+.urg{font-family:var(--ff-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:99px}
+.urg.hot{background:var(--warn);color:#fff}
+.urg.soon{background:var(--accent-wash);color:var(--accent)}
+.urg.calm{background:var(--card-2);color:var(--text-3)}
+.task{display:flex;gap:11px;align-items:flex-start;padding:9px 2px;border-bottom:1px solid var(--line-2);cursor:pointer}
+.task input{margin-top:3px;width:16px;height:16px;accent-color:var(--ok);cursor:pointer;flex:0 0 auto}
+.task .tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.task .tt2{font-size:14px;line-height:1.3;font-weight:500}
+.task .tn2{font-family:var(--ff-read);font-size:13.5px;color:var(--text-2)}
+.task .tg{font-family:var(--ff-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);flex:0 0 auto;padding-top:4px}
+.task.done .tt2,.task.done .tn2{text-decoration:line-through;color:var(--text-3)}
+.task .jump{display:inline-block;font-family:var(--ff-mono);font-size:10.5px;color:var(--accent);text-decoration:underline;text-underline-offset:2px;margin-left:6px}
+
+/* ---------- info ---------- */
+.infogrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:12px}
+.infocard{padding:15px 16px}
+.infocard h5{font-size:16px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+.infocard p{font-family:var(--ff-read);font-size:14px;color:var(--text-2);line-height:1.5}
+.infocard p+p{margin-top:6px}
+.kv{list-style:none;margin-top:4px}
+.kv li{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid var(--line-2);font-size:13px}
+.kv li:last-child{border-bottom:0}
+.kv span{color:var(--text-2)}
+.kv b{font-family:var(--ff-mono);font-size:12.5px;font-weight:500;white-space:nowrap;font-variant-numeric:tabular-nums}
+.infocard a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+
+footer{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:24px 0 0;margin-top:12px;border-top:1px solid var(--line)}
+.saved{font-family:var(--ff-mono);font-size:10.5px;color:var(--text-3)}
+
+@media (max-width:900px){
+  .mapgrid,.calsplit{grid-template-columns:minmax(0,1fr)}
+  .side{position:static}
+  .cell{min-height:82px}
+  .cell .ctitle{display:none}
+}
+@media (max-width:620px){
+  .calgrid{font-size:12px}
+  .cell{min-height:56px;padding:4px}
+  .cell .cmeta{display:none}
+  .cell .dnum{font-size:11px;gap:3px}
+  .dow{padding:4px 5px;font-size:9px;letter-spacing:.1em}
+  .dlchip{justify-content:center;padding:2px 3px;font-size:10px}
+  .dlchip span{display:none}
+  .trow{grid-template-columns:44px 1fr;gap:8px}
+  .trow .tm{grid-column:2;text-align:left}
+  .metric{min-width:0;padding:7px 10px}
+  .metric b{font-size:17px}
+  .callegend{margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="shell">
+  <header class="mast">
+    <div class="mast-id">
+      <div class="kicker">Traversée est → ouest · São Lourenço → Porto Moniz</div>
+      <h1>Madère<br><span>15 → 25 octobre 2026</span></h1>
+      <div class="who">
+        <span><b>Hugo</b> Paris</span>
+        <span><b>Lucille</b> Londres</span>
+        <span>RDV <b>FNC</b>, hall d'arrivée</span>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><u>Départ</u><b id="m-count">—</b></div>
+      <div class="metric"><u>Marche</u><b id="m-km">—<s>km</s></b></div>
+      <div class="metric"><u>Dénivelé</u><b id="m-dp">—<s>m</s></b></div>
+      <div class="metric"><u>À faire</u><b id="m-todo">—</b></div>
+    </div>
+  </header>
+</div>
+
+<div class="tabswrap">
+  <div class="tabs" role="tablist" id="tabs"></div>
+</div>
+
+<div class="shell">
+
+<section class="view" id="v-map" role="tabpanel" hidden>
+  <div class="vhead">
+    <h2>La carte</h2>
+    <p>Clique une étape sur la carte pour son détail, un tracé pour la journée qu'il couvre. La molette zoome, le glisser déplace.</p>
+  </div>
+  <div class="rail" id="rail"></div>
+  <div class="mapgrid">
+    <div>
+      <div class="mapcard">
+        <svg id="map" role="img" aria-label="Carte de Madère et itinéraire de la traversée"></svg>
+        <div class="maptools">
+          <button class="mt" id="zin" title="Zoomer" aria-label="Zoomer">+</button>
+          <button class="mt" id="zout" title="Dézoomer" aria-label="Dézoomer">−</button>
+          <button class="mt wide" id="zfit" title="Vue d'ensemble">île</button>
+        </div>
+        <div class="legend">
+          <span><u style="border-color:var(--hike)"></u>Rando</span>
+          <span><u style="border-color:var(--drive);border-top-style:dashed"></u>Voiture / bus</span>
+          <span><u style="border-color:var(--fly);border-top-style:dotted"></u>Avion</span>
+          <span><i style="background:var(--drive)"></i>Hôtel / pension</span>
+          <span><i class="sq" style="background:var(--accent)"></i>Refuge / bivouac</span>
+          <span><i style="background:var(--accent-2)"></i>Kiff</span>
+          <span><i style="background:var(--text-2)"></i>Col, sommet, village</span>
+        </div>
+      </div>
+    </div>
+    <aside class="side"><div class="card pnl" id="panel"></div></aside>
+  </div>
+</section>
+
+<section class="view" id="v-cal" role="tabpanel" hidden>
+  <div class="vhead">
+    <h2>Le calendrier</h2>
+    <p>Trois mois : les échéances de réservation en août et septembre, le voyage en octobre. Clique une journée pour la déplier.</p>
+  </div>
+  <div class="calbar">
+    <div class="calnav">
+      <button id="mprev" aria-label="Mois précédent">←</button>
+      <span id="mlabel">—</span>
+      <button id="mnext" aria-label="Mois suivant">→</button>
+    </div>
+    <div class="callegend">
+      <span><i style="background:var(--hike)"></i>Rando</span>
+      <span><i style="background:var(--accent)"></i>Repos</span>
+      <span><i style="background:var(--drive)"></i>Transit</span>
+      <span><i style="background:var(--warn)"></i>Échéance</span>
+    </div>
+  </div>
+  <div class="calgrid" id="calgrid"></div>
+  <div class="calsplit">
+    <div>
+      <div class="trip" id="trip"></div>
+      <div class="card chart" style="margin-top:14px">
+        <h4>Charge par jour — dénivelé positif</h4>
+        <div class="bars" id="bars"></div>
+        <div class="blabs" id="blabs"></div>
+      </div>
+    </div>
+    <aside class="side"><div class="card pnl" id="panel2"></div></aside>
+  </div>
+</section>
+
+<section class="view" id="v-opt" role="tabpanel" hidden>
+  <div class="vhead">
+    <h2>Ce qu'il reste à trancher</h2>
+    <p>Quatre arbitrages. Chacun réécrit le calendrier et fait apparaître ou disparaître des tâches.</p>
+  </div>
+  <div id="opts"></div>
+</section>
+
+<section class="view" id="v-todo" role="tabpanel" hidden>
+  <div class="vhead">
+    <h2>À faire, par échéance</h2>
+    <p>L'ordre suit ce qui se remplit en premier : douze lits au Pico Ruivo, une seule adresse à Ribeiro Frio.</p>
+  </div>
+  <div class="prog"><div class="pbar"><i id="barfill"></i></div><div class="pnum" id="pnum"></div></div>
+  <div id="todos"></div>
+</section>
+
+<section class="view" id="v-info" role="tabpanel" hidden>
+  <div class="vhead">
+    <h2>Repères</h2>
+    <p>Les numéros, les tarifs, les règles 2026 et les trois choses qui peuvent gâcher le voyage.</p>
+  </div>
+  <div class="infogrid" id="infos"></div>
+</section>
+
+<footer>
+  <button class="mini" id="reset">Tout réinitialiser</button>
+  <span class="saved" id="saved">&nbsp;</span>
+</footer>
+</div>
+
+<script>
+"use strict";
+/* ============================================================
+   DONNÉES
+   ============================================================ */
+const TODAY = new Date(2026,7,26);          // 26 août 2026
+const DEPART = new Date(2026,9,15);         // 15 octobre 2026
+
+const PLACES = {
+  fnc:{n:"Aéroport FNC",lat:32.6979,lon:-16.7745,t:"air",d:[1,11],la:"b",sn:"FNC",major:1,
+    k:"Cristiano Ronaldo, un seul terminal, une seule salle d'arrivée. Le premier arrivé attend au café du hall.",
+    k2:"Bus 113 ou taxi vers Caniçal, 20 minutes. Madère est réputée pour ses déroutements liés au vent : d'où un J1 sans rien de prévu."},
+  canical:{n:"Caniçal",lat:32.7398,lon:-16.7375,t:"vil",d:[1,2],la:"t",major:1,
+    k:"Village de pêcheurs à l'extrémité est. Supermarché, restaurants, la petite plage de Prainha.",
+    stay:{name:"Chambre à Caniçal",price:"60–80 €",todo:"t-pcruz",note:"Plusieurs guesthouses, aucune tension. À caler mi-septembre."}},
+  slourenco:{n:"Ponta de São Lourenço",lat:32.7437,lon:-16.6620,t:"kif",d:[2],la:"b",sn:"São Lourenço",major:1,
+    k:"PR8. Le doigt volcanique nu qui part vers l'est, sans un arbre, entre deux océans.",
+    k2:"Aller-retour 7 km en sac léger depuis le parking. Créneau SIMplifica, 4,50 €/pers."},
+  risco:{n:"Boca do Risco",lat:32.7540,lon:-16.7583,t:"kif",d:[2],la:"t",sn:"Boca do Risco",
+    k:"Balcon vertigineux au-dessus de l'Atlantique, là où la levada débouche sur le vide.",
+    k2:"Sentier non classé : ni créneau, ni redevance."},
+  pcruz:{n:"Porto da Cruz",lat:32.7735,lon:-16.8282,t:"hot",d:[2,3],la:"t",major:1,
+    k:"Bourg de la côte nord sous le Penha d'Águia. Distillerie de rhum agricole, piscine naturelle.",
+    stay:{name:"Hotel Vila Bela ou Jaca Hostel",price:"70–95 €",todo:"t-pcruz",note:"Demander une chambre côté océan. Une poignée d'adresses, pas de panique."}},
+  portela:{n:"Portela",lat:32.7570,lon:-16.8100,t:"col",d:[3],la:"b",
+    k:"Col et belvédère, départ du PR10 Levada do Furado — l'une des plus anciennes levadas de l'île."},
+  rfrio:{n:"Ribeiro Frio",lat:32.7387,lon:-16.8873,t:"hot",d:[3,4],la:"t",major:1,
+    k:"Hameau forestier à 860 m, une truiterie et trois maisons dans la laurisylve.",
+    stay:{name:"Casa do Ribeiro Frio",price:"~70 €",todo:"t-rfrio",note:"Pratiquement le seul lit du hameau. À réserver dès cette semaine, en annulation gratuite si possible."}},
+  balcoes:{n:"Miradouro dos Balcões",lat:32.7330,lon:-16.8940,t:"kif",d:[4],la:"b",sn:"Balcões",
+    k:"Trente minutes aller-retour depuis Ribeiro Frio, et tout le massif central d'un coup. À faire à l'aube."},
+  areeiro:{n:"Pico do Areeiro",lat:32.7350,lon:-16.9280,t:"col",d:[4],la:"b",sn:"Pico do Areeiro",major:1,
+    k:"1 818 m, troisième sommet de l'île, accessible en voiture — d'où la foule et le créneau.",
+    k2:"Départ du PR1, sens unique vers le Pico Ruivo depuis avril 2026. 10,50 €/pers., tolérance de 15 minutes."},
+  ruivo:{n:"Refuge du Pico Ruivo",lat:32.7583,lon:-16.9425,t:"ref",d:[4,5],la:"t",sn:"Pico Ruivo",major:1,
+    k:"Casa de Abrigo, 1 760 m. Le seul vrai refuge de montagne de Madère : chambres privées, sanitaires partagés, petite cuisine.",
+    k2:"Pas de chauffage, électricité limitée, très froid la nuit. Espèces uniquement, il n'y a pas de distributeur à 1 800 m.",
+    stay:{name:"Casa de Abrigo do Pico Ruivo",price:"~30 €/pers.",phone:"291 572 124",todo:"t-refuge",
+      note:"12 places au total. Réservation par téléphone seulement, lun-ven 9 h-13 h / 14 h-18 h ; week-end 960 296 224 ou 962 560 029."}},
+  torrinhas:{n:"Boca das Torrinhas",lat:32.7530,lon:-16.9740,t:"col",d:[5],la:"b",sn:"Torrinhas",
+    k:"Col à mi-crête. C'est ici que le PR1.3 est coupé : au-delà, vers l'Encumeada, la section reste fermée depuis les incendies d'août 2024.",
+    k2:"Échappatoire : le PR2 Vereda do Urzal descend vers Curral das Freiras ou Boaventura."},
+  ateixeira:{n:"Achada do Teixeira",lat:32.7690,lon:-16.9270,t:"col",d:[5],la:"r",sn:"Achada do Teixeira",
+    k:"Parking à 1 590 m, fin du PR1.2. Le plan de repli : 4,5 km de descente depuis le Ruivo, puis taxi vers l'Encumeada (45 min)."},
+  encumeada:{n:"Boca da Encumeada",lat:32.7560,lon:-17.0180,t:"hot",d:[5,6],la:"b",sn:"Encumeada",major:1,
+    k:"Le col à 1 007 m qui coupe l'île en deux, avec un snack-bar et la vue sur les deux versants.",
+    stay:{name:"Valley View Hotel Encumeada",price:"75–90 €",todo:"t-encumeada",note:"Seul lit à des kilomètres. Demander côté vallée, éviter les week-ends de mariage."}},
+  rabacal:{n:"Rabaçal · 25 Fontes",lat:32.7590,lon:-17.1300,t:"kif",d:[6],la:"b",sn:"Rabaçal",major:1,
+    k:"La cascade du Risco et la lagune des 25 sources, au fond d'un cirque tapissé de mousse.",
+    k2:"PR6 et PR6.1, créneau obligatoire. Très fréquenté : y être tôt."},
+  seixal:{n:"Seixal",lat:32.8226,lon:-17.1040,t:"hot",d:[6,7],la:"r",major:1,
+    k:"Sable noir, piscines naturelles taillées dans la lave, vignes accrochées à la falaise.",
+    stay:{name:"Casa das Videiras ou Madeira.Life",price:"80–110 €",todo:"t-seixal",note:"Deux adresses, une poignée de chambres chacune."}},
+  fanal:{n:"Fanal",lat:32.8096,lon:-17.1411,t:"cam",d:[7],la:"l",major:1,
+    k:"Le plateau des til centenaires, arbres tordus dans la brume. La photo que tout le monde a vue de Madère.",
+    k2:"Aire de bivouac officielle, 5 tentes par nuit, licence SIMplifica à 5 €."},
+  rjanela:{n:"Ribeira da Janela",lat:32.8390,lon:-17.1620,t:"vil",d:[7],la:"r",sn:"Ribeira da Janela",
+    k:"Les trois rochers-îlots plantés au débouché de la vallée. Dernière descente avant l'arrivée."},
+  pmoniz:{n:"Porto Moniz",lat:32.8669,lon:-17.1660,t:"hot",d:[7,8],la:"r",major:1,
+    k:"Terminus de la traversée, pointe nord-ouest. Les piscines naturelles dans la coulée de lave, l'Atlantique qui rentre dedans.",
+    stay:{name:"Aqua Natura Bay ou Hotel Euro Moniz",price:"90–130 €",todo:"t-pcruz",note:"Plus d'offre ici. Aucun loueur de voiture implanté : taxi ou ligne Rodoeste."}},
+  psanto:{n:"Porto Santo →",lat:32.8820,lon:-16.6620,t:"kif",d:[9],la:"l",sn:"Porto Santo →",
+    k:"Neuf kilomètres de sable doré, à 40 km au nord-est — hors du cadre de la carte, d'où le marqueur en lisière.",
+    k2:"Ferry Lobo Marinho depuis Funchal, ~49 € l'aller-retour hors saison. Impossible dans la journée : deux nuits minimum."},
+  psol:{n:"Ponta do Sol",lat:32.6797,lon:-17.1036,t:"hot",d:[8,9,10],la:"b",major:1,
+    k:"Le coin le plus ensoleillé de l'île, une vallée à bananiers qui tombe sur un galet noir.",
+    stay:{name:"Estalagem da Ponta do Sol ou 1905 Zinos Palace",price:"110–150 €",todo:"t-psol",note:"Trois nuits. La récompense d'après-traversée : viser une piscine à débordement."}},
+  pauldomar:{n:"Paul do Mar",lat:32.7570,lon:-17.2260,t:"kif",d:[9],la:"b",
+    k:"Village de surf coincé sous 400 m de falaise. Poisson grillé les pieds dans l'eau."},
+  calheta:{n:"Calheta",lat:32.7191,lon:-17.1734,t:"kif",d:[9],la:"l",
+    k:"La plage de sable importé, la seule vraie plage du sud. Départ des sorties dauphins et baleines."},
+  girao:{n:"Cabo Girão",lat:32.6560,lon:-17.0000,t:"kif",d:[10],la:"b",
+    k:"Skywalk à 580 m au-dessus de la mer, l'une des plus hautes falaises d'Europe. Trente minutes d'arrêt sur la route de Funchal."},
+  funchal:{n:"Funchal",lat:32.6497,lon:-16.9083,t:"hot",d:[10,11],la:"b",major:1,
+    k:"Mercado dos Lavradores le matin, téléphérique de Monte, poncha dans la vieille ville.",
+    stay:{name:"Castanheiro Boutique Hotel ou Barceló Oldtown",price:"110–150 €",todo:"t-psol",note:"Dernière nuit, à 25 minutes de l'aéroport."}}
+};
+
+const SEGS = [
+  {id:"s1a",d:1,m:"plane",l:"Vols vers Funchal",det:"Orly → FNC en 3 h 50 (Transavia) · Gatwick → FNC (easyJet, BA, Jet2).",
+   p:[[32.50,-16.30],[32.62,-16.55],[32.6979,-16.7745]]},
+  {id:"s1b",d:1,m:"car",l:"FNC → Caniçal",det:"Bus 113 ou taxi, 20 min. Arrêt Continente de Machico pour la cartouche de gaz — interdite en avion.",
+   p:[[32.6979,-16.7745],[32.7186,-16.7669],[32.7290,-16.7480],[32.7398,-16.7375]]},
+  {id:"s2a",d:2,m:"car",l:"Navette au départ du PR8",det:"Caniçal → Baía d'Abra, 10 min. Se faire déposer, revenir à pied ou en taxi.",
+   p:[[32.7398,-16.7375],[32.7415,-16.7050],[32.7428,-16.6859]]},
+  {id:"s2b",d:2,m:"hike",l:"PR8 Ponta de São Lourenço",det:"Aller-retour 7 km, 250 m D+, sac léger. Deux heures trente sans se presser.",km:7,dp:250,fee:"4,50 €/pers.",
+   p:[[32.7428,-16.6859],[32.7405,-16.6790],[32.7420,-16.6720],[32.7437,-16.6620]]},
+  {id:"s2c",d:2,m:"hike",l:"Caniçal → Boca do Risco → Larano → Porto da Cruz",det:"Le vrai départ de la traversée : levada, puis la Vereda do Larano taillée dans la falaise.",km:18,dp:630,
+   p:[[32.7398,-16.7375],[32.7470,-16.7455],[32.7540,-16.7583],[32.7590,-16.7760],[32.7620,-16.7900],[32.7665,-16.8080],[32.7735,-16.8282]]},
+  {id:"s3",d:3,m:"hike",l:"Funduras → Portela → PR10 Levada do Furado → Ribeiro Frio",det:"Montée dans la laurisylve, puis 11 km de levada à flanc, mains courantes et tunnels courts.",km:20,dp:1060,fee:"4,50 €/pers. (PR10)",
+   p:[[32.7735,-16.8282],[32.7690,-16.8180],[32.7620,-16.8070],[32.7570,-16.8100],[32.7520,-16.8300],[32.7470,-16.8520],[32.7420,-16.8720],[32.7387,-16.8873]]},
+  {id:"s4",d:4,m:"hike",l:"Balcões → Areeiro → PR1 → Pico Ruivo",det:"Longue montée jusqu'à 1 818 m, puis l'arête : tunnels, escaliers taillés, 1 500 m de dénivelé. La plus belle journée.",km:21,dp:1500,fee:"10,50 €/pers. (PR1)",
+   p:[[32.7387,-16.8873],[32.7330,-16.8940],[32.7300,-16.9040],[32.7320,-16.9180],[32.7350,-16.9280],[32.7420,-16.9330],[32.7500,-16.9370],[32.7583,-16.9425]]},
+  {id:"s5",d:5,m:"hike",l:"PR1.3 Vereda da Encumeada",det:"La ligne de crête plein ouest. Section Boca das Torrinhas → Encumeada fermée à ce jour.",km:21,dp:1080,fee:"4,50 €/pers.",
+   p:[[32.7583,-16.9425],[32.7555,-16.9560],[32.7530,-16.9740],[32.7545,-16.9900],[32.7560,-17.0180]]},
+  {id:"s5b",d:5,m:"hike",l:"Repli PR1.2 → Achada do Teixeira",det:"4,5 km de descente, puis taxi vers l'Encumeada (45 min).",km:5,dp:150,alt:1,
+   p:[[32.7583,-16.9425],[32.7640,-16.9370],[32.7690,-16.9270]]},
+  {id:"s5c",d:5,m:"car",l:"Taxi de montagne vers l'Encumeada",det:"Achada do Teixeira ou Curral das Freiras → Boca da Encumeada. Demander les numéros au refuge.",alt:1,
+   p:[[32.7690,-16.9270],[32.7800,-16.9600],[32.7700,-17.0000],[32.7560,-17.0180]]},
+  {id:"s6",d:6,m:"hike",l:"Levada do Norte → Rabaçal → Seixal",det:"Tunnels de la Levada do Norte, détour par la cascade du Risco et les 25 Fontes, puis descente sur le sable noir.",km:18,dp:400,fee:"9 € pour les deux PR",
+   p:[[32.7560,-17.0180],[32.7620,-17.0560],[32.7645,-17.0950],[32.7590,-17.1300],[32.7750,-17.1200],[32.7990,-17.1120],[32.8226,-17.1040]]},
+  {id:"s7",d:7,m:"hike",l:"Fanal → Levada dos Cedros → Ribeira da Janela → Porto Moniz",det:"La plus grosse journée : 1 580 m de dénivelé, la forêt de til, puis la descente sur l'océan.",km:23,dp:1580,fee:"9 € (PR13 + PR14)",
+   p:[[32.8226,-17.1040],[32.8170,-17.1230],[32.8096,-17.1411],[32.8230,-17.1530],[32.8390,-17.1620],[32.8540,-17.1700],[32.8669,-17.1660]]},
+  {id:"s8",d:8,m:"car",l:"Porto Moniz → Ponta do Sol par la côte ouest",det:"1 h 15 de route, Ponta do Pargo et Paul do Mar en chemin. Voiture prise ce jour-là seulement.",
+   p:[[32.8669,-17.1660],[32.8330,-17.1980],[32.8010,-17.2330],[32.7640,-17.2160],[32.7330,-17.1900],[32.7191,-17.1734],[32.6890,-17.1290],[32.6797,-17.1036]]},
+  {id:"s9",d:9,m:"car",l:"Calheta, Paul do Mar",det:"Plage le matin, sortie dauphins et baleines, poisson grillé sous la falaise.",
+   p:[[32.6797,-17.1036],[32.7000,-17.1500],[32.7191,-17.1734],[32.7400,-17.2100],[32.7570,-17.2260]]},
+  {id:"s9b",d:9,m:"boat",l:"Ferry Lobo Marinho vers Porto Santo",det:"2 h 30 de traversée depuis Funchal, ~49 € l'aller-retour. Variante de la seconde moitié.",alt:1,
+   p:[[32.6497,-16.9083],[32.7600,-16.7800],[32.8820,-16.6620]]},
+  {id:"s10",d:10,m:"car",l:"Cabo Girão → Câmara de Lobos → Funchal",det:"Skywalk, le port des pêcheurs, puis le marché et Monte.",
+   p:[[32.6797,-17.1036],[32.6740,-17.0600],[32.6560,-17.0000],[32.6490,-16.9700],[32.6497,-16.9083]]},
+  {id:"s11a",d:11,m:"car",l:"Funchal → aéroport",det:"25 minutes par la via rápida.",
+   p:[[32.6497,-16.9083],[32.6889,-16.7930],[32.6979,-16.7745]]},
+  {id:"s11b",d:11,m:"plane",l:"Vols retour",det:"FNC → Orly entre 9 h 30 et 17 h 50 : viser l'après-midi pour une dernière matinée.",
+   p:[[32.6979,-16.7745],[32.62,-16.55],[32.50,-16.30]]}
+];
+
+const DAYS = [
+  {i:1,date:"2026-10-15",lbl:"jeu. 15 oct",kind:"move",t:"Arrivée, et rien d'autre",
+   s:"Vol le matin, taxi vers Caniçal, baignade à Prainha, courses et cartouche de gaz. On dort tôt.",
+   km:0,dp:0,sleep:"Caniçal",places:["fnc","canical"]},
+  {i:2,date:"2026-10-16",lbl:"ven. 16 oct",kind:"hike",t:"São Lourenço, puis la falaise",
+   s:"Le PR8 le matin en sac léger, puis Boca do Risco et la Vereda do Larano jusqu'à Porto da Cruz.",
+   km:25,dp:880,sleep:"Porto da Cruz",places:["slourenco","risco","pcruz"]},
+  {i:3,date:"2026-10-17",lbl:"sam. 17 oct",kind:"hike",t:"Entrée dans la laurisylve",
+   s:"Montée des Funduras vers Portela, puis la Levada do Furado, l'une des plus anciennes de l'île.",
+   km:20,dp:1060,sleep:"Ribeiro Frio",places:["portela","rfrio"]},
+  {i:4,date:"2026-10-18",lbl:"dim. 18 oct",kind:"hike",t:"L'arête",
+   s:"Balcões à l'aube, longue montée sur l'Areeiro, puis le PR1 jusqu'au toit de l'île.",
+   km:21,dp:1500,sleep:"Refuge du Pico Ruivo",places:["balcoes","areeiro","ruivo"]},
+  {i:5,date:"2026-10-19",lbl:"lun. 19 oct",kind:"hike",t:"La crête vers l'Encumeada",
+   s:"Lever de soleil au Ruivo, puis la ligne de crête plein ouest. Étape sous conditions.",
+   km:21,dp:1080,sleep:"Encumeada",places:["torrinhas","encumeada"]},
+  {i:6,date:"2026-10-20",lbl:"mar. 20 oct",kind:"hike",t:"Cascades et bascule au nord",
+   s:"Levada do Norte et ses tunnels, détour par le Risco et les 25 Fontes, descente sur le sable noir.",
+   km:18,dp:400,sleep:"Seixal",places:["rabacal","seixal"]},
+  {i:7,date:"2026-10-21",lbl:"mer. 21 oct",kind:"hike",t:"Fanal, puis l'arrivée",
+   s:"La plus grosse journée : montée dans la forêt de til, Levada dos Cedros, descente sur Porto Moniz.",
+   km:23,dp:1580,sleep:"Porto Moniz",places:["fanal","rjanela","pmoniz"]},
+  {i:8,date:"2026-10-22",lbl:"jeu. 22 oct",kind:"move",t:"On range les chaussures",
+   s:"Grasse matinée, piscines naturelles dans la lave, puis descente tranquille de la côte ouest en voiture.",
+   km:0,dp:0,sleep:"Ponta do Sol",places:["pmoniz","psol"]},
+  {i:9,date:"2026-10-23",lbl:"ven. 23 oct",kind:"chill",t:"Plage et bateau",
+   s:"Sable de Calheta, sortie dauphins et baleines, poisson grillé à Paul do Mar.",
+   km:0,dp:0,sleep:"Ponta do Sol",places:["calheta","pauldomar"]},
+  {i:10,date:"2026-10-24",lbl:"sam. 24 oct",kind:"chill",t:"Funchal",
+   s:"Cabo Girão sur la route, marché des Lavradores, téléphérique de Monte, dernier dîner en ville.",
+   km:0,dp:0,sleep:"Funchal",places:["girao","funchal"]},
+  {i:11,date:"2026-10-25",lbl:"dim. 25 oct",kind:"move",t:"Retour",
+   s:"Dernière matinée à Funchal, puis l'aéroport. Viser un vol d'après-midi.",
+   km:0,dp:0,sleep:"—",places:["funchal","fnc"]}
+];
+
+const OPTIONS = [
+  {id:"vol",label:"Aller",q:"Comment on se rejoint à Madère",
+   sub:"FNC n'a qu'un terminal : « on arrive le même jour » suffit comme coordination.",
+   choices:[
+    {id:"vol-a",n:"Chacun de son côté",p:"Le moins cher · 2 réservations",
+     d:"Hugo depuis Orly avec Transavia — 9 vols par semaine, départs entre 6 h et 14 h 25. Lucille depuis Gatwick, 15 vols par semaine entre easyJet, British Airways et Jet2. Retrouvailles au tapis à bagages."},
+    {id:"vol-b",n:"Hugo passe par Londres",p:"1 vol commun + Eurostar + 1 nuit",
+     d:"Eurostar le 14, nuit chez Lucille, Gatwick ensemble le 15. Se tient si l'écart dépasse 80 €/pers. : Londres a cinq fois plus de vols que Paris."},
+    {id:"vol-c",n:"Lucille passe par Paris",p:"1 vol commun + 1 Eurostar",
+     d:"Elle arrive le 14, départ d'Orly ensemble le 15. Le plus romantique, le moins efficace : Paris n'a qu'une compagnie en direct."}
+   ],todos:{"vol-a":["t-vol-a"],"vol-b":["t-vol-b"],"vol-c":["t-vol-c"]}},
+
+  {id:"j5",label:"Étape du 19 octobre",q:"Le PR1.3 est coupé — on fait quoi",
+   sub:"Ouvert jusqu'à Boca das Torrinhas, fermé au-delà vers l'Encumeada depuis les incendies d'août 2024.",
+   choices:[
+    {id:"j5-full",n:"Il rouvre, on le fait",p:"21 km · 1 080 m D+",
+     d:"Pico Ruivo → Encumeada d'une traite, la crête entre 1 800 et 1 000 m. À revérifier fin septembre, puis dix jours avant."},
+    {id:"j5-urzal",n:"Torrinhas puis PR2 Urzal",p:"~16 km + 1 h de taxi",
+     d:"Marche jusqu'à Boca das Torrinhas, bascule par la Vereda do Urzal vers Curral das Freiras ou Boaventura, puis taxi jusqu'à l'Encumeada."},
+    {id:"j5-taxi",n:"Descente + transfert",p:"5 km + 45 min de taxi",
+     d:"PR1.2 jusqu'à Achada do Teixeira, taxi vers l'Encumeada, après-midi libre au col. La solution paresseuse mais sûre."}
+   ],todos:{"j5-urzal":["t-taxi"],"j5-taxi":["t-taxi"]},
+   day:{5:{"j5-urzal":{t:"Crête tronquée, sortie par l'Urzal",s:"Ruivo → Boca das Torrinhas, descente par le PR2 puis taxi pour rejoindre l'Encumeada.",km:16,dp:700,places:["torrinhas","encumeada"]},
+          "j5-taxi":{t:"Descente sur Achada do Teixeira",s:"PR1.2, taxi jusqu'au col de l'Encumeada, après-midi de repos avant les deux dernières étapes.",km:5,dp:150,places:["ateixeira","encumeada"]}}},
+   segs:{"j5-full":["s5"],"j5-urzal":["s5","s5c"],"j5-taxi":["s5b","s5c"]}},
+
+  {id:"fin",label:"Seconde moitié",q:"Où on pose les sacs après la traversée",
+   sub:"Trois nuits à décider. La côte ouest se fait en voiture, Porto Santo se fait en ferry.",
+   choices:[
+    {id:"fin-ouest",n:"Côte ouest",p:"3 nuits · voiture 4 jours",
+     d:"Ponta do Sol, Calheta, Paul do Mar. Sable importé, falaises, le versant le plus ensoleillé de l'île."},
+    {id:"fin-psanto",n:"Porto Santo",p:"2 nuits + ferry · pas de voiture",
+     d:"Neuf kilomètres de sable doré à 2 h 30 de ferry, ~49 € l'aller-retour hors saison. Impossible dans la journée : deux nuits minimum."}
+   ],todos:{"fin-ouest":["t-voiture"],"fin-psanto":["t-ferry"]},
+   day:{9:{"fin-psanto":{t:"Traversée vers Porto Santo",s:"Ferry Lobo Marinho depuis Funchal, 2 h 30. Vélo, plage de neuf kilomètres, et le calme d'une île de 5 000 habitants.",km:0,dp:0,sleep:"Porto Santo",places:["psanto"]}}},
+   segs:{"fin-ouest":["s9"],"fin-psanto":["s9b"]}},
+
+  {id:"j4nuit",label:"Nuit du 18 octobre",q:"Refuge ou tente au Pico Ruivo",
+   sub:"Douze lits d'un côté, deux emplacements de tente de l'autre. Les deux se réservent.",
+   choices:[
+    {id:"nuit-ref",n:"Refuge",p:"~60 € pour deux · espèces",
+     d:"Douze places, chambres privées, cuisine, sanitaires partagés. Pas de chauffage : duvet et couches chaudes obligatoires."},
+    {id:"nuit-tente",n:"Tente",p:"5 € · très exposé au vent",
+     d:"L'aire officielle du Pico Ruivo accepte deux tentes par nuit. Licence SIMplifica obligatoire, pas d'eau sur place."}
+   ],todos:{"nuit-ref":["t-refuge"],"nuit-tente":["t-camping"]}}
+];
+
+const TODOS = [
+  {id:"t-conges",g:"2026-09-02",t:"Poser les congés du 15 au 23 octobre",tag:"boulot",
+   n:"Sept jours ouvrés à bloquer : 15, 16, puis 19 → 23. Retour au bureau le lundi 26."},
+  {id:"t-refuge",g:"2026-09-02",t:"Appeler le refuge du Pico Ruivo",tag:"lit",opt:"j4nuit",place:"ruivo",
+   n:"291 572 124, lun-ven 9 h-13 h / 14 h-18 h. Douze places au total : c'est le maillon irremplaçable de la traversée."},
+  {id:"t-vol-a",g:"2026-09-02",t:"Réserver les deux vols séparément",tag:"vol",opt:"vol",
+   n:"Orly → FNC et Gatwick → FNC. Comparer en tarif tout compris : bâtons et duvet imposent la soute, easyJet facture même le cabine."},
+  {id:"t-vol-b",g:"2026-09-02",t:"Réserver l'Eurostar de Hugo + le vol commun depuis Gatwick",tag:"vol",opt:"vol",
+   n:"Eurostar le 14, vol le 15. Vérifier que l'écart de prix justifie le détour."},
+  {id:"t-vol-c",g:"2026-09-02",t:"Réserver l'Eurostar de Lucille + le vol depuis Orly",tag:"vol",opt:"vol",
+   n:"Elle arrive le 14 au soir, départ d'Orly le 15 au matin."},
+  {id:"t-rfrio",g:"2026-09-02",t:"Casa do Ribeiro Frio",tag:"lit",place:"rfrio",
+   n:"Pratiquement le seul hébergement du hameau. En annulation gratuite si possible."},
+  {id:"t-1a1",g:"2026-09-02",t:"Décaler le 1:1 avec Guillaume du 21 octobre",tag:"boulot",
+   n:"Et prévenir pour le Monthly Theodo France du lundi 19 à 9 h 30."},
+  {id:"t-encumeada",g:"2026-09-05",t:"Valley View Hotel Encumeada",tag:"lit",place:"encumeada",
+   n:"Seul lit au col, huit à dix chambres. Demander côté vallée."},
+  {id:"t-seixal",g:"2026-09-05",t:"Seixal — Casa das Videiras ou Madeira.Life",tag:"lit",place:"seixal",
+   n:"Deux adresses, une poignée de chambres chacune."},
+  {id:"t-pcruz",g:"2026-09-12",t:"Porto da Cruz, Caniçal et Porto Moniz",tag:"lit",place:"pcruz",
+   n:"Plus d'offre, moins de tension : Vila Bela, un logement à Caniçal, Aqua Natura Bay."},
+  {id:"t-assurance",g:"2026-09-12",t:"Assurance rando avec frais de secours",tag:"admin",
+   n:"Vérifier d'abord ce que couvre la carte bancaire en montagne et hors sentier balisé."},
+  {id:"t-psol",g:"2026-09-19",t:"Ponta do Sol + Funchal",tag:"lit",opt:"fin",place:"psol",
+   n:"Estalagem da Ponta do Sol ou 1905 Zinos Palace, puis Castanheiro à Funchal."},
+  {id:"t-ferry",g:"2026-09-19",t:"Ferry et hôtel à Porto Santo",tag:"transport",opt:"fin",place:"psanto",
+   n:"Lobo Marinho, 2 h 30. Réserver les deux traversées en même temps que la chambre."},
+  {id:"t-camping",g:"2026-09-19",t:"Licence de camping sur SIMplifica",tag:"permis",opt:"j4nuit",place:"ruivo",
+   n:"5 € par tente et par nuit. Le Pico Ruivo n'accepte que deux tentes par jour ; vérifier la fenêtre d'ouverture du portail, différente de celle des sentiers."},
+  {id:"t-pr13",g:"2026-09-19",t:"Vérifier l'état du PR1.3",tag:"sentier",place:"torrinhas",
+   n:"Sur visitmadeira.com. Aujourd'hui : ouvert jusqu'à Boca das Torrinhas, fermé au-delà vers l'Encumeada."},
+  {id:"t-pr1",g:"2026-09-25",t:"Créneau SIMplifica pour le PR1",tag:"sentier",place:"areeiro",
+   n:"10,50 €/pers. Viser 13 h - 13 h 30 au Pico do Areeiro en arrivant de Ribeiro Frio. Tolérance de quinze minutes, aucun remboursement."},
+  {id:"t-prs",g:"2026-10-01",t:"Les autres créneaux PR",tag:"sentier",
+   n:"PR8, PR10, PR1.2, PR6 et PR6.1, PR13, PR14. 4,50 €/pers. et par sentier. Garder le 20 octobre non réservé comme journée tampon."},
+  {id:"t-voiture",g:"2026-10-01",t:"Louer la voiture du 22 au 25",tag:"transport",opt:"fin",place:"pmoniz",
+   n:"Aucun loueur implanté à Porto Moniz : soit un loueur qui livre, soit bus Rodoeste ou taxi jusqu'à Funchal (~2 h)."},
+  {id:"t-taxi",g:"2026-10-01",t:"Caler le taxi de montagne du 19",tag:"transport",opt:"j5",place:"ateixeira",
+   n:"Achada do Teixeira ou Curral das Freiras vers l'Encumeada. Demander au refuge, ils ont les numéros."},
+  {id:"t-gpx",g:"2026-10-08",t:"GPX, cartes hors ligne, appli Prociv",tag:"prépa",
+   n:"Le sentier n'est pas balisé en continu. Tracés sur les deux téléphones, Organic Maps téléchargé, batterie externe."},
+  {id:"t-materiel",g:"2026-10-08",t:"Vérifier le matériel",tag:"prépa",
+   n:"Veste imperméable sérieuse, polaire, duvet léger pour le refuge, filtre à eau, frontales, 2,5 L de contenance chacun."},
+  {id:"t-cash",g:"2026-10-13",t:"Retirer du liquide pour le refuge",tag:"prépa",place:"ruivo",
+   n:"Il n'accepte que les espèces, et il n'y a pas de distributeur à 1 800 m."},
+  {id:"t-meteo",g:"2026-10-13",t:"Regarder la météo et arbitrer",tag:"prépa",
+   n:"Sur Windy. En octobre le nord et les sommets prennent les nuages : caler les journées d'arête sur les matins clairs."}
+];
+
+const INFOS = [
+  {h:"Le refuge, en premier",p:["Casa de Abrigo do Pico Ruivo, douze places, ~30 € par personne, <b>espèces uniquement</b>. Réservation par téléphone ou e-mail, pas de site de booking."],
+   kv:[["Semaine, 9 h-13 h / 14 h-18 h","291 572 124"],["Week-end","960 296 224"],["Week-end (bis)","962 560 029"],["Site","picoruivo.com"]]},
+  {h:"Les sentiers sont payants",p:["Depuis le 1<sup>er</sup> janvier 2026 : réservation obligatoire sur SIMplifica, créneau d'entrée par tranches de trente minutes, tolérance d'environ quinze minutes. Aucun remboursement, sauf fermeture officielle par l'IFCN."],
+   kv:[["PR1 Areeiro → Ruivo","10,50 €"],["Tous les autres PR","4,50 €"],["Pass multi-jours (hors PR1)","dès 9 €"],["Bivouac officiel","5 €/tente/nuit"],["Portail","simplifica.madeira.gov.pt"]]},
+  {h:"Pourquoi d'est en ouest",p:["Le PR1 est à sens unique depuis sa réouverture d'avril 2026 : Pico do Areeiro → Pico Ruivo, jamais l'inverse. En partant de l'ouest, on arriverait au Ruivo sans droit d'emprunter l'arête.","Le dénivelé monte en marche d'escalier — 250, 630, 1 060, 1 500 m — et on finit face aux piscines de Porto Moniz, avec la côte ensoleillée juste en dessous."]},
+  {h:"Les trois avertissements",p:["<b>Eau</b> — ne jamais boire l'eau des levadas, c'est de l'eau agricole. 2,5 L par personne, filtre, remplissage aux fontaines de village. Les aires de bivouac ne sont pas alimentées.","<b>Orientation</b> — la traversée n'est pas un GR : pas de balisage continu, brouillard fréquent, tracés modifiés. GPX hors ligne sur deux téléphones.","<b>Météo</b> — la côte reste en fin d'été, ~25 °C et mer à 24 °C, mais les premières vraies pluies reviennent sur le nord et les hauteurs, surtout en fin de mois. La traversée longe le nord."]},
+  {h:"Budget, par personne",kv:[["Vols","150–300 €"],["Créneaux de sentiers","45–55 €"],["6 nuits de traversée","~250 €"],["4 nuits de confort","200–300 €"],["Voiture (4 jours)","~90 €"],["Nourriture","30–40 €/jour"],["Total","1 200–1 600 €"]]},
+  {h:"À revérifier avant de partir",p:["L'état du PR1.3 fin septembre, puis dix jours avant le départ. La fenêtre d'ouverture des réservations SIMplifica pour les licences de camping. Les prix réels Orly et Gatwick sur les dates exactes.","Et l'agenda « La vie normale » : il n'est pas partagé avec le compte Theodo, donc le planning de Lucille reste invisible d'ici."],
+   kv:[["État des sentiers","visitmadeira.com"],["Météo","windy.com"],["Alertes","appli Prociv Madeira"],["GPX (105 km)","Komoot · Outdooractive"]]}
+];
+
+/* ============================================================
+   ÉTAT
+   ============================================================ */
+const KEY="madere-oct2026-v2";
+const DEFAULTS={tab:"map",day:null,sel:null,month:2,
+  choices:{vol:"vol-a",j5:"j5-full",fin:"fin-ouest",j4nuit:"nuit-ref"},done:{},book:{}};
+let state=JSON.parse(JSON.stringify(DEFAULTS));
+
+function load(){
+  try{
+    const raw=localStorage.getItem(KEY);
+    if(!raw)return;
+    const p=JSON.parse(raw);
+    state={...state,...p,choices:{...state.choices,...(p.choices||{})},done:p.done||{},book:p.book||{}};
+  }catch(e){/* première ouverture, ou stockage refusé */}
+}
+let saveT=null,noStore=false,booting=true;
+function save(){
+  clearTimeout(saveT);
+  saveT=setTimeout(()=>{
+    try{localStorage.setItem(KEY,JSON.stringify(state));if(!booting)note("Enregistré");}
+    catch(e){noStore=true;note("Stockage refusé — les choix tiennent le temps de l'onglet.");}
+  },200);
+}
+function note(t){const el=$("#saved");if(booting)return;el.textContent=t;clearTimeout(el._t);el._t=setTimeout(()=>{el.textContent=" ";},2000);}
+const $=s=>document.querySelector(s);
+const $$=s=>Array.from(document.querySelectorAll(s));
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+/* ============================================================
+   DÉRIVÉS
+   ============================================================ */
+function eff(d){
+  let o={...d};
+  OPTIONS.forEach(op=>{
+    if(op.day&&op.day[d.i]){
+      const c=state.choices[op.id];
+      if(op.day[d.i][c])o={...o,...op.day[d.i][c]};
+    }
+  });
+  return o;
+}
+const effDays=()=>DAYS.map(eff);
+function hiddenSegs(){
+  const hide=new Set();
+  OPTIONS.forEach(o=>{
+    if(!o.segs)return;
+    const cur=o.segs[state.choices[o.id]]||[];
+    Object.values(o.segs).flat().forEach(id=>{if(!cur.includes(id))hide.add(id);});
+    cur.forEach(id=>hide.delete(id));
+  });
+  return hide;
+}
+function visiblePlaces(){
+  const s=new Set();
+  effDays().forEach(d=>(d.places||[]).forEach(p=>s.add(p)));
+  return s;
+}
+function activeTodos(){
+  return TODOS.filter(t=>{
+    if(!t.opt)return true;
+    const o=OPTIONS.find(x=>x.id===t.opt);
+    const listed=Object.values(o.todos||{}).flat();
+    if(!listed.includes(t.id))return true;
+    return ((o.todos||{})[state.choices[t.opt]]||[]).includes(t.id);
+  });
+}
+const FRM=["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
+const iso=dt=>`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,"0")}-${String(dt.getDate()).padStart(2,"0")}`;
+function parseISO(s){const[y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d);}
+const daysTo=s=>Math.round((parseISO(s)-TODAY)/864e5);
+const fmtDate=s=>{const d=parseISO(s);return `${d.getDate()} ${FRM[d.getMonth()]}`;};
+
+/* ============================================================
+   PROJECTION & GÉOMÉTRIE
+   ============================================================ */
+const LON0=-17.315,LON1=-16.615,LAT0=32.612,LAT1=32.898,W=1000;
+const KX=Math.cos(32.755*Math.PI/180);
+const H=Math.round(W*((LAT1-LAT0)/((LON1-LON0)*KX)));
+const px=lon=>(lon-LON0)/(LON1-LON0)*W;
+const py=lat=>(LAT1-lat)/(LAT1-LAT0)*H;
+const KM_PER_DEG_LON=111.32*KX;
+
+const COAST=[
+ [-16.655,32.7405],[-16.678,32.7345],[-16.700,32.7375],[-16.723,32.7355],[-16.7395,32.7325],
+ [-16.7555,32.7205],[-16.7695,32.7085],[-16.7745,32.6935],[-16.7905,32.6805],[-16.8095,32.6725],
+ [-16.8280,32.6600],[-16.8450,32.6455],[-16.8580,32.6375],[-16.8760,32.6390],[-16.8950,32.6395],
+ [-16.9165,32.6395],[-16.9450,32.6425],[-16.9780,32.6485],[-17.0010,32.6535],[-17.0280,32.6635],
+ [-17.0620,32.6715],[-17.1010,32.6795],[-17.1280,32.6895],[-17.1520,32.7010],[-17.1770,32.7175],
+ [-17.2010,32.7290],[-17.2120,32.7405],[-17.2280,32.7555],[-17.2480,32.7830],[-17.2635,32.8095],
+ [-17.2450,32.8265],[-17.2085,32.8385],[-17.1920,32.8615],[-17.1665,32.8685],[-17.1555,32.8485],
+ [-17.1300,32.8380],[-17.1055,32.8265],[-17.0750,32.8130],[-17.0445,32.7995],[-17.0150,32.8130],
+ [-16.9885,32.8275],[-16.9565,32.8335],[-16.9265,32.8375],[-16.9055,32.8345],[-16.8785,32.8095],
+ [-16.8525,32.7885],[-16.8285,32.7745],[-16.8055,32.7645],[-16.7795,32.7595],[-16.7555,32.7545],
+ [-16.7275,32.7495],[-16.6995,32.7475],[-16.6755,32.7455]
+];
+const HIGHLAND=[
+ [-17.150,32.7480],[-17.110,32.7360],[-17.060,32.7395],[-17.005,32.7420],[-16.960,32.7330],
+ [-16.918,32.7250],[-16.880,32.7360],[-16.868,32.7600],[-16.898,32.7770],[-16.938,32.7830],
+ [-16.990,32.7790],[-17.048,32.7760],[-17.105,32.7720],[-17.152,32.7620]
+];
+const SUMMITS=[
+ [-16.968,32.7460],[-16.946,32.7350],[-16.918,32.7340],[-16.902,32.7460],[-16.914,32.7640],
+ [-16.944,32.7710],[-16.966,32.7620]
+];
+const RIDGE=[
+ [-16.905,32.7330],[-16.928,32.7350],[-16.9425,32.7583],[-16.958,32.7565],[-16.9740,32.7530],
+ [-16.995,32.7550],[-17.018,32.7560],[-17.050,32.7565],[-17.085,32.7540],[-17.125,32.7500],[-17.155,32.7470]
+];
+
+function toXY(pts){return pts.map(p=>[px(p[0]),py(p[1])]);}
+function smoothClosed(pts){
+  const n=pts.length;let d=`M${pts[0][0].toFixed(1)} ${pts[0][1].toFixed(1)}`;
+  for(let i=0;i<n;i++){
+    const p0=pts[(i-1+n)%n],p1=pts[i],p2=pts[(i+1)%n],p3=pts[(i+2)%n];
+    const c1x=p1[0]+(p2[0]-p0[0])/6,c1y=p1[1]+(p2[1]-p0[1])/6;
+    const c2x=p2[0]-(p3[0]-p1[0])/6,c2y=p2[1]-(p3[1]-p1[1])/6;
+    d+=`C${c1x.toFixed(1)} ${c1y.toFixed(1)},${c2x.toFixed(1)} ${c2y.toFixed(1)},${p2[0].toFixed(1)} ${p2[1].toFixed(1)}`;
+  }
+  return d+"Z";
+}
+function smoothOpen(pts){
+  if(pts.length<3)return pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)).join("");
+  const n=pts.length;let d=`M${pts[0][0].toFixed(1)} ${pts[0][1].toFixed(1)}`;
+  for(let i=0;i<n-1;i++){
+    const p0=pts[Math.max(0,i-1)],p1=pts[i],p2=pts[i+1],p3=pts[Math.min(n-1,i+2)];
+    const c1x=p1[0]+(p2[0]-p0[0])/6,c1y=p1[1]+(p2[1]-p0[1])/6;
+    const c2x=p2[0]-(p3[0]-p1[0])/6,c2y=p2[1]-(p3[1]-p1[1])/6;
+    d+=`C${c1x.toFixed(1)} ${c1y.toFixed(1)},${c2x.toFixed(1)} ${c2y.toFixed(1)},${p2[0].toFixed(1)} ${p2[1].toFixed(1)}`;
+  }
+  return d;
+}
+const segXY=g=>g.p.map(p=>[px(p[1]),py(p[0])]);
+
+/* ============================================================
+   CARTE — construction
+   ============================================================ */
+const svg=$("#map");
+const VB={x:0,y:0,w:W,h:H};
+const REDUCE=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+function buildMap(){
+  const coast=smoothClosed(toXY(COAST));
+  const MC=[-16.995,32.7555];
+  const grow=(pts,f)=>pts.map(q=>[MC[0]+(q[0]-MC[0])*f,MC[1]+(q[1]-MC[1])*f]);
+  const CC=[-16.965,32.7555];
+  const swell=(pts,f)=>pts.map(q=>[CC[0]+(q[0]-CC[0])*f,CC[1]+(q[1]-CC[1])*f]);
+  let s="";
+  s+=`<defs><clipPath id="landclip"><path d="${coast}"/></clipPath></defs>`;
+  s+=`<g id="l-geo">`;
+  [1.05,1.11,1.18].forEach((f,i)=>{
+    s+=`<path class="halo" d="${smoothClosed(toXY(swell(COAST,f)))}" opacity="${(0.3-i*0.08).toFixed(2)}"/>`;
+  });
+  s+=`<path class="coast" d="${coast}"/>`;
+  s+=`<g clip-path="url(#landclip)">`;
+  s+=`<path class="relief lo" d="${smoothClosed(toXY(grow(HIGHLAND,1.3)))}"/>`;
+  s+=`<path class="relief" d="${smoothClosed(toXY(HIGHLAND))}"/>`;
+  s+=`<path class="relief hi" d="${smoothClosed(toXY(SUMMITS))}"/>`;
+  s+=`</g>`;
+  s+=`<path class="ridge" d="${smoothOpen(toXY(RIDGE))}"/>`;
+  s+=`<text class="geolab" x="${px(-17.05).toFixed(0)}" y="${py(32.885).toFixed(0)}">Océan Atlantique</text>`;
+  s+=`<text class="geolab" x="${px(-17.09).toFixed(0)}" y="${py(32.783).toFixed(0)}">Paúl da Serra</text>`;
+  s+=`<text class="geolab" x="${px(-16.955).toFixed(0)}" y="${py(32.717).toFixed(0)}">Maciço central</text>`;
+  s+=`</g>`;
+  s+=`<g id="l-segs">`;
+  SEGS.forEach(g=>{
+    const d=smoothOpen(segXY(g));
+    s+=`<g class="seg m-${g.m}" data-id="${g.id}" data-day="${g.d}"><path class="seg-hit" d="${d}"/><path class="seg-line" d="${d}"/></g>`;
+  });
+  s+=`</g><g id="l-places">`;
+  Object.entries(PLACES).forEach(([id,p])=>{
+    const x=px(p.lon),y=py(p.lat);
+    const la=p.la||(x<W-190?"r":"l");
+    const col=p.t==="hot"?"var(--drive)":(p.t==="ref"||p.t==="cam")?"var(--accent)":p.t==="kif"?"var(--accent-2)":p.t==="air"?"var(--fly)":"var(--text-2)";
+    let shape;
+    if(p.t==="ref"||p.t==="cam")shape=`<rect class="pl-dot" x="-4.6" y="-4.6" width="9.2" height="9.2" fill="${col}" transform="rotate(45)"/>`;
+    else if(p.t==="air")shape=`<circle class="pl-dot" r="6" fill="var(--card)" stroke="${col}" stroke-width="2.6"/>`;
+    else if(p.t==="hot")shape=`<circle class="pl-dot" r="5.4" fill="${col}"/>`;
+    else shape=`<circle class="pl-dot" r="4.4" fill="${col}"/>`;
+    s+=`<g class="pl t-${p.t}" data-id="${id}" transform="translate(${x.toFixed(1)},${y.toFixed(1)})" tabindex="0" role="button" aria-label="${esc(p.n)}">`
+      +`<g class="pl-i"><circle class="pl-hit" r="15"/><circle class="pl-ring" r="10.5"/>${shape}</g>`
+      +`<g class="pl-l"><text class="pl-lab" x="${la==="r"?11:la==="l"?-11:0}" y="${la==="t"?-11:la==="b"?15:3.6}" text-anchor="${la==="r"?"start":la==="l"?"end":"middle"}">${esc(p.sn||p.n)}</text></g></g>`;
+  });
+  s+=`</g><g id="l-scale"></g>`;
+  svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+  svg.innerHTML=s;
+
+  svg.querySelectorAll(".seg").forEach(g=>g.addEventListener("click",e=>{
+    if(dragMoved)return;e.stopPropagation();select({type:"seg",id:g.dataset.id});
+  }));
+  svg.querySelectorAll(".pl").forEach(g=>{
+    g.addEventListener("click",e=>{if(dragMoved)return;e.stopPropagation();select({type:"place",id:g.dataset.id});});
+    g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();select({type:"place",id:g.dataset.id});}});
+  });
+  svg.addEventListener("click",()=>{if(!dragMoved)select(null);});
+}
+
+function syncMap(){
+  const hid=hiddenSegs(),vis=visiblePlaces(),day=state.day,sel=state.sel;
+  const zf=VB.w/W;
+  svg.querySelectorAll(".seg").forEach(g=>{
+    const id=g.dataset.id,dd=+g.dataset.day;
+    const hidden=hid.has(id);
+    g.style.display=hidden?"none":"";
+    const on=!day||dd===day;
+    g.classList.toggle("is-dim",!on);
+    g.classList.toggle("is-on",!!day&&on);
+    g.classList.toggle("is-sel",!!sel&&sel.type==="seg"&&sel.id===id);
+  });
+  svg.querySelectorAll(".pl").forEach(g=>{
+    const id=g.dataset.id,p=PLACES[id];
+    const shown=vis.has(id);
+    g.style.display=shown?"":"none";
+    const on=!day||p.d.includes(day);
+    g.classList.toggle("is-dim",!on);
+    g.classList.toggle("is-sel",!!sel&&sel.type==="place"&&sel.id===id);
+    const labelled=(sel&&sel.type==="place"&&sel.id===id)||zf<0.62||(day?on:!!p.major);
+    g.classList.toggle("lab-off",!labelled);
+  });
+}
+
+/* ---------- zoom / pan ---------- */
+const PX_PER_KM=W/((LON1-LON0)*KM_PER_DEG_LON);
+function drawScale(){
+  const g=svg.querySelector("#l-scale");if(!g)return;
+  const z=VB.w/W;
+  const km=[50,20,10,5,2,1].find(k=>k*PX_PER_KM<VB.w*0.3)||1;
+  const bw=km*PX_PER_KM,x=VB.x+16*z,y=VB.y+VB.h-20*z,t=4*z;
+  g.innerHTML=`<line class="scalebar" x1="${x}" y1="${y}" x2="${x+bw}" y2="${y}"/>`
+    +`<line class="scalebar" x1="${x}" y1="${y-t}" x2="${x}" y2="${y+t}"/>`
+    +`<line class="scalebar" x1="${x+bw}" y1="${y-t}" x2="${x+bw}" y2="${y+t}"/>`
+    +`<text class="scaletxt" x="${x}" y="${y+13*z}">${km} km</text>`
+    +`<text class="scaletxt" x="${VB.x+VB.w-16*z}" y="${y+13*z}" text-anchor="end">nord en haut</text>`;
+}
+function applyVB(){
+  svg.setAttribute("viewBox",`${VB.x.toFixed(1)} ${VB.y.toFixed(1)} ${VB.w.toFixed(1)} ${VB.h.toFixed(1)}`);
+  svg.style.setProperty("--zf",(VB.w/W).toFixed(3));
+  drawScale();
+}
+function clampVB(v){
+  const minW=W*0.16,maxW=W*1.12;
+  v.w=Math.max(minW,Math.min(maxW,v.w));v.h=v.w*H/W;
+  v.x=Math.max(-W*0.25,Math.min(W*1.25-v.w,v.x));
+  v.y=Math.max(-H*0.35,Math.min(H*1.35-v.h,v.y));
+  return v;
+}
+let animId=null;
+function goVB(t,animate){
+  clampVB(t);
+  if(animId)cancelAnimationFrame(animId);
+  if(REDUCE||animate===false){Object.assign(VB,t);applyVB();syncMap();return;}
+  const from={...VB},t0=performance.now(),dur=460;
+  (function step(now){
+    const k=Math.min(1,(now-t0)/dur),e=1-Math.pow(1-k,3);
+    VB.x=from.x+(t.x-from.x)*e;VB.y=from.y+(t.y-from.y)*e;
+    VB.w=from.w+(t.w-from.w)*e;VB.h=from.h+(t.h-from.h)*e;
+    applyVB();
+    if(k<1)animId=requestAnimationFrame(step);else{animId=null;syncMap();}
+  })(t0);
+}
+function fitAll(animate){goVB({x:0,y:0,w:W,h:H},animate);}
+function fitDay(i,animate){
+  if(!i)return fitAll(animate);
+  const hid=hiddenSegs();
+  let xs=[],ys=[];
+  SEGS.filter(g=>g.d===i&&!hid.has(g.id)).forEach(g=>segXY(g).forEach(pt=>{xs.push(pt[0]);ys.push(pt[1]);}));
+  const d=eff(DAYS.find(x=>x.i===i));
+  (d.places||[]).forEach(id=>{const p=PLACES[id];if(p){xs.push(px(p.lon));ys.push(py(p.lat));}});
+  if(!xs.length)return fitAll(animate);
+  let x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys);
+  const padX=Math.max(70,(x1-x0)*0.22),padY=Math.max(46,(y1-y0)*0.3);
+  x0-=padX;x1+=padX;y0-=padY;y1+=padY;
+  let w=Math.max(x1-x0,(y1-y0)*W/H,W*0.5);
+  const cx=(x0+x1)/2,cy=(y0+y1)/2;
+  goVB({x:cx-w/2,y:cy-w*H/W/2,w:w,h:w*H/W},animate);
+}
+function fitPlace(id,animate){
+  const p=PLACES[id];if(!p)return;
+  const w=Math.max(W*0.3,VB.w>W*0.7?W*0.36:VB.w);
+  goVB({x:px(p.lon)-w/2,y:py(p.lat)-w*H/W/2,w:w,h:w*H/W},animate);
+}
+let dragging=false,dragMoved=false,dragStart=null;
+function svgScale(){const r=svg.getBoundingClientRect();return VB.w/(r.width||1);}
+svg.addEventListener("pointerdown",e=>{
+  if(e.button!==0)return;
+  dragging=true;dragMoved=false;dragStart={x:e.clientX,y:e.clientY,vx:VB.x,vy:VB.y};
+});
+svg.addEventListener("pointermove",e=>{
+  if(!dragging)return;
+  const k=svgScale(),dx=(e.clientX-dragStart.x),dy=(e.clientY-dragStart.y);
+  if(!dragMoved){
+    if(Math.abs(dx)+Math.abs(dy)<=4)return;
+    // la capture n'est prise qu'ici : la prendre au pointerdown redirigerait
+    // le click vers le <svg> et casserait la sélection des marqueurs.
+    dragMoved=true;svg.classList.add("dragging");
+    try{svg.setPointerCapture(e.pointerId);}catch(err){}
+  }
+  if(animId){cancelAnimationFrame(animId);animId=null;}
+  VB.x=dragStart.vx-dx*k;VB.y=dragStart.vy-dy*k;clampVB(VB);applyVB();
+});
+function endDrag(e){
+  if(!dragging)return;dragging=false;svg.classList.remove("dragging");
+  try{svg.releasePointerCapture(e.pointerId);}catch(err){}
+  setTimeout(()=>{dragMoved=false;},0);
+}
+svg.addEventListener("pointerup",endDrag);
+svg.addEventListener("pointercancel",endDrag);
+svg.addEventListener("wheel",e=>{
+  e.preventDefault();
+  const r=svg.getBoundingClientRect();
+  const mx=VB.x+(e.clientX-r.left)/r.width*VB.w;
+  const my=VB.y+(e.clientY-r.top)/r.height*VB.h;
+  const f=e.deltaY>0?1.16:1/1.16;
+  const t={w:VB.w*f,h:VB.h*f,x:0,y:0};
+  const kx=(mx-VB.x)/VB.w,ky=(my-VB.y)/VB.h;
+  t.x=mx-kx*t.w;t.y=my-ky*t.h;
+  goVB(t,false);
+},{passive:false});
+$("#zin").addEventListener("click",()=>{const c={x:VB.x+VB.w/2,y:VB.y+VB.h/2};goVB({w:VB.w/1.4,h:VB.h/1.4,x:c.x-VB.w/2.8,y:c.y-VB.h/2.8});});
+$("#zout").addEventListener("click",()=>{const c={x:VB.x+VB.w/2,y:VB.y+VB.h/2};goVB({w:VB.w*1.4,h:VB.h*1.4,x:c.x-VB.w*0.7,y:c.y-VB.h*0.7});});
+$("#zfit").addEventListener("click",()=>{state.day=null;state.sel=null;renderAll();fitAll();});
+
+/* ============================================================
+   PANNEAU DE DÉTAIL
+   ============================================================ */
+const TLABEL={air:"Aéroport",vil:"Village",hot:"Hébergement",ref:"Refuge",cam:"Bivouac",kif:"Kiff",col:"Col / sommet"};
+const KLABEL={hike:"Rando",chill:"Repos",move:"Transit"};
+const MLABEL={hike:"À pied",car:"Route",plane:"Vol",boat:"Ferry"};
+const BOOK={todo:"À réserver",wait:"En attente",ok:"Confirmé"};
+
+function panelHTML(){
+  const sel=state.sel;
+  if(sel&&sel.type==="place")return placeHTML(sel.id);
+  if(sel&&sel.type==="seg")return segHTML(sel.id);
+  if(state.day)return dayHTML(state.day);
+  return overviewHTML();
+}
+function overviewHTML(){
+  const ds=effDays();
+  const km=ds.reduce((a,d)=>a+(d.km||0),0),dp=ds.reduce((a,d)=>a+(d.dp||0),0);
+  const nh=ds.filter(d=>d.kind==="hike").length;
+  return `<div class="ptype"><span>Vue d'ensemble</span><span>11 jours</span></div>
+    <h3>D'un bout à l'autre de l'île</h3>
+    <div class="facts">
+      <div class="fact"><u>Marche</u><b>${km} km</b></div>
+      <div class="fact"><u>Dénivelé</u><b>${dp} m</b></div>
+      <div class="fact"><u>Jours de rando</u><b>${nh}</b></div>
+    </div>
+    <p class="prose">De la pointe de São Lourenço à Porto Moniz par les crêtes et les levadas, puis trois jours à ne rien faire sur la côte ensoleillée.</p>
+    <div class="note"><b>Le sens est imposé.</b> Depuis avril 2026, le PR1 se parcourt uniquement de l'Areeiro vers le Pico Ruivo. Partir de l'ouest reviendrait à se priver de l'arête.</div>
+    <div class="go"><button class="mini" data-act="tab" data-v="cal">Ouvrir le calendrier</button></div>`;
+}
+function dayHTML(i){
+  const d=eff(DAYS.find(x=>x.i===i));
+  const hid=hiddenSegs();
+  const segs=SEGS.filter(g=>g.d===i&&!hid.has(g.id));
+  const notes={
+    4:`<div class="note warn"><b>Le créneau du PR1 se prend à l'Areeiro</b>, où vous arriverez vers midi depuis Ribeiro Frio. Réservez 13 h - 13 h 30 et partez à l'aube : la tolérance n'est que de quinze minutes, et rien n'est remboursé.</div>`,
+    2:`<div class="note">25 km, mais peu de dénivelé et du plat côtier. Si la fatigue du voyage se fait sentir, écourter le PR8 à mi-péninsule ne coûte rien.</div>`,
+    1:`<div class="note">Journée sans marche, exprès : Madère déroute régulièrement ses vols pour cause de vent. Un J1 vide absorbe le retard.</div>`,
+    5:`<div class="note warn"><b>Étape sous conditions.</b> La section Boca das Torrinhas → Encumeada reste fermée. Choix à trancher dans l'onglet Arbitrages.</div>`
+  };
+  return `<div class="ptype"><span>Jour ${d.i} · ${KLABEL[d.kind]}</span><span>${d.lbl}</span></div>
+    <h3>${esc(d.t)}</h3>
+    <div class="facts">
+      ${d.km?`<div class="fact"><u>Distance</u><b>${d.km} km</b></div>`:""}
+      ${d.dp?`<div class="fact"><u>D+</u><b>${d.dp} m</b></div>`:""}
+      <div class="fact"><u>Nuit</u><b style="font-size:12px">${esc(d.sleep)}</b></div>
+    </div>
+    <p class="prose">${esc(d.s)}</p>
+    <ul class="plist">
+      ${segs.map(g=>`<li><em>${MLABEL[g.m]}</em><button data-act="seg" data-id="${g.id}">${esc(g.l)}</button></li>`).join("")}
+      ${(d.places||[]).map(id=>PLACES[id]?`<li><em>${TLABEL[PLACES[id].t]}</em><button data-act="place" data-id="${id}">${esc(PLACES[id].n)}</button></li>`:"").join("")}
+    </ul>
+    ${notes[i]||""}
+    <div class="go"><button class="mini" data-act="fit" data-i="${i}">Cadrer la carte</button>
+    <button class="mini" data-act="clear">Tout l'itinéraire</button></div>`;
+}
+function segHTML(id){
+  const g=SEGS.find(x=>x.id===id);if(!g)return overviewHTML();
+  const d=eff(DAYS.find(x=>x.i===g.d));
+  return `<div class="ptype"><span>${MLABEL[g.m]} · jour ${g.d}</span><span>${d.lbl}</span></div>
+    <h3>${esc(g.l)}</h3>
+    ${(g.km||g.dp||g.fee)?`<div class="facts">
+      ${g.km?`<div class="fact"><u>Distance</u><b>${g.km} km</b></div>`:""}
+      ${g.dp?`<div class="fact"><u>D+</u><b>${g.dp} m</b></div>`:""}
+      ${g.fee?`<div class="fact"><u>Redevance</u><b style="font-size:12px">${esc(g.fee)}</b></div>`:""}
+    </div>`:""}
+    <p class="prose">${esc(g.det)}</p>
+    <ul class="plist"><li><em>Journée</em><button data-act="day" data-i="${g.d}">${esc(d.t)}</button></li></ul>
+    <div class="go"><button class="mini" data-act="fit" data-i="${g.d}">Cadrer la carte</button></div>`;
+}
+function placeHTML(id){
+  const p=PLACES[id];if(!p)return overviewHTML();
+  const st=p.stay,status=state.book[id]||"todo";
+  const link=st&&st.todo?TODOS.find(t=>t.id===st.todo):null;
+  return `<div class="ptype"><span>${TLABEL[p.t]}</span><span>${p.d.map(i=>"J"+i).join(" · ")}</span></div>
+    <h3>${esc(p.n)}</h3>
+    <p class="prose">${esc(p.k)}</p>
+    ${p.k2?`<p class="prose">${esc(p.k2)}</p>`:""}
+    ${st?`<div class="bookrow">
+      <div class="lbl">${esc(st.name)}${st.price?" · "+esc(st.price):""}</div>
+      <p class="prose" style="font-size:13.5px;margin-bottom:9px">${esc(st.note)}</p>
+      ${st.phone?`<div class="facts"><div class="fact"><u>Téléphone</u><b style="font-size:12.5px">${esc(st.phone)}</b></div></div>`:""}
+      <div class="lbl">Réservation${link?" — avant le "+fmtDate(link.g):""}</div>
+      <div class="seg3">
+        <button data-act="book" data-id="${id}" data-v="todo" aria-pressed="${status==="todo"}">${BOOK.todo}</button>
+        <button class="wait" data-act="book" data-id="${id}" data-v="wait" aria-pressed="${status==="wait"}">${BOOK.wait}</button>
+        <button class="ok" data-act="book" data-id="${id}" data-v="ok" aria-pressed="${status==="ok"}">${BOOK.ok}</button>
+      </div></div>`:""}
+    <ul class="plist">${p.d.map(i=>{const d=eff(DAYS.find(x=>x.i===i));return d?`<li><em>Jour ${i}</em><button data-act="day" data-i="${i}">${esc(d.t)}</button></li>`:"";}).join("")}</ul>
+    <div class="go"><button class="mini" data-act="zoom" data-id="${id}">Zoomer dessus</button>
+    ${link?`<button class="mini" data-act="tab" data-v="todo">Voir la tâche</button>`:""}</div>`;
+}
+function renderPanel(){
+  const html=panelHTML();
+  ["#panel","#panel2"].forEach(s=>{const el=$(s);if(el)el.innerHTML=html;});
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-act]");if(!b)return;
+  if(b.closest("label"))e.preventDefault();
+  const a=b.dataset.act;
+  if(a==="place"||a==="zoom"){select({type:"place",id:b.dataset.id});if(a==="zoom"){setTab("map");fitPlace(b.dataset.id);}}
+  else if(a==="seg")select({type:"seg",id:b.dataset.id});
+  else if(a==="day")selectDay(+b.dataset.i);
+  else if(a==="fit"){setTab("map");fitDay(+b.dataset.i);}
+  else if(a==="clear"){state.day=null;state.sel=null;renderAll();fitAll();save();}
+  else if(a==="tab")setTab(b.dataset.v);
+  else if(a==="book"){
+    const id=b.dataset.id,v=b.dataset.v;
+    state.book[id]=v;
+    const st=PLACES[id]&&PLACES[id].stay;
+    if(st&&st.todo){if(v==="ok")state.done[st.todo]=true;else delete state.done[st.todo];}
+    renderAll();save();
+  }
+  else if(a==="grp"){setTab("todo");const g=$("#g-"+b.dataset.g.replace(/-/g,""));if(g)g.scrollIntoView({behavior:REDUCE?"auto":"smooth",block:"center"});}
+});
+
+/* ============================================================
+   SÉLECTION
+   ============================================================ */
+function select(sel){
+  state.sel=sel;
+  if(sel&&sel.type==="seg")state.day=SEGS.find(x=>x.id===sel.id).d;
+  renderAll();save();
+}
+function selectDay(i){
+  const same=state.day===i&&!state.sel;
+  state.day=same?null:i;state.sel=null;
+  renderAll();
+  if(state.tab==="map")fitDay(state.day);
+  save();
+}
+
+/* ============================================================
+   RENDUS
+   ============================================================ */
+function renderRail(){
+  const r=$("#rail");
+  r.innerHTML=`<button class="rchip" data-i="0" aria-pressed="${!state.day}"><b>Tout</b></button>`+
+    effDays().map(d=>`<button class="rchip k-${d.kind}" data-i="${d.i}" aria-pressed="${state.day===d.i}"><i></i><b>J${d.i}</b> ${d.lbl.split(" ")[1]}</button>`).join("");
+  r.querySelectorAll(".rchip").forEach(b=>b.addEventListener("click",()=>{
+    const i=+b.dataset.i;state.day=i||null;state.sel=null;renderAll();fitDay(state.day);save();
+  }));
+}
+
+const MONTHS=[{y:2026,m:7},{y:2026,m:8},{y:2026,m:9}];
+const DOW=["lun","mar","mer","jeu","ven","sam","dim"];
+function renderCal(){
+  const {y,m}=MONTHS[state.month];
+  $("#mlabel").textContent=`${FRM[m].charAt(0).toUpperCase()+FRM[m].slice(1)} ${y}`;
+  $("#mprev").disabled=state.month===0;$("#mnext").disabled=state.month===MONTHS.length-1;
+  $("#mprev").style.opacity=state.month===0?.35:1;$("#mnext").style.opacity=state.month===MONTHS.length-1?.35:1;
+
+  const first=new Date(y,m,1),lead=(first.getDay()+6)%7;
+  const start=new Date(y,m,1-lead);
+  const dayByISO={};effDays().forEach(d=>{dayByISO[d.date]=d;});
+  const todos=activeTodos(),byG={};
+  todos.forEach(t=>{(byG[t.g]=byG[t.g]||[]).push(t);});
+  const todayISO=iso(TODAY);
+  let cells=DOW.map(d=>`<div class="dow">${d}</div>`).join("");
+  for(let k=0;k<42;k++){
+    const dt=new Date(start.getFullYear(),start.getMonth(),start.getDate()+k);
+    if(k>=35&&dt.getMonth()!==m)break;
+    const s=iso(dt),out=dt.getMonth()!==m,d=dayByISO[s],tl=byG[s]||[];
+    const cls=["cell"];if(out)cls.push("out");
+    if(s===todayISO)cls.push("today");
+    if(d&&state.day===d.i&&!state.sel)cls.push("sel");
+    cls.push(d?"act":"plain");
+    const tag=d?`<div class="stripe k-${d.kind}"></div><div class="ctitle">${esc(d.t)}</div>
+        <div class="cmeta">${d.km?d.km+" km · "+d.dp+" m<br>":""}<u>${d.sleep==="—"?"vol retour":esc(d.sleep)}</u></div>`:"";
+    const left=tl.filter(t=>!state.done[t.id]).length;
+    const dl=tl.length?`<div class="dl"><button class="dlchip ${left?"":"clear"}" data-act="grp" data-g="${s}" title="${left||tl.length} ${left?"à faire":"fait"}"><b>${left||tl.length}</b><span>${left?(left>1?"tâches":"tâche"):"fait"}</span></button></div>`:"";
+    cells+=`<${d?"button":"div"} class="${cls.join(" ")}" ${d?`data-day="${d.i}" aria-pressed="${state.day===d.i&&!state.sel}"`:""}>
+      <div class="dnum">${d?`<b>J${d.i}</b>`:""}<span>${dt.getDate()}${s===todayISO?' <s>auj.</s>':""}</span></div>
+      ${tag}${dl}</${d?"button":"div"}>`;
+  }
+  $("#calgrid").innerHTML=cells;
+  $("#calgrid").querySelectorAll("[data-day]").forEach(b=>b.addEventListener("click",e=>{
+    if(e.target.closest("[data-act]"))return;
+    selectDay(+b.dataset.day);
+  }));
+}
+function renderTrip(){
+  $("#trip").innerHTML=effDays().map(d=>`<button class="trow card" style="border-radius:0" data-i="${d.i}" aria-pressed="${state.day===d.i}">
+    <span class="tj">J${d.i}<u>${d.lbl}</u></span>
+    <span><span class="tt"><span class="pill k-${d.kind}">${KLABEL[d.kind]}</span>${esc(d.t)}</span><span class="ts">${esc(d.s)}</span></span>
+    <span class="tm">${d.km?d.km+" km<br>"+d.dp+" m D+<br>":""}${d.sleep==="—"?"vol retour":esc(d.sleep)}</span>
+  </button>`).join("");
+  $("#trip").querySelectorAll(".trow").forEach(b=>b.addEventListener("click",()=>selectDay(+b.dataset.i)));
+}
+function renderBars(){
+  const ds=effDays(),max=1600;
+  $("#bars").innerHTML=ds.map(d=>`<button class="bcol ${d.dp?"":"zero"}" data-i="${d.i}" aria-pressed="${state.day===d.i}" title="J${d.i} — ${d.dp} m D+">
+    <span class="bv">${d.dp||""}</span><span class="bb" style="height:${d.dp?Math.max(3,d.dp/max*100):1}%"></span></button>`).join("");
+  $("#blabs").innerHTML=ds.map(d=>`<span>J${d.i}</span>`).join("");
+  $("#bars").querySelectorAll(".bcol").forEach(b=>b.addEventListener("click",()=>selectDay(+b.dataset.i)));
+}
+function renderOpts(){
+  $("#opts").innerHTML=OPTIONS.map(o=>`<div class="optset">
+    <div class="oh">${esc(o.label)}</div><div class="oq">${esc(o.q)}</div><div class="osub">${esc(o.sub)}</div>
+    <div class="opts">${o.choices.map(c=>`<button class="opt" data-o="${o.id}" data-c="${c.id}" aria-pressed="${state.choices[o.id]===c.id}">
+      <span class="oname">${esc(c.n)}</span><span class="odesc">${esc(c.d)}</span><span class="oprice">${esc(c.p)}</span></button>`).join("")}</div></div>`).join("");
+  $("#opts").querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
+    state.choices[b.dataset.o]=b.dataset.c;
+    if(state.sel&&state.sel.type==="seg"&&hiddenSegs().has(state.sel.id))state.sel=null;
+    renderAll();save();
+  }));
+}
+function renderTodos(){
+  const list=activeTodos();
+  const groups=[...new Set(list.map(t=>t.g))].sort();
+  $("#todos").innerHTML=groups.map(g=>{
+    const items=list.filter(t=>t.g===g),left=items.filter(t=>!state.done[t.id]).length,dd=daysTo(g);
+    const u=dd<=10?"hot":dd<=30?"soon":"calm";
+    const lbl=dd<0?"dépassé":dd===0?"aujourd'hui":"dans "+dd+" j";
+    return `<div class="grp" id="g-${g.replace(/-/g,"")}">
+      <div class="ghead"><span class="gdate">Avant le ${fmtDate(g)}</span><span class="urg ${u}">${lbl}</span>
+      <span class="gcount">${left?left+" restante"+(left>1?"s":""):"terminé"}</span></div>`+
+      items.map(t=>`<label class="task ${state.done[t.id]?"done":""}" for="cb-${t.id}">
+        <input type="checkbox" id="cb-${t.id}" data-id="${t.id}" ${state.done[t.id]?"checked":""}>
+        <span class="tx"><span class="tt2">${esc(t.t)}</span><span class="tn2">${esc(t.n)}${t.place&&PLACES[t.place]?` <button class="jump" data-act="zoom" data-id="${t.place}">${esc(PLACES[t.place].n)} sur la carte</button>`:""}</span></span>
+        <span class="tg">${esc(t.tag)}</span></label>`).join("")+`</div>`;
+  }).join("");
+  $("#todos").querySelectorAll(".task input").forEach(c=>c.addEventListener("change",()=>{
+    if(c.checked)state.done[c.dataset.id]=true;else delete state.done[c.dataset.id];
+    renderTodos();renderCal();renderMetrics();renderTabs();save();
+  }));
+  const tot=list.length,done=list.filter(t=>state.done[t.id]).length;
+  $("#barfill").style.width=(tot?done/tot*100:0)+"%";
+  $("#pnum").textContent=`${done} / ${tot} fait${done>1?"s":""}`;
+}
+function renderInfos(){
+  $("#infos").innerHTML=INFOS.map(c=>`<div class="card infocard">
+    <h5>${c.h}</h5>
+    ${(c.p||[]).map(p=>`<p>${p}</p>`).join("")}
+    ${c.kv?`<ul class="kv">${c.kv.map(r=>`<li><span>${r[0]}</span><b>${r[1]}</b></li>`).join("")}</ul>`:""}
+  </div>`).join("");
+}
+function renderMetrics(){
+  const ds=effDays();
+  $("#m-count").innerHTML=`J−${Math.round((DEPART-TODAY)/864e5)}`;
+  $("#m-km").innerHTML=`${ds.reduce((a,d)=>a+(d.km||0),0)}<s>km</s>`;
+  $("#m-dp").innerHTML=`${ds.reduce((a,d)=>a+(d.dp||0),0)}<s>m</s>`;
+  const list=activeTodos(),left=list.filter(t=>!state.done[t.id]).length;
+  $("#m-todo").innerHTML=`${left}<s>/ ${list.length}</s>`;
+}
+
+/* ============================================================
+   ONGLETS
+   ============================================================ */
+const TABS=[{id:"map",l:"Carte"},{id:"cal",l:"Calendrier"},{id:"opt",l:"Arbitrages"},{id:"todo",l:"À faire"},{id:"info",l:"Repères"}];
+function renderTabs(){
+  const left=activeTodos().filter(t=>!state.done[t.id]).length;
+  const hot=activeTodos().filter(t=>!state.done[t.id]&&daysTo(t.g)<=10).length;
+  $("#tabs").innerHTML=TABS.map(t=>`<button class="tab" role="tab" data-t="${t.id}" aria-selected="${state.tab===t.id}" aria-controls="v-${t.id}">${t.l}${t.id==="todo"&&hot?`<em>${hot}</em>`:t.id==="todo"?`<i>${left}</i>`:""}</button>`).join("");
+  $("#tabs").querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>setTab(b.dataset.t)));
+}
+function setTab(id){
+  state.tab=id;
+  TABS.forEach(t=>{$("#v-"+t.id).hidden=(t.id!==id);});
+  renderTabs();
+  if(id==="map"){requestAnimationFrame(()=>{applyVB();syncMap();});}
+  save();
+}
+
+/* ============================================================
+   BOUCLE PRINCIPALE
+   ============================================================ */
+function renderAll(){
+  syncMap();renderRail();renderCal();renderTrip();renderBars();renderOpts();
+  renderTodos();renderPanel();renderMetrics();renderTabs();
+}
+
+load();
+buildMap();
+if(!TABS.some(t=>t.id===state.tab))state.tab="map";
+if(state.month<0||state.month>=MONTHS.length)state.month=2;
+setTab(state.tab);
+renderInfos();
+renderAll();
+applyVB();
+if(state.day)fitDay(state.day,false);
+setTimeout(()=>{booting=false;},400);
+
+$("#mprev").addEventListener("click",()=>{if(state.month>0){state.month--;renderCal();save();}});
+$("#mnext").addEventListener("click",()=>{if(state.month<MONTHS.length-1){state.month++;renderCal();save();}});
+$("#reset").addEventListener("click",()=>{
+  state=JSON.parse(JSON.stringify(DEFAULTS));
+  try{localStorage.removeItem(KEY);}catch(e){}
+  setTab("map");renderAll();fitAll(false);note("Réinitialisé");
+});
+document.addEventListener("keydown",e=>{
+  if(e.target.matches("input,textarea"))return;
+  if(e.key==="Escape"&&(state.sel||state.day)){state.day=null;state.sel=null;renderAll();fitAll();save();}
+});
+</script>
