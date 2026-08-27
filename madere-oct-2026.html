@@ -26,6 +26,7 @@
   --fly:#5E63A6;
   --warn:#C2410C;
   --warn-wash:#F7E2D5;
+  --heart:#C0455F;
   --ok:#3F6B3C;
   --shadow:0 1px 2px rgba(15,27,32,.06),0 8px 24px -14px rgba(15,27,32,.28);
   --ff-ui:"Archivo",system-ui,-apple-system,sans-serif;
@@ -55,6 +56,7 @@
     --fly:#9DA2EC;
     --warn:#F0904F;
     --warn-wash:#3A241A;
+  --heart:#F2879F;
     --ok:#7FB86D;
     --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -16px rgba(0,0,0,.7);
   }
@@ -80,6 +82,7 @@
   --fly:#9DA2EC;
   --warn:#F0904F;
   --warn-wash:#3A241A;
+  --heart:#F2879F;
   --ok:#7FB86D;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -16px rgba(0,0,0,.7);
 }
@@ -95,6 +98,22 @@ body{
 .mono{font-family:var(--ff-mono)}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+
+/* — pour Lulu — */
+.hrt{color:var(--heart);font-style:normal}
+#lulu{border:0;padding:0;font:inherit;color:inherit;cursor:pointer;border-bottom:1px dotted transparent}
+#lulu:hover{border-bottom-color:var(--heart)}
+#lulu .hrt{opacity:0;margin-left:3px;display:inline-block;transition:opacity .3s,transform .3s;transform:scale(.6)}
+#lulu.on .hrt{opacity:1;transform:scale(1)}
+.hearts{position:fixed;inset:0;pointer-events:none;z-index:99;overflow:hidden}
+.hearts span{position:absolute;bottom:-30px;color:var(--heart);font-size:18px;animation:rise 4.2s cubic-bezier(.3,.7,.5,1) forwards}
+@keyframes rise{0%{transform:translateY(0) scale(.6);opacity:0}
+  12%{opacity:.9}70%{opacity:.75}100%{transform:translateY(-98vh) scale(1.1) rotate(12deg);opacity:0}}
+.lovenote{position:fixed;left:50%;bottom:34px;transform:translateX(-50%);z-index:100;
+  background:var(--card);border:1px solid var(--heart);color:var(--text);border-radius:999px;
+  padding:8px 16px;font-size:13.5px;box-shadow:var(--shadow);animation:pop .3s ease-out}
+@keyframes pop{from{opacity:0;transform:translateX(-50%) translateY(8px)}}
+@media (prefers-reduced-motion:reduce){.hearts{display:none}}
 
 /* ---------- masthead ---------- */
 .mast{display:flex;flex-wrap:wrap;gap:18px 26px;align-items:flex-end;justify-content:space-between;padding:26px 0 18px}
@@ -179,6 +198,10 @@ h1 span{color:var(--accent)}
 #map .pr1n circle{fill:var(--hike);stroke:var(--card);stroke-width:1.4}
 #map .pr1n text{font-family:var(--ff-mono);font-size:9px;font-weight:700;fill:var(--card);text-anchor:middle}
 #map .pr1g{transform:scale(var(--zf,1))}
+#map .lovemk path{fill:var(--heart);stroke:var(--card);stroke-width:1.2;stroke-linejoin:round}
+#map .lovesc{transform:scale(var(--zf,1))}
+#map .lovemk{opacity:0;transition:opacity .4s}
+#map .lovemk.on{opacity:1}
 #map .seg.is-dim .seg-line{opacity:.13}
 #map .seg.is-on .seg-line{stroke-width:5}
 #map .seg.r-pr1.is-on .seg-line{stroke-width:6}
@@ -225,6 +248,7 @@ h1 span{color:var(--accent)}
 .side .pnl .go{margin-top:12px;display:flex;gap:6px;flex-wrap:wrap}
 .mini{border:1px solid var(--line);border-radius:6px;padding:5px 10px;font-family:var(--ff-mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-2)}
 .mini:hover{border-color:var(--text);color:var(--text)}
+a.mini{text-decoration:none;display:inline-block}
 
 /* booking control */
 .bookrow{margin-top:12px;border-top:1px solid var(--line-2);padding-top:11px}
@@ -345,6 +369,9 @@ h1 span{color:var(--accent)}
 .kv span{color:var(--text-2)}
 .kv b{font-family:var(--ff-mono);font-size:12.5px;font-weight:500;white-space:nowrap;font-variant-numeric:tabular-nums}
 .infocard a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+.linkrow{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+.linkrow a{border:1px solid var(--line);border-radius:6px;padding:5px 9px;font-family:var(--ff-mono);font-size:10.5px;letter-spacing:.04em;text-decoration:none;color:var(--text-2)}
+.linkrow a:hover{border-color:var(--accent);color:var(--accent)}
 
 footer{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:24px 0 0;margin-top:12px;border-top:1px solid var(--line)}
 .saved{font-family:var(--ff-mono);font-size:10.5px;color:var(--text-3);display:inline-flex;align-items:center;gap:7px}
@@ -382,7 +409,7 @@ footer{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:24px 0 0;
       <h1>Madère<br><span>15 → 25 octobre 2026</span></h1>
       <div class="who">
         <span><b>Hugo</b> Paris</span>
-        <span><b>Lucille</b> Londres</span>
+        <span><button id="lulu" aria-label="Lulu"><b>Lucille</b> Londres<i class="hrt">♥</i></button></span>
         <span>RDV <b>FNC</b>, hall d'arrivée</span>
       </div>
     </div>
@@ -595,7 +622,8 @@ const SEGS = [
      alt = variante pilotée par un arbitrage. */
   {id:"s1-fly",d:1,m:"plane",r:"move",l:"Vols vers Funchal",det:"Orly → FNC en 3 h 50 (Transavia) · Gatwick → FNC (easyJet, BA, Jet2). Un seul terminal, une seule salle d'arrivée.",
    p:[[32.50,-16.30],[32.62,-16.55],[32.6979,-16.7745]]},
-  {id:"s1-bus",d:1,m:"bus",r:"move",l:"FNC → Caniçal",det:"Bus 113 (SAM) ou taxi, 20 min, ~30 € la course. Arrêt au Continente de Machico pour la cartouche de gaz, interdite en avion.",
+  {id:"s1-bus",d:1,m:"bus",r:"move",l:"SAM 113 · FNC → Caniçal",det:"La 113 relie Funchal à Machico et Caniçal ; l'aéroport est sur plusieurs lignes SAM, vérifier l'arrêt exact sur SIGA. Sinon taxi, 20 min, ~30 € la course. Arrêt au Continente de Machico pour la cartouche de gaz, interdite en avion.",
+   url:"https://www.sam.pt/en/11-hor%C3%A1rios/carreiras.html",urlLabel:"Horaires SAM",url2:"https://siga.madeira.gov.pt/horarios",url2Label:"Recherche SIGA",
    p:[[32.6979,-16.7745],[32.7186,-16.7669],[32.7290,-16.7480],[32.7398,-16.7375]]},
 
   {id:"s2-nav",d:2,m:"car",r:"move",l:"Navette vers la Baía d'Abra",det:"Caniçal → départ du PR8, 10 min. Se faire déposer, revenir à pied ou en taxi.",
@@ -633,7 +661,8 @@ const SEGS = [
    p:[[32.7530,-16.9740],[32.7600,-16.9800],[32.7680,-16.9830]]},
   {id:"s5-pr12",d:5,m:"hike",r:"village",l:"Repli ② PR1.2 → Achada do Teixeira",det:"4,5 km de descente depuis le Ruivo jusqu'au parking à 1 590 m.",km:5,dp:150,alt:1,
    p:[[32.7583,-16.9425],[32.7640,-16.9370],[32.7690,-16.9270]]},
-  {id:"s5-taxi",d:5,m:"car",r:"move",l:"Taxi de montagne vers l'Encumeada",det:"Achada do Teixeira ou Curral das Freiras → Boca da Encumeada, 45 min, ~60-70 € la course. Le refuge a les numéros.",alt:1,
+  {id:"s5-taxi",d:5,m:"car",r:"move",l:"Taxi de montagne vers l'Encumeada",det:"Achada do Teixeira ou Curral das Freiras → Boca da Encumeada, 45 min, ~60-70 € la course. Plusieurs compagnies se sont spécialisées dans les navettes de randonneurs et connaissent ces points de dépose. Le refuge a aussi les numéros.",alt:1,
+   url:"https://yourtaximadeira.com/",urlLabel:"Your Taxi Madeira",url2:"https://danielmadeirataxis.com/levada-walks/",url2Label:"Daniel Madeira Taxis",
    p:[[32.7690,-16.9270],[32.7800,-16.9600],[32.7700,-17.0000],[32.7560,-17.0180]]},
 
   {id:"s6-trek",d:6,m:"hike",r:"trek",l:"Levada do Norte → Rabaçal",det:"Les tunnels de la Levada do Norte, puis la traversée du plateau jusqu'au départ de Rabaçal.",km:12,dp:280,
@@ -651,24 +680,28 @@ const SEGS = [
    p:[[32.8390,-17.1620],[32.8540,-17.1700],[32.8669,-17.1660]]},
 
   /* Seconde moitié — le jeu de tracés dépend de l'arbitrage « Sur place » */
-  {id:"s8-bus",d:8,m:"bus",r:"move",l:"Bus 139 Porto Moniz → Ponta do Sol",det:"La Rodoeste 139 descend la côte ouest par Prazeres et Calheta. Environ 2 h, ~6 €/pers. Horaires à vérifier sur rodoeste.pt.",alt:1,
+  {id:"s8-bus",d:8,m:"bus",r:"move",l:"Bus 80 Porto Moniz → Ponta do Sol",det:"La ligne de la côte ouest est la 80, pas la 139 — la 139 passe par le tunnel de l'Encumeada, au nord. Un seul départ par jour : Porto Moniz 16 h 00, Calheta 17 h 30, Ponta do Sol vers 17 h 45, Funchal 19 h 40. Donc matinée aux piscines, bus l'après-midi. ~6 €/pers.",alt:1,
+   url:"https://www.rodoeste.com.pt/assets/front/pdf/schedules/locality/PORTO%20MONIZ.pdf",urlLabel:"Horaires Porto Moniz (PDF)",url2:"https://www.rodoeste.com.pt/assets/front/pdf/schedules/locality/PONTA%20DO%20SOL.pdf",url2Label:"Horaires Ponta do Sol (PDF)",
    p:[[32.8669,-17.1660],[32.8330,-17.1980],[32.8010,-17.2330],[32.7640,-17.2160],[32.7330,-17.1900],[32.7191,-17.1734],[32.6890,-17.1290],[32.6797,-17.1036]]},
   {id:"s8-car",d:8,m:"car",r:"move",l:"Porto Moniz → Ponta do Sol en voiture",det:"1 h 15 par la côte ouest. Aucun loueur à Porto Moniz : il faut faire livrer la voiture, 40 à 60 € de plus.",alt:1,
    p:[[32.8669,-17.1660],[32.8330,-17.1980],[32.8010,-17.2330],[32.7640,-17.2160],[32.7330,-17.1900],[32.7191,-17.1734],[32.6890,-17.1290],[32.6797,-17.1036]]},
 
-  {id:"s9-bus",d:9,m:"bus",r:"move",l:"Bus 115 vers Calheta, taxi pour Paul do Mar",det:"Le 115 longe la côte, ~4 €/pers. Paul do Mar se mérite : quatre cents mètres de falaise, taxi ~35 € l'aller.",alt:1,
+  {id:"s9-bus",d:9,m:"bus",r:"move",l:"Bus 107 vers Calheta et Paul do Mar",det:"La 107 Funchal – Paúl do Mar dessert Ponta do Sol et la côte, ~4 €/pers. Attention : elle se fait en deux temps (139 jusqu'à Ribeira Brava, 146 ensuite). Pour Paul do Mar, le taxi reste plus simple : ~35 € l'aller.",alt:1,
+   url:"https://www.rodoeste.com.pt/assets/front/pdf/schedules/locality/PONTA%20DO%20SOL.pdf",urlLabel:"Horaires Ponta do Sol (PDF)",
    p:[[32.6797,-17.1036],[32.7000,-17.1500],[32.7191,-17.1734],[32.7400,-17.2100],[32.7570,-17.2260]]},
   {id:"s9-car",d:9,m:"car",r:"move",l:"Calheta, Jardim do Mar, Paul do Mar",det:"Plage le matin, sortie dauphins et baleines, poisson grillé sous la falaise.",alt:1,
    p:[[32.6797,-17.1036],[32.7000,-17.1500],[32.7191,-17.1734],[32.7400,-17.2100],[32.7570,-17.2260]]},
   {id:"s9-boat",d:9,m:"boat",r:"move",l:"Ferry Lobo Marinho vers Porto Santo",det:"2 h 30 depuis Funchal, ~49 € l'aller-retour hors saison. Variante de la seconde moitié.",alt:1,
    p:[[32.6497,-16.9083],[32.7600,-16.7800],[32.8820,-16.6620]]},
 
-  {id:"s10-taxi",d:10,m:"car",r:"move",l:"Taxi Ponta do Sol → Cabo Girão → Funchal",det:"Une seule course avec arrêt au skywalk, ~65 € à deux. Ou bus 115 puis le téléphérique du Girão.",alt:1,
+  {id:"s10-taxi",d:10,m:"car",r:"move",l:"Taxi Ponta do Sol → Cabo Girão → Funchal",det:"Une seule course avec arrêt au skywalk, ~65 € par voiture. Sinon Ponta do Sol → Funchal est très bien desservi en semaine (lignes 4, 107, 115, 142, 146), beaucoup moins le dimanche — et le 24 octobre est un samedi.",alt:1,
+   url:"https://www.rodoeste.com.pt/assets/front/pdf/schedules/locality/PONTA%20DO%20SOL.pdf",urlLabel:"Horaires Ponta do Sol (PDF)",url2:"https://www.madeirataxitours.com/",url2Label:"Madeira Taxi Tours",
    p:[[32.6797,-17.1036],[32.6740,-17.0600],[32.6560,-17.0000],[32.6490,-16.9700],[32.6497,-16.9083]]},
   {id:"s10-car",d:10,m:"car",r:"move",l:"Cabo Girão → Câmara de Lobos → Funchal",det:"Skywalk, le port des pêcheurs, puis le marché et Monte.",alt:1,
    p:[[32.6797,-17.1036],[32.6740,-17.0600],[32.6560,-17.0000],[32.6490,-16.9700],[32.6497,-16.9083]]},
 
-  {id:"s11-taxi",d:11,m:"car",r:"move",l:"Taxi Funchal → aéroport",det:"Vingt-cinq minutes, ~28 € la course, tarif habituel et stable.",alt:1,
+  {id:"s11-taxi",d:11,m:"car",r:"move",l:"Taxi Funchal → aéroport",det:"Vingt-cinq minutes, ~28 € la course, tarif habituel et stable. Réservable en ligne à l'avance, ce qui évite de négocier un dimanche matin.",alt:1,
+   url:"https://yourtaximadeira.com/",urlLabel:"Your Taxi Madeira",url2:"https://www.madeira-airport-taxis.com/",url2Label:"Madeira Airport Taxis",
    p:[[32.6497,-16.9083],[32.6889,-16.7930],[32.6979,-16.7745]]},
   {id:"s11-car",d:11,m:"car",r:"move",l:"Funchal → aéroport, restitution",det:"Vingt-cinq minutes par la via rápida, voiture rendue au comptoir de l'aéroport.",alt:1,
    p:[[32.6497,-16.9083],[32.6889,-16.7930],[32.6979,-16.7745]]},
@@ -688,7 +721,7 @@ const DAYS = [
    km:20,dp:1060,sleep:"Ribeiro Frio",places:["portela","rfrio"]},
   {i:4,date:"2026-10-18",lbl:"dim. 18 oct",kind:"hike",t:"L'arête",
    s:"Balcões à l'aube, longue montée sur l'Areeiro, puis le PR1 jusqu'au toit de l'île.",
-   km:21,dp:1500,sleep:"Refuge du Pico Ruivo",places:["balcoes","areeiro","ruivo"]},
+   km:21,dp:1500,sleep:"Refuge du Pico Ruivo",places:["balcoes","areeiro","ruivo"],love:"Une nuit à 1 760 m, tous les deux, et le gardien qui allume la cheminée."},
   {i:5,date:"2026-10-19",lbl:"lun. 19 oct",kind:"hike",t:"La crête vers l'Encumeada",
    s:"Lever de soleil au Ruivo, puis la ligne de crête plein ouest. Étape sous conditions.",
    km:21,dp:1080,sleep:"Encumeada",places:["torrinhas","encumeada"]},
@@ -703,7 +736,7 @@ const DAYS = [
    km:0,dp:0,sleep:"Ponta do Sol",places:["pmoniz","psol"]},
   {i:9,date:"2026-10-23",lbl:"ven. 23 oct",kind:"chill",t:"Plage et bateau",
    s:"Sable de Calheta, sortie dauphins et baleines, poisson grillé à Paul do Mar.",
-   km:0,dp:0,sleep:"Ponta do Sol",places:["calheta","pauldomar"]},
+   km:0,dp:0,sleep:"Ponta do Sol",places:["calheta","pauldomar"],love:"Poisson grillé les pieds dans l'eau, sous quatre cents mètres de falaise."},
   {i:10,date:"2026-10-24",lbl:"sam. 24 oct",kind:"chill",t:"Funchal",
    s:"Cabo Girão sur la route, marché des Lavradores, téléphérique de Monte, dernier dîner en ville.",
    km:0,dp:0,sleep:"Funchal",places:["girao","funchal"]},
@@ -753,14 +786,14 @@ const OPTIONS = [
    sub:"À Madère le taxi se facture par voiture, pas par personne : à deux, l'écart avec la location fond. Et aucun loueur n'est implanté à Porto Moniz, donc la voiture démarre avec une livraison à payer.",
    choices:[
     {id:"roule-zero",n:"Zéro voiture — bus + taxis",p:"≈ 115–165 € à deux · recommandé",
-     d:"Bus 139 pour descendre à Ponta do Sol (12 € à deux), bus 115 le long de la côte, et trois taxis ciblés : Paul do Mar, le Cabo Girão, l'aéroport. On ne conduit pas sur les routes de la côte ouest, et on boit de la poncha au dîner."},
+     d:"Bus 80 pour descendre à Ponta do Sol (12 € à deux, un seul départ à 16 h), bus 107 le long de la côte, et trois taxis ciblés : Paul do Mar, le Cabo Girão, l'aéroport. On ne conduit pas sur les routes de la côte ouest, et on boit de la poncha au dîner."},
     {id:"roule-2j",n:"Voiture deux jours",p:"≈ 135 € à deux",
-     d:"Bus jusqu'à Ponta do Sol le J8, voiture livrée sur place pour les deux journées de balade, rendue à l'aéroport le J11. Le compromis : la liberté quand elle sert, rien à payer quand on ne roule pas."},
+     d:"Bus 80 jusqu'à Ponta do Sol le J8, voiture livrée sur place pour les deux journées de balade, rendue à l'aéroport le J11. Le compromis : la liberté quand elle sert, rien à payer quand on ne roule pas."},
     {id:"roule-4j",n:"Voiture quatre jours",p:"≈ 200–240 € à deux",
      d:"Location du 22 au 25. Aucun loueur à Porto Moniz : livraison sur place (40–60 €) ou bus jusqu'à Funchal d'abord. Le plus libre, le plus cher, et deux heures de lacets par jour."}
    ],todos:{"roule-zero":["t-bus","t-taxis"],"roule-2j":["t-bus","t-voiture2"],"roule-4j":["t-voiture"]},
-   day:{8:{"roule-zero":{s:"Grasse matinée, piscines naturelles dans la lave, puis le bus 139 descend toute la côte ouest : deux heures de fenêtre panoramique pour douze euros à deux."},
-          "roule-2j":{s:"Piscines naturelles le matin, bus 139 jusqu'à Ponta do Sol. La voiture n'arrive que demain matin."},
+   day:{8:{"roule-zero":{s:"Grasse matinée, piscines naturelles dans la lave — le bus 80 ne part qu'à 16 h, donc la journée est à nous. Ensuite trois heures de fenêtre panoramique sur toute la côte ouest, pour douze euros à deux."},
+          "roule-2j":{s:"Piscines naturelles et déjeuner sur place, bus 80 de 16 h jusqu'à Ponta do Sol. La voiture n'arrive que demain matin."},
           "roule-4j":{s:"Piscines naturelles, récupération de la voiture livrée à Porto Moniz, puis la côte ouest à son rythme."}},
        11:{"roule-zero":{s:"Dernière matinée à Funchal, taxi pour l'aéroport (~28 € la course). Viser un vol d'après-midi."}}},
    segs:{"roule-zero":["s8-bus","s9-bus","s10-taxi","s11-taxi"],
@@ -820,7 +853,7 @@ const TODOS = [
   {id:"t-prs",g:"2026-10-01",t:"Les autres créneaux PR",tag:"sentier",
    n:"PR8, PR10, PR1.2, PR6 et PR6.1, PR13, PR14. 4,50 €/pers. et par sentier, 3 € en passant par un opérateur agréé. Le PR10 a un quota journalier et vient de rouvrir : le prendre en premier après le PR1. Garder le 20 octobre non réservé comme journée tampon."},
   {id:"t-bus",g:"2026-10-01",t:"Imprimer les horaires Rodoeste 139 et 115",tag:"transport",opt:"roule",place:"pmoniz",
-   n:"Le 139 Porto Moniz → Ponta do Sol par Prazeres et Calheta, deux heures. Peu de départs, et rien ne garantit qu'ils collent au dimanche : vérifier sur rodoeste.pt et avoir un plan taxi de secours."},
+   n:"C'est la ligne 80 (Porto Moniz → Calheta → Ponta do Sol → Funchal), pas la 139. Un seul départ par jour, 16 h 00 de Porto Moniz. Le 22 octobre est un jeudi, donc horaire de semaine — mais imprimer la fiche et garder un numéro de taxi, un bus unique ne pardonne pas."},
   {id:"t-taxis",g:"2026-10-01",t:"Réserver les trois taxis de la seconde moitié",tag:"transport",opt:"roule",
    n:"Paul do Mar le J9 (~35 € l'aller), Ponta do Sol → Cabo Girão → Funchal le J10 (~65 €), Funchal → aéroport le J11 (~28 €). Prix par voiture, pas par personne : à deux c'est ce qui rend la formule sans voiture rentable."},
   {id:"t-voiture2",g:"2026-10-01",t:"Louer la voiture du 23 au 25, livrée à Ponta do Sol",tag:"transport",opt:"roule",place:"psol",
@@ -865,8 +898,17 @@ const INFOS = [
    kv:[["Longueur officielle","95,5 km"],["Notre total","128 km"],["L'écart","allers-retours + descentes au village"]],
    p2:["Le dénivelé monte ensuite en marche d'escalier — 250, 630, 1 060, 1 500 m — et on finit face aux piscines de Porto Moniz, avec la côte ensoleillée juste en dessous."]},
 
-  {h:"Ce qui a bougé cet été",p:["<b>PR10 Levada do Furado — rouvert le 28 juillet 2026</b> après plusieurs mois de travaux : il était encore fermé en janvier pour glissement de terrain et chaussée endommagée. Toute la journée du 17 octobre en dépend, donc à revérifier une dernière fois mi-octobre.","<b>PR1 — rouvert le 27 avril</b>, week-ends seulement d'abord, puis tous les jours depuis le 26 juin.","<b>PR1.3 — toujours coupé</b> entre Boca das Torrinhas et l'Encumeada. C'est le seul point noir qui reste."],
-   kv:[["PR10","ouvert · quota journalier"],["PR1","ouvert · sens unique"],["PR1.3","partiel"],["Tarif PR via opérateur agréé","3 € au lieu de 4,50 €"]]},
+  {h:"Ce qui a bougé cet été",p:["<b>PR10 Levada do Furado — rouvert le 28 juillet 2026</b> après plusieurs mois de travaux : il était encore fermé en janvier pour glissement de terrain et chaussée endommagée. Toute la journée du 17 octobre en dépend, donc à revérifier une dernière fois mi-octobre.","<b>PR1 — rouvert le 27 avril</b>, week-ends seulement d'abord, puis tous les jours depuis le 26 juin.","<b>PR1.3 — toujours coupé</b>, vérifié le 26 août 2026 sur visitmadeira. Statut « Restreint », et le texte officiel dit : « la section restante du PR 1.3 entre Boca das Torrinhas et l'Encumeada restera fermée. Depuis Boca das Torrinhas, les randonneurs peuvent continuer par le PR 2 Vereda do Urzal, vers Curral das Freiras ou Boaventura. » Rien n'a bougé depuis la réouverture partielle de juin."],
+   kv:[["PR10","ouvert · quota journalier"],["PR1","ouvert · sens unique"],["PR1.3","restreint · 3,9 km ouverts"],["PR2 Urzal","ouvert · l'échappatoire"],["Tarif PR via opérateur agréé","3 € au lieu de 4,50 €"]],
+   p2:["Un dernier piège : les agrégateurs de statut se contredisent — l'un d'eux donnait encore le PR10 fermé aujourd'hui alors que la page officielle le dit ouvert. Ne se fier qu'à visitmadeira."],
+   links:[["PR1.3 officiel","https://visitmadeira.com/en/what-to-do/nature-seekers/activities/hiking/pr-13-vereda-da-encumeada/"],["PR10 officiel","https://visitmadeira.com/en/what-to-do/nature-seekers/activities/hiking/pr-10-levada-do-furado/"]]},
+
+  {h:"Les bus, pour de vrai",p:["<b>J1 — SAM 113</b>, Funchal → Machico → Caniçal. L'aéroport est desservi par plusieurs lignes SAM : vérifier l'arrêt exact sur SIGA, le moteur de recherche régional.","<b>J8 — Rodoeste 80</b>, et pas la 139 : c'est elle qui longe la côte ouest, la 139 passe au nord par le tunnel de l'Encumeada. <b>Un seul départ par jour</b> — Porto Moniz 16 h 00, Calheta 17 h 30, Ponta do Sol ~17 h 45, Funchal 19 h 40. La matinée aux piscines est donc gratuite, mais rater ce bus coûte un taxi à 90 €.","<b>J9 et J10</b> — Ponta do Sol est bien relié (lignes 4, 107, 115, 142, 146), sauf le dimanche. Le 24 octobre est un samedi : service réduit, à vérifier la veille."],
+   links:[["Rodoeste — Porto Moniz (PDF)","https://www.rodoeste.com.pt/assets/front/pdf/schedules/locality/PORTO%20MONIZ.pdf"],["Rodoeste — Ponta do Sol (PDF)","https://www.rodoeste.com.pt/assets/front/pdf/schedules/locality/PONTA%20DO%20SOL.pdf"],["SAM","https://www.sam.pt/en/11-hor%C3%A1rios/carreiras.html"],["SIGA — recherche d'horaires","https://siga.madeira.gov.pt/horarios"],["Rodoeste","https://www.rodoeste.com.pt/"]]},
+
+  {h:"Les taxis, réservables",p:["Rappel qui change tout à deux : <b>le prix est par voiture</b>. Plusieurs compagnies se sont spécialisées dans les navettes de randonneurs et connaissent les points de dépose en montagne — Achada do Teixeira, Encumeada, Rabaçal — ce qui évite d'expliquer où on va."],
+   kv:[["Funchal → aéroport","~28 €"],["Ponta do Sol → Girão → Funchal","~65 €"],["Ponta do Sol ↔ Paul do Mar","~35 € l'aller"],["Achada do Teixeira → Encumeada","~60-70 €"],["Porto Moniz → Ponta do Sol","~90 €"]],
+   links:[["Your Taxi Madeira","https://yourtaximadeira.com/"],["Daniel Madeira Taxis","https://danielmadeirataxis.com/levada-walks/"],["Madeira Taxi Tours","https://www.madeirataxitours.com/"],["Pico Transfers","https://www.picotransfers.com/"],["Madeira Airport Taxis","https://www.madeira-airport-taxis.com/"]]},
 
   {h:"Les trois avertissements",p:["<b>Eau</b> — ne jamais boire l'eau des levadas, c'est de l'eau agricole. 2,5 L par personne, filtre, remplissage aux fontaines de village. Les aires de bivouac ne sont pas alimentées.","<b>Orientation</b> — la traversée n'est pas un GR : pas de balisage continu, brouillard fréquent, tracés modifiés. GPX hors ligne sur deux téléphones.","<b>Météo</b> — la côte reste en fin d'été, ~25 °C et mer à 24 °C, mais les premières vraies pluies reviennent sur le nord et les hauteurs, surtout en fin de mois. La traversée longe le nord."]},
 
@@ -1153,6 +1195,13 @@ function buildMap(){
       +`<g class="pl-i"><circle class="pl-hit" r="15"/><circle class="pl-ring" r="10.5"/>${shape}</g>`
       +`<g class="pl-l"><text class="pl-lab" x="${la==="r"?11:la==="l"?-11:0}" y="${la==="t"?-11:la==="b"?15:3.6}" text-anchor="${la==="r"?"start":la==="l"?"end":"middle"}">${esc(p.sn||p.n)}</text></g></g>`;
   });
+  s+=`</g><g id="l-love">`;
+  {
+    const r=PLACES.ruivo,hx=px(r.lon)+13,hy=py(r.lat)-13;
+    s+=`<g class="lovemk" transform="translate(${hx.toFixed(1)},${hy.toFixed(1)})"><g class="lovesc">`
+      +`<path d="M0,4.4 C-6.2,-0.9 -6.2,-6.2 -2.6,-6.2 C-1.1,-6.2 0,-5 0,-3.9 C0,-5 1.1,-6.2 2.6,-6.2 C6.2,-6.2 6.2,-0.9 0,4.4 Z"/>`
+      +`<title>Une nuit à 1 760 m, tous les deux</title></g></g>`;
+  }
   s+=`</g><g id="l-pr1">`;
   SEGS.filter(g=>g.r==="pr1").forEach(g=>{
     const pts=segXY(g),mid=pts[Math.floor(pts.length/2)];
@@ -1177,6 +1226,7 @@ function syncMap(){
   const hid=hiddenSegs(),vis=visiblePlaces(),day=state.day,sel=state.sel;
   const zf=VB.w/W,pr1On=(day===4||zf<0.42);   // sinon les quatre pastilles se chevauchent
   svg.querySelectorAll(".pr1n").forEach(g=>{g.style.display=pr1On?"":"none";});
+  const lm=svg.querySelector(".lovemk");if(lm)lm.classList.toggle("on",day===4||day===5);
   svg.querySelectorAll(".seg").forEach(g=>{
     const id=g.dataset.id,dd=+g.dataset.day;
     const hidden=hid.has(id);
@@ -1342,13 +1392,14 @@ function dayHTML(i){
     5:`<div class="note warn"><b>Étape sous conditions.</b> La section Boca das Torrinhas → Encumeada reste fermée. Choix à trancher dans l'onglet Arbitrages.</div>`
   };
   return `<div class="ptype"><span>Jour ${d.i} · ${KLABEL[d.kind]}</span><span>${d.lbl}</span></div>
-    <h3>${esc(d.t)}</h3>
+    <h3>${esc(d.t)}${d.love?` <i class="hrt">♥</i>`:""}</h3>
     <div class="facts">
       ${d.km?`<div class="fact"><u>Distance</u><b>${d.km} km</b></div>`:""}
       ${d.dp?`<div class="fact"><u>D+</u><b>${d.dp} m</b></div>`:""}
       <div class="fact"><u>Nuit</u><b style="font-size:12px">${esc(d.sleep)}</b></div>
     </div>
     <p class="prose">${esc(d.s)}</p>
+    ${d.love?`<p class="prose" style="color:var(--heart)">${esc(d.love)}</p>`:""}
     <ul class="plist">
       ${segs.map(g=>`<li><em>${segLabel(g)}</em><button data-act="seg" data-id="${g.id}">${esc(g.l)}</button></li>`).join("")}
       ${(d.places||[]).map(id=>PLACES[id]?`<li><em>${TLABEL[PLACES[id].t]}</em><button data-act="place" data-id="${id}">${esc(PLACES[id].n)}</button></li>`:"").join("")}
@@ -1369,6 +1420,10 @@ function segHTML(id){
     </div>`:""}
     <p class="prose">${esc(g.det)}</p>
     <ul class="plist"><li><em>Journée</em><button data-act="day" data-i="${g.d}">${esc(d.t)}</button></li></ul>
+    ${(g.url||g.url2)?`<div class="go">
+      ${g.url?`<a class="mini" href="${g.url}" target="_blank" rel="noopener noreferrer">${esc(g.urlLabel||"Horaires")} ↗</a>`:""}
+      ${g.url2?`<a class="mini" href="${g.url2}" target="_blank" rel="noopener noreferrer">${esc(g.url2Label)} ↗</a>`:""}
+    </div>`:""}
     <div class="go"><button class="mini" data-act="fit" data-i="${g.d}">Cadrer la carte</button></div>`;
 }
 function placeHTML(id){
@@ -1468,7 +1523,7 @@ function renderCal(){
     if(s===todayISO)cls.push("today");
     if(d&&state.day===d.i&&!state.sel)cls.push("sel");
     cls.push(d?"act":"plain");
-    const tag=d?`<div class="stripe k-${d.kind}"></div><div class="ctitle">${esc(d.t)}</div>
+    const tag=d?`<div class="stripe k-${d.kind}"></div><div class="ctitle">${esc(d.t)}${d.love?` <i class="hrt" title="${esc(d.love)}">♥</i>`:""}</div>
         <div class="cmeta">${d.km?d.km+" km · "+d.dp+" m<br>":""}<u>${d.sleep==="—"?"vol retour":esc(d.sleep)}</u></div>`:"";
     const left=tl.filter(t=>!state.done[t.id]).length;
     const dl=tl.length?`<div class="dl"><button class="dlchip ${left?"":"clear"}" data-act="grp" data-g="${s}" title="${left||tl.length} ${left?"à faire":"fait"}"><b>${left||tl.length}</b><span>${left?(left>1?"tâches":"tâche"):"fait"}</span></button></div>`:"";
@@ -1485,7 +1540,7 @@ function renderCal(){
 function renderTrip(){
   $("#trip").innerHTML=effDays().map(d=>`<button class="trow card" style="border-radius:0" data-i="${d.i}" aria-pressed="${state.day===d.i}">
     <span class="tj">J${d.i}<u>${d.lbl}</u></span>
-    <span><span class="tt"><span class="pill k-${d.kind}">${KLABEL[d.kind]}</span>${esc(d.t)}</span><span class="ts">${esc(d.s)}</span></span>
+    <span><span class="tt"><span class="pill k-${d.kind}">${KLABEL[d.kind]}</span>${esc(d.t)}${d.love?` <i class="hrt" title="${esc(d.love)}">♥</i>`:""}</span><span class="ts">${esc(d.s)}</span></span>
     <span class="tm">${d.km?d.km+" km<br>"+d.dp+" m D+<br>":""}${d.sleep==="—"?"vol retour":esc(d.sleep)}</span>
   </button>`).join("");
   $("#trip").querySelectorAll(".trow").forEach(b=>b.addEventListener("click",()=>selectDay(+b.dataset.i)));
@@ -1517,7 +1572,7 @@ function renderTodos(){
     const lbl=dd<0?"dépassé":dd===0?"aujourd'hui":"dans "+dd+" j";
     return `<div class="grp" id="g-${g.replace(/-/g,"")}">
       <div class="ghead"><span class="gdate">Avant le ${fmtDate(g)}</span><span class="urg ${u}">${lbl}</span>
-      <span class="gcount">${left?left+" restante"+(left>1?"s":""):"terminé"}</span></div>`+
+      <span class="gcount">${left?left+" restante"+(left>1?"s":""):"terminé <i class=\"hrt\">♥</i>"}</span></div>`+
       items.map(t=>`<label class="task ${state.done[t.id]?"done":""}" for="cb-${t.id}">
         <input type="checkbox" id="cb-${t.id}" data-id="${t.id}" ${state.done[t.id]?"checked":""}>
         <span class="tx"><span class="tt2">${esc(t.t)}</span><span class="tn2">${esc(t.n)}${t.place&&PLACES[t.place]?` <button class="jump" data-act="zoom" data-id="${t.place}">${esc(PLACES[t.place].n)} sur la carte</button>`:""}</span></span>
@@ -1537,6 +1592,7 @@ function renderInfos(){
     ${(c.p||[]).map(p=>`<p>${p}</p>`).join("")}
     ${c.kv?`<ul class="kv">${c.kv.map(r=>`<li><span>${r[0]}</span><b>${r[1]}</b></li>`).join("")}</ul>`:""}
     ${(c.p2||[]).map(x=>`<p style="margin-top:9px">${x}</p>`).join("")}
+    ${c.links?`<div class="linkrow">${c.links.map(l=>`<a href="${l[1]}" target="_blank" rel="noopener noreferrer">${l[0]} ↗</a>`).join("")}</div>`:""}
   </div>`).join("");
 }
 function renderMetrics(){
@@ -1595,6 +1651,48 @@ status();
 
 $("#mprev").addEventListener("click",()=>{if(state.month>0){state.month--;renderCal();save();}});
 $("#mnext").addEventListener("click",()=>{if(state.month<MONTHS.length-1){state.month++;renderCal();save();}});
+/* — pour Lulu — */
+function hearts(n){
+  if(REDUCE)return;
+  const box=document.createElement("div");box.className="hearts";document.body.appendChild(box);
+  for(let i=0;i<n;i++){
+    const el=document.createElement("span");
+    el.textContent=["♥","♡","♥"][i%3];
+    el.style.left=(4+Math.random()*92)+"%";
+    el.style.fontSize=(12+Math.random()*16).toFixed(0)+"px";
+    el.style.animationDelay=(Math.random()*1.4).toFixed(2)+"s";
+    el.style.animationDuration=(3.4+Math.random()*1.8).toFixed(2)+"s";
+    box.appendChild(el);
+  }
+  setTimeout(()=>box.remove(),6200);
+}
+function loveNote(txt){
+  const old=document.querySelector(".lovenote");if(old)old.remove();
+  const el=document.createElement("div");el.className="lovenote";
+  el.innerHTML=`<i class="hrt">♥</i> ${txt}`;
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),4200);
+}
+const LOVE=[
+  "50 jours avant Madère, Lulu.",
+  "Le refuge n'a que douze lits. Deux suffisent.",
+  "Six jours de marche, et personne d'autre sur la crête.",
+  "On a dit deux tiers rando, un tiers profiter. On verra bien.",
+  "Poncha à Funchal, promis."
+];
+let loveN=0;
+$("#lulu").addEventListener("click",()=>{
+  const b=$("#lulu");b.classList.add("on");
+  hearts(14);loveNote(LOVE[loveN++%LOVE.length]);
+});
+let buf="";
+document.addEventListener("keydown",e=>{
+  if(e.target.matches("input,textarea"))return;
+  if(e.key.length!==1)return;
+  buf=(buf+e.key.toLowerCase()).slice(-4);
+  if(buf==="lulu"){buf="";$("#lulu").classList.add("on");hearts(26);loveNote(LOVE[loveN++%LOVE.length]);}
+});
+
 $("#lyr").addEventListener("click",()=>{
   state.relief=!state.relief;
   svg.classList.toggle("no-relief",!state.relief);
