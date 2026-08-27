@@ -378,7 +378,7 @@ footer{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:24px 0 0;
 <div class="shell">
   <header class="mast">
     <div class="mast-id">
-      <div class="kicker">Traversée est → ouest · São Lourenço → Porto Moniz</div>
+      <div class="kicker">GR1 Madeira Crossing · à contresens, est → ouest</div>
       <h1>Madère<br><span>15 → 25 octobre 2026</span></h1>
       <div class="who">
         <span><b>Hugo</b> Paris</span>
@@ -609,7 +609,7 @@ const SEGS = [
 
   {id:"s3-trek",d:3,m:"hike",r:"trek",l:"Funduras → Portela",det:"Remontée dans la laurisylve jusqu'au col de Portela, départ du PR10.",km:9,dp:700,
    p:[[32.7735,-16.8282],[32.7690,-16.8180],[32.7620,-16.8070],[32.7570,-16.8100]]},
-  {id:"s3-lev",d:3,m:"hike",r:"trek",l:"PR10 Levada do Furado → Ribeiro Frio",det:"Onze kilomètres de levada à flanc, mains courantes et tunnels courts. L'une des plus anciennes de l'île, et le hameau est sur le tracé.",km:11,dp:360,fee:"4,50 €/pers.",
+  {id:"s3-lev",d:3,m:"hike",r:"trek",l:"PR10 Levada do Furado → Ribeiro Frio",det:"Onze kilomètres de levada à flanc, mains courantes et tunnels courts. Rouvert le 28 juillet 2026 après des mois de travaux, et soumis à un quota journalier : réserver tôt.",km:11,dp:360,fee:"4,50 €/pers.",
    p:[[32.7570,-16.8100],[32.7520,-16.8300],[32.7470,-16.8520],[32.7420,-16.8720],[32.7387,-16.8873]]},
 
   {id:"s4-balc",d:4,m:"hike",r:"kiff",l:"Balcões — aller-retour à l'aube",det:"Trente minutes depuis Ribeiro Frio et tout le massif central d'un coup. À faire avant de charger le sac.",km:2,dp:60,
@@ -812,13 +812,13 @@ const TODOS = [
   {id:"t-camping",g:"2026-09-19",t:"Licence de camping sur SIMplifica",tag:"permis",opt:"j4nuit",place:"ruivo",
    n:"5 € par tente et par nuit. Le Pico Ruivo n'accepte que deux tentes par jour ; vérifier la fenêtre d'ouverture du portail, différente de celle des sentiers."},
   {id:"t-pr13",g:"2026-09-19",t:"Vérifier l'état du PR1.3",tag:"sentier",place:"torrinhas",
-   n:"Sur visitmadeira.com. Aujourd'hui : ouvert jusqu'à Boca das Torrinhas, fermé au-delà vers l'Encumeada."},
+   n:"Sur visitmadeira.com. Aujourd'hui : ouvert jusqu'à Boca das Torrinhas, fermé au-delà vers l'Encumeada. En profiter pour revérifier le PR10, rouvert le 28 juillet seulement."},
 
   {id:"t-pr1",g:"2026-09-25",t:"Créneau SIMplifica pour le PR1",tag:"sentier",place:"areeiro",
    n:"10,50 €/pers. Viser 13 h - 13 h 30 au Pico do Areeiro en arrivant de Ribeiro Frio. Tolérance de quinze minutes, aucun remboursement."},
 
   {id:"t-prs",g:"2026-10-01",t:"Les autres créneaux PR",tag:"sentier",
-   n:"PR8, PR10, PR1.2, PR6 et PR6.1, PR13, PR14. 4,50 €/pers. et par sentier. Garder le 20 octobre non réservé comme journée tampon."},
+   n:"PR8, PR10, PR1.2, PR6 et PR6.1, PR13, PR14. 4,50 €/pers. et par sentier, 3 € en passant par un opérateur agréé. Le PR10 a un quota journalier et vient de rouvrir : le prendre en premier après le PR1. Garder le 20 octobre non réservé comme journée tampon."},
   {id:"t-bus",g:"2026-10-01",t:"Imprimer les horaires Rodoeste 139 et 115",tag:"transport",opt:"roule",place:"pmoniz",
    n:"Le 139 Porto Moniz → Ponta do Sol par Prazeres et Calheta, deux heures. Peu de départs, et rien ne garantit qu'ils collent au dimanche : vérifier sur rodoeste.pt et avoir un plan taxi de secours."},
   {id:"t-taxis",g:"2026-10-01",t:"Réserver les trois taxis de la seconde moitié",tag:"transport",opt:"roule",
@@ -831,7 +831,7 @@ const TODOS = [
    n:"Achada do Teixeira ou Curral das Freiras vers l'Encumeada, ~60-70 € la course. Demander au refuge, ils ont les numéros."},
 
   {id:"t-gpx",g:"2026-10-08",t:"GPX, cartes hors ligne, appli Prociv",tag:"prépa",
-   n:"Le sentier n'est pas balisé en continu. Tracés sur les deux téléphones, Organic Maps téléchargé, batterie externe."},
+   n:"Récupérer le GPX du GR1 : @irishgirlexplores l'envoie à qui commente « GPX » sous son post, et « GEAR » pour sa liste de matériel. Sinon Komoot ou Outdooractive. Tracés sur les deux téléphones, Organic Maps téléchargé, batterie externe."},
   {id:"t-materiel",g:"2026-10-08",t:"Vérifier le matériel",tag:"prépa",
    n:"Veste imperméable sérieuse, polaire, duvet léger pour le refuge, filtre à eau, frontales — indispensables dans les tunnels du PR1 —, 2,5 L de contenance chacun."},
   {id:"t-split",g:"2026-10-08",t:"Faire les deux tas : trek et plage",tag:"bagages",
@@ -861,13 +861,18 @@ const INFOS = [
   {h:"Les sentiers sont payants",p:["Depuis le 1<sup>er</sup> janvier 2026 : réservation obligatoire sur SIMplifica, créneau d'entrée par tranches de trente minutes, tolérance d'environ quinze minutes. Aucun remboursement, sauf fermeture officielle par l'IFCN."],
    kv:[["PR1 Areeiro → Ruivo","10,50 €"],["Tous les autres PR","4,50 €"],["Pass multi-jours (hors PR1)","dès 9 €"],["Bivouac officiel","5 €/tente/nuit"],["Portail","simplifica.madeira.gov.pt"]]},
 
-  {h:"Pourquoi d'est en ouest",p:["Le sens unique du PR1 décide de tout : il faut atteindre l'Areeiro <em>avant</em> le Ruivo. En partant de l'ouest, on arriverait au Ruivo par l'Encumeada sans droit d'emprunter l'arête.","Le dénivelé monte ensuite en marche d'escalier — 250, 630, 1 060, 1 500 m — et on finit face aux piscines de Porto Moniz, avec la côte ensoleillée juste en dessous."]},
+  {h:"C'est un GR, depuis avril 2026",p:["La traversée a été officialisée sous le nom de <b>GR1 Madeira Crossing</b> — 95,5 km, quatre à six jours, de Porto Moniz à Caniçal en reliant chemins anciens, levadas et sentiers de crête. Ce n'est pas un PR de plus : c'est un enchaînement, et chaque PR emprunté garde sa réservation et sa redevance.","<b>Le balisage officiel va d'ouest en est.</b> Nous faisons l'inverse, exprès : le sens unique du PR1 impose d'atteindre l'Areeiro <em>avant</em> le Ruivo. En suivant le sens officiel, on arriverait au Ruivo par l'Encumeada sans droit d'emprunter l'arête. À garder en tête sur place : le fléchage se lira à l'envers."],
+   kv:[["Longueur officielle","95,5 km"],["Notre total","128 km"],["L'écart","allers-retours + descentes au village"]],
+   p2:["Le dénivelé monte ensuite en marche d'escalier — 250, 630, 1 060, 1 500 m — et on finit face aux piscines de Porto Moniz, avec la côte ensoleillée juste en dessous."]},
+
+  {h:"Ce qui a bougé cet été",p:["<b>PR10 Levada do Furado — rouvert le 28 juillet 2026</b> après plusieurs mois de travaux : il était encore fermé en janvier pour glissement de terrain et chaussée endommagée. Toute la journée du 17 octobre en dépend, donc à revérifier une dernière fois mi-octobre.","<b>PR1 — rouvert le 27 avril</b>, week-ends seulement d'abord, puis tous les jours depuis le 26 juin.","<b>PR1.3 — toujours coupé</b> entre Boca das Torrinhas et l'Encumeada. C'est le seul point noir qui reste."],
+   kv:[["PR10","ouvert · quota journalier"],["PR1","ouvert · sens unique"],["PR1.3","partiel"],["Tarif PR via opérateur agréé","3 € au lieu de 4,50 €"]]},
 
   {h:"Les trois avertissements",p:["<b>Eau</b> — ne jamais boire l'eau des levadas, c'est de l'eau agricole. 2,5 L par personne, filtre, remplissage aux fontaines de village. Les aires de bivouac ne sont pas alimentées.","<b>Orientation</b> — la traversée n'est pas un GR : pas de balisage continu, brouillard fréquent, tracés modifiés. GPX hors ligne sur deux téléphones.","<b>Météo</b> — la côte reste en fin d'été, ~25 °C et mer à 24 °C, mais les premières vraies pluies reviennent sur le nord et les hauteurs, surtout en fin de mois. La traversée longe le nord."]},
 
   {h:"Budget, par personne",kv:[["Vols","150–300 €"],["Créneaux de sentiers","45–55 €"],["6 nuits de traversée","~250 €"],["4 nuits de confort","200–300 €"],["Transports sur place","60–120 €"],["Garde des sacs","0–25 €"],["Nourriture","30–40 €/jour"],["Total","1 150–1 550 €"]]},
 
-  {h:"À revérifier avant de partir",p:["L'état du PR1.3 fin septembre, puis dix jours avant le départ. La fenêtre d'ouverture des réservations SIMplifica pour les licences de camping. Les horaires réels de la Rodoeste 139 sur un jeudi d'octobre. Les prix réels Orly et Gatwick sur les dates exactes.","Et l'agenda « La vie normale » : il n'est pas partagé avec le compte Theodo, donc le planning de Lucille reste invisible d'ici."],
+  {h:"À revérifier avant de partir",p:["L'état du PR1.3 fin septembre, puis dix jours avant le départ, et celui du PR10 mi-octobre — il vient de rouvrir. La fenêtre d'ouverture des réservations SIMplifica pour les licences de camping. Les horaires réels de la Rodoeste 139 sur un jeudi d'octobre. Les prix réels Orly et Gatwick sur les dates exactes.","Les 95,5 km officiels du GR1 viennent des sites de rando spécialisés : à confirmer sur visitmadeira.com, qui fait foi.","Et l'agenda « La vie normale » : il n'est pas partagé avec le compte Theodo, donc le planning de Lucille reste invisible d'ici."],
    kv:[["État des sentiers","visitmadeira.com"],["Bus","rodoeste.pt"],["Météo","windy.com"],["Alertes","appli Prociv Madeira"],["GPX (105 km)","Komoot · Outdooractive"]]}
 ];
 
