@@ -400,6 +400,7 @@ a.mini{text-decoration:none;display:inline-block}
 .linkrow a:hover{border-color:var(--accent);color:var(--accent)}
 
 footer{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:24px 0 0;margin-top:12px;border-top:1px solid var(--line)}
+.gpxout{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(560px,86vw);height:44vh;z-index:120;font-family:var(--ff-mono);font-size:11px;padding:12px;border:1px solid var(--accent);border-radius:8px;background:var(--card);color:var(--text)}
 .saved{font-family:var(--ff-mono);font-size:10.5px;color:var(--text-3);display:inline-flex;align-items:center;gap:7px}
 .saved::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--text-3);flex:0 0 auto}
 .saved[data-mode="shared"]::before{background:var(--ok)}
@@ -546,7 +547,7 @@ footer{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:24px 0 0;
 </section>
 
 <footer>
-  <button class="mini" id="gpx">Télécharger le GPX</button>
+  <button class="mini" id="gpx" title="20 traces, sentiers PR en géométrie OSM">Copier le GPX</button>
   <button class="mini" id="reset">Tout réinitialiser</button>
   <span class="saved" id="saved">&nbsp;</span>
 </footer>
@@ -1841,16 +1842,25 @@ function buildGPX(){
   });
   return x+`</gpx>\n`;
 }
+/* La page est partagée publiquement, donc la capacité de téléchargement
+   lui est refusée : on copie le GPX dans le presse-papier, il n'y a plus
+   qu'à le coller dans un fichier .gpx. */
 $("#gpx").addEventListener("click",async()=>{
-  const b=$("#gpx");b.textContent="Préparation…";
+  const b=$("#gpx"),back=t=>{b.textContent=t;setTimeout(()=>{b.textContent="Copier le GPX";},3200);};
+  b.textContent="Préparation…";
+  const gpx=buildGPX();
   try{
     const dl=window.claude&&window.claude.use?await window.claude.use("downloads"):null;
-    if(!dl){b.textContent="Export indisponible ici";setTimeout(()=>b.textContent="Télécharger le GPX",3000);return;}
-    await dl.save({filename:"madere-gr1-oct2026.gpx",data:buildGPX()});
-    b.textContent="Télécharger le GPX";
+    if(dl){await dl.save({filename:"madere-gr1-oct2026.gpx",data:gpx});b.textContent="Copier le GPX";return;}
+  }catch(e){/* on retombe sur le presse-papier */}
+  try{
+    await navigator.clipboard.writeText(gpx);
+    back("Copié — à coller dans un .gpx");
   }catch(e){
-    b.textContent=(e&&e.code==="user_cancelled")?"Télécharger le GPX":"Export refusé";
-    setTimeout(()=>{b.textContent="Télécharger le GPX";},3000);
+    const ta=document.createElement("textarea");
+    ta.value=gpx;ta.className="gpxout";document.body.appendChild(ta);ta.select();
+    back("Sélectionné : ⌘C puis fermer");
+    ta.addEventListener("blur",()=>ta.remove());
   }
 });
 
