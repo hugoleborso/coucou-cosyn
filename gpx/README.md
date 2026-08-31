@@ -54,7 +54,17 @@ Komoot, RideWithGPS ou VisuGPX.
 
 ## Visualisation
 
-`roadbook-briancon.html` (à la racine) est une page autonome qui superpose les trois
-tracés sur un fond OpenStreetMap (tuiles standard zoom 12, embarquées dans le fichier)
-et affiche les trois profils altimétriques à échelles communes. Survoler un profil
-place le point correspondant sur la carte.
+`roadbook-briancon.html` (à la racine) est une page autonome : le plan du week-end
+Paris – Grenoble – Briançon – Oisans sur un fond OpenStreetMap embarqué (tuiles
+standard zoom 12, de Grenoble au Queyras). Quatre couches : les deux étapes
+intégrales, les portions faites à deux, celle faite seul, et les trajets voiture
+et train. Chaque jour a son profil altimétrique avec deux bandes indiquant qui est
+sur le vélo ; survoler un profil place le point correspondant sur la carte.
+
+Trajets calculés par routage OpenStreetMap (BRouter) :
+
+| Trajet | Distance | Durée |
+|---|---|---|
+| Grenoble → Briançon (Bourg-d'Oisans, Lautaret) | 117 km | 2 h 15 – 2 h 30 |
+| Briançon → L'Alpe d'Huez | 79 km | ≈ 2 h |
+| L'Alpe d'Huez → Grenoble | 63 km | ≈ 1 h 25 |
