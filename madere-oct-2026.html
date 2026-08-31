@@ -444,7 +444,7 @@ footer{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:24px 0 0;
 <div class="shell">
   <header class="mast">
     <div class="mast-id">
-      <div class="kicker">GR1 Madeira Crossing · à contresens, est → ouest</div>
+      <div class="kicker">GR1 Madeira Crossing · est → ouest · PR1 dans le sens autorisé</div>
       <h1>Madère<br><span id="h1dates">—</span></h1>
       <div class="who">
         <span><b>Hugo</b> Paris</span>
@@ -1017,7 +1017,7 @@ const INFOS = [
   {h:"Les sentiers sont payants",p:["Depuis le 1<sup>er</sup> janvier 2026 : réservation obligatoire sur SIMplifica, créneau d'entrée par tranches de trente minutes, tolérance d'environ quinze minutes. Aucun remboursement, sauf fermeture officielle par l'IFCN."],
    kv:[["PR1 Areeiro → Ruivo","10,50 €"],["Tous les autres PR","4,50 €"],["Pass multi-jours (hors PR1)","dès 9 €"],["Bivouac officiel","5 €/tente/nuit"],["Portail","simplifica.madeira.gov.pt"]]},
 
-  {h:"C'est un GR, depuis avril 2026",p:["La traversée a été officialisée sous le nom de <b>GR1 Madeira Crossing</b> — 95,5 km, quatre à six jours, de Porto Moniz à Caniçal en reliant chemins anciens, levadas et sentiers de crête. Ce n'est pas un PR de plus : c'est un enchaînement, et chaque PR emprunté garde sa réservation et sa redevance.","<b>Le balisage officiel va d'ouest en est.</b> Nous faisons l'inverse, exprès : le sens unique du PR1 impose d'atteindre l'Areeiro <em>avant</em> le Ruivo. En suivant le sens officiel, on arriverait au Ruivo par l'Encumeada sans droit d'emprunter l'arête. À garder en tête sur place : le fléchage se lira à l'envers."],
+  {h:"C'est un GR, depuis avril 2026",p:["La traversée a été officialisée sous le nom de <b>GR1 Madeira Crossing</b> — 95,5 km, quatre à six jours, de Porto Moniz à Caniçal en reliant chemins anciens, levadas et sentiers de crête. Ce n'est pas un PR de plus : c'est un enchaînement, et chaque PR emprunté garde sa réservation et sa redevance.","<b>Nous marchons d'est en ouest, et le PR1 dans son sens autorisé</b> — Areeiro → Ruivo, le seul permis. C'est même lui qui commande : il faut atteindre l'Areeiro <em>avant</em> le Ruivo, donc arriver par l'est. Partir de l'ouest nous amènerait au Ruivo par l'Encumeada, sans droit d'emprunter l'arête.","Les sources se contredisent sur le sens du GR1 lui-même : les unes le décrivent de Caniçal vers Porto Moniz (comme nous), les autres l'inverse. Ça n'a aucune conséquence — un GR se parcourt dans les deux sens, seule la règle du PR1 est contraignante. Tout au plus, si le fléchage est posé dans l'autre sens, il se lira à l'envers."],
    kv:[["Longueur officielle","95,5 km"],["Notre total","128 km"],["L'écart","allers-retours + descentes au village"]],
    p2:["Le dénivelé monte ensuite en marche d'escalier — 250, 630, 1 060, 1 500 m — et on finit face aux piscines de Porto Moniz, avec la côte ensoleillée juste en dessous."]},
 
@@ -1037,7 +1037,7 @@ const INFOS = [
      ["→ Estanquinhos","10,5 km","camping Estanquinhos"],
      ["→ Fanal","21 km","camping de Fanal"],
      ["→ Ribeira da Janela","15 km","—"]]},
-   p2:["Deux choses à en retenir. D'abord ses <b>13 km entre le Ruivo et l'Encumeada</b> confirment que les 21 km de HikingFex sont une erreur. Ensuite sa première étape fait 28 km depuis Machico : c'est pour l'éviter que notre itinéraire prend deux jours à l'est, par la côte et la Vereda do Larano.","Cette source signale aussi une <b>amende de 2 500 €</b> pour qui parcourt le PR1 à contresens. Non vérifié ailleurs, mais le message est clair."],
+   p2:["Deux choses à en retenir. D'abord ses <b>13 km entre le Ruivo et l'Encumeada</b> confirment que les 21 km de HikingFex sont une erreur. Ensuite sa première étape fait 28 km depuis Machico : c'est pour l'éviter que notre itinéraire prend deux jours à l'est, par la côte et la Vereda do Larano.","Cette source signale aussi une <b>amende de 2 500 €</b> pour qui remonte le PR1 dans le mauvais sens. Non vérifié ailleurs, mais la raison d'être de la règle est claire : sur une arête à une seule voie, on ne se croise pas. Notre itinéraire va dans le bon sens, la question ne se pose pas."],
    links:[["GR1 — étapes et nuits","https://hiking-trails.com/trail/gr1-madeira-crossing/"]]},
 
   {h:"Les blogs ne sont pas d'accord",p:["Quatre découpages comparés, le nôtre compris. Les écarts ne sont pas des détails : sur l'étape du 19, HikingFex annonce le double de la distance officielle, et sur celle du 20 c'est nous qui débordons."],
@@ -1563,7 +1563,7 @@ function overviewHTML(){
       <div class="fact"><u>Jours de rando</u><b>${nh}</b></div>
     </div>
     <p class="prose">De la pointe de São Lourenço à Porto Moniz par les crêtes et les levadas, puis trois jours à ne rien faire sur la côte ensoleillée.</p>
-    <div class="note"><b>Le sens est imposé.</b> Depuis avril 2026, le PR1 se parcourt uniquement de l'Areeiro vers le Pico Ruivo. Partir de l'ouest reviendrait à se priver de l'arête.</div>
+    <div class="note"><b>Le sens est imposé, et on le respecte.</b> Depuis avril 2026, le PR1 se parcourt uniquement de l'Areeiro vers le Pico Ruivo : c'est exactement notre J4. Partir de l'ouest nous priverait de l'arête.</div>
     <div class="go"><button class="mini" data-act="tab" data-v="cal">Ouvrir le calendrier</button></div>`;
 }
 function dayHTML(i){
@@ -1938,7 +1938,7 @@ function buildGPX(){
   const hid=hiddenSegs();
   const esc2=x=>String(x).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
   let x=`<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="Madere 15-25 oct 2026" xmlns="http://www.topografix.com/GPX/1/1">\n`;
-  x+=`<metadata><name>Traversee de Madere — GR1 a contresens</name>`
+  x+=`<metadata><name>Traversee de Madere — est vers ouest</name>`
     +`<desc>Sentiers PR : geometrie OpenStreetMap (ODbL). Liaisons : tracees a la main, approximatives.</desc></metadata>\n`;
   Object.entries(PLACES).forEach(([id,pl])=>{
     x+=`<wpt lat="${pl.lat}" lon="${pl.lon}"><name>${esc2(pl.n)}</name></wpt>\n`;
