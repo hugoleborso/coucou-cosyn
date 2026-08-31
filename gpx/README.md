@@ -51,3 +51,10 @@ Komoot, RideWithGPS ou VisuGPX.
 - Le dénivelé varie de quelques centaines de mètres selon l'outil de calcul et le
   modèle d'altitude utilisés ; les chiffres du tableau sont ceux mesurés sur ces
   fichiers avec un seuil de 3 m.
+
+## Visualisation
+
+`roadbook-briancon.html` (à la racine) est une page autonome qui superpose les trois
+tracés sur un fond OpenStreetMap (tuiles standard zoom 12, embarquées dans le fichier)
+et affiche les trois profils altimétriques à échelles communes. Survoler un profil
+place le point correspondant sur la carte.
