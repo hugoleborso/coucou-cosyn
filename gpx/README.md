@@ -56,9 +56,10 @@ Komoot, RideWithGPS ou VisuGPX.
 
 `roadbook-briancon.html` (à la racine) est une page autonome : le plan du week-end
 Paris – Grenoble – Briançon – Oisans sur un fond OpenStreetMap embarqué (tuiles
-standard zoom 12, de Grenoble au Queyras). Quatre couches : les deux étapes
-intégrales, les portions faites à deux, celle faite seul, et les trajets voiture
-et train. Chaque jour a son profil altimétrique avec deux bandes indiquant qui est
+standard zoom 12, de Grenoble au Queyras). Trois couches : les deux étapes
+intégrales, mes portions, et les trajets voiture et train. Chaque journée a un
+bouton « cadrer sur la carte » qui isole ses couches et recadre la carte dessus.
+Chaque jour de vélo a son profil altimétrique avec deux bandes indiquant qui est
 sur le vélo ; survoler un profil place le point correspondant sur la carte.
 
 Trajets calculés par routage OpenStreetMap (BRouter) :
