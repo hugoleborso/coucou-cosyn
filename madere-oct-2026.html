@@ -629,7 +629,7 @@ const PLACES = {
     stay:{name:"Casa de Abrigo do Pico Ruivo",price:"~30 €/pers.",phone:"291 572 124",todo:"t-refuge",
       note:"12 places au total. Réservation par téléphone seulement, lun-ven 9 h-13 h / 14 h-18 h ; week-end 960 296 224 ou 962 560 029."}},
   torrinhas:{n:"Boca das Torrinhas",lat:32.7530,lon:-16.9740,t:"col",d:[5],la:"b",sn:"Torrinhas",
-    k:"Col à mi-crête. C'est ici que le PR1.3 est coupé : au-delà, vers l'Encumeada, la section reste fermée depuis les incendies d'août 2024.",
+    k:"Le col où le PR1.3 est coupé, à peu près à mi-parcours : 4,5 km ouverts en amont depuis le Pico Ruivo, 5,6 km fermés en aval jusqu'à l'Encumeada, depuis les incendies d'août 2024 et les glissements qui ont suivi.",
     k2:"Échappatoire : le PR2 Vereda do Urzal descend vers Curral das Freiras ou Boaventura."},
   ateixeira:{n:"Achada do Teixeira",lat:32.7690,lon:-16.9270,t:"col",d:[5],la:"r",sn:"Achada do Teixeira",
     k:"Parking à 1 590 m, fin du PR1.2. Le plan de repli : 4,5 km de descente depuis le Ruivo, puis taxi vers l'Encumeada (45 min)."},
@@ -712,7 +712,7 @@ const SEGS = [
    det:"Le PR11 Vereda dos Balcões, trente minutes depuis Ribeiro Frio. Court aller-retour, tracé indicatif.",km:1.6,dp:80,
    p:[[32.7352,-16.8863],[32.7340,-16.8905],[32.7330,-16.8940]]},
   {id:"s4-app",e0:889,e1:1803,d:4,m:"hike",r:"trek",l:"Liaison Ribeiro Frio → Poiso → Pico do Areeiro",approx:1,
-   det:"L'approche, non classée : environ 14 km et mille mètres de montée, à faire à l'aube pour tenir le créneau du PR1. Tracé indicatif.",km:14,dp:1010,src:"estimation",
+   det:"Mesuré sur la trace GR1 : 10,4 km et 894 m de montée jusqu'au départ du PR1, et non les quatorze kilomètres que j'estimais. À faire à l'aube pour tenir le créneau. Tracé indicatif.",km:10.4,dp:894,src:"trace GR1 (hiking-trails.com, juin 2024)",
    p:[[32.7352,-16.8863],[32.7300,-16.8960],[32.7270,-16.9040],[32.7300,-16.9180],[32.7355,-16.9287]]},
   {id:"s4-pr1a",d:4,m:"hike",r:"pr1",n:1,dp:60,pr:"PR 1",cut:[[32.7355,-16.9287],[32.7437,-16.9322]],
    l:"PR1 ① Areeiro → Ninho da Manta → Pedra Rija",
@@ -731,7 +731,7 @@ const SEGS = [
    p:[[32.7589,-16.9428],[32.7580,-16.9440],[32.7570,-16.9445]]},
 
   {id:"s5-trek",d:5,m:"hike",r:"trek",pr:"PR 1.3",rev:1,l:"PR1.3 Vereda da Encumeada",
-   det:"11,2 km officiels. Mesuré dans notre sens : D+ 380 m, D− 1 150 m — on descend de 1 802 à 1 010 m. Section Boca das Torrinhas → Encumeada fermée à ce jour.",km:11.2,dp:380},
+   det:"11,2 km officiels. Mesuré dans notre sens : D+ 380 m, D− 1 150 m — on descend de 1 802 à 1 010 m. La coupure est à mi-parcours : Pico Ruivo → Boca das Torrinhas fait 4,5 km et reste ouvert, Torrinhas → Encumeada fait 5,6 km et reste fermé.",km:11.2,dp:380},
   {id:"s5-urzal",d:5,m:"hike",r:"village",pr:"PR 2",l:"Repli ① PR2 Vereda do Urzal",alt:1,
    det:"Depuis Boca das Torrinhas, la descente officielle quand la crête est coupée : 10,3 km jusqu'à Curral das Freiras ou Boaventura.",km:10.3,dp:0},
   {id:"s5-pr12",d:5,m:"hike",r:"village",pr:"PR 1.2",rev:1,l:"Repli ② PR1.2 → Achada do Teixeira",alt:1,
@@ -745,7 +745,7 @@ const SEGS = [
    det:"La descente directe par la vallée de São Vicente, sans monter sur le plateau : 15 km et seulement 160 m de montée d'après HikingFex, qui fait de cette journée une vraie respiration. On saute Rabaçal.",km:15,dp:160,src:"HikingFex",
    p:[[32.7543,-17.0186],[32.7700,-17.0330],[32.7870,-17.0420],[32.7995,-17.0445],[32.8110,-17.0760],[32.8226,-17.1040]]},
   {id:"s6-trek",e0:1000,e1:1278,d:6,m:"hike",r:"trek",l:"Liaison Encumeada → Paúl da Serra → Rabaçal",approx:1,alt:1,
-   det:"La journée la moins vérifiée : HikingFex donne 15 km / 160 m pour Encumeada → Seixal, ce qui n'inclut pas le crochet par Rabaçal. Le tracé dessiné est indicatif ; le PR17 fait le trajet plus au sud, en 15 km.",km:11,dp:300,src:"estimation",
+   det:"Mesuré sur la trace GR1 publiée par hiking-trails.com : 20,2 km et 827 m de montée dans notre sens, soit près du double de mon estimation à vue. C'est cette mesure qui fait basculer les variantes avec Rabaçal hors d'une journée raisonnable. Le tracé dessiné ici reste indicatif.",km:20.2,dp:830,src:"trace GR1 (hiking-trails.com, juin 2024)",
    p:[[32.7543,-17.0186],[32.7620,-17.0560],[32.7645,-17.0950],[32.7600,-17.1240],[32.7540,-17.1330]]},
   {id:"s6-kiff",d:6,m:"hike",r:"kiff",pr:"PR 6",alt:1,l:"PR6 — la lagune des 25 Fontes",
    det:"4,3 km officiels pour les 25 Fontes, 3 km pour le Risco, au départ du même parking de Rabaçal. Très fréquenté, y être tôt.",km:4.4,dp:80},
@@ -883,14 +883,14 @@ const OPTIONS = [
    todos:{"duree-12":["t-nuit12"]}},
 
   {id:"plan",label:"Découpage de la traversée",q:"On s'inspire de qui pour J6",
-   sub:"J6 déborde : trois façons de la faire, tirées de trois découpages publiés. Les autres journées ne bougent pas.",
+   sub:"J6 déborde, et la mesure sur la trace GR1 a aggravé le diagnostic : la traversée du Paúl da Serra fait 20 km, pas 11. Résultat, une seule des trois variantes tient en une journée.",
    choices:[
-    {id:"plan-hf",n:"HikingFex — la version courte",p:"15 km · 160 m · Rabaçal sauté",
-     d:"Le découpage en sept étapes que suivait déjà notre itinéraire. Sa journée 6 descend droit sur Seixal par la vallée de São Vicente, sans monter sur le plateau. C'est de loin la plus reposante, et la seule qui laisse une vraie demi-journée à Seixal."},
-    {id:"plan-25f",n:"Le plateau et les 25 Fontes",p:"24 km · Risco sauté",
-     d:"Le compromis : on traverse le Paúl da Serra, on descend dans le cirque voir la lagune des vingt-cinq sources, et on saute la cascade du Risco. Trois kilomètres et une heure de gagnés sur la version complète."},
-    {id:"plan-nous",n:"Les deux cascades",p:"27 km · la plus longue du voyage",
-     d:"Le plateau, les 25 Fontes et le Risco, puis la plongée de mille deux cents mètres sur le sable noir. Aucun blog ne propose cette combinaison — c'est notre ajout, et c'est ce qui fait déborder la journée."}
+    {id:"plan-hf",n:"HikingFex — la version courte",p:"15 km · 160 m · la seule qui tient",
+     d:"Le découpage en sept étapes que suivait déjà notre itinéraire. Sa journée 6 descend droit sur Seixal par la vallée de São Vicente, sans monter sur le plateau. La seule des trois qui se marche en une journée, et elle laisse une vraie demi-journée à Seixal."},
+    {id:"plan-25f",n:"Le plateau et les 25 Fontes",p:"33 km · ne tient pas en un jour",
+     d:"On traverse le Paúl da Serra (20 km mesurés sur la trace GR1), on descend dans le cirque voir la lagune des vingt-cinq sources, et on saute le Risco. Trente-trois kilomètres et 910 m de montée : c'est deux journées, pas une. À ne choisir qu'avec une nuit sur le plateau, sous tente, comme le fait le GR1 à Estanquinhos."},
+    {id:"plan-nous",n:"Les deux cascades",p:"36 km · deux jours de marche",
+     d:"Le plateau, les 25 Fontes, le Risco, puis la plongée de mille deux cents mètres sur le sable noir. C'était mon ajout, et la mesure l'a disqualifié comme journée unique : trente-six kilomètres. Gardé ici pour ce qu'il vaut — l'itinéraire le plus beau de l'ouest, si on lui donne deux jours."}
    ],
    day:{6:{"plan-hf":{t:"Descente sur São Vicente et Seixal",s:"Pas de plateau, pas de cascades : la vallée de São Vicente jusqu'à la côte nord, et l'après-midi libre sur le sable noir de Seixal.",places:["seixal"]},
           "plan-25f":{t:"Le plateau et les 25 Fontes",s:"Traversée du Paúl da Serra jusqu'à Rabaçal, aller-retour à la lagune des vingt-cinq sources, puis la plongée sur le sable noir."}}},
@@ -1032,8 +1032,8 @@ const INFOS = [
    p2:["Le dénivelé monte ensuite en marche d'escalier — 250, 630, 1 060, 1 500 m — et on finit face aux piscines de Porto Moniz, avec la côte ensoleillée juste en dessous."]},
 
   {h:"Ce qui a bougé cet été",p:["<b>PR10 Levada do Furado — rouvert le 28 juillet 2026</b> après plusieurs mois de travaux : il était encore fermé en janvier pour glissement de terrain et chaussée endommagée. Toute la journée du 17 octobre en dépend, donc à revérifier une dernière fois mi-octobre.","<b>PR1 — rouvert le 27 avril</b>, week-ends seulement d'abord, puis tous les jours depuis le 26 juin.","<b>PR1.3 — toujours coupé</b>, vérifié le 26 août 2026 sur visitmadeira. Statut « Restreint », et le texte officiel dit : « la section restante du PR 1.3 entre Boca das Torrinhas et l'Encumeada restera fermée. Depuis Boca das Torrinhas, les randonneurs peuvent continuer par le PR 2 Vereda do Urzal, vers Curral das Freiras ou Boaventura. » Rien n'a bougé depuis la réouverture partielle de juin."],
-   kv:[["PR10","ouvert · quota journalier"],["PR1","ouvert · sens unique"],["PR1.3","restreint · 3,9 km ouverts"],["PR2 Urzal","ouvert · l'échappatoire"],["Tarif PR via opérateur agréé","3 € au lieu de 4,50 €"]],
-   p2:["Un dernier piège : les agrégateurs de statut se contredisent — l'un d'eux donnait encore le PR10 fermé aujourd'hui alors que la page officielle le dit ouvert. Ne se fier qu'à visitmadeira."],
+   kv:[["PR10","ouvert · quota journalier"],["PR1","ouvert · sens unique"],["PR1.3","4,5 km ouverts · 5,6 km fermés"],["PR2 Urzal","ouvert · l'échappatoire"],["Tarif PR via opérateur agréé","3 € au lieu de 4,50 €"]],
+   p2:["Un dernier piège : les sources se contredisent sur le PR10. hiking-trails.com le donne « fermé, gros glissement de terrain », un agrégateur de statut aussi — mais visitmadeira, la source officielle, affiche <b>ouvert</b>, et la réouverture après travaux est datée du 28 juillet 2026. Les notes de hiking-trails ne portent aucune date et son GPX remonte à juin 2024 : on retient l'officiel, et on revérifie dans la dernière semaine.","Autre écart utile : sur la Levada do Furado, mon calcul SRTM donne 640 m de montée dans notre sens, la trace GPS 387 m. Le modèle de terrain ignore qu'une levada suit une courbe de niveau — sur ce type de sentier, c'est la trace qui a raison."],
    links:[["PR1.3 officiel","https://visitmadeira.com/en/what-to-do/nature-seekers/activities/hiking/pr-13-vereda-da-encumeada/"],["PR10 officiel","https://visitmadeira.com/en/what-to-do/nature-seekers/activities/hiking/pr-10-levada-do-furado/"]]},
 
   {h:"D'où viennent ces tracés",p:["Les sentiers classés sont dessinés à partir des relations <b>OpenStreetMap</b> extraites le 28 août 2026 : ce sont les tracés que les cartographes locaux entretiennent, pas mon interprétation. Les distances « officielles » sont le tag <em>distance</em> de la relation, les dénivelés sont calculés le long du tracé sur le modèle de terrain <b>SRTM</b> de la NASA.","<b>Les liaisons entre ces sentiers, elles, sont approximatives.</b> Elles apparaissent en tirets sur la carte et portent la mention « tracé dessiné à la main » dans leur fiche. Trois d'entre elles ne correspondent à aucun PR : Porto da Cruz → Portela, Encumeada → Rabaçal, Seixal → Fanal. Ce sont celles qu'il faut confirmer sur un GPX avant de partir — surtout la première, où le PR5 part dans l'autre direction.","Le bouton <b>GPX</b> en bas de page exporte ce que la carte affiche, tracés approximatifs compris, marqués comme tels dans les noms de traces."],
@@ -1050,15 +1050,20 @@ const INFOS = [
    p2:["Deux choses à en retenir. D'abord ses <b>13 km entre le Ruivo et l'Encumeada</b> confirment que les 21 km de HikingFex sont une erreur. Ensuite sa première étape fait 28 km depuis Machico : c'est pour l'éviter que notre itinéraire prend deux jours à l'est, par la côte et la Vereda do Larano.","Cette source signale aussi une <b>amende de 2 500 €</b> pour qui remonte le PR1 dans le mauvais sens. Non vérifié ailleurs, mais la raison d'être de la règle est claire : sur une arête à une seule voie, on ne se croise pas. Notre itinéraire va dans le bon sens, la question ne se pose pas."],
    links:[["GR1 — étapes et nuits","https://hiking-trails.com/trail/gr1-madeira-crossing/"]]},
 
+  {h:"La trace GR1 : ce qu'elle vaut",p:["hiking-trails.com publie un GPX librement téléchargeable, sans compte : <b>4 230 points, 99,9 km, avec altitudes</b>. Mais son adresse le date de <b>juin 2024</b> — avant les incendies d'août 2024, avant la réouverture d'avril 2026, avant le sens unique du PR1. La page l'écrit elle-même : « the below GPX is the original west-to-east route and needs to be updated ».","<b>Ne pas le suivre tel quel :</b> il part de Ribeira da Janela vers Machico, donc dans le sens que le PR1 interdit désormais, et il traverse les 5,6 km fermés entre Boca das Torrinhas et l'Encumeada.","<b>Ce qu'il vaut quand même</b> : sur les tronçons que notre itinéraire partage avec lui, c'est une trace réelle, avec de vraies altitudes. Elle a servi à mesurer, pas à copier — les tracés de la carte restent les nôtres."],
+   kv:[["Encumeada → Rabaçal","20,2 km · D+ 830"],["Ribeiro Frio → Areeiro","10,4 km · D+ 894"],["Torrinhas → Encumeada (fermé)","5,6 km"],["Ruivo → Torrinhas (ouvert)","4,5 km"],["Ne couvre pas","Porto Moniz, Seixal, Porto da Cruz, Caniçal"]],
+   p2:["Deux corrections directes : la traversée du plateau fait <b>le double</b> de mon estimation à vue, et l'approche du Pico do Areeiro <b>un quart de moins</b>. La première a disqualifié deux variantes de J6, la seconde a allégé J4 de 21 à 19 km."],
+   links:[["La page et son GPX","https://hiking-trails.com/trail/gr1-madeira-crossing/"]]},
+
   {h:"Les blogs ne sont pas d'accord",p:["Quatre découpages comparés, le nôtre compris. Les écarts ne sont pas des détails : sur l'étape du 19, HikingFex annonce le double de la distance officielle, et sur celle du 20 c'est nous qui débordons."],
    table:{head:["Étape","Ici","HikingFex","GR1","IntoTheHike"],rows:[
      ["Caniçal → Porto da Cruz","19 km","13 km","—","13 km"],
      ["→ Ribeiro Frio","20 km","20 km","28 km*","15 km"],
      ["→ Pico Ruivo","21 km","21 km","15 km","14 km"],
      ["→ Encumeada","10 km","21 km","13 km","10,5 km"],
-     ["→ Seixal","15 km","15 km","10,5 km*","21 km"],
+     ["→ Seixal","15 km†","15 km","10,5 km*","21 km"],
      ["→ Porto Moniz","21 km","23 km","21 + 15 km*","—"]]},
-   p2:["* Le GR1 part de Machico et reste en altitude à l'ouest : ses étapes ne se superposent pas exactement aux nôtres.","<b>J5 est tranchée</b> : le PR1.3 fait 11,2 km selon visitmadeira, 9,7 km mesurés sur le tracé OSM, 10,5 km chez IntoTheHike, 13 km pour le GR1. Les 21 km de HikingFex sont isolés. Nous retenons onze kilomètres, avec 380 m de montée et 1 150 m de descente.","<b>J6 se choisit</b> dans les arbitrages : 15 km à la HikingFex, 23 km avec les 25 Fontes, ou 27 km avec les deux cascades. Par défaut, la version courte."],
+   p2:["* Le GR1 part de Machico et reste en altitude à l'ouest : ses étapes ne se superposent pas exactement aux nôtres. † Nos 15 km sont la variante courte ; par le plateau et Rabaçal, la même journée fait 33 à 36 km.","<b>J5 est tranchée</b> : le PR1.3 fait 11,2 km selon visitmadeira, 9,7 km mesurés sur le tracé OSM, 10,5 km chez IntoTheHike, 13 km pour le GR1. Les 21 km de HikingFex sont isolés. Nous retenons onze kilomètres, avec 380 m de montée et 1 150 m de descente.","<b>J6 se choisit</b> dans les arbitrages : 15 km à la HikingFex, 23 km avec les 25 Fontes, ou 27 km avec les deux cascades. Par défaut, la version courte."],
    links:[["HikingFex — 7 étapes","https://www.hikingfex.com/en/post/madeira-hiking-105km-island-crossing"],["IntoTheHike — 5 jours","https://intothehike.com/hike-across-madeira-island/"],["GR1 officiel — étapes","https://hiking-trails.com/trail/gr1-madeira-crossing/"],["Oh What A Knight — 5 jours","https://ohwhataknight.co.uk/blog/hiking-across-madeira"]]},
 
   {h:"Les bus, pour de vrai",p:["<b>J1 — SAM 113</b>, Funchal → Machico → Caniçal. L'aéroport est desservi par plusieurs lignes SAM : vérifier l'arrêt exact sur SIGA, le moteur de recherche régional.","<b>J8 — Rodoeste 80</b>, et pas la 139 : c'est elle qui longe la côte ouest, la 139 passe au nord par le tunnel de l'Encumeada. <b>Un seul départ par jour</b> — Porto Moniz 16 h 00, Calheta 17 h 30, Ponta do Sol ~17 h 45, Funchal 19 h 40. La matinée aux piscines est donc gratuite, mais rater ce bus coûte un taxi à 90 €.","<b>J9 et J10</b> — Ponta do Sol est bien relié (lignes 4, 107, 115, 142, 146), sauf le week-end. Selon la date de départ, J10 peut tomber un samedi : service réduit, à vérifier la veille."],
