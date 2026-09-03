@@ -399,6 +399,16 @@ a.mini{text-decoration:none;display:inline-block}
 .prov{font-family:var(--ff-mono);font-size:10.5px;line-height:1.5;color:var(--text-2);background:var(--card-2);border-radius:6px;padding:6px 9px;margin:9px 0}
 .prov b{color:var(--text);font-weight:500}
 .prov.warnprov{background:var(--warn-wash)}
+.dayprof{margin:12px 0 4px}
+.dayprof svg{display:block;width:100%;height:auto}
+.pf-area{fill:var(--hike);opacity:.15}
+.pf-area.est{opacity:.07}
+.pf-line{fill:none;stroke:var(--hike);stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+.pf-line.est{stroke-dasharray:3 3;stroke-width:1.5;opacity:.75}
+.pf-base{stroke:var(--line);stroke-width:1}
+.pf-tick{stroke:var(--line);stroke-width:1;stroke-dasharray:2 3;opacity:.7}
+.pf-t{font-family:var(--ff-mono);font-size:8.5px;fill:var(--text-3)}
+.pf-key{font-family:var(--ff-mono);font-size:9.5px;line-height:1.45;color:var(--text-3);margin-top:4px}
 .mini-prof{display:block;width:100%;height:auto;margin:10px 0 4px}
 .mini-prof text{font-family:var(--ff-mono);font-size:8px;fill:var(--text-3)}
 .tw{overflow-x:auto;margin-top:10px}
@@ -685,23 +695,23 @@ const SEGS = [
    p:[[32.7398,-16.7375],[32.7415,-16.7050],[32.7433,-16.7010]]},
   {id:"s2-pr8",d:2,m:"hike",r:"kiff",pr:"PR 8",l:"PR8 Ponta de São Lourenço — aller-retour",
    det:"3,9 km mesurés à l'aller jusqu'à la Casa do Sardinha, donc ~7,8 km en boucle, D+ ~310 m. Pas un arbre, deux océans.",km:7.8,dp:310},
-  {id:"s2-trek",d:2,m:"hike",r:"trek",l:"Caniçal → Boca do Risco → Vereda do Larano",approx:1,
+  {id:"s2-trek",e0:43,e1:19,d:2,m:"hike",r:"trek",l:"Caniçal → Boca do Risco → Vereda do Larano",approx:1,
    det:"Chemin non classé : pas de PR, donc ni créneau ni redevance — mais aussi pas de tracé officiel à télécharger. Le tracé dessiné ici est indicatif. HikingFex donne 13 km et 580 m pour Caniçal → Porto da Cruz.",km:13,dp:580,src:"HikingFex",
    p:[[32.7398,-16.7375],[32.7470,-16.7455],[32.7540,-16.7583],[32.7590,-16.7760],[32.7625,-16.7930],[32.7665,-16.8090]]},
-  {id:"s2-vil",d:2,m:"hike",r:"village",l:"Écart : descente sur Porto da Cruz",approx:1,
+  {id:"s2-vil",e0:19,e1:16,d:2,m:"hike",r:"village",l:"Écart : descente sur Porto da Cruz",approx:1,
    det:"Les trois derniers kilomètres quittent la falaise pour le village. Compris dans les 13 km ci-dessus.",
    p:[[32.7665,-16.8090],[32.7700,-16.8180],[32.7735,-16.8282]]},
 
-  {id:"s3-trek",d:3,m:"hike",r:"trek",l:"Liaison Porto da Cruz → Portela",approx:1,
+  {id:"s3-trek",e0:16,e1:612,d:3,m:"hike",r:"trek",l:"Liaison Porto da Cruz → Portela",approx:1,
    det:"Non classé, et c'est le maillon le moins documenté de la traversée : le PR5 Vereda das Funduras part de Portela vers Maroços, à l'opposé. Tracé indicatif, à confirmer sur un GPX avant de partir.",km:9,dp:420,src:"estimation",
    p:[[32.7735,-16.8282],[32.7690,-16.8180],[32.7620,-16.8070],[32.7570,-16.8100],[32.7480,-16.8250],[32.7457,-16.8264]]},
   {id:"s3-lev",d:3,m:"hike",r:"trek",pr:"PR 10",rev:1,l:"PR10 Levada do Furado — Portela → Ribeiro Frio",
    det:"11,1 km mesurés, D+ 640 m dans notre sens (le PR10 officiel se décrit dans l'autre sens). Rouvert le 28 juillet 2026 après des mois de travaux, quota journalier.",km:11.1,dp:640},
 
-  {id:"s4-balc",d:4,m:"hike",r:"kiff",l:"Balcões — aller-retour à l'aube",approx:1,
+  {id:"s4-balc",e0:889,e1:1095,d:4,m:"hike",r:"kiff",l:"Balcões — aller-retour à l'aube",approx:1,
    det:"Le PR11 Vereda dos Balcões, trente minutes depuis Ribeiro Frio. Court aller-retour, tracé indicatif.",km:1.6,dp:80,
    p:[[32.7352,-16.8863],[32.7340,-16.8905],[32.7330,-16.8940]]},
-  {id:"s4-app",d:4,m:"hike",r:"trek",l:"Liaison Ribeiro Frio → Poiso → Pico do Areeiro",approx:1,
+  {id:"s4-app",e0:889,e1:1803,d:4,m:"hike",r:"trek",l:"Liaison Ribeiro Frio → Poiso → Pico do Areeiro",approx:1,
    det:"L'approche, non classée : environ 14 km et mille mètres de montée, à faire à l'aube pour tenir le créneau du PR1. Tracé indicatif.",km:14,dp:1010,src:"estimation",
    p:[[32.7352,-16.8863],[32.7300,-16.8960],[32.7270,-16.9040],[32.7300,-16.9180],[32.7355,-16.9287]]},
   {id:"s4-pr1a",d:4,m:"hike",r:"pr1",n:1,dp:60,pr:"PR 1",cut:[[32.7355,-16.9287],[32.7437,-16.9322]],
@@ -716,7 +726,7 @@ const SEGS = [
   {id:"s4-pr1d",d:4,m:"hike",r:"pr1",n:4,dp:150,pr:"PR 1",cut:[[32.7534,-16.9418],[32.7589,-16.9428]],
    l:"PR1 ④ Remontée finale au Pico Ruivo",
    det:"La dernière rampe, la jonction avec le PR1.2 venu d'Achada do Teixeira, puis le sommet à 1 862 m."},
-  {id:"s4-ref",d:4,m:"hike",r:"village",l:"Écart : sommet → Casa de Abrigo",approx:1,
+  {id:"s4-ref",e0:1803,e1:1760,d:4,m:"hike",r:"village",l:"Écart : sommet → Casa de Abrigo",approx:1,
    det:"Quinze minutes de descente jusqu'au refuge. Douze lits, espèces uniquement, pas de chauffage.",
    p:[[32.7589,-16.9428],[32.7580,-16.9440],[32.7570,-16.9445]]},
 
@@ -731,26 +741,26 @@ const SEGS = [
    url:"https://yourtaximadeira.com/",urlLabel:"Your Taxi Madeira",url2:"https://danielmadeirataxis.com/levada-walks/",url2Label:"Daniel Madeira Taxis",
    p:[[32.7649,-16.9211],[32.7800,-16.9600],[32.7700,-17.0000],[32.7543,-17.0186]]},
 
-  {id:"s6-hf",d:6,m:"hike",r:"trek",l:"Encumeada → São Vicente → Seixal",approx:1,alt:1,
+  {id:"s6-hf",e0:1000,e1:36,d:6,m:"hike",r:"trek",l:"Encumeada → São Vicente → Seixal",approx:1,alt:1,
    det:"La descente directe par la vallée de São Vicente, sans monter sur le plateau : 15 km et seulement 160 m de montée d'après HikingFex, qui fait de cette journée une vraie respiration. On saute Rabaçal.",km:15,dp:160,src:"HikingFex",
    p:[[32.7543,-17.0186],[32.7700,-17.0330],[32.7870,-17.0420],[32.7995,-17.0445],[32.8110,-17.0760],[32.8226,-17.1040]]},
-  {id:"s6-trek",d:6,m:"hike",r:"trek",l:"Liaison Encumeada → Paúl da Serra → Rabaçal",approx:1,alt:1,
+  {id:"s6-trek",e0:1000,e1:1278,d:6,m:"hike",r:"trek",l:"Liaison Encumeada → Paúl da Serra → Rabaçal",approx:1,alt:1,
    det:"La journée la moins vérifiée : HikingFex donne 15 km / 160 m pour Encumeada → Seixal, ce qui n'inclut pas le crochet par Rabaçal. Le tracé dessiné est indicatif ; le PR17 fait le trajet plus au sud, en 15 km.",km:11,dp:300,src:"estimation",
    p:[[32.7543,-17.0186],[32.7620,-17.0560],[32.7645,-17.0950],[32.7600,-17.1240],[32.7540,-17.1330]]},
   {id:"s6-kiff",d:6,m:"hike",r:"kiff",pr:"PR 6",alt:1,l:"PR6 — la lagune des 25 Fontes",
    det:"4,3 km officiels pour les 25 Fontes, 3 km pour le Risco, au départ du même parking de Rabaçal. Très fréquenté, y être tôt.",km:4.4,dp:80},
   {id:"s6-kiff2",d:6,m:"hike",r:"kiff",pr:"PR 6.1",alt:1,l:"PR6.1 — cascade du Risco",
    det:"3 km officiels, l'aller-retour le plus court de la journée, et la plus haute cascade de l'île au bout.",km:3.1,dp:100},
-  {id:"s6-vil",d:6,m:"hike",r:"village",l:"Écart : descente sur Seixal",approx:1,alt:1,
+  {id:"s6-vil",e0:1278,e1:36,d:6,m:"hike",r:"village",l:"Écart : descente sur Seixal",approx:1,alt:1,
    det:"On bascule au nord et on plonge de mille deux cents mètres sur le sable noir. Non classé, tracé indicatif.",km:8,dp:0,src:"estimation",
    p:[[32.7540,-17.1330],[32.7700,-17.1250],[32.7900,-17.1150],[32.8226,-17.1040]]},
 
-  {id:"s7-trek",d:7,m:"hike",r:"trek",l:"Liaison Seixal → Fanal",approx:1,
+  {id:"s7-trek",e0:36,e1:1137,d:7,m:"hike",r:"trek",l:"Liaison Seixal → Fanal",approx:1,
    det:"Mille cent mètres de montée depuis la mer jusqu'au plateau des til. Non classé dans ce sens — le PR13 officiel descend d'Assobiadores vers Fanal, il ne monte pas de Seixal. Tracé indicatif.",km:9,dp:1130,src:"estimation",
    p:[[32.8226,-17.1040],[32.8150,-17.1230],[32.8082,-17.1423],[32.8062,-17.1408]]},
   {id:"s7-lev",d:7,m:"hike",r:"trek",pr:"PR 14",l:"PR14 Levada dos Cedros — Fanal → Curral Falso",
    det:"7,2 km officiels, 6,4 mesurés, D− 390 m. La levada dans la laurisylve, puis la descente vers la vallée aux trois rochers-îlots.",km:7.2,dp:110},
-  {id:"s7-vil",d:7,m:"hike",r:"village",l:"Écart : Curral Falso → Ribeira da Janela → Porto Moniz",approx:1,
+  {id:"s7-vil",e0:848,e1:20,d:7,m:"hike",r:"village",l:"Écart : Curral Falso → Ribeira da Janela → Porto Moniz",approx:1,
    det:"Les derniers kilomètres le long de la côte jusqu'aux piscines de lave. Fin de la traversée. Tracé indicatif.",km:6,dp:60,src:"estimation",
    p:[[32.8259,-17.1579],[32.8390,-17.1620],[32.8540,-17.1700],[32.8669,-17.1660]]},
 
@@ -1584,6 +1594,7 @@ function dayHTML(i){
       ${d.dp?`<div class="fact"><u>D+</u><b>${d.dp} m</b></div>`:""}
       <div class="fact"><u>Nuit</u><b style="font-size:12px">${esc(d.sleep)}</b></div>
     </div>
+    ${dayProfSVG(d.oi)}
     <p class="prose">${esc(d.s)}</p>
     ${d.love?`<p class="prose" style="color:var(--heart)">${esc(d.love)}</p>`:""}
     <ul class="plist">
@@ -1598,6 +1609,73 @@ function dayHTML(i){
       ${prs.map(r=>{const t=GEO.trails[r];return t&&t.tickets?`<a href="${t.tickets}" target="_blank" rel="noopener noreferrer">Créneau ${esc(r)} ↗</a>`:"";}).join("")}</div>`;})()}
     <div class="go"><button class="mini" data-act="fit" data-i="${i}">Cadrer la carte</button>
     <button class="mini" data-act="clear">Tout l'itinéraire</button></div>`;
+}
+/* Profil d'un tracé, en [km local, altitude]. Un sentier PR renvoie le
+   relevé SRTM le long de sa géométrie ; une liaison dessinée à la main ne
+   renvoie que ses deux extrémités, qu'on relie en pointillé — la ligne
+   droite ne dit rien du chemin réel. */
+function segProf(g){
+  const t=g.pr&&GEO.trails[g.pr],km=segKm(g);
+  if(!t||!t.prof||t.prof.length<2)
+    return (g.e0!=null&&g.e1!=null)?{pts:[[0,g.e0],[km,g.e1]],sure:false,km}:null;
+  let pr=t.prof;
+  if(g.cut){
+    const full=t.lines[0].map(q=>[q[1],q[0]]);
+    const a=nearestIdx(full,g.cut[0]),b=nearestIdx(full,g.cut[1]);
+    const i0=Math.min(a,b),i1=Math.max(a,b);
+    let d=0,d0=0,d1=0;
+    for(let i=1;i<full.length;i++){d+=KM(full[i-1],full[i]);if(i===i0)d0=d;if(i===i1)d1=d;}
+    const cut=pr.filter(q=>q[0]>=d0-0.05&&q[0]<=d1+0.05).map(q=>[q[0]-d0,q[1]]);
+    if(cut.length>=2)pr=cut;
+  }
+  const L=pr[pr.length-1][0]||km;
+  let pts=pr.map(q=>[q[0]/L*km,q[1]]);
+  if(g.rev)pts=pts.map(q=>[km-q[0],q[1]]).reverse();
+  return {pts,sure:true,km};
+}
+/* Profil d'une journée : les tracés bout à bout, dans l'ordre de marche.
+   Un aller-retour est déplié — on repasse par le même chemin en sens inverse. */
+function dayProf(oi){
+  const hid=hiddenSegs();
+  const segs=SEGS.filter(g=>g.d===oi&&g.m==="hike"&&!hid.has(g.id));
+  const runs=[];let x=0;
+  segs.forEach(g=>{
+    const pr=segProf(g);if(!pr||!pr.km)return;
+    const push=rev=>{
+      const src=rev?pr.pts.map(q=>[pr.km-q[0],q[1]]).reverse():pr.pts;
+      runs.push({sure:pr.sure,pts:src.map(q=>[x+q[0],q[1]])});
+      x+=pr.km;
+    };
+    push(false);
+    if(g.r==="kiff")push(true);         // aller-retour : le retour compte aussi
+  });
+  return {runs,km:x};
+}
+function dayProfSVG(oi){
+  const {runs,km}=dayProf(oi);
+  if(!runs.length||km<=0)return "";
+  let mn=1e9,mx=-1e9;
+  runs.forEach(r=>r.pts.forEach(q=>{mn=Math.min(mn,q[1]);mx=Math.max(mx,q[1]);}));
+  if(mx-mn<80){const c=(mx+mn)/2;mn=c-40;mx=c+40;}
+  const W=300,H=86,PAD=16;
+  const X=v=>(v/km)*W, Y=v=>H-PAD-((v-mn)/(mx-mn))*(H-PAD-12);
+  const area=runs.map(r=>{
+    const p=r.pts.map(q=>`${X(q[0]).toFixed(1)},${Y(q[1]).toFixed(1)}`);
+    return `<polygon points="${X(r.pts[0][0]).toFixed(1)},${H-PAD} ${p.join(" ")} ${X(r.pts[r.pts.length-1][0]).toFixed(1)},${H-PAD}" class="pf-area${r.sure?"":" est"}"/>`;
+  }).join("");
+  const lines=runs.map(r=>`<polyline points="${r.pts.map(q=>`${X(q[0]).toFixed(1)},${Y(q[1]).toFixed(1)}`).join(" ")}" class="pf-line${r.sure?"":" est"}"/>`).join("");
+  const ticks=runs.slice(1).map(r=>`<line x1="${X(r.pts[0][0]).toFixed(1)}" y1="12" x2="${X(r.pts[0][0]).toFixed(1)}" y2="${H-PAD}" class="pf-tick"/>`).join("");
+  const anyEst=runs.some(r=>!r.sure);
+  return `<div class="dayprof">
+    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Profil de la journée">
+      <line x1="0" y1="${H-PAD}" x2="${W}" y2="${H-PAD}" class="pf-base"/>
+      ${area}${ticks}${lines}
+      <text x="0" y="9" class="pf-t">${Math.round(mx)} m</text>
+      <text x="0" y="${H-4}" class="pf-t">${Math.round(mn)} m</text>
+      <text x="${W}" y="${H-4}" text-anchor="end" class="pf-t">${km.toFixed(1)} km</text>
+    </svg>
+    <div class="pf-key">${anyEst?"Trait plein : relevé le long du tracé OSM. Pointillé : liaison — on n'en connaît que les deux bouts, le relief entre les deux n'est pas représenté.":"Relevé le long du tracé OSM, du départ à l'arrivée."}</div>
+  </div>`;
 }
 function profSVG(t,rev){
   const pr=t.prof;if(!pr||pr.length<4)return "";
