@@ -59,20 +59,18 @@ le samedi et l'aller-retour au Galibier le dimanche.
 
 | Fichier | Parcours | Distance | D+ |
 |---|---|---|---|
-| `moi-samedi-briancon-guillestre-izoard.gpx` | Briançon → Guillestre par le balcon de Champcella, puis combe du Queyras, Izoard et descente sur Briançon | 102,3 km | 2 700 m |
+| `moi-samedi-briancon-guillestre-izoard.gpx` | Briançon → Guillestre par la rive gauche, puis combe du Queyras, Izoard et descente sur Briançon | 89,6 km | 2 075 m |
 | `moi-dimanche-briancon-galibier-briancon.gpx` | Briançon → Lautaret → Galibier, demi-tour et retour | 66,6 km | 1 344 m |
 
 ### Les approches du samedi
 
 | Fichier | Itinéraire | Distance | D+ |
 |---|---|---|---|
-| `approche-briancon-guillestre.gpx` | Balcon de Champcella, section haute-Durance de la véloroute [La Durance à Vélo](https://laduranceavelo.fr/) : Prelles, L'Argentière, Pallon, Champcella, Saint-Crépin, Mont-Dauphin | 49,4 km | 1 088 m |
-| `approche-briancon-guillestre-vallee.gpx` | Rive gauche par Saint-Martin-de-Queyrières puis la vallée — évite la N94 sur la première moitié | 36,7 km | 462 m |
+| `approche-briancon-guillestre.gpx` | Rive gauche par Prelles et Saint-Martin-de-Queyrières, puis la vallée par Saint-Crépin et Mont-Dauphin — évite la N94 sur la première moitié, jamais plus de 6 % | 36,7 km | 462 m |
+| `approche-briancon-guillestre-balcon.gpx` | Variante panoramique : balcon de Champcella, section haute de la véloroute [La Durance à Vélo](https://laduranceavelo.fr/), 1 496 m au point haut, rampe à 13 % | 49,4 km | 1 088 m |
 
-La véloroute est balisée en continu, sur petites routes bitumées partagées avec les
-voitures, et donnée « moyen » avec des passages à plus de 6 %. Les approches sont
-calculées par routage OpenStreetMap (BRouter, profil `fastbike-lowtraffic`) ; le reste
-est découpé dans les parcours officiels ASO.
+Les approches sont calculées par routage OpenStreetMap (BRouter, profil
+`fastbike-lowtraffic`) ; le reste est découpé dans les parcours officiels ASO.
 
 ## Visualisation
 `roadbook-briancon.html` (à la racine) est une page autonome : le plan du week-end
