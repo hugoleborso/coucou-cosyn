@@ -52,12 +52,25 @@ Komoot, RideWithGPS ou VisuGPX.
   modèle d'altitude utilisés ; les chiffres du tableau sont ceux mesurés sur ces
   fichiers avec un seuil de 3 m.
 
-## Visualisation
+## Mes traces à moi (week-end du 19–20 septembre)
 
+Les deux journées prêtes à importer dans un compteur, avec la jonction à Guillestre
+le samedi et l'aller-retour au Galibier le dimanche.
+
+| Fichier | Parcours | Distance | D+ |
+|---|---|---|---|
+| `moi-samedi-briancon-guillestre-izoard.gpx` | Briançon → Guillestre par la vallée, puis combe du Queyras, Izoard et descente sur Briançon | 84,2 km | 1 945 m |
+| `moi-dimanche-briancon-galibier-briancon.gpx` | Briançon → Lautaret → Galibier, demi-tour et retour | 66,6 km | 1 344 m |
+| `approche-briancon-guillestre.gpx` | L'approche seule : N94 par L'Argentière, Saint-Crépin, Mont-Dauphin | 31,7 km | 370 m |
+
+L'approche est calculée par routage OpenStreetMap (BRouter, profil `fastbike`, qui suit
+la route principale de la vallée) ; le reste est découpé dans les parcours officiels ASO.
+
+## Visualisation
 `roadbook-briancon.html` (à la racine) est une page autonome : le plan du week-end
 Paris – Grenoble – Briançon – Oisans sur un fond OpenStreetMap embarqué (tuiles
-standard zoom 12, de Grenoble au Queyras). Trois couches : les deux étapes
-intégrales, mes portions, et les trajets voiture et train. Chaque journée a un
+standard zoom 12, de Grenoble au Queyras). Quatre couches : les deux étapes
+intégrales, mon approche en solo, ce qu'on roule ensemble, et les trajets voiture et train. Chaque journée a un
 bouton « cadrer sur la carte » qui isole ses couches et recadre la carte dessus.
 Chaque jour de vélo a son profil altimétrique avec deux bandes indiquant qui est
 sur le vélo ; survoler un profil place le point correspondant sur la carte.
