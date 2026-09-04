@@ -54,23 +54,27 @@ Komoot, RideWithGPS ou VisuGPX.
 
 ## Mes traces à moi (week-end du 5–6 septembre)
 
-Les deux journées prêtes à importer dans un compteur, avec la jonction à Guillestre
-le samedi et l'aller-retour au Galibier le dimanche.
+| Fichier | Parcours | Distance | D+ | Selle |
+|---|---|---|---|---|
+| `moi-samedi-briancon-guillestre-izoard.gpx` | Briançon → Guillestre par la vallée, puis combe du Queyras, Izoard et descente sur Briançon | 83,9 km | 1 936 m | ≈ 4 h 11 |
+| `moi-dimanche-briancon-galibier-briancon.gpx` | Briançon → Lautaret → Galibier, demi-tour et retour | 66,6 km | 1 344 m | ≈ 3 h 23 |
 
-| Fichier | Parcours | Distance | D+ |
-|---|---|---|---|
-| `moi-samedi-briancon-guillestre-izoard.gpx` | Briançon → Guillestre par la rive gauche, puis combe du Queyras, Izoard et descente sur Briançon | 89,6 km | 2 075 m |
-| `moi-dimanche-briancon-galibier-briancon.gpx` | Briançon → Lautaret → Galibier, demi-tour et retour | 66,6 km | 1 344 m |
+### Les trois approches du samedi
 
-### Les approches du samedi
+| Fichier | Itinéraire | Distance | D+ | Selle |
+|---|---|---|---|---|
+| `approche-briancon-guillestre.gpx` | Vallée de la Durance, le plus plat : Prelles, L'Argentière, La Roche-de-Rame, Saint-Crépin, Mont-Dauphin | 31,0 km | 323 m | ≈ 1 h 22 |
+| `approche-briancon-guillestre-rive-gauche.gpx` | Rive gauche par Saint-Martin-de-Queyrières, plus calme | 36,7 km | 462 m | ≈ 1 h 38 |
+| `approche-briancon-guillestre-balcon.gpx` | Balcon de Champcella, section haute de la véloroute [La Durance à Vélo](https://laduranceavelo.fr/) | 49,4 km | 1 088 m | ≈ 2 h 35 |
 
-| Fichier | Itinéraire | Distance | D+ |
-|---|---|---|---|
-| `approche-briancon-guillestre.gpx` | Rive gauche par Prelles et Saint-Martin-de-Queyrières, puis la vallée par Saint-Crépin et Mont-Dauphin — évite la N94 sur la première moitié, jamais plus de 6 % | 36,7 km | 462 m |
-| `approche-briancon-guillestre-balcon.gpx` | Variante panoramique : balcon de Champcella, section haute de la véloroute [La Durance à Vélo](https://laduranceavelo.fr/), 1 496 m au point haut, rampe à 13 % | 49,4 km | 1 088 m |
+Le verrou de la Durance entre Prelles et Saint-Martin-de-Queyrières impose une
+centaine de mètres de montée à toutes les variantes : 1 217 m par la vallée,
+1 267 m par la rive gauche.
 
-Les approches sont calculées par routage OpenStreetMap (BRouter, profil
-`fastbike-lowtraffic`) ; le reste est découpé dans les parcours officiels ASO.
+Les temps de selle viennent des vitesses réelles par tranche de pente relevées sur
+le vélo du triathlon d'Aiguebelette 2025 (83,5 km, 1 544 m, 3 h 40 à 147 W),
+ramenées à 85 % pour une allure d'endurance. Les approches sont calculées par
+routage OpenStreetMap (BRouter) ; le reste est découpé dans les parcours officiels ASO.
 
 ## Visualisation
 `roadbook-briancon.html` (à la racine) est une page autonome : le plan du week-end
