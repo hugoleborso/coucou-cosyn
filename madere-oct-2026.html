@@ -551,7 +551,7 @@ footer{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:24px 0 0;
 <section class="view" id="v-opt" role="tabpanel" hidden>
   <div class="vhead">
     <h2>Ce qu'il reste à trancher</h2>
-    <p>Quatre arbitrages. Chacun réécrit le calendrier et fait apparaître ou disparaître des tâches.</p>
+    <p id="optsub">Chaque arbitrage réécrit le calendrier et fait apparaître ou disparaître des tâches.</p>
   </div>
   <div id="opts"></div>
 </section>
@@ -639,6 +639,12 @@ const PLACES = {
     k2:"Échappatoire : le PR2 Vereda do Urzal descend vers Curral das Freiras ou Boaventura."},
   ateixeira:{n:"Achada do Teixeira",lat:32.7690,lon:-16.9270,t:"col",d:[5],la:"r",sn:"Achada do Teixeira",
     k:"Parking à 1 590 m, fin du PR1.2. Le plan de repli : 4,5 km de descente depuis le Ruivo, puis taxi vers l'Encumeada (45 min)."},
+  boaventura:{n:"Boaventura",lat:32.8231,lon:-16.9906,t:"hot",d:[5,51],la:"t",major:1,
+    k:"Village de la côte nord au débouché du vallon de l'Urzal, terrasses en gradins au-dessus de galets noirs. Fin de la descente depuis la crête.",
+    k2:"C'est par là que passe le contournement à pied du PR1.3 fermé, dans les deux sens : @irishgirlexplores l'a fait d'ouest en est, nous le ferions d'est en ouest.",
+    stay:{name:"Solar da Boaventura",price:"70–90 €",todo:"t-taxi",note:"Ancienne maison de maître reconvertie, à peu près la seule adresse du village. Vérifier qu'ils servent le dîner : il n'y a pas de restaurant à côté."}},
+  svicente:{n:"São Vicente",lat:32.7995,lon:-17.0445,t:"vil",d:[51],la:"b",sn:"São Vicente",
+    k:"Bourg de la côte nord à l'embouchure de la vallée qui remonte vers l'Encumeada. Grottes volcaniques, vieux centre en basalte, et l'unique route qui recoupe l'île par le nord."},
   encumeada:{n:"Boca da Encumeada",lat:32.7560,lon:-17.0180,t:"hot",d:[5,6],la:"b",sn:"Encumeada",major:1,
     k:"Le col à 1 007 m qui coupe l'île en deux, avec un snack-bar et la vue sur les deux versants.",
     stay:{name:"Valley View Hotel Encumeada",price:"75–90 €",todo:"t-encumeada",note:"Seul lit à des kilomètres. Demander côté vallée, éviter les week-ends de mariage."}},
@@ -742,39 +748,51 @@ const SEGS = [
    l:"Écart : sommet → Casa de Abrigo",
    det:"Quinze minutes de descente jusqu'au refuge, sur le sentier bétonné qui part du sommet. Trop court pour justifier un GPX : rien n'est tracé. Douze lits, espèces uniquement, pas de chauffage.",approx:1,
    p:[[32.7589,-16.9428],[32.7580,-16.9440],[32.7570,-16.9445]]},
-  {id:"s5-trek",d:5,m:"hike",r:"trek",pr:"PR 1.3",gx:"gr-enc-ruivo",rev:1,
-   l:"PR1.3 Pico Ruivo → Boca das Torrinhas → Encumeada",
-   det:"10,1 km mesurés sur la trace GR1, 225 m de montée et 1 038 m de descente dans notre sens : on tombe de 1 800 à 1 000 m. La coupure est à mi-parcours — Pico Ruivo → Boca das Torrinhas fait 4,5 km et reste ouvert, Torrinhas → Encumeada fait 5,6 km et reste fermé."},
-  {id:"s5-urzal",d:5,m:"hike",r:"village",pr:"PR 2",gx:"pr2",alt:1,dp:0,
-   l:"Repli ① PR2 Vereda do Urzal",
-   det:"Depuis Boca das Torrinhas, la descente officielle quand la crête est coupée. 8,8 km sur le relevé AllTrails, 10,3 km sur la fiche officielle, jusqu'à Curral das Freiras ou Boaventura."},
+  {id:"s5-open",d:5,m:"hike",r:"trek",pr:"PR 1.3",gx:"gr-enc-ruivo",rev:1,dp:50,
+   cut:[[32.7581,-16.9416],[32.7530,-16.9740]],
+   l:"PR1.3 ① Pico Ruivo → Boca das Torrinhas — la partie ouverte",
+   det:"4,3 km mesurés sur la trace GR1 (4,5 km annoncés), de 1 807 à 1 425 m. C'est tout ce qui reste ouvert du PR1.3, et c'est vraiment beau : la ligne de crête plein ouest, le Curral d'un côté, la côte nord de l'autre. Au col, le sentier est barré et il faut redescendre d'un côté ou de l'autre."},
+  {id:"s5-closed",d:5,m:"hike",r:"trek",pr:"PR 1.3",gx:"gr-enc-ruivo",rev:1,dp:170,alt:1,
+   cut:[[32.7530,-16.9740],[32.7560,-17.0180]],
+   l:"PR1.3 ② Boca das Torrinhas → Encumeada — FERMÉ",
+   det:"5,4 km mesurés, 169 m de montée et 609 m de descente. Fermé depuis les incendies d'août 2024 et les glissements qui ont suivi, et l'IFCN a confirmé le 26 août 2026 que cette section « restera fermée ». Le tracé est affiché pour qu'on voie ce qu'on rate — pas pour qu'on le prenne."},
+  {id:"s5-urzal",d:5,m:"hike",r:"village",pr:"PR 2",gx:"pr2",dp:0,
+   cut:[[32.7530,-16.9740],[32.74262,-16.9660]],
+   l:"PR2 Urzal ① Torrinhas → sud, vers Curral das Freiras",
+   det:"La branche sud de la Vereda do Urzal, celle que l'IFCN désigne comme échappatoire. 2,7 km relevés de 1 311 à 699 m, descente continue, et le relevé s'arrête 2,8 km avant Curral das Freiras — la fin se fait sur piste. De là, taxi vers l'Encumeada."},
+  {id:"s5-nord",d:5,m:"hike",r:"village",pr:"PR 2",gx:"pr2",rev:1,dp:350,
+   cut:[[32.7530,-16.9740],[32.78049,-16.97961]],
+   l:"PR2 Urzal ② Torrinhas → nord, vers Boaventura",
+   det:"L'autre branche, celle qui permet de contourner à pied. 5,7 km relevés de 1 311 à 504 m : deux kilomètres de crête à ressauts, puis huit cents mètres de descente d'un trait. Le relevé s'arrête 4,8 km avant Boaventura, la fin se fait sur route. Le D+ de 350 m est lu sur le relevé brut avec un seuil de 40 m pour écarter le bruit de l'altimètre : le vrai chiffre est probablement entre 250 et 350."},
   {id:"s5-pr12",d:5,m:"hike",r:"village",pr:"PR 1.2",gx:"pr12",rev:1,alt:1,dp:90,
-   l:"Repli ② PR1.2 → Achada do Teixeira",
-   det:"2,8 km relevés depuis le Ruivo jusqu'au parking à 1 590 m, 320 m de descente. Le plus court chemin vers une route."},
-  {id:"s5-taxi",d:5,m:"car",r:"move",alt:1,l:"Taxi de montagne vers l'Encumeada",
-   det:"Achada do Teixeira ou Curral das Freiras → Boca da Encumeada, 45 min, ~60-70 € la course. Plusieurs compagnies se sont spécialisées dans les navettes de randonneurs.",
+   l:"PR1.2 Pico Ruivo → Achada do Teixeira",
+   det:"2,8 km relevés depuis le Ruivo jusqu'au parking à 1 590 m, 320 m de descente. Le plus court chemin vers une route — on ne voit pas Boca das Torrinhas."},
+  {id:"s5-taxi",d:5,m:"car",r:"move",l:"Taxi de montagne vers l'Encumeada",
+   det:"Curral das Freiras ou Achada do Teixeira → Boca da Encumeada, 45 min à 1 h, ~60-70 € la course. Plusieurs compagnies se sont spécialisées dans les navettes de randonneurs : à réserver la veille, il n'y a pas de taxi en maraude à ces endroits.",
    url:"https://yourtaximadeira.com/",urlLabel:"Your Taxi Madeira",url2:"https://danielmadeirataxis.com/levada-walks/",url2Label:"Daniel Madeira Taxis",approx:1,
    p:[[32.7649,-16.9211],[32.7800,-16.9600],[32.7700,-17.0000],[32.7543,-17.0186]]},
+
+  {id:"s51-cote",e0:40,e1:1007,d:51,m:"hike",r:"trek",km:19,dp:970,dpmin:1,src:"estimation sur les routes ER101 et ER228",
+   l:"Boaventura → São Vicente → Encumeada — sans trace",
+   det:"Les deux journées « aucun PR » d'@irishgirlexplores, prises à l'envers. Neuf kilomètres de côte nord jusqu'à São Vicente, puis dix kilomètres de vallée qui remontent au col. Personne n'en a publié de GPX : rien n'est tracé, et les 19 km sont mesurés sur la route, pas sur un sentier. Le seul chiffre solide est la dénivelée : du niveau de la mer à 1 007 m, donc au moins 970 m de montée. Une variante existe par la Levada dos Tornos et la Levada do Norte, non vérifiée."},
+
   {id:"s6-hf",e0:1000,e1:36,d:6,m:"hike",r:"trek",alt:1,km:15,dp:160,src:"HikingFex",
    l:"Encumeada → São Vicente → Seixal — sans trace",
    det:"HikingFex donne 15 km et 160 m de montée pour cette descente par la vallée de São Vicente. Personne n'en a publié de GPX : rien n'est tracé sur la carte, et les chiffres restent ceux du blog, pas une mesure."},
   {id:"s6-trek",d:6,m:"hike",r:"trek",gx:"gr-rab-enc",rev:1,alt:1,
    l:"Encumeada → Paúl da Serra → Rabaçal",
    det:"20,2 km et 777 m de montée mesurés sur la trace GR1 dans notre sens, soit près du double de mon estimation initiale. C'est cette mesure qui fait basculer les variantes avec Rabaçal hors d'une journée raisonnable."},
-  {id:"s6-kiff",d:6,m:"hike",r:"kiff",pr:"PR 6",gx:"pr6",alt:1,dp:80,
-   l:"PR6 — la lagune des 25 Fontes",
-   det:"9,7 km relevés au départ du parking de Rabaçal, aller-retour compris ; la fiche officielle compte 4,3 km à l'aller. Très fréquenté, y être tôt."},
-  {id:"s6-kiff2",d:6,m:"hike",r:"kiff",pr:"PR 6.1",gx:"pr61",alt:1,dp:100,
-   l:"PR6.1 — cascade du Risco",
-   det:"Le relevé AllTrails de la Levada do Risco enchaîne en fait les deux boucles (12 km avec les 25 Fontes). Seul, le Risco fait 3 km officiels : l'aller-retour le plus court de la journée, et la plus haute cascade de l'île au bout."},
-  {id:"s6-vil",e0:1278,e1:36,d:6,m:"hike",r:"village",alt:1,km:8,src:"estimation",
-   l:"Écart : Rabaçal → Seixal — sans trace",
+  {id:"s6-kiff2",d:62,m:"hike",r:"kiff",pr:"PR 6",gx:"pr61",alt:1,dp:180,
+   l:"PR6 + PR6.1 — les 25 Fontes et la cascade du Risco",
+   det:"Le relevé AllTrails de la Levada do Risco enchaîne les deux boucles depuis le parking de Rabaçal : 12 km au total, aller-retour compris. Les fiches officielles les comptent séparément — 4,3 km pour les 25 Fontes, 3 km pour le Risco. Un seul créneau SIMplifica par sentier, et il faut y être tôt : c'est le coin le plus fréquenté de l'île."},
+  {id:"s6-vil",e0:1278,e1:36,d:62,m:"hike",r:"village",alt:1,km:8,src:"estimation",
+   l:"Rabaçal → Seixal — sans trace",
    det:"Le GR1 ne descend jamais à Seixal : il file de Rabaçal vers le Fanal en restant sur le plateau. Aucun GPX humain pour cette plongée de mille deux cents mètres sur le sable noir — rien n'est tracé, et les 8 km sont une estimation."},
 
   {id:"s7-trek",e0:36,e1:1137,d:7,m:"hike",r:"trek",km:9,dp:1100,dpmin:1,src:"estimation",
    l:"Liaison Seixal → Fanal — sans trace",
    det:"Même problème dans l'autre sens : le PR13 officiel descend d'Assobiadores vers Fanal, il ne monte pas de Seixal, et le GR1 passe au large. Sans trace publiée, rien n'est dessiné. Seul chiffre solide : de 36 m à Seixal à 1 137 m au Fanal, donc au moins 1 100 m de montée, en une fois, depuis la mer."},
-  {id:"s7-gr",d:7,m:"hike",r:"trek",gx:"gr-fanal-rab",rev:1,alt:1,
+  {id:"s7-gr",d:62,m:"hike",r:"trek",gx:"gr-fanal-rab",rev:1,alt:1,
    l:"GR1 · Rabaçal → Fanal",
    det:"11,9 km et 379 m de montée mesurés sur la trace GR1. Le plateau boisé entre le cirque de Rabaçal et les til du Fanal, sans jamais redescendre à la mer. C'est le seul moyen d'enchaîner Rabaçal et le Fanal sur une trace réelle : par Seixal, personne n'a publié de GPX."},
   {id:"s7-lev",d:7,m:"hike",r:"trek",pr:"PR 14",gx:"gr-fanal-cf",rev:1,
@@ -833,12 +851,18 @@ const BASE_DAYS = [
   {oi:4,seq:4,kind:"hike",t:"L'arête",
    s:"Balcões à l'aube, onze kilomètres d'approche jusqu'à l'Areeiro, puis les cinq kilomètres du PR1 jusqu'au toit de l'île.",
    sleep:"Refuge du Pico Ruivo",places:["balcoes","areeiro","ruivo"],love:"Une nuit à 1 760 m, tous les deux, et le gardien qui allume la cheminée."},
-  {oi:5,seq:5,kind:"hike",t:"La crête vers l'Encumeada",
-   s:"Lever de soleil au Ruivo, puis la ligne de crête plein ouest — et surtout la plus longue descente du voyage : 1 150 m sur onze kilomètres. Étape sous conditions.",
+  {oi:5,seq:5,kind:"hike",t:"La crête, jusqu'où elle est ouverte",
+   s:"Lever de soleil au Ruivo, puis la crête plein ouest jusqu'à Boca das Torrinhas — 4,3 km, le tronçon du PR1.3 resté ouvert. Au col, le sentier est barré : la suite se choisit dans les arbitrages.",
    sleep:"Encumeada",places:["torrinhas","encumeada"]},
-  {oi:6,seq:6,kind:"hike",t:"Cascades et bascule au nord",
-   s:"Traversée du Paúl da Serra jusqu'à Rabaçal, les deux aller-retours du Risco et des 25 Fontes, puis la plongée sur le sable noir.",
-   sleep:"Seixal",places:["rabacal","seixal"]},
+  {oi:51,seq:5.5,only:"j5-nord",kind:"hike",t:"La vallée de São Vicente",
+   s:"Remontée de la côte nord : Boaventura, São Vicente, puis les dix kilomètres de vallée qui regagnent le col de l'Encumeada. On retrouve l'itinéraire là où le PR1.3 nous en avait sortis.",
+   sleep:"Encumeada",places:["svicente","encumeada"]},
+  {oi:6,seq:6,kind:"hike",t:"Après l'Encumeada",
+   s:"Le versant ouest se choisit dans les arbitrages : la vallée de São Vicente, le cirque de Rabaçal, ou le plateau du Paúl da Serra.",
+   sleep:"Seixal",places:["seixal"]},
+  {oi:62,seq:6.5,only:["plan-rabacal","plan-gr1"],kind:"hike",t:"Deuxième jour à l'ouest",
+   s:"La journée que le découpage choisi ajoute au versant ouest.",
+   sleep:"Seixal",places:["seixal"]},
   {oi:7,seq:7,kind:"hike",t:"Fanal, puis l'arrivée",
    s:"Mille cent mètres de montée depuis la mer jusqu'au plateau des til, puis la Levada dos Cedros et la descente sur les piscines de lave.",
    sleep:"Porto Moniz",places:["fanal","rjanela","pmoniz"]},
@@ -871,50 +895,56 @@ const OPTIONS = [
      d:"Elle arrive le 14, départ d'Orly ensemble le 15. Le plus romantique, le moins efficace : Paris n'a qu'une compagnie en direct."}
    ],todos:{"vol-a":["t-vol-a"],"vol-b":["t-vol-b"],"vol-c":["t-vol-c"]}},
 
-  {id:"j5",label:"Étape J5",q:"Le PR1.3 est coupé — on fait quoi",
-   sub:"Ouvert jusqu'à Boca das Torrinhas, fermé au-delà vers l'Encumeada depuis les incendies d'août 2024.",
+  {id:"j5",label:"Le PR1.3 coupé",q:"Comment on contourne la section fermée",
+   sub:"Ce n'est pas une hypothèse : Boca das Torrinhas → Encumeada est fermé depuis août 2024, et l'IFCN a réécrit le 26 août 2026 qu'elle « restera fermée ». On marche les 4,3 km ouverts jusqu'au col, et là il faut sortir — par le sud en taxi, ou par le nord à pied en deux jours.",
    choices:[
-    {id:"j5-full",n:"Il rouvre, on le fait",p:"21 km · 1 080 m D+",
-     d:"Pico Ruivo → Encumeada d'une traite, la crête entre 1 800 et 1 000 m. À revérifier fin septembre, puis dix jours avant."},
-    {id:"j5-urzal",n:"Torrinhas puis PR2 Urzal",p:"~16 km + 1 h de taxi · ~70 €",
-     d:"Marche jusqu'à Boca das Torrinhas, bascule par la Vereda do Urzal vers Curral das Freiras ou Boaventura, puis taxi jusqu'à l'Encumeada."},
-    {id:"j5-taxi",n:"Descente + transfert",p:"5 km + 45 min de taxi · ~65 €",
-     d:"PR1.2 jusqu'à Achada do Teixeira, taxi vers l'Encumeada, après-midi libre au col. La solution paresseuse mais sûre."}
-   ],todos:{"j5-urzal":["t-taxi"],"j5-taxi":["t-taxi"]},
-   day:{5:{"j5-urzal":{t:"Crête tronquée, sortie par l'Urzal",s:"Ruivo → Boca das Torrinhas, descente par le PR2 puis taxi pour rejoindre l'Encumeada.",km:16,dp:700,places:["torrinhas","encumeada"]},
-          "j5-taxi":{t:"Descente sur Achada do Teixeira",s:"PR1.2, taxi jusqu'au col de l'Encumeada, après-midi de repos avant les deux dernières étapes.",km:5,dp:150,places:["ateixeira","encumeada"]}}},
-   segs:{"j5-full":["s5-trek"],"j5-urzal":["s5-trek","s5-urzal","s5-taxi"],"j5-taxi":["s5-pr12","s5-taxi"]}},
+    {id:"j5-urzal",n:"Sud : Urzal jusqu'à Curral, puis taxi",p:"7 km à pied + taxi ~65 € · 1 jour",
+     d:"La sortie que l'IFCN désigne elle-même. Crête jusqu'à Boca das Torrinhas (4,3 km), puis la branche sud de la Vereda do Urzal qui plonge vers Curral das Freiras (2,7 km relevés, la fin sur piste), et un taxi remonte au col de l'Encumeada. Journée courte : on est au col en début d'après-midi. C'est le choix par défaut parce que c'est le plus sûr, pas parce que c'est le plus beau."},
+    {id:"j5-nord",n:"Nord : Urzal, Boaventura, São Vicente — à pied",p:"15 km puis 19 km · 2 jours · sans taxi",
+     d:"Le vrai contournement, celui qu'@irishgirlexplores a fait en sens inverse. Crête jusqu'aux Torrinhas, puis la branche NORD de l'Urzal qui descend sur Boaventura (5,7 km relevés + 4,8 km de route), nuit au village. Le lendemain, on longe la côte nord jusqu'à São Vicente et on remonte la vallée jusqu'au col : 19 km, au moins 970 m de montée, aucune trace publiée. On ne prend aucun taxi, on gagne une journée de marche, et on voit deux villages que personne ne voit. C'est le choix à faire si six jours de marche vous semblent courts."},
+    {id:"j5-taxi",n:"Le plus court : PR1.2 et taxi",p:"2,8 km + taxi ~65 € · demi-journée",
+     d:"On ne va même pas aux Torrinhas : on redescend directement du Ruivo sur le parking d'Achada do Teixeira par le PR1.2, et un taxi fait le reste. À garder pour un matin de brouillard sur la crête, ou si la nuit au refuge a été mauvaise."},
+    {id:"j5-full",n:"S'il rouvrait d'ici là",p:"9,7 km · 220 m D+ · improbable",
+     d:"Pico Ruivo → Encumeada d'une traite, 9,7 km mesurés sur la trace GR1, 1 038 m de descente. Rien n'indique une réouverture : le texte officiel d'août 2026 dit l'inverse, et les travaux de stabilisation n'ont pas été annoncés. Gardé pour revérifier fin septembre puis dix jours avant, pas pour planifier dessus."}
+   ],todos:{"j5-urzal":["t-taxi"],"j5-taxi":["t-taxi"],"j5-nord":["t-boaventura"]},
+   day:{5:{"j5-urzal":{t:"Crête tronquée, sortie par le sud",s:"Ruivo → Boca das Torrinhas par la partie ouverte du PR1.3, descente par la branche sud de l'Urzal, puis taxi jusqu'au col de l'Encumeada.",places:["torrinhas","encumeada"]},
+          "j5-nord":{t:"Descente sur la côte nord",s:"Ruivo → Boca das Torrinhas, puis la branche nord de la Vereda do Urzal : huit cents mètres de descente d'un trait sur Boaventura, et une nuit dans un village de la côte nord.",sleep:"Boaventura",places:["torrinhas","boaventura"]},
+          "j5-taxi":{t:"Descente sur Achada do Teixeira",s:"PR1.2, taxi jusqu'au col de l'Encumeada, après-midi de repos avant les deux dernières étapes.",places:["ateixeira","encumeada"]},
+          "j5-full":{t:"La crête entière vers l'Encumeada",s:"Si la section rouvrait : la ligne de crête d'une traite, du toit de l'île au col qui coupe Madère en deux.",places:["torrinhas","encumeada"]}}},
+   segs:{"j5-full":["s5-open","s5-closed"],
+         "j5-urzal":["s5-open","s5-urzal","s5-taxi"],
+         "j5-nord":["s5-open","s5-nord","s51-cote"],
+         "j5-taxi":["s5-pr12","s5-taxi"]}},
 
-  {id:"duree",label:"Durée",q:"Onze jours, ou douze",
-   sub:"La traversée est la partie qu'on ne peut pas rattraper : un sentier fermé, une journée de brouillard sur l'arête, et tout le reste décale.",
+  {id:"plan",label:"Le versant ouest",q:"Après l'Encumeada, on passe par où",
+   sub:"Trois itinéraires vers Porto Moniz, et ils ne durent pas le même nombre de jours. Le critère qui a tout changé : la traversée du Paúl da Serra fait 20,2 km mesurés, pas les onze que j'estimais.",
    choices:[
-    {id:"duree-11",n:"Onze jours",p:"6 jours de marche · 3 de détente",
-     d:"Le format d'origine. Aucune marge : si le PR1 ferme le jour prévu, on perd l'arête, parce qu'il n'y a pas de créneau de rattrapage avant l'Encumeada."},
-    {id:"duree-12",n:"Douze jours — un tampon après la traversée",p:"+1 nuit à Porto Moniz",
-     d:"Un jour libre inséré juste après l'arrivée à Porto Moniz. S'il n'a pas servi à rattraper, il se passe dans les piscines de lave. C'est aussi le seul moyen d'absorber un vol dérouté au départ, ce qui arrive régulièrement à Madère."}
+    {id:"plan-gr1",n:"Le plateau, sur la trace du GR1",p:"3 jours · 20 + 12 + 15 km · trace complète",
+     d:"On ne redescend jamais à la mer. J6 Encumeada → Rabaçal par le Paúl da Serra (20,2 km, 777 m), nuit sur le plateau. J6bis Rabaçal → Fanal (11,9 km), nuit sous tente au milieu des til. J7 Fanal → Ribeira da Janela → Porto Moniz (14,8 km, presque tout en descente). C'est la seule des trois entièrement couverte par une trace GPX humaine, du premier au dernier mètre. Prix à payer : on perd Seixal et son sable noir."},
+    {id:"plan-rabacal",n:"Rabaçal et ses deux cascades",p:"3 jours · 20 + 18 + 24 km · trace partielle",
+     d:"Même première journée jusqu'à Rabaçal, mais le lendemain on prend le temps : les 25 Fontes et la cascade du Risco au fond du cirque, puis la plongée de mille deux cents mètres sur le sable noir de Seixal. J7 remonte de Seixal au Fanal et redescend sur Porto Moniz. C'est le plus beau des trois, et le plus incertain : la descente sur Seixal et la remontée au Fanal n'ont aucune trace publiée."},
+    {id:"plan-hf",n:"Par la vallée de São Vicente",p:"2 jours · 15 + 24 km · aucune trace",
+     d:"Le découpage de HikingFex, celui que suivait la première version de ce plan. On descend droit de l'Encumeada sur Seixal par la vallée de São Vicente, sans monter sur le plateau, et le lendemain on remonte au Fanal. Le plus court en jours, mais ses deux journées reposent entièrement sur des chiffres de blog : ni l'une ni l'autre n'a de GPX publié, et le J7 fait 24 km dont 1 100 m de montée depuis la mer."}
+   ],
+   day:{6:{"plan-hf":{t:"Descente sur São Vicente et Seixal",s:"Pas de plateau, pas de cascades : la vallée de São Vicente jusqu'à la côte nord, et l'après-midi libre sur le sable noir de Seixal.",sleep:"Seixal",places:["seixal"]},
+          "plan-rabacal":{t:"La traversée du Paúl da Serra",s:"Vingt kilomètres de plateau entre l'Encumeada et le cirque de Rabaçal, sur la trace du GR1. On ne redescend pas à la mer : nuit sur place, au camping d'Estanquinhos ou au gîte de Rabaçal.",sleep:"Plateau (Rabaçal)",places:["rabacal"]},
+          "plan-gr1":{t:"La traversée du Paúl da Serra",s:"Vingt kilomètres de plateau entre l'Encumeada et le cirque de Rabaçal, sur la trace du GR1. On ne redescend pas à la mer : nuit sur place, au camping d'Estanquinhos ou au gîte de Rabaçal.",sleep:"Plateau (Rabaçal)",places:["rabacal"]}},
+       62:{"plan-rabacal":{t:"Les cascades, puis la plongée sur Seixal",s:"Les 25 Fontes et la cascade du Risco au fond du cirque, en sac léger, puis mille deux cents mètres de descente jusqu'au sable noir.",sleep:"Seixal",places:["rabacal","seixal"]},
+           "plan-gr1":{t:"Rabaçal → Fanal, par le plateau",s:"Douze kilomètres de plateau boisé entre le cirque et les til centenaires du Fanal. Nuit sous tente sur l'aire officielle, cinq tentes par nuit.",sleep:"Fanal (bivouac)",places:["fanal"]}},
+       7:{"plan-gr1":{t:"La descente sur Porto Moniz",s:"La Levada dos Cedros depuis le Fanal, puis la vallée aux trois rochers-îlots et les piscines de lave. Quinze kilomètres, presque tout en descente : la journée d'arrivée la plus douce des trois.",places:["rjanela","pmoniz"]}}},
+   segs:{"plan-hf":["s6-hf","s7-trek"],
+         "plan-rabacal":["s6-trek","s6-kiff2","s6-vil","s7-trek"],
+         "plan-gr1":["s6-trek","s7-gr"]}},
+
+  {id:"duree",label:"Marge",q:"Un jour tampon, ou pas",
+   sub:"La longueur du voyage n'est plus un réglage : elle est la somme des arbitrages. Onze jours au minimum, quatorze si on prend le contournement nord, le plateau en trois jours et le tampon.",
+   choices:[
+    {id:"duree-11",n:"Sans tampon",p:"le format serré",
+     d:"Aucune marge après la traversée. Si le PR1 ferme le jour prévu, on perd l'arête : il n'y a pas de créneau de rattrapage avant l'Encumeada, et tout le reste est déjà réservé."},
+    {id:"duree-12",n:"Un jour tampon à Porto Moniz",p:"+1 nuit · recommandé",
+     d:"Un jour libre inséré juste après l'arrivée à Porto Moniz. S'il n'a pas servi à rattraper un sentier fermé ou une journée de brouillard, il se passe dans les piscines de lave. C'est aussi le seul moyen d'absorber un vol dérouté au départ, ce qui arrive régulièrement à Madère."}
    ],
    todos:{"duree-12":["t-nuit12"]}},
-
-  {id:"plan",label:"Découpage de la traversée",q:"On s'inspire de qui pour J6 et J7",
-   sub:"J6 déborde, et la mesure sur la trace GR1 a aggravé le diagnostic : la traversée du Paúl da Serra fait 20 km, pas 11. Une seule des trois premières variantes tient en une journée — et une seule des quatre est entièrement couverte par une trace humaine.",
-   choices:[
-    {id:"plan-hf",n:"HikingFex — la version courte",p:"15 km · 160 m · la seule qui tient",
-     d:"Le découpage en sept étapes que suivait déjà notre itinéraire. Sa journée 6 descend droit sur Seixal par la vallée de São Vicente, sans monter sur le plateau. La seule des trois qui se marche en une journée, et elle laisse une vraie demi-journée à Seixal."},
-    {id:"plan-25f",n:"Le plateau et les 25 Fontes",p:"33 km · ne tient pas en un jour",
-     d:"On traverse le Paúl da Serra (20 km mesurés sur la trace GR1), on descend dans le cirque voir la lagune des vingt-cinq sources, et on saute le Risco. Trente-trois kilomètres et 910 m de montée : c'est deux journées, pas une. À ne choisir qu'avec une nuit sur le plateau, sous tente, comme le fait le GR1 à Estanquinhos."},
-    {id:"plan-nous",n:"Les deux cascades",p:"36 km · deux jours de marche",
-     d:"Le plateau, les 25 Fontes, le Risco, puis la plongée de mille deux cents mètres sur le sable noir. C'était mon ajout, et la mesure l'a disqualifié comme journée unique : trente-six kilomètres. Gardé ici pour ce qu'il vaut — l'itinéraire le plus beau de l'ouest, si on lui donne deux jours."},
-    {id:"plan-gr1",n:"Le GR1, sur sa propre trace",p:"20 km puis 27 km · zéro trou sur la carte",
-     d:"On ne descend plus du tout au nord : Encumeada → Rabaçal le J6 (20,2 km, 777 m), nuit sur le plateau, puis Rabaçal → Fanal → Porto Moniz le J7 (26,7 km). C'est la seule variante entièrement couverte par une trace GPX humaine, du premier au dernier mètre — les trois autres traversent au moins un tronçon que personne n'a publié. Prix à payer : on perd Seixal et son sable noir, et le J7 est très long — à ne prendre qu'avec l'option douze jours."}
-   ],
-   day:{6:{"plan-hf":{t:"Descente sur São Vicente et Seixal",s:"Pas de plateau, pas de cascades : la vallée de São Vicente jusqu'à la côte nord, et l'après-midi libre sur le sable noir de Seixal.",places:["seixal"]},
-          "plan-25f":{t:"Le plateau et les 25 Fontes",s:"Traversée du Paúl da Serra jusqu'à Rabaçal, aller-retour à la lagune des vingt-cinq sources, puis la plongée sur le sable noir."},
-          "plan-gr1":{t:"La traversée du Paúl da Serra",s:"Vingt kilomètres de plateau entre l'Encumeada et le cirque de Rabaçal, sur la trace du GR1. On ne redescend pas à la mer : nuit sur place, au camping d'Estanquinhos ou au gîte de Rabaçal.",sleep:"Plateau (Rabaçal)",places:["rabacal"]}},
-       7:{"plan-gr1":{t:"Le plateau, puis l'arrivée",s:"Rabaçal → Fanal par le plateau boisé, puis la Levada dos Cedros et la descente sur les piscines de lave. Vingt-six kilomètres : c'est la plus longue journée du voyage.",places:["fanal","rjanela","pmoniz"]}}},
-   segs:{"plan-hf":["s6-hf","s7-trek"],
-         "plan-25f":["s6-trek","s6-kiff","s6-vil","s7-trek"],
-         "plan-nous":["s6-trek","s6-kiff","s6-kiff2","s6-vil","s7-trek"],
-         "plan-gr1":["s6-trek","s7-gr"]}},
 
   {id:"fin",label:"Après la traversée",q:"Où on pose les sacs après la traversée",
    sub:"Trois nuits à décider. La côte ouest se fait en bus et en taxi, Porto Santo se fait en ferry.",
@@ -976,6 +1006,8 @@ const TODOS = [
   {id:"t-seixal",dd:40,t:"Seixal — Casa das Videiras ou Madeira.Life",tag:"lit",place:"seixal",
    n:"Deux adresses, une poignée de chambres chacune."},
 
+  {id:"t-boaventura",dd:33,t:"Réserver la nuit de Boaventura",tag:"lit",opt:"j5",place:"boaventura",
+   n:"Solar da Boaventura, à peu près la seule adresse du village. Demander s'ils servent le dîner : on arrive à pied, sans voiture, et il n'y a pas de restaurant à côté."},
   {id:"t-nuit12",dd:33,t:"Une nuit de plus à Porto Moniz",tag:"lit",opt:"duree",place:"pmoniz",
    n:"Le jour tampon se réserve comme les autres : deux nuits à l'arrivée de la traversée, en annulable si possible."},
   {id:"t-pcruz",dd:33,t:"Porto da Cruz, Caniçal et Porto Moniz",tag:"lit",place:"pcruz",
@@ -1094,6 +1126,22 @@ const INFOS = [
    p2:["Deux corrections qu'elle a imposées : la traversée du plateau fait <b>le double</b> de mon estimation à vue, et l'approche du Pico do Areeiro <b>un quart de moins</b>. La première a disqualifié deux variantes de J6, la seconde a allégé J4."],
    links:[["La page et son GPX","https://hiking-trails.com/trail/gr1-madeira-crossing/"]]},
 
+  {h:"Le PR1.3 : ce qui est fermé, et par où on sort",p:["<b>Il n'y a pas d'incertitude à gérer, il y a un détour à choisir.</b> Le PR1.3 relie le Pico Ruivo à l'Encumeada en 9,7 km mesurés. Les 4,3 premiers, du Ruivo à Boca das Torrinhas, sont ouverts et magnifiques. Les 5,4 suivants sont fermés depuis les incendies d'août 2024, et le texte officiel du 26 août 2026 dit qu'ils « resteront fermés » — pas « sont temporairement fermés ».","Au col de Boca das Torrinhas, la seule issue est le <b>PR2 Vereda do Urzal</b>, que l'IFCN désigne nommément. Il a deux branches, et c'est là que se joue le vrai choix : au sud vers Curral das Freiras, au nord vers Boaventura."],
+   table:{head:["Sortie","À pied","Ensuite","Jours"],rows:[
+     ["Sud — Curral das Freiras","2,7 km, descente continue","taxi ~65 € jusqu'au col","1"],
+     ["Nord — Boaventura","5,7 km + 4,8 km de route","une nuit au village, puis 19 km par São Vicente","2"],
+     ["Ni l'un ni l'autre — PR1.2","2,8 km sur Achada do Teixeira","taxi ~65 €","½"]]},
+   p2:["<b>La branche nord est le seul contournement qui se marche.</b> C'est le corridor qu'@irishgirlexplores a pris en sens inverse, et il ajoute une journée entière de marche là où le taxi en supprime une demie. Contrepartie : ni la fin du PR2 vers Boaventura, ni la remontée de la vallée de São Vicente n'ont de GPX publié — ce sont les deux seuls tronçons du voyage où on marchera sans trace, et ils suivent des routes.","<b>La branche sud reste le choix par défaut</b>, parce qu'elle est courte, balisée et officiellement recommandée. Mais elle fait de J5 une demi-journée : sept kilomètres, on est au col avant le déjeuner."],
+   links:[["Le texte officiel du PR1.3","https://visitmadeira.com/en/what-to-do/nature-seekers/activities/hiking/pr-13-vereda-da-encumeada/"],["PR2 Vereda do Urzal","https://visitmadeira.com/en/what-to-do/nature-seekers/activities/hiking/pr-2-vereda-do-urzal/"]]},
+
+  {h:"Combien de jours de marche, au juste",p:["Six jours de marche, c'était le format d'origine, et c'est court pour 111 km avec deux journées à plus de 20 km. La durée n'est plus un réglage isolé : elle est la somme de deux arbitrages, et elle va de six à huit jours de marche."],
+   table:{head:["Combinaison","Marche","Voyage","La journée la plus dure"],rows:[
+     ["Sud + vallée de São Vicente","6 jours","12 jours","J7 · 24 km, 1 160 m"],
+     ["Sud + plateau GR1 (retenu)","7 jours","13 jours","J3 · 22 km, 990 m"],
+     ["Nord + plateau GR1","8 jours","14 jours","J3 · 22 km, 990 m"],
+     ["Nord + Rabaçal","8 jours","14 jours","J9 · 24 km, 1 160 m"]]},
+   p2:["Le gain n'est pas seulement du repos : le découpage en trois jours du versant ouest fait tomber la plus longue journée de 24 à 22 km, et il remplace la seule étape sans aucune trace publiée par trois étapes intégralement tracées.","Le jour tampon de Porto Moniz s'ajoute par-dessus, et il compte à part : il n'est pas une étape, c'est une marge. Si tout se passe bien, il se passe dans les piscines de lave.","Si quatorze jours font trop, c'est la fin du séjour qu'il faut raccourcir, pas la traversée : les trois journées de plage entre Ponta do Sol et Funchal sont les seules qui ne coûtent rien à supprimer."]},
+
   {h:"L'itinéraire d'@irishgirlexplores",p:["Sept jours, <b>d'ouest en est</b>, avec un contournement par la côte nord pour éviter la coupure du PR1.3. C'est le seul des découpages consultés qui traite le problème en face plutôt que de l'ignorer — et qui dort en camping quatre nuits sur six.","<b>Ce qui ne colle pas avec nous :</b> le sens. Elle finit par le PR1 en montant d'Ilha vers le Pico Ruivo puis en redescendant sur l'Areeiro — or depuis avril 2026, le PR1 se marche uniquement Areeiro → Ruivo. Son J5-J6 tel quel n'est plus autorisé. Le reste, en revanche, est directement réutilisable."],
    table:{head:["Jour","Étape","Nuit"],rows:[
      ["1","Porto Moniz → Fanal · PR15 + PR14","camping du Fanal"],
@@ -1114,7 +1162,7 @@ const INFOS = [
      ["→ Encumeada","10 km","21 km","13 km","10,5 km"],
      ["→ Seixal","15 km†","15 km","10,5 km*","21 km"],
      ["→ Porto Moniz","21 km","23 km","21 + 15 km*","—"]]},
-   p2:["* Le GR1 part de Machico et reste en altitude à l'ouest : ses étapes ne se superposent pas exactement aux nôtres. † Nos 15 km sont la variante courte ; par le plateau et Rabaçal, la même journée fait 33 à 36 km.","<b>J5 est tranchée</b> : le PR1.3 fait 11,2 km selon visitmadeira, 9,7 km mesurés sur le tracé OSM, 10,5 km chez IntoTheHike, 13 km pour le GR1. Les 21 km de HikingFex sont isolés. Nous retenons onze kilomètres, avec 380 m de montée et 1 150 m de descente.","<b>J6 se choisit</b> dans les arbitrages : 15 km à la HikingFex, 23 km avec les 25 Fontes, ou 27 km avec les deux cascades. Par défaut, la version courte."],
+   p2:["* Le GR1 part de Machico et reste en altitude à l'ouest : ses étapes ne se superposent pas exactement aux nôtres. † Nos 15 km sont la variante courte ; par le plateau et Rabaçal, la même journée fait 33 à 36 km.","<b>J5 ne se compare plus</b> : tous ces découpages font marcher le PR1.3 en entier, ce qui n'est plus possible. Sur la trace GR1 il fait 9,7 km, dont 4,3 ouverts et 5,4 fermés. Les 21 km de HikingFex étaient de toute façon isolés.","<b>Le versant ouest se choisit</b> dans les arbitrages : deux jours par la vallée de São Vicente, ou trois jours par le plateau — et trois jours, c'est aussi le découpage du GR1 officiel."],
    links:[["HikingFex — 7 étapes","https://www.hikingfex.com/en/post/madeira-hiking-105km-island-crossing"],["IntoTheHike — 5 jours","https://intothehike.com/hike-across-madeira-island/"],["GR1 officiel — étapes","https://hiking-trails.com/trail/gr1-madeira-crossing/"],["Oh What A Knight — 5 jours","https://ohwhataknight.co.uk/blog/hiking-across-madeira"]]},
 
   {h:"Les bus, pour de vrai",p:["<b>J1 — SAM 113</b>, Funchal → Machico → Caniçal. L'aéroport est desservi par plusieurs lignes SAM : vérifier l'arrêt exact sur SIGA, le moteur de recherche régional.","<b>J8 — Rodoeste 80</b>, et pas la 139 : c'est elle qui longe la côte ouest, la 139 passe au nord par le tunnel de l'Encumeada. <b>Un seul départ par jour</b> — Porto Moniz 16 h 00, Calheta 17 h 30, Ponta do Sol ~17 h 45, Funchal 19 h 40. La matinée aux piscines est donc gratuite, mais rater ce bus coûte un taxi à 90 €.","<b>J9 et J10</b> — Ponta do Sol est bien relié (lignes 4, 107, 115, 142, 146), sauf le week-end. Selon la date de départ, J10 peut tomber un samedi : service réduit, à vérifier la veille."],
@@ -1140,7 +1188,7 @@ const SHARED_FILE="data/plan.json";      // état partagé entre Hugo et Lucille
 const SHARED_KEYS=["choices","done","book","start"];
 const DEFAULTS={tab:"map",day:null,sel:null,month:null,relief:true,
   start:"2026-10-15",                      // provisoire, se règle dans le calendrier
-  choices:{vol:"vol-a",j5:"j5-full",plan:"plan-hf",duree:"duree-11",fin:"fin-ouest",roule:"roule-zero",j4nuit:"nuit-ref"},
+  choices:{vol:"vol-a",j5:"j5-urzal",plan:"plan-gr1",duree:"duree-12",fin:"fin-ouest",roule:"roule-zero",j4nuit:"nuit-ref"},
   done:{},book:{}};
 let state=JSON.parse(JSON.stringify(DEFAULTS));
 
@@ -1230,7 +1278,7 @@ const MOA=["janv.","févr.","mars","avr.","mai","juin","juil.","août","sept.","
 const addD=(dt,n)=>new Date(dt.getFullYear(),dt.getMonth(),dt.getDate()+n);
 const DEPART=()=>parseISO(state.start);
 const RETOUR=()=>addD(DEPART(),tripLen()-1);
-const tripLen=()=>BASE_DAYS.filter(d=>!d.only||state.choices.duree===d.only).length;
+const tripLen=()=>effDays().length;
 const dayLbl=dt=>`${WD[dt.getDay()]} ${dt.getDate()} ${MOA[dt.getMonth()]}`;
 
 function eff(d){
@@ -1252,7 +1300,11 @@ function eff(d){
   return o;
 }
 function effDays(){
-  const list=BASE_DAYS.filter(d=>!d.only||state.choices.duree===d.only).sort((a,b)=>a.seq-b.seq);
+  // une journée peut n'exister que sous certains choix : `only` vise des ids
+  // de choix, quel que soit l'arbitrage auquel ils appartiennent.
+  const sel=new Set(Object.values(state.choices));
+  const on=d=>!d.only||(Array.isArray(d.only)?d.only.some(x=>sel.has(x)):sel.has(d.only));
+  const list=BASE_DAYS.filter(on).sort((a,b)=>a.seq-b.seq);
   const dep=DEPART();
   return list.map((d,k)=>{
     const o=eff(d),dt=addD(dep,k);
@@ -1639,7 +1691,7 @@ function overviewHTML(){
   const ds=effDays();
   const km=ds.reduce((a,d)=>a+(d.km||0),0),dp=ds.reduce((a,d)=>a+(d.dp||0),0);
   const nh=ds.filter(d=>d.kind==="hike").length;
-  return `<div class="ptype"><span>Vue d'ensemble</span><span>11 jours</span></div>
+  return `<div class="ptype"><span>Vue d'ensemble</span><span>${ds.length} jours</span></div>
     <h3>D'un bout à l'autre de l'île</h3>
     <div class="facts">
       <div class="fact"><u>Marche</u><b>${km} km</b></div>
@@ -1658,8 +1710,9 @@ function dayHTML(i){
     4:`<div class="note warn"><b>Le créneau du PR1 se prend à l'Areeiro</b>, où vous arriverez vers midi depuis Ribeiro Frio. Réservez 13 h - 13 h 30 et partez à l'aube : la tolérance n'est que de quinze minutes, et rien n'est remboursé.</div>`,
     2:`<div class="note">25 km, mais peu de dénivelé et du plat côtier. Si la fatigue du voyage se fait sentir, écourter le PR8 à mi-péninsule ne coûte rien.</div>`,
     1:`<div class="note">Journée sans marche, exprès : Madère déroute régulièrement ses vols pour cause de vent. Un J1 vide absorbe le retard.</div>`,
-    5:`<div class="note warn"><b>Étape sous conditions.</b> La section Boca das Torrinhas → Encumeada reste fermée. Choix à trancher dans l'onglet Arbitrages.</div>`,
-    6:`<div class="note"><b>Le découpage de J6 et J7 se choisit</b> dans les arbitrages : 15, 23, 27 ou 20 km selon le blog dont on s'inspire — et une seule des quatre variantes est entièrement couverte par une trace GPX humaine.</div>`
+    5:`<div class="note warn"><b>La crête s'arrête à Boca das Torrinhas.</b> Les 5,4 km suivants vers l'Encumeada sont fermés depuis août 2024, et l'IFCN a confirmé le 26 août 2026 qu'ils le restent. Ce n'est pas une incertitude : il faut sortir par le vallon de l'Urzal, au sud en taxi ou au nord à pied. Le choix est dans l'onglet Arbitrages.</div>`,
+    51:`<div class="note"><b>Journée sans trace publiée.</b> Dix-neuf kilomètres de côte puis de vallée, sur la route : personne n'a mis de GPX en ligne pour ce contournement. Le chiffre sûr est la montée — du niveau de la mer à 1 007 m.</div>`,
+    6:`<div class="note"><b>Le versant ouest se choisit</b> dans les arbitrages : deux ou trois jours, et une seule des trois variantes repose entièrement sur une trace GPX humaine.</div>`
   };
   return `<div class="ptype"><span>J${d.i} · ${KLABEL[d.kind]}</span><span>${d.lbl}</span></div>
     <h3>${esc(d.t)}${d.love?` <i class="hrt">♥</i>`:""}</h3>
@@ -1944,6 +1997,8 @@ function renderBars(){
   $("#bars").querySelectorAll(".bcol").forEach(b=>b.addEventListener("click",()=>selectDay(+b.dataset.i)));
 }
 function renderOpts(){
+  const sub=$("#optsub");
+  if(sub)sub.textContent=`${OPTIONS.length} arbitrages, et la durée du voyage en dépend : ${effDays().length} jours dans la combinaison retenue. Chacun réécrit le calendrier et fait apparaître ou disparaître des tâches.`;
   $("#opts").innerHTML=OPTIONS.map(o=>`<div class="optset">
     <div class="oh">${esc(o.label)}</div><div class="oq">${esc(o.q)}</div><div class="osub">${esc(o.sub)}</div>
     <div class="opts">${o.choices.map(c=>`<button class="opt" data-o="${o.id}" data-c="${c.id}" aria-pressed="${state.choices[o.id]===c.id}">
@@ -2028,12 +2083,21 @@ function setTab(id){
 /* ============================================================
    BOUCLE PRINCIPALE
    ============================================================ */
+/* Les arbitrages évoluent : un choix mémorisé qui n'existe plus dans
+   OPTIONS retomberait sinon dans un état sans journée ni tracé. */
+function normalizeChoices(){
+  OPTIONS.forEach(o=>{
+    if(!o.choices.some(c=>c.id===state.choices[o.id]))state.choices[o.id]=o.choices[0].id;
+  });
+}
+
 function renderAll(){
   syncMap();renderDates();renderRail();renderCal();renderTrip();renderBars();renderOpts();
   renderTodos();renderPanel();renderMetrics();renderTabs();
 }
 
 loadLocal();
+normalizeChoices();
 buildMap();
 if(!TABS.some(t=>t.id===state.tab))state.tab="map";
 MONTHS=monthsList();if(state.month==null||state.month>=MONTHS.length)state.month=MONTHS.length-1;
