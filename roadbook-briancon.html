@@ -256,11 +256,11 @@ footer a{color:var(--ink-2)}
 <div class="wrap">
   <header class="masthead">
     <div>
-      <p class="eyebrow">Paris · Grenoble · Briançon · Oisans — 4 jours, 2 étapes</p>
+      <p class="eyebrow">Paris · Grenoble · Briançon · Oisans — 4 au 7 septembre 2026</p>
       <h1>Deux étapes pour lui,<br><em>les cols</em> pour moi</h1>
-      <p class="lede">Guillaume enchaîne les deux Étapes du Tour au départ de Briançon. Moi je le rejoins en
-        cours de route pour faire les cols avec lui, et je fais la navette avec la voiture de loc.
-        Chaque journée est cadrable sur la carte.</p>
+      <p class="lede">Guillaume enchaîne les parcours des deux Étapes du Tour au départ de Briançon. Moi je le
+        rejoins en cours de route pour faire les cols avec lui, et je fais la navette avec la voiture de loc.
+        Le L d'Aiguebelette est le week-end suivant : l'approche du samedi reste plate exprès.</p>
     </div>
     <div class="totals">
       <div><span class="who" style="color:var(--him)">Guillaume</span><b id="t-him">–</b><span id="t-him2"></span></div>
@@ -302,7 +302,7 @@ footer a{color:var(--ink-2)}
       récupérée vendredi après-midi, Grenoble → Briançon vendredi soir, étape Briançon–Briançon le samedi avec
       arrivée à l'Izoard, étape Briançon → Alpe d'Huez le dimanche avec l'enchaînement Lautaret–Galibier à deux
       puis la descente sur Briançon pour récupérer la voiture, dodo chez Étienne, train lundi matin.
-      Les dates (jeu. 17 au lun. 21 septembre) sont déduites du « TGV Max jeudi 17 » — à confirmer.</p>
+      Le « TGV Max jeudi 17 » du message était une heure, pas une date : le week-end, c'est celui-ci.</p>
     <p><b>Ce que j'ai calé.</b> Le samedi, le point de jonction à Guillestre, où l'étape repasse au km 149
       après le col de Vars, et une approche volontairement plate par la rive gauche de la Durance : 460 m de
       dénivelé sur 36,7 km, pour arriver entier au pied du Queyras. La variante panoramique par le balcon de
@@ -555,22 +555,22 @@ const carKm = T.car.car_gre_bri.km + T.car.car_bri_alpe.km + T.car.car_alpe_gre.
 
 const DAYS = [
   { id:"day1", kind:"travel", frame:"day1", layers:["road"], hotLayer:"road",
-    name:"Jeudi soir ou vendredi", stamp:"17 – 18 septembre", route:["Paris", "Briançon"],
+    name:"Aujourd'hui", stamp:"vendredi 4 septembre", route:["Paris", "Briançon"],
     blurb:"Aucun vélo ce jour-là : c'est le jour du transport. Trois segments, deux moyens, " +
           "et la voiture qu'on récupère au milieu — c'est elle qui rend possible la magouille de dimanche.",
     hop:[
-      { stop:"Paris", sub:"jeudi 17 au soir<br>ou vendredi 7 h", end:true },
+      { stop:"Paris", sub:"hier soir<br>ou ce matin 7 h", end:true },
       { mode:"TGV Max", fig:"≈ 3 h" },
-      { stop:"Grenoble", sub:"voiture de loc<br>vendredi après-midi" },
+      { stop:"Grenoble", sub:"voiture de loc<br>cet après-midi" },
       { mode:"Voiture", fig:f1(T.car.car_gre_bri.km).replace(",0","") + " km<br>2 h 15 – 2 h 30" },
-      { stop:"Briançon", sub:"vendredi soir<br>Bourg-d'Oisans + Lautaret", end:true },
+      { stop:"Briançon", sub:"ce soir<br>Bourg-d'Oisans + Lautaret", end:true },
     ],
     note:"La route Grenoble → Briançon passe par Le Bourg-d'Oisans puis le col du Lautaret. " +
          "C'est exactement le trajet que je referai en sens inverse dimanche après-midi pour aller " +
          "récupérer Guillaume à l'arrivée : rien de nouveau à découvrir ce jour-là." },
 
   { id:"sat", kind:"ride", key:"sat", frame:"sat", layers:["him","me","solo"], switchLab:"on se retrouve à Guillestre",
-    name:"Samedi", stamp:"19 septembre · L'Étape 2017", route:["Briançon", "Guillestre", "Izoard", "Briançon"],
+    name:"Samedi", stamp:"5 septembre · parcours de L'Étape 2017", route:["Briançon", "Guillestre", "Izoard", "Briançon"],
     blurb:"Son étape fait le tour du lac de Serre-Ponçon, passe le col de Vars et repasse à Guillestre au " +
           "km 149 avant d'attaquer la combe du Queyras et l'Izoard. Moi je descends à sa rencontre par la " +
           "rive gauche de la Durance, et on fait toute la fin d'étape ensemble : le Queyras, le col, et la " +
@@ -590,7 +590,7 @@ const DAYS = [
       "à 6 km de la jonction. Horaires à vérifier."] } },
 
   { id:"sun", kind:"ride", key:"sun", frame:"sun", layers:["him","me","road"], switchLab:"demi-tour au Galibier",
-    name:"Dimanche", stamp:"20 septembre · L'Étape 2022", route:["Briançon", "L'Alpe d'Huez"],
+    name:"Dimanche", stamp:"6 septembre · parcours de L'Étape 2022", route:["Briançon", "L'Alpe d'Huez"],
     blurb:"Lautaret, Galibier dès le 33ᵉ kilomètre, la Croix de Fer par la Maurienne, puis les 21 virages de " +
           "l'Alpe. Je fais l'enchaînement Lautaret–Galibier avec lui, demi-tour au sommet, et je redescends " +
           "chercher la voiture à Briançon.",
@@ -598,7 +598,7 @@ const DAYS = [
       { mode:"Voiture", what:"<b>Briançon → Bourg-d'Oisans</b> par le Lautaret, le pied de l'Alpe", fig:"66 km · ≈ 1 h 35" },
       { mode:"Voiture", what:"<b>Bourg-d'Oisans → L'Alpe d'Huez</b>, les 21 lacets jusqu'à l'arrivée", fig:"14 km · ≈ 25 min" },
       { mode:"Voiture", what:"<b>L'Alpe d'Huez → Grenoble</b>, dodo chez Étienne", fig:f1(T.car.car_alpe_gre.km) + " km · ≈ 1 h 25" },
-      { mode:"TGV Max", what:"<b>Grenoble → Paris</b> lundi matin", fig:"≈ 3 h" },
+      { mode:"TGV Max", what:"<b>Grenoble → Paris</b> lundi 7 au matin", fig:"≈ 3 h" },
     ],
     callout:{ t:"La magouille de la voiture", p:[
       "Guillaume annonce 1 h 20 de Briançon au pied de l'Alpe ; le routage donne plutôt <b>1 h 35</b>, " +

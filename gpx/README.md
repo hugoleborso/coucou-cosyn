@@ -52,7 +52,7 @@ Komoot, RideWithGPS ou VisuGPX.
   modèle d'altitude utilisés ; les chiffres du tableau sont ceux mesurés sur ces
   fichiers avec un seuil de 3 m.
 
-## Mes traces à moi (week-end du 19–20 septembre)
+## Mes traces à moi (week-end du 5–6 septembre)
 
 Les deux journées prêtes à importer dans un compteur, avec la jonction à Guillestre
 le samedi et l'aller-retour au Galibier le dimanche.
