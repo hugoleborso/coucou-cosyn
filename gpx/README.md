@@ -56,25 +56,23 @@ Komoot, RideWithGPS ou VisuGPX.
 
 | Fichier | Parcours | Distance | D+ | Selle |
 |---|---|---|---|---|
-| `moi-samedi-briancon-guillestre-izoard.gpx` | Briançon → Guillestre par la vallée, puis combe du Queyras, Izoard et descente sur Briançon | 83,9 km | 1 936 m | ≈ 4 h 11 |
-| `moi-dimanche-briancon-galibier-briancon.gpx` | Briançon → Lautaret → Galibier, demi-tour et retour | 66,6 km | 1 344 m | ≈ 3 h 23 |
+| `moi-samedi-briancon-guillestre-izoard.gpx` | Briançon → Guillestre par la rive gauche, puis combe du Queyras, Izoard et descente sur Briançon | 88,4 km | 2 025 m | ≈ 4 h 47 |
+| `moi-dimanche-briancon-galibier-briancon.gpx` | Briançon → Lautaret → Galibier, demi-tour et retour | 66,6 km | 1 344 m | ≈ 3 h 41 |
 
-### Les trois approches du samedi
+### Les approches du samedi
 
-| Fichier | Itinéraire | Distance | D+ | Selle |
+| Fichier | Itinéraire | Distance | D+ | N94 |
 |---|---|---|---|---|
-| `approche-briancon-guillestre.gpx` | Vallée de la Durance, le plus plat : Prelles, L'Argentière, La Roche-de-Rame, Saint-Crépin, Mont-Dauphin | 31,0 km | 323 m | ≈ 1 h 22 |
-| `approche-briancon-guillestre-rive-gauche.gpx` | Rive gauche par Saint-Martin-de-Queyrières, plus calme | 36,7 km | 462 m | ≈ 1 h 38 |
-| `approche-briancon-guillestre-balcon.gpx` | Balcon de Champcella, section haute de la véloroute [La Durance à Vélo](https://laduranceavelo.fr/) | 49,4 km | 1 088 m | ≈ 2 h 35 |
+| `approche-briancon-guillestre.gpx` | Rive gauche de [La Durance à Vélo](https://laduranceavelo.fr/) : Prelles, Saint-Martin-de-Queyrières, L'Argentière, puis la vallée jusqu'à Mont-Dauphin — entièrement bitumé | 35,5 km | 410 m | 14 km |
+| `approche-briancon-guillestre-balcon.gpx` | Variante panoramique par le balcon de Champcella (1 496 m) | 49,4 km | 1 088 m | 2 km |
 
-Le verrou de la Durance entre Prelles et Saint-Martin-de-Queyrières impose une
-centaine de mètres de montée à toutes les variantes : 1 217 m par la vallée,
-1 267 m par la rive gauche.
+Le verrou de la Durance à Saint-Martin-de-Queyrières impose une centaine de mètres
+de montée à toutes les variantes.
 
 Les temps de selle viennent des vitesses réelles par tranche de pente relevées sur
-le vélo du triathlon d'Aiguebelette 2025 (83,5 km, 1 544 m, 3 h 40 à 147 W),
-ramenées à 85 % pour une allure d'endurance. Les approches sont calculées par
-routage OpenStreetMap (BRouter) ; le reste est découpé dans les parcours officiels ASO.
+le vélo du triathlon d'Aiguebelette 2025 (83,5 km, 1 544 m, 3 h 40), ramenées à 78 %
+pour une allure très tranquille. Les approches sont calculées par routage
+OpenStreetMap (BRouter) ; le reste est découpé dans les parcours officiels ASO.
 
 ## Visualisation
 `roadbook-briancon.html` (à la racine) est une page autonome : le plan du week-end
