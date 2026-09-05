@@ -52,27 +52,49 @@ Komoot, RideWithGPS ou VisuGPX.
   modèle d'altitude utilisés ; les chiffres du tableau sont ceux mesurés sur ces
   fichiers avec un seuil de 3 m.
 
-## Mes traces à moi (week-end du 5–6 septembre)
+## Le week-end (5–6 septembre) — logement à La Salle-les-Alpes
+
+On loge à **La Salle-les-Alpes** (Serre Chevalier, 1 437 m), 12 km au-dessus de Briançon
+dans la vallée de la Guisane. Guillaume fait ses deux journées **en entier depuis le
+logement** ; moi je descends en voiture à Briançon le samedi matin.
 
 | Fichier | Parcours | Distance | D+ | Selle |
 |---|---|---|---|---|
-| `moi-samedi-briancon-guillestre-izoard.gpx` | Briançon → Guillestre par la rive gauche, puis combe du Queyras, Izoard et descente sur Briançon | 88,4 km | 2 025 m | ≈ 4 h 47 |
-| `moi-dimanche-briancon-galibier-briancon.gpx` | Briançon → Lautaret → Galibier, demi-tour et retour | 66,6 km | 1 344 m | ≈ 3 h 41 |
+| `moi-samedi-briancon-guillestre-izoard.gpx` | Briançon → Guillestre par la rive gauche, combe du Queyras, Izoard, descente sur Briançon | 87,9 km | 1 740 m | ≈ 4 h 47 |
+| `moi-dimanche-la-salle-galibier-la-salle.gpx` | La Salle → Lautaret → Galibier, demi-tour et retour | 55,0 km | 1 300 m | ≈ 3 h 08 |
+| `guillaume-samedi-la-salle-izoard-la-salle.gpx` | Descente de la Guisane, boucle de L'Étape 2017, remontée sur La Salle | 226,5 km | 3 760 m | — |
+| `guillaume-dimanche-la-salle-alpe-d-huez.gpx` | Parcours de L'Étape 2022 pris à La Salle (le tracé passe devant la porte) | 159,4 km | 4 400 m | — |
+
+Le logement coûte **+25 km et +280 m** à Guillaume le samedi, et lui **fait gagner 6 km**
+le dimanche puisque le parcours 2022 remonte la Guisane.
+
+### Les deux trajets Briançon ⇄ La Salle
+
+| Sens | Distance | D+ | Vélo |
+|---|---|---|---|
+| La Salle → Briançon (descente) | 11,9 km | +9 m | 21 min |
+| Briançon → La Salle (remontée) | 13,1 km | +269 m | 48 min |
+
+Asymétrique : la descente du matin est gratuite, la remontée du soir après l'Izoard ne
+l'est pas. D'où la voiture.
 
 ### Les approches du samedi
 
 | Fichier | Itinéraire | Distance | D+ | N94 |
 |---|---|---|---|---|
-| `approche-briancon-guillestre.gpx` | Rive gauche de [La Durance à Vélo](https://laduranceavelo.fr/) : Prelles, Saint-Martin-de-Queyrières, L'Argentière, puis la vallée jusqu'à Mont-Dauphin — entièrement bitumé | 35,5 km | 410 m | 14 km |
+| `approche-briancon-guillestre.gpx` | Rive gauche de [La Durance à Vélo](https://laduranceavelo.fr/) : Saint-Blaise, D4 des Traverses au-dessus de Prelles, Saint-Martin-de-Queyrières, D994E, L'Argentière, D138A, puis la N94 jusqu'à Mont-Dauphin et la D902A sur Guillestre — entièrement bitumé | 35,5 km | 290 m | 13,8 km |
 | `approche-briancon-guillestre-balcon.gpx` | Variante panoramique par le balcon de Champcella (1 496 m) | 49,4 km | 1 088 m | 2 km |
 
-Le verrou de la Durance à Saint-Martin-de-Queyrières impose une centaine de mètres
-de montée à toutes les variantes.
+Le verrou de la Durance impose 3,6 km à 2,8 % (+98 m) au km 3,8 à toutes les variantes ;
+la montée finale sur Guillestre fait 4,3 km à 2,5 % (+108 m).
 
-Les temps de selle viennent des vitesses réelles par tranche de pente relevées sur
-le vélo du triathlon d'Aiguebelette 2025 (83,5 km, 1 544 m, 3 h 40), ramenées à 78 %
-pour une allure très tranquille. Les approches sont calculées par routage
-OpenStreetMap (BRouter) ; le reste est découpé dans les parcours officiels ASO.
+### Note sur les dénivelés
+
+Les D+ de ce tableau sont mesurés sur un **profil lissé à 150 m avec un seuil de 8 m**,
+pas sur les points bruts. Sur une trace GPS le seuil brut sur-compte lourdement : la
+boucle de l'Izoard de vélo-maurienne donne 3 351 m en brut contre 2 251 m annoncés par
+sa source, et 2 290 m avec la méthode lissée. Les chiffres ci-dessus sont donc 200 à
+300 m plus bas que ceux publiés dans les versions précédentes de ce fichier.
 
 ## Visualisation
 `roadbook-briancon.html` (à la racine) est une page autonome : le plan du week-end
@@ -87,6 +109,6 @@ Trajets calculés par routage OpenStreetMap (BRouter) :
 
 | Trajet | Distance | Durée |
 |---|---|---|
-| Grenoble → Briançon (Bourg-d'Oisans, Lautaret) | 117 km | 2 h 15 – 2 h 30 |
-| Briançon → L'Alpe d'Huez | 79 km | ≈ 2 h |
+| Grenoble → La Salle-les-Alpes (Bourg-d'Oisans, Lautaret) | 109 km | 2 h 05 – 2 h 20 |
+| La Salle-les-Alpes → L'Alpe d'Huez | 72 km | ≈ 1 h 50 |
 | L'Alpe d'Huez → Grenoble | 63 km | ≈ 1 h 25 |
