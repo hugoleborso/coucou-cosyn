@@ -34,6 +34,22 @@ p{margin:0}
 .sect{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .tag{font-family:var(--fm);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:3px;color:var(--surface);background:var(--c)}
 
+/* timeline */
+figure{margin:0;background:var(--surface-2);border:1px solid var(--rule-soft);border-radius:4px;padding:10px 6px 4px}
+figure svg{display:block;width:100%;height:auto}
+.g{stroke:var(--rule);stroke-width:1}
+.g2{stroke:var(--rule-soft);stroke-width:1}
+.base{stroke:var(--rule);stroke-width:1}
+.ax{fill:var(--muted);font-family:var(--fm);font-size:10px}
+.rn{font-family:var(--fd);font-weight:700;font-size:12.5px}
+.rt{fill:var(--muted);font-family:var(--fm);font-size:10.5px}
+.rv{fill:var(--swim);font-family:var(--fm);font-weight:500;font-size:10.5px}
+.ph{font-family:var(--fm);font-size:10px;letter-spacing:.12em;font-weight:500}
+figcaption{font-family:var(--fm);font-size:10.5px;color:var(--muted);padding:4px 6px 4px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.legend{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13.5px;color:var(--ink-2)}
+.legend li{display:flex;align-items:center;gap:7px}
+.legend i{width:12px;height:12px;border-radius:2px;background:var(--c);flex:none;opacity:.55}
+
 /* chrono */
 .tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
 .tl li{display:grid;grid-template-columns:74px 1fr auto;gap:10px;align-items:baseline;padding:7px 0;border-top:1px solid var(--rule-soft)}
@@ -77,15 +93,37 @@ footer{border-top:1px solid var(--rule);padding-top:14px;font-size:12.5px;color:
 <div class="wrap">
 
 <header>
-  <p class="eyebrow">Triathlon L de Novalaise · samedi 12 septembre · départ 10 h 10</p>
+  <p class="eyebrow">Triathlon L de Novalaise · samedi 12 septembre · départ 10 h 15</p>
   <h1>Brief de course</h1>
 </header>
 
 <div class="big3">
-  <div><p>Sortie de l'eau</p><b>10:56</b></div>
-  <div><p>Fin du vélo</p><b>14:30</b></div>
-  <div><p>Arrivée</p><b>16:07</b></div>
+  <div><p>Sortie de l'eau</p><b>11:01</b></div>
+  <div><p>Fin du vélo</p><b>14:35</b></div>
+  <div><p>Arrivée</p><b>16:12</b></div>
 </div>
+
+<section class="card">
+  <div class="sect"><h2>La course en une image</h2></div>
+  <figure>
+<svg viewBox="0 0 1180 330" role="img" aria-label="Profil de la course en fonction de l'heure, de 10 h 15 à 16 h 12">
+<rect x="46.0" y="14" width="143.0" height="6" rx="3" fill="var(--swim)"/><text class="ph" x="117.5" y="9" text-anchor="middle" fill="var(--swim)">NAGE</text><rect x="199.4" y="14" width="657.0" height="6" rx="3" fill="var(--bike)"/><text class="ph" x="528.0" y="9" text-anchor="middle" fill="var(--bike)">VÉLO</text><rect x="865.3" y="14" width="294.4" height="6" rx="3" fill="var(--run)"/><text class="ph" x="1012.5" y="9" text-anchor="middle" fill="var(--run)">CAP</text><rect x="290.1" y="126" width="69.6" height="170.0" fill="var(--bike)" opacity=".15"/><rect x="463.8" y="126" width="38.6" height="170.0" fill="var(--stop)" opacity=".22"/><rect x="509.1" y="126" width="53.7" height="170.0" fill="var(--bike)" opacity=".15"/><rect x="564.9" y="126" width="46.3" height="170.0" fill="var(--bike)" opacity=".15"/><rect x="624.2" y="126" width="21.1" height="170.0" fill="var(--ok)" opacity=".15"/><rect x="689.8" y="126" width="17.1" height="170.0" fill="var(--ok)" opacity=".15"/><rect x="711.6" y="126" width="42.0" height="170.0" fill="var(--stop)" opacity=".22"/><rect x="780.1" y="126" width="21.8" height="170.0" fill="var(--ok)" opacity=".15"/><line class="g" x1="46" y1="274.4" x2="1166" y2="274.4"/><text class="ax" x="40" y="277.9" text-anchor="end">400</text><line class="g" x1="46" y1="212.5" x2="1166" y2="212.5"/><text class="ax" x="40" y="216.0" text-anchor="end">600</text><line class="g" x1="46" y1="150.7" x2="1166" y2="150.7"/><text class="ax" x="40" y="154.2" text-anchor="end">800</text><line class="g2" x1="92.8" y1="126" x2="92.8" y2="296"/><text class="ax" x="92.8" y="311" text-anchor="middle">10 h</text><line class="g2" x1="280.1" y1="126" x2="280.1" y2="296"/><text class="ax" x="280.1" y="311" text-anchor="middle">11 h</text><line class="g2" x1="467.3" y1="126" x2="467.3" y2="296"/><text class="ax" x="467.3" y="311" text-anchor="middle">12 h</text><line class="g2" x1="654.6" y1="126" x2="654.6" y2="296"/><text class="ax" x="654.6" y="311" text-anchor="middle">13 h</text><line class="g2" x1="841.8" y1="126" x2="841.8" y2="296"/><text class="ax" x="841.8" y="311" text-anchor="middle">14 h</text><line class="g2" x1="1029.1" y1="126" x2="1029.1" y2="296"/><text class="ax" x="1029.1" y="311" text-anchor="middle">15 h</text>
+<path d="M199.4,275.3 L200.9,274.4 L201.8,275.6 L203.5,274.4 L204.5,275.3 L205.6,275.3 L206.8,275.3 L207.9,275.3 L209.1,275.6 L210.5,275.0 L211.9,274.1 L213.1,274.4 L214.3,274.1 L215.5,273.7 L217.0,273.1 L218.2,272.8 L219.4,272.8 L221.1,271.3 L222.3,271.0 L223.6,271.3 L225.1,270.0 L226.0,271.6 L227.0,274.4 L227.9,275.3 L228.9,276.5 L230.0,276.8 L231.2,276.2 L232.3,276.2 L233.3,277.1 L234.2,278.1 L235.3,278.4 L236.4,279.0 L237.9,278.1 L239.0,278.4 L240.2,278.1 L241.5,277.5 L244.2,274.4 L247.2,270.7 L248.1,272.8 L248.9,275.9 L249.8,277.8 L250.8,278.1 L252.0,278.4 L253.1,278.7 L254.2,278.7 L255.4,278.4 L256.8,277.5 L258.1,276.8 L259.4,276.2 L260.6,276.2 L261.6,276.2 L263.0,275.6 L264.4,274.7 L265.8,273.7 L267.1,273.1 L268.3,273.7 L269.3,273.7 L270.4,274.1 L271.4,274.7 L272.4,275.6 L273.4,276.5 L274.6,276.8 L275.6,277.1 L276.6,277.5 L277.7,277.8 L278.7,278.4 L279.8,279.3 L281.5,277.8 L283.1,276.5 L284.1,278.1 L285.3,278.4 L286.4,278.7 L287.6,278.1 L289.2,276.8 L290.9,275.0 L293.0,272.8 L297.6,266.9 L302.1,260.8 L306.2,255.5 L308.3,253.3 L310.8,250.3 L313.3,247.5 L315.1,245.6 L317.8,242.2 L319.4,241.0 L321.1,239.4 L324.7,234.8 L327.8,231.1 L330.1,228.3 L332.4,225.8 L334.0,224.3 L336.9,220.6 L340.6,215.9 L344.4,211.3 L348.2,206.4 L351.1,203.0 L353.9,199.6 L356.1,197.1 L357.5,196.2 L359.0,194.9 L360.2,194.9 L361.3,195.5 L362.4,196.2 L363.5,196.5 L364.9,195.9 L367.1,193.4 L368.3,192.8 L369.7,192.1 L370.8,192.8 L371.8,194.0 L372.8,195.5 L373.9,197.1 L377.2,192.8 L378.2,195.9 L379.1,199.6 L380.0,200.5 L380.8,203.9 L381.6,207.9 L382.3,211.3 L383.1,215.0 L383.8,218.1 L384.9,219.0 L386.1,218.7 L387.1,219.7 L388.2,219.7 L390.1,217.8 L391.6,216.9 L393.7,214.7 L395.3,213.2 L397.2,211.6 L399.2,209.8 L400.5,209.5 L401.9,208.5 L403.7,206.7 L404.9,206.4 L405.7,209.1 L406.5,213.2 L407.2,217.5 L407.9,222.4 L408.7,226.8 L409.4,231.7 L410.2,236.7 L410.9,242.2 L411.7,246.9 L412.4,252.1 L413.1,257.7 L413.9,261.4 L414.7,264.5 L415.6,266.6 L416.4,269.1 L417.1,272.5 L418.0,274.7 L418.9,276.8 L419.7,279.3 L420.5,282.1 L421.4,284.3 L422.5,284.9 L424.0,283.6 L425.0,284.6 L425.8,287.0 L426.7,288.9 L427.6,290.7 L428.4,294.5 L429.2,299.7 L429.9,304.3 L430.7,308.1 L431.4,311.1 L432.2,314.5 L432.9,317.0 L433.9,318.9 L434.9,320.1 L435.9,321.0 L437.0,322.0 L437.9,323.2 L439.2,322.6 L440.9,321.0 L442.3,320.1 L443.8,318.9 L445.1,318.3 L446.5,317.3 L448.1,315.8 L449.3,315.8 L450.6,315.2 L451.9,314.2 L453.2,313.9 L454.8,312.4 L456.1,311.8 L457.9,309.9 L459.4,309.0 L460.8,307.7 L462.0,307.4 L463.8,305.6 L465.8,303.4 L467.3,302.5 L469.9,299.4 L473.7,294.5 L477.3,289.8 L481.1,285.2 L484.8,280.5 L488.4,275.9 L492.1,271.3 L496.0,266.3 L498.7,262.9 L501.8,258.9 L503.0,258.9 L504.2,258.9 L505.4,258.6 L506.6,258.3 L507.4,260.5 L509.1,261.1 L511.9,257.7 L515.2,253.7 L517.6,250.9 L519.3,249.3 L522.6,245.3 L525.0,242.5 L528.4,238.2 L532.2,233.3 L535.9,228.6 L538.1,226.1 L540.5,223.4 L543.5,219.7 L547.7,214.1 L552.0,208.8 L554.4,206.1 L556.3,203.9 L559.2,200.2 L560.9,198.9 L562.8,196.8 L563.7,198.6 L564.4,201.7 L566.6,200.2 L569.4,196.8 L573.5,191.5 L577.3,186.9 L581.5,181.3 L585.3,176.4 L589.3,171.4 L593.3,166.2 L597.6,160.6 L601.1,156.3 L603.2,153.8 L605.1,151.7 L607.8,148.6 L609.2,147.6 L611.3,145.5 L612.4,146.7 L613.3,147.9 L614.1,150.7 L614.8,155.4 L615.6,160.3 L616.4,164.6 L617.1,168.3 L617.9,171.4 L618.6,174.8 L619.4,178.2 L620.2,181.9 L621.1,183.8 L622.2,184.1 L623.4,184.4 L624.2,189.4 L628.0,184.7 L632.2,179.2 L635.3,175.1 L637.9,172.4 L640.5,169.0 L642.4,167.1 L643.7,166.5 L645.3,165.3 L646.4,165.9 L647.5,166.8 L648.5,167.7 L650.8,165.3 L652.6,163.7 L653.8,165.9 L654.5,169.9 L655.2,175.8 L655.9,180.4 L656.7,184.4 L657.4,191.2 L658.2,196.8 L659.0,202.7 L659.7,207.0 L660.9,206.7 L662.0,207.3 L662.9,208.5 L663.7,211.6 L664.5,214.4 L665.4,216.6 L666.6,216.3 L667.6,217.2 L668.4,219.7 L669.2,223.4 L669.9,228.0 L670.7,232.3 L671.4,236.0 L672.2,240.7 L673.0,244.4 L673.7,247.2 L674.5,250.3 L675.2,253.3 L676.1,256.1 L676.9,258.9 L677.7,261.4 L678.4,264.5 L679.2,267.6 L680.5,266.9 L681.8,266.6 L682.7,268.5 L683.5,272.2 L684.2,275.6 L684.9,279.9 L685.7,282.7 L686.8,283.3 L687.6,285.8 L688.5,287.7 L689.8,287.0 L692.9,283.3 L696.1,279.3 L699.8,274.7 L700.8,275.3 L702.7,274.4 L705.7,270.3 L707.6,268.8 L708.5,270.3 L709.9,269.4 L711.6,267.9 L715.2,263.2 L719.1,258.3 L722.8,253.7 L726.8,248.4 L730.9,243.1 L734.9,237.9 L739.0,232.6 L742.9,227.7 L746.7,223.1 L750.6,217.8 L753.6,214.4 L754.5,216.3 L755.5,217.2 L757.0,215.9 L757.8,219.7 L758.7,222.1 L759.6,224.9 L760.6,225.2 L761.7,225.2 L763.0,225.2 L764.3,224.6 L765.4,224.6 L766.5,225.2 L767.5,226.8 L768.2,231.1 L769.0,233.3 L769.8,237.3 L770.5,241.3 L771.3,244.7 L772.0,248.4 L772.8,251.5 L773.5,254.9 L774.3,259.2 L775.0,263.5 L776.0,264.5 L777.5,263.9 L778.3,266.0 L782.5,260.8 L784.9,258.0 L787.1,255.5 L789.6,252.4 L791.9,249.9 L794.3,247.2 L796.2,245.0 L798.7,242.2 L800.3,240.7 L801.9,239.4 L803.0,239.4 L804.2,239.1 L805.5,238.5 L806.8,237.9 L807.7,239.4 L808.7,240.7 L810.3,239.1 L811.5,239.4 L814.0,236.3 L814.8,239.1 L815.6,241.9 L816.3,245.3 L817.1,250.6 L817.8,254.9 L818.8,256.1 L820.5,254.9 L822.9,252.1 L825.8,248.7 L827.1,248.7 L827.8,252.4 L828.6,257.4 L829.3,262.3 L830.0,268.8 L830.8,275.3 L831.5,279.3 L832.7,279.3 L833.8,279.6 L835.0,279.3 L836.3,278.7 L837.8,277.8 L839.0,277.5 L840.6,275.9 L842.1,275.0 L843.5,274.1 L844.7,274.1 L845.7,274.7 L846.8,275.0 L847.9,275.3 L848.9,275.6 L849.9,276.2 L850.9,276.8 L852.0,277.1 L853.0,277.8 L854.1,278.1 L855.2,278.4 L856.2,278.7 L856.5,296.0 L199.4,296.0 Z" fill="var(--bike)" opacity=".16"/>
+<path d="M46.0,282.1 L189.0,282.1" fill="none" stroke="var(--swim)" stroke-width="3" stroke-linecap="round"/>
+<path d="M199.4,275.3 L200.9,274.4 L201.8,275.6 L203.5,274.4 L204.5,275.3 L205.6,275.3 L206.8,275.3 L207.9,275.3 L209.1,275.6 L210.5,275.0 L211.9,274.1 L213.1,274.4 L214.3,274.1 L215.5,273.7 L217.0,273.1 L218.2,272.8 L219.4,272.8 L221.1,271.3 L222.3,271.0 L223.6,271.3 L225.1,270.0 L226.0,271.6 L227.0,274.4 L227.9,275.3 L228.9,276.5 L230.0,276.8 L231.2,276.2 L232.3,276.2 L233.3,277.1 L234.2,278.1 L235.3,278.4 L236.4,279.0 L237.9,278.1 L239.0,278.4 L240.2,278.1 L241.5,277.5 L244.2,274.4 L247.2,270.7 L248.1,272.8 L248.9,275.9 L249.8,277.8 L250.8,278.1 L252.0,278.4 L253.1,278.7 L254.2,278.7 L255.4,278.4 L256.8,277.5 L258.1,276.8 L259.4,276.2 L260.6,276.2 L261.6,276.2 L263.0,275.6 L264.4,274.7 L265.8,273.7 L267.1,273.1 L268.3,273.7 L269.3,273.7 L270.4,274.1 L271.4,274.7 L272.4,275.6 L273.4,276.5 L274.6,276.8 L275.6,277.1 L276.6,277.5 L277.7,277.8 L278.7,278.4 L279.8,279.3 L281.5,277.8 L283.1,276.5 L284.1,278.1 L285.3,278.4 L286.4,278.7 L287.6,278.1 L289.2,276.8 L290.9,275.0 L293.0,272.8 L297.6,266.9 L302.1,260.8 L306.2,255.5 L308.3,253.3 L310.8,250.3 L313.3,247.5 L315.1,245.6 L317.8,242.2 L319.4,241.0 L321.1,239.4 L324.7,234.8 L327.8,231.1 L330.1,228.3 L332.4,225.8 L334.0,224.3 L336.9,220.6 L340.6,215.9 L344.4,211.3 L348.2,206.4 L351.1,203.0 L353.9,199.6 L356.1,197.1 L357.5,196.2 L359.0,194.9 L360.2,194.9 L361.3,195.5 L362.4,196.2 L363.5,196.5 L364.9,195.9 L367.1,193.4 L368.3,192.8 L369.7,192.1 L370.8,192.8 L371.8,194.0 L372.8,195.5 L373.9,197.1 L377.2,192.8 L378.2,195.9 L379.1,199.6 L380.0,200.5 L380.8,203.9 L381.6,207.9 L382.3,211.3 L383.1,215.0 L383.8,218.1 L384.9,219.0 L386.1,218.7 L387.1,219.7 L388.2,219.7 L390.1,217.8 L391.6,216.9 L393.7,214.7 L395.3,213.2 L397.2,211.6 L399.2,209.8 L400.5,209.5 L401.9,208.5 L403.7,206.7 L404.9,206.4 L405.7,209.1 L406.5,213.2 L407.2,217.5 L407.9,222.4 L408.7,226.8 L409.4,231.7 L410.2,236.7 L410.9,242.2 L411.7,246.9 L412.4,252.1 L413.1,257.7 L413.9,261.4 L414.7,264.5 L415.6,266.6 L416.4,269.1 L417.1,272.5 L418.0,274.7 L418.9,276.8 L419.7,279.3 L420.5,282.1 L421.4,284.3 L422.5,284.9 L424.0,283.6 L425.0,284.6 L425.8,287.0 L426.7,288.9 L427.6,290.7 L428.4,294.5 L429.2,299.7 L429.9,304.3 L430.7,308.1 L431.4,311.1 L432.2,314.5 L432.9,317.0 L433.9,318.9 L434.9,320.1 L435.9,321.0 L437.0,322.0 L437.9,323.2 L439.2,322.6 L440.9,321.0 L442.3,320.1 L443.8,318.9 L445.1,318.3 L446.5,317.3 L448.1,315.8 L449.3,315.8 L450.6,315.2 L451.9,314.2 L453.2,313.9 L454.8,312.4 L456.1,311.8 L457.9,309.9 L459.4,309.0 L460.8,307.7 L462.0,307.4 L463.8,305.6 L465.8,303.4 L467.3,302.5 L469.9,299.4 L473.7,294.5 L477.3,289.8 L481.1,285.2 L484.8,280.5 L488.4,275.9 L492.1,271.3 L496.0,266.3 L498.7,262.9 L501.8,258.9 L503.0,258.9 L504.2,258.9 L505.4,258.6 L506.6,258.3 L507.4,260.5 L509.1,261.1 L511.9,257.7 L515.2,253.7 L517.6,250.9 L519.3,249.3 L522.6,245.3 L525.0,242.5 L528.4,238.2 L532.2,233.3 L535.9,228.6 L538.1,226.1 L540.5,223.4 L543.5,219.7 L547.7,214.1 L552.0,208.8 L554.4,206.1 L556.3,203.9 L559.2,200.2 L560.9,198.9 L562.8,196.8 L563.7,198.6 L564.4,201.7 L566.6,200.2 L569.4,196.8 L573.5,191.5 L577.3,186.9 L581.5,181.3 L585.3,176.4 L589.3,171.4 L593.3,166.2 L597.6,160.6 L601.1,156.3 L603.2,153.8 L605.1,151.7 L607.8,148.6 L609.2,147.6 L611.3,145.5 L612.4,146.7 L613.3,147.9 L614.1,150.7 L614.8,155.4 L615.6,160.3 L616.4,164.6 L617.1,168.3 L617.9,171.4 L618.6,174.8 L619.4,178.2 L620.2,181.9 L621.1,183.8 L622.2,184.1 L623.4,184.4 L624.2,189.4 L628.0,184.7 L632.2,179.2 L635.3,175.1 L637.9,172.4 L640.5,169.0 L642.4,167.1 L643.7,166.5 L645.3,165.3 L646.4,165.9 L647.5,166.8 L648.5,167.7 L650.8,165.3 L652.6,163.7 L653.8,165.9 L654.5,169.9 L655.2,175.8 L655.9,180.4 L656.7,184.4 L657.4,191.2 L658.2,196.8 L659.0,202.7 L659.7,207.0 L660.9,206.7 L662.0,207.3 L662.9,208.5 L663.7,211.6 L664.5,214.4 L665.4,216.6 L666.6,216.3 L667.6,217.2 L668.4,219.7 L669.2,223.4 L669.9,228.0 L670.7,232.3 L671.4,236.0 L672.2,240.7 L673.0,244.4 L673.7,247.2 L674.5,250.3 L675.2,253.3 L676.1,256.1 L676.9,258.9 L677.7,261.4 L678.4,264.5 L679.2,267.6 L680.5,266.9 L681.8,266.6 L682.7,268.5 L683.5,272.2 L684.2,275.6 L684.9,279.9 L685.7,282.7 L686.8,283.3 L687.6,285.8 L688.5,287.7 L689.8,287.0 L692.9,283.3 L696.1,279.3 L699.8,274.7 L700.8,275.3 L702.7,274.4 L705.7,270.3 L707.6,268.8 L708.5,270.3 L709.9,269.4 L711.6,267.9 L715.2,263.2 L719.1,258.3 L722.8,253.7 L726.8,248.4 L730.9,243.1 L734.9,237.9 L739.0,232.6 L742.9,227.7 L746.7,223.1 L750.6,217.8 L753.6,214.4 L754.5,216.3 L755.5,217.2 L757.0,215.9 L757.8,219.7 L758.7,222.1 L759.6,224.9 L760.6,225.2 L761.7,225.2 L763.0,225.2 L764.3,224.6 L765.4,224.6 L766.5,225.2 L767.5,226.8 L768.2,231.1 L769.0,233.3 L769.8,237.3 L770.5,241.3 L771.3,244.7 L772.0,248.4 L772.8,251.5 L773.5,254.9 L774.3,259.2 L775.0,263.5 L776.0,264.5 L777.5,263.9 L778.3,266.0 L782.5,260.8 L784.9,258.0 L787.1,255.5 L789.6,252.4 L791.9,249.9 L794.3,247.2 L796.2,245.0 L798.7,242.2 L800.3,240.7 L801.9,239.4 L803.0,239.4 L804.2,239.1 L805.5,238.5 L806.8,237.9 L807.7,239.4 L808.7,240.7 L810.3,239.1 L811.5,239.4 L814.0,236.3 L814.8,239.1 L815.6,241.9 L816.3,245.3 L817.1,250.6 L817.8,254.9 L818.8,256.1 L820.5,254.9 L822.9,252.1 L825.8,248.7 L827.1,248.7 L827.8,252.4 L828.6,257.4 L829.3,262.3 L830.0,268.8 L830.8,275.3 L831.5,279.3 L832.7,279.3 L833.8,279.6 L835.0,279.3 L836.3,278.7 L837.8,277.8 L839.0,277.5 L840.6,275.9 L842.1,275.0 L843.5,274.1 L844.7,274.1 L845.7,274.7 L846.8,275.0 L847.9,275.3 L848.9,275.6 L849.9,276.2 L850.9,276.8 L852.0,277.1 L853.0,277.8 L854.1,278.1 L855.2,278.4 L856.2,278.7" fill="none" stroke="var(--bike)" stroke-width="2"/>
+<path d="M865.3,281.5 L866.2,281.5 L867.0,281.5 L867.8,281.5 L868.6,281.5 L869.4,281.5 L870.2,281.5 L871.1,281.5 L871.9,281.5 L872.7,281.5 L873.6,281.8 L874.3,281.8 L875.2,281.5 L876.0,281.5 L876.8,281.5 L877.6,281.5 L878.4,281.8 L879.3,282.1 L880.1,282.7 L880.9,282.7 L881.7,282.7 L882.6,282.7 L883.3,282.7 L884.2,283.0 L885.0,283.0 L885.8,283.3 L886.7,283.3 L887.4,283.3 L888.3,283.3 L889.1,283.3 L889.9,283.3 L890.7,283.3 L891.5,283.3 L892.4,283.3 L893.2,283.3 L894.0,283.3 L894.8,283.0 L895.7,282.7 L896.4,282.4 L897.3,282.1 L898.1,281.8 L898.9,281.8 L899.7,281.5 L900.4,281.2 L901.2,281.2 L902.0,281.2 L902.8,281.2 L903.6,281.2 L904.3,281.2 L905.1,281.2 L905.9,281.2 L906.7,280.9 L907.5,280.9 L908.2,280.9 L909.0,280.9 L909.8,280.5 L910.6,280.5 L911.4,280.5 L912.1,280.5 L912.9,280.2 L913.7,280.2 L914.5,280.2 L915.3,279.9 L916.0,279.9 L916.8,279.6 L917.6,279.6 L918.4,279.3 L919.2,279.0 L920.0,279.0 L920.7,278.7 L921.5,278.7 L922.3,278.1 L923.1,277.8 L923.9,277.8 L924.6,277.8 L925.4,277.8 L926.2,277.8 L927.0,277.8 L927.8,277.8 L928.5,277.5 L929.3,277.1 L930.1,277.1 L930.9,276.8 L931.7,277.1 L932.4,277.5 L933.2,277.8 L934.0,277.8 L934.8,277.8 L935.6,277.8 L936.3,277.8 L937.1,278.1 L937.9,278.7 L938.7,278.7 L939.5,279.0 L940.2,279.0 L941.0,279.3 L941.8,279.9 L942.6,279.9 L943.4,280.2 L944.1,280.2 L944.9,280.2 L945.7,279.9 L946.5,279.9 L947.3,279.9 L948.0,279.6 L948.8,279.6 L949.6,279.9 L950.4,279.9 L951.2,279.9 L951.9,280.2 L952.7,280.2 L953.5,280.5 L954.3,280.5 L955.1,280.9 L955.8,281.2 L956.6,281.5 L957.4,281.5 L958.2,281.8 L959.0,281.8 L959.7,282.1 L960.5,282.1 L961.3,282.4 L962.1,282.4 L962.9,282.4 L963.6,282.4 L964.4,282.7 L965.2,282.7 L966.0,282.7 L966.8,282.7 L967.5,282.4 L968.3,282.1 L969.1,282.1 L969.9,282.4 L970.7,282.4 L971.4,282.4 L972.2,282.4 L973.0,282.4 L973.8,282.4 L974.6,282.1 L975.3,282.1 L976.1,281.8 L977.2,281.8 L978.2,281.5 L979.2,281.2 L980.3,281.2 L981.3,281.2 L982.4,279.9 L983.4,278.1 L984.5,276.8 L985.5,275.6 L986.5,274.7 L987.6,273.7 L988.6,272.5 L989.7,271.3 L990.7,270.0 L991.7,268.8 L992.8,267.3 L993.8,265.7 L994.9,264.8 L995.9,264.2 L996.9,263.5 L998.0,262.9 L999.0,262.0 L1000.1,260.8 L1001.1,259.5 L1002.1,258.3 L1003.2,257.1 L1004.2,255.8 L1005.3,255.5 L1006.3,255.5 L1007.3,255.8 L1008.4,256.1 L1009.4,255.5 L1010.5,254.9 L1011.5,253.7 L1012.5,252.7 L1013.6,251.5 L1014.6,250.9 L1015.7,249.6 L1016.7,248.1 L1017.7,246.9 L1018.8,246.2 L1019.8,244.7 L1020.9,244.1 L1021.9,243.1 L1022.9,242.5 L1024.0,242.2 L1025.0,241.6 L1026.1,241.0 L1027.1,239.7 L1028.1,238.5 L1028.9,237.6 L1029.7,237.0 L1030.5,236.7 L1031.3,237.0 L1032.1,237.0 L1032.9,237.3 L1033.6,238.2 L1034.2,240.7 L1034.9,243.1 L1035.5,246.2 L1036.2,249.6 L1036.8,251.2 L1037.6,252.4 L1038.4,253.3 L1039.2,253.7 L1040.0,254.6 L1040.8,256.1 L1041.7,257.4 L1042.4,258.0 L1043.2,258.3 L1044.1,258.6 L1044.9,257.7 L1045.7,256.7 L1046.5,256.7 L1047.3,256.7 L1048.1,257.1 L1048.9,257.7 L1049.7,258.6 L1050.5,258.9 L1051.3,258.6 L1052.3,257.7 L1053.3,256.1 L1054.4,254.6 L1055.4,254.0 L1056.4,253.3 L1057.4,252.7 L1058.9,251.5 L1060.4,249.0 L1062.0,246.2 L1063.5,244.1 L1065.0,241.3 L1066.5,238.5 L1067.4,237.0 L1068.2,236.7 L1069.0,237.0 L1069.9,236.7 L1070.7,237.3 L1071.5,237.9 L1072.4,238.2 L1073.2,239.4 L1074.0,241.0 L1074.9,242.5 L1075.7,244.1 L1076.5,245.9 L1077.4,247.8 L1078.2,248.7 L1079.0,248.7 L1079.8,249.0 L1080.7,250.3 L1081.5,251.5 L1082.3,252.4 L1083.2,252.7 L1084.0,253.3 L1084.8,254.3 L1085.7,255.2 L1086.5,256.7 L1087.3,257.7 L1088.2,259.2 L1089.0,259.8 L1089.8,260.8 L1090.6,262.0 L1091.4,263.5 L1092.2,265.7 L1093.0,268.2 L1093.7,270.3 L1094.5,272.5 L1095.3,274.4 L1096.1,275.9 L1096.9,276.5 L1097.6,276.8 L1098.4,276.5 L1099.1,276.2 L1099.9,276.2 L1100.7,276.5 L1101.4,276.8 L1102.2,276.8 L1103.0,277.1 L1103.8,277.1 L1104.5,277.1 L1105.3,277.5 L1106.1,277.8 L1106.8,278.1 L1107.6,278.1 L1108.4,278.1 L1109.1,278.4 L1109.9,278.4 L1110.6,278.4 L1111.4,278.7 L1112.2,278.7 L1112.9,279.0 L1113.7,279.0 L1114.5,279.3 L1115.3,279.3 L1116.1,279.6 L1116.8,279.6 L1117.6,279.9 L1118.3,279.9 L1119.1,279.9 L1119.8,279.9 L1120.6,279.9 L1121.4,279.9 L1122.2,280.2 L1122.9,279.9 L1123.7,279.9 L1124.5,279.9 L1125.2,280.2 L1126.0,280.2 L1126.8,280.5 L1127.5,280.5 L1128.3,280.9 L1129.1,281.2 L1129.8,281.5 L1130.6,281.5 L1131.3,281.5 L1132.1,281.5 L1132.9,281.5 L1133.7,281.5 L1134.5,281.8 L1135.2,281.8 L1136.0,281.8 L1136.8,281.8 L1137.5,281.8 L1138.3,281.5 L1139.0,281.2 L1139.8,281.2 L1140.6,281.2 L1141.3,280.9 L1142.1,280.9 L1142.9,280.5 L1143.6,280.2 L1144.4,279.9 L1145.2,279.9 L1146.0,279.6 L1146.7,279.6 L1147.5,279.9 L1148.2,279.9 L1149.0,279.9 L1149.8,279.9 L1150.5,279.9 L1151.3,279.6 L1152.1,279.9 L1152.9,279.9 L1153.6,279.9 L1154.4,279.9 L1155.2,279.9 L1155.9,280.2 L1156.7,280.5 L1157.5,280.5 L1158.2,280.5 L1159.0,280.5 L1159.7,281.2 L1159.8,296.0 L865.3,296.0 Z" fill="var(--run)" opacity=".16"/>
+<path d="M865.3,281.5 L866.2,281.5 L867.0,281.5 L867.8,281.5 L868.6,281.5 L869.4,281.5 L870.2,281.5 L871.1,281.5 L871.9,281.5 L872.7,281.5 L873.6,281.8 L874.3,281.8 L875.2,281.5 L876.0,281.5 L876.8,281.5 L877.6,281.5 L878.4,281.8 L879.3,282.1 L880.1,282.7 L880.9,282.7 L881.7,282.7 L882.6,282.7 L883.3,282.7 L884.2,283.0 L885.0,283.0 L885.8,283.3 L886.7,283.3 L887.4,283.3 L888.3,283.3 L889.1,283.3 L889.9,283.3 L890.7,283.3 L891.5,283.3 L892.4,283.3 L893.2,283.3 L894.0,283.3 L894.8,283.0 L895.7,282.7 L896.4,282.4 L897.3,282.1 L898.1,281.8 L898.9,281.8 L899.7,281.5 L900.4,281.2 L901.2,281.2 L902.0,281.2 L902.8,281.2 L903.6,281.2 L904.3,281.2 L905.1,281.2 L905.9,281.2 L906.7,280.9 L907.5,280.9 L908.2,280.9 L909.0,280.9 L909.8,280.5 L910.6,280.5 L911.4,280.5 L912.1,280.5 L912.9,280.2 L913.7,280.2 L914.5,280.2 L915.3,279.9 L916.0,279.9 L916.8,279.6 L917.6,279.6 L918.4,279.3 L919.2,279.0 L920.0,279.0 L920.7,278.7 L921.5,278.7 L922.3,278.1 L923.1,277.8 L923.9,277.8 L924.6,277.8 L925.4,277.8 L926.2,277.8 L927.0,277.8 L927.8,277.8 L928.5,277.5 L929.3,277.1 L930.1,277.1 L930.9,276.8 L931.7,277.1 L932.4,277.5 L933.2,277.8 L934.0,277.8 L934.8,277.8 L935.6,277.8 L936.3,277.8 L937.1,278.1 L937.9,278.7 L938.7,278.7 L939.5,279.0 L940.2,279.0 L941.0,279.3 L941.8,279.9 L942.6,279.9 L943.4,280.2 L944.1,280.2 L944.9,280.2 L945.7,279.9 L946.5,279.9 L947.3,279.9 L948.0,279.6 L948.8,279.6 L949.6,279.9 L950.4,279.9 L951.2,279.9 L951.9,280.2 L952.7,280.2 L953.5,280.5 L954.3,280.5 L955.1,280.9 L955.8,281.2 L956.6,281.5 L957.4,281.5 L958.2,281.8 L959.0,281.8 L959.7,282.1 L960.5,282.1 L961.3,282.4 L962.1,282.4 L962.9,282.4 L963.6,282.4 L964.4,282.7 L965.2,282.7 L966.0,282.7 L966.8,282.7 L967.5,282.4 L968.3,282.1 L969.1,282.1 L969.9,282.4 L970.7,282.4 L971.4,282.4 L972.2,282.4 L973.0,282.4 L973.8,282.4 L974.6,282.1 L975.3,282.1 L976.1,281.8 L977.2,281.8 L978.2,281.5 L979.2,281.2 L980.3,281.2 L981.3,281.2 L982.4,279.9 L983.4,278.1 L984.5,276.8 L985.5,275.6 L986.5,274.7 L987.6,273.7 L988.6,272.5 L989.7,271.3 L990.7,270.0 L991.7,268.8 L992.8,267.3 L993.8,265.7 L994.9,264.8 L995.9,264.2 L996.9,263.5 L998.0,262.9 L999.0,262.0 L1000.1,260.8 L1001.1,259.5 L1002.1,258.3 L1003.2,257.1 L1004.2,255.8 L1005.3,255.5 L1006.3,255.5 L1007.3,255.8 L1008.4,256.1 L1009.4,255.5 L1010.5,254.9 L1011.5,253.7 L1012.5,252.7 L1013.6,251.5 L1014.6,250.9 L1015.7,249.6 L1016.7,248.1 L1017.7,246.9 L1018.8,246.2 L1019.8,244.7 L1020.9,244.1 L1021.9,243.1 L1022.9,242.5 L1024.0,242.2 L1025.0,241.6 L1026.1,241.0 L1027.1,239.7 L1028.1,238.5 L1028.9,237.6 L1029.7,237.0 L1030.5,236.7 L1031.3,237.0 L1032.1,237.0 L1032.9,237.3 L1033.6,238.2 L1034.2,240.7 L1034.9,243.1 L1035.5,246.2 L1036.2,249.6 L1036.8,251.2 L1037.6,252.4 L1038.4,253.3 L1039.2,253.7 L1040.0,254.6 L1040.8,256.1 L1041.7,257.4 L1042.4,258.0 L1043.2,258.3 L1044.1,258.6 L1044.9,257.7 L1045.7,256.7 L1046.5,256.7 L1047.3,256.7 L1048.1,257.1 L1048.9,257.7 L1049.7,258.6 L1050.5,258.9 L1051.3,258.6 L1052.3,257.7 L1053.3,256.1 L1054.4,254.6 L1055.4,254.0 L1056.4,253.3 L1057.4,252.7 L1058.9,251.5 L1060.4,249.0 L1062.0,246.2 L1063.5,244.1 L1065.0,241.3 L1066.5,238.5 L1067.4,237.0 L1068.2,236.7 L1069.0,237.0 L1069.9,236.7 L1070.7,237.3 L1071.5,237.9 L1072.4,238.2 L1073.2,239.4 L1074.0,241.0 L1074.9,242.5 L1075.7,244.1 L1076.5,245.9 L1077.4,247.8 L1078.2,248.7 L1079.0,248.7 L1079.8,249.0 L1080.7,250.3 L1081.5,251.5 L1082.3,252.4 L1083.2,252.7 L1084.0,253.3 L1084.8,254.3 L1085.7,255.2 L1086.5,256.7 L1087.3,257.7 L1088.2,259.2 L1089.0,259.8 L1089.8,260.8 L1090.6,262.0 L1091.4,263.5 L1092.2,265.7 L1093.0,268.2 L1093.7,270.3 L1094.5,272.5 L1095.3,274.4 L1096.1,275.9 L1096.9,276.5 L1097.6,276.8 L1098.4,276.5 L1099.1,276.2 L1099.9,276.2 L1100.7,276.5 L1101.4,276.8 L1102.2,276.8 L1103.0,277.1 L1103.8,277.1 L1104.5,277.1 L1105.3,277.5 L1106.1,277.8 L1106.8,278.1 L1107.6,278.1 L1108.4,278.1 L1109.1,278.4 L1109.9,278.4 L1110.6,278.4 L1111.4,278.7 L1112.2,278.7 L1112.9,279.0 L1113.7,279.0 L1114.5,279.3 L1115.3,279.3 L1116.1,279.6 L1116.8,279.6 L1117.6,279.9 L1118.3,279.9 L1119.1,279.9 L1119.8,279.9 L1120.6,279.9 L1121.4,279.9 L1122.2,280.2 L1122.9,279.9 L1123.7,279.9 L1124.5,279.9 L1125.2,280.2 L1126.0,280.2 L1126.8,280.5 L1127.5,280.5 L1128.3,280.9 L1129.1,281.2 L1129.8,281.5 L1130.6,281.5 L1131.3,281.5 L1132.1,281.5 L1132.9,281.5 L1133.7,281.5 L1134.5,281.8 L1135.2,281.8 L1136.0,281.8 L1136.8,281.8 L1137.5,281.8 L1138.3,281.5 L1139.0,281.2 L1139.8,281.2 L1140.6,281.2 L1141.3,280.9 L1142.1,280.9 L1142.9,280.5 L1143.6,280.2 L1144.4,279.9 L1145.2,279.9 L1146.0,279.6 L1146.7,279.6 L1147.5,279.9 L1148.2,279.9 L1149.0,279.9 L1149.8,279.9 L1150.5,279.9 L1151.3,279.6 L1152.1,279.9 L1152.9,279.9 L1153.6,279.9 L1154.4,279.9 L1155.2,279.9 L1155.9,280.2 L1156.7,280.5 L1157.5,280.5 L1158.2,280.5 L1159.0,280.5 L1159.7,281.2" fill="none" stroke="var(--run)" stroke-width="2"/>
+<line x1="324.9" y1="126" x2="324.9" y2="39.0" stroke="var(--bike)" stroke-width="1" opacity=".4" stroke-dasharray="2 2"/><text class="rn" x="324.9" y="34.0" text-anchor="middle" fill="var(--bike)">Montée de Novalaise</text><text class="rt" x="324.9" y="45.0" text-anchor="middle">11:33</text><line x1="483.2" y1="126" x2="483.2" y2="39.0" stroke="var(--stop)" stroke-width="1" opacity=".4" stroke-dasharray="2 2"/><text class="rn" x="483.2" y="34.0" text-anchor="middle" fill="var(--stop)">Tournier 1</text><text class="rt" x="483.2" y="45.0" text-anchor="middle">12:28</text><line x1="535.9" y1="126" x2="535.9" y2="69.0" stroke="var(--bike)" stroke-width="1" opacity=".4" stroke-dasharray="2 2"/><text class="rn" x="535.9" y="64.0" text-anchor="middle" fill="var(--bike)">Tournier 2</text><text class="rt" x="535.9" y="75.0" text-anchor="middle">12:43</text><line x1="588.1" y1="126" x2="588.1" y2="39.0" stroke="var(--bike)" stroke-width="1" opacity=".4" stroke-dasharray="2 2"/><text class="rn" x="588.1" y="34.0" text-anchor="middle" fill="var(--bike)">Tournier 3</text><text class="rt" x="588.1" y="45.0" text-anchor="middle">13:01</text><line x1="634.7" y1="126" x2="634.7" y2="69.0" stroke="var(--ok)" stroke-width="1" opacity=".4" stroke-dasharray="2 2"/><text class="rn" x="634.7" y="64.0" text-anchor="middle" fill="var(--ok)">Post-Tournier</text><text class="rt" x="634.7" y="75.0" text-anchor="middle">13:20</text><line x1="698.4" y1="126" x2="698.4" y2="39.0" stroke="var(--ok)" stroke-width="1" opacity=".4" stroke-dasharray="2 2"/><text class="rn" x="698.4" y="34.0" text-anchor="middle" fill="var(--ok)">Approche Banchet</text><text class="rt" x="698.4" y="45.0" text-anchor="middle">13:41</text><line x1="732.6" y1="126" x2="732.6" y2="69.0" stroke="var(--stop)" stroke-width="1" opacity=".4" stroke-dasharray="2 2"/><text class="rn" x="732.6" y="64.0" text-anchor="middle" fill="var(--stop)">Le Banchet</text><text class="rt" x="732.6" y="75.0" text-anchor="middle">13:48</text><line x1="791.0" y1="126" x2="791.0" y2="99.0" stroke="var(--ok)" stroke-width="1" opacity=".4" stroke-dasharray="2 2"/><text class="rn" x="791.0" y="94.0" text-anchor="middle" fill="var(--ok)">La dernière</text><text class="rt" x="791.0" y="105.0" text-anchor="middle">14:10</text><line x1="502.5" y1="126" x2="502.5" y2="296.0" stroke="var(--swim)" stroke-width="1.5"/><circle cx="502.5" cy="296.0" r="5.5" fill="var(--swim)" stroke="var(--surface-2)" stroke-width="2"/><text class="rv" x="502.5" y="311.0" text-anchor="middle">RAVITO 12:41</text>
+<line class="base" x1="46" y1="296.0" x2="1166" y2="296.0"/>
+</svg>
+    <figcaption><span>altitude en m · axe horizontal = l'heure réelle</span><span>départ 10 h 15 · arrivée 16 h 12</span></figcaption>
+  </figure>
+  <ul class="legend">
+    <li style="--c:var(--stop)"><i></i><b>Tournier 1</b> et <b>Le Banchet</b> — tu lèves le pied</li>
+    <li style="--c:var(--ok)"><i></i><b>Post-Tournier</b>, <b>Approche Banchet</b>, <b>La dernière</b> — tu attaques</li>
+    <li style="--c:var(--bike)"><i></i>les autres — intensité normale</li>
+  </ul>
+</section>
 
 <section class="card hot">
   <div class="sect"><h2>À faire au réveil — 3 minutes</h2></div>
@@ -97,7 +135,7 @@ footer{border-top:1px solid var(--rule);padding-top:14px;font-size:12.5px;color:
   <ul class="chk">
     <li><b>2 g de sel par bidon</b> (½ cuillère à café rase), en plus des pastilles</li>
     <li>Secouer longuement — la maltodextrine se dissout mal à froid</li>
-    <li>3 gels + 2 pâtes de fruits dans les <b>poches arrière de la trifonction</b> pour le vélo</li>
+    <li><b>3 gels + 4 pâtes de fruits</b> dans les poches arrière de la trifonction<span class="sub"></span></li>
     <li><b>2 gels dans la ceinture</b>, posés dans la zone T1/T2 avec les chaussures</li>
     <li>Flasque 250 mL remplie, posée avec la ceinture et le dossard</li>
   </ul>
@@ -109,10 +147,10 @@ footer{border-top:1px solid var(--rule);padding-top:14px;font-size:12.5px;color:
     <li><b>7:00</b><span>Lever</span></li>
     <li><b>7:15</b><span>Petit-déjeuner<span class="why">3 h avant le départ, c'est le bon créneau</span></span></li>
     <li><b>8:45</b><span>Arrivée sur site, montage, sac T1/T2</span></li>
-    <li><b>9:30</b><span>Échauffement : 10 min de vélo souple + 3 accélérations</span></li>
-    <li><b>9:45</b><span>Une pâte de fruits + 200 mL d'eau<span class="why">dernière prise solide</span></span></li>
-    <li><b>9:55</b><span>Combinaison, 5 min dans l'eau si possible</span></li>
-    <li class="big"><b>10:10</b><span>DÉPART</span></li>
+    <li><b>9:35</b><span>Échauffement : 10 min de vélo souple + 3 accélérations</span></li>
+    <li><b>9:50</b><span>Une pâte de fruits + 200 mL d'eau<span class="why">dernière prise solide</span></span></li>
+    <li><b>10:00</b><span>Combinaison, 5 min dans l'eau si possible</span></li>
+    <li class="big"><b>10:15</b><span>DÉPART</span></li>
   </ul>
 </section>
 
@@ -128,30 +166,29 @@ footer{border-top:1px solid var(--rule);padding-top:14px;font-size:12.5px;color:
 <section class="card">
   <div class="sect"><span class="tag" style="--c:var(--bike)">Vélo</span><h2>84 km · 1 600 m · 3 h 30 min 31</h2></div>
   <ul class="tl">
-    <li><b>10:59</b><span>Départ vélo<span class="why">25 premières minutes : tu bois, tu ne manges pas. L'estomac revient de la nage.</span></span><em>0:49 chrono</em></li>
-    <li class="eat"><b>11:20</b><span>1ʳᵉ pâte de fruits<span class="why">avant R1, sur le plat</span></span><em>km 10</em></li>
-    <li class="hold"><b>11:28</b><span>Pied de R1 — 5,2 km à 5,1 %<span class="why">mur à 9-10,5 % dès les 300 premiers mètres : tu allèges, tu ne forces pas</span></span><em>9,5 km/h</em></li>
-    <li><b>11:51</b><span>Sommet R1 · km 20<span class="why">tu dois être à +1:41 sur 2025</span></span><em>11:50 visé</em></li>
-    <li class="eat"><b>12:00</b><span>Gel nº 1 + bidon 1<span class="why">sur la descente, tranquille</span></span></li>
-    <li class="hold"><b>12:24</b><span>Pied de R2 — Mont Tournier, 1,8 km à 7-8 %<span class="why">214 W l'an dernier, ton pic. <b>C'est LA rampe où tu lèves le pied.</b></span></span><em>10,1 km/h</em></li>
-    <li class="eat"><b>12:33</b><span><b>RAVITO km 40</b> — il est dans R2<span class="why">tu y roules à 10 km/h, c'est idéal : prends de l'eau plate, une banane, du sel. Remplis ce que tu peux.</span></span><em>km 40</em></li>
-    <li><b>12:36</b><span>Sommet R2</span></li>
-    <li class="eat"><b>12:38</b><span>Gel nº 2 au pied de R3</span></li>
-    <li><b>12:56</b><span>Sommet R3 → pied de R4 enchaîné<span class="why">R4 : 1,9 km à 7-9,9 %, deux pointes à 9,5 et 9,9 %</span></span></li>
-    <li><b>13:11</b><span>Col du Mont Tournier — sommet R4<span class="why">le gros morceau est derrière</span></span><em>817 m</em></li>
-    <li class="eat"><b>13:14</b><span>2ᵉ pâte de fruits + bidon 2</span></li>
-    <li class="key"><b>13:15</b><span><b>R5 — ICI TU ATTAQUES</b><span class="why">1,6 km à 4,9 %. Tu étais à 177 W l'an dernier, 26 W sous ton niveau. 6:45 au lieu de 7:19.</span></span><em>9,5 km/h</em></li>
-    <li class="key"><b>13:36</b><span><b>R6 — tu attaques aussi</b><span class="why">1,3 km, descente au milieu : roue libre dedans, tu relances après</span></span><em>10,1 km/h</em></li>
-    <li class="eat"><b>13:41</b><span>Gel nº 3 <b>avant</b> le mur</span></li>
-    <li class="hold"><b>13:43</b><span>Pied de R7 — <b>LE MUR</b><span class="why">2,2 km sans un mètre sous 6,5 %. 211 W l'an dernier. Tu montes à 9,4 km/h, assis, cadence maxi, tu ne te lèves jamais.</span></span><em>13:26</em></li>
-    <li><b>13:57</b><span>Col du Banchet — sommet R7<span class="why">le plus dur de la journée est fait</span></span><em>591 m</em></li>
-    <li class="key"><b>14:05</b><span><b>R8 — dernière attaque</b><span class="why">100 m à 9,8 % puis rien. Tu étais à 182 W l'an dernier : 7:00 au lieu de 7:53.</span></span></li>
-    <li><b>14:12</b><span>Sommet R8 · fin des difficultés<span class="why">14 km de retour. Tu finis les bidons, tu arrêtes le solide, tu moulines.</span></span></li>
-    <li class="big"><b>14:30</b><span>Fin du vélo<span class="why">+10:33 sur 2025</span></span><em>4:19:41</em></li>
+    <li><b>11:04</b><span>Départ vélo<span class="why">25 premières minutes : tu bois, tu ne manges pas. L'estomac revient de la nage.</span></span><em>0:49 chrono</em></li>
+    <li class="eat"><b>11:25</b><span>1ʳᵉ pâte de fruits<span class="why">avant R1, sur le plat</span></span><em>km 10</em></li>
+    <li class="hold"><b>11:33</b><span>Pied de la <b>Montée de Novalaise</b> — 5,2 km à 5,1 %<span class="why">mur à 9-10,5 % dès les 300 premiers mètres : tu allèges, tu ne forces pas</span></span><em>9,5 km/h</em></li>
+    <li><b>11:56</b><span>Sommet Novalaise · km 20<span class="why">tu dois être à +1:41 sur 2025</span></span><em>11:50 visé</em></li>
+    <li class="eat"><b>12:05</b><span>Gel nº 1 + bidon 1<span class="why">sur la descente, tranquille</span></span></li>
+    <li class="hold"><b>12:29</b><span>Pied de <b>Tournier 1</b> — 1,8 km à 7-8 %<span class="why">214 W l'an dernier, ton pic. <b>C'est LA rampe où tu lèves le pied.</b></span></span><em>10,1 km/h</em></li>
+    <li class="eat"><b>12:41</b><span><b>Sommet Tournier 1 · RAVITO</b><span class="why">tu remplis le bidon vide avec de l'eau plate, tu ne manges rien, tu repars. La descente juste après te laisse le temps de boire.</span></span><em>bidon 1 → eau</em></li>
+    <li class="eat"><b>12:43</b><span>Pâte de fruits nº 2 au pied de <b>Tournier 2</b></span></li>
+    <li><b>13:01</b><span>Sommet Tournier 2 → <b>Tournier 3</b> enchaîné<span class="why">R4 : 1,9 km à 7-9,9 %, deux pointes à 9,5 et 9,9 %</span></span></li>
+    <li><b>13:16</b><span>Col du Mont Tournier — sommet Tournier 3<span class="why">le gros morceau est derrière</span></span><em>817 m</em></li>
+    <li class="eat"><b>13:19</b><span>2ᵉ pâte de fruits + bidon 2</span></li>
+    <li class="key"><b>13:20</b><span><b>POST-TOURNIER — ICI TU ATTAQUES</b><span class="why">1,6 km à 4,9 %. Tu étais à 177 W l'an dernier, 26 W sous ton niveau. 6:45 au lieu de 7:19.</span></span><em>9,5 km/h</em></li>
+    <li class="key"><b>13:41</b><span><b>APPROCHE BANCHET — tu attaques aussi</b><span class="why">1,3 km, descente au milieu : roue libre dedans, tu relances après</span></span><em>10,1 km/h</em></li>
+    <li class="eat"><b>13:46</b><span>Gel nº 3 <b>avant</b> le mur</span></li>
+    <li class="hold"><b>13:48</b><span>Pied du <b>BANCHET</b> — le mur<span class="why">2,2 km sans un mètre sous 6,5 %. 211 W l'an dernier. Tu montes à 9,4 km/h, assis, cadence maxi, tu ne te lèves jamais.</span></span><em>13:26</em></li>
+    <li><b>14:02</b><span>Col du Banchet — sommet<span class="why">le plus dur de la journée est fait</span></span><em>591 m</em></li>
+    <li class="key"><b>14:10</b><span><b>LA DERNIÈRE — dernière attaque</b><span class="why">100 m à 9,8 % puis rien. Tu étais à 182 W l'an dernier : 7:00 au lieu de 7:53.</span></span></li>
+    <li><b>14:17</b><span>Sommet · fin des difficultés<span class="why">14 km de retour. Tu finis les bidons, tu arrêtes le solide, tu moulines.</span></span></li>
+    <li class="big"><b>14:35</b><span>Fin du vélo<span class="why">+10:33 sur 2025</span></span><em>4:19:41 chrono</em></li>
   </ul>
-  <div class="callout"><b>Le signal d'alarme : plus de 4 minutes d'avance au km 40 (12:33).</b>
+  <div class="callout"><b>Le signal d'alarme : plus de 4 minutes d'avance au ravito (12:41).</b>
     Ça voudrait dire que tu as monté R1 et R2 trop fort. Lève le pied immédiatement — le plan récupère
-    tout sur R5, R6 et R8, et il ne récupère rien si tes quadriceps sont vides à 13 h 15.</div>
+    tout sur R5, R6 et R8, et il ne récupère rien si tes quadriceps sont vides à 13 h 20.</div>
   <div class="callout ok"><b>La règle sans compteur : 70 tr/min.</b> Sur toute portion raide, si tu ne peux plus
     tourner à 70, tu descends un pignon et tu restes assis. C'est ce qui décide de la course à pied.</div>
 </section>
@@ -159,18 +196,18 @@ footer{border-top:1px solid var(--rule);padding-top:14px;font-size:12.5px;color:
 <section class="card">
   <div class="sect"><span class="tag" style="--c:var(--run)">Course à pied</span><h2>17,6 km · 1 h 34 min 23</h2></div>
   <ul class="tl">
-    <li class="hold"><b>14:33</b><span>Départ CAP — <b>tu cours le premier kilomètre</b><span class="why">même moche, même à 5:30. L'an dernier tu as marché 4 min 43 ici, à plat. C'est 3 minutes.</span></span><em>5:15/km</em></li>
-    <li><b>14:43</b><span>km 2 — tu te cales<span class="why">plafond 5:00/km jusqu'au km 7. Tu peux plus vite, n'y va pas.</span></span></li>
-    <li class="eat"><b>14:50</b><span>Gel nº 4 + ravito<span class="why">coca et eau à chaque ravito, sel systématique</span></span></li>
-    <li><b>15:08</b><span>km 7 — pied du 1ᵉʳ mur<span class="why">2,5 km à 5,5 %. Petits pas, cadence 165 mini. 6:40/km.</span></span></li>
-    <li><b>15:25</b><span>km 9,5 — haut du 1ᵉʳ mur</span><em>6:40/km</em></li>
-    <li class="hold"><b>15:26</b><span><b>DESCENTE À −15 %</b> — tu freines<span class="why">3:38/km à FC 180 l'an dernier. C'est là que la tétanie s'est armée. 4:10/km, ça coûte 10 secondes.</span></span><em>4:10/km</em></li>
-    <li class="eat"><b>15:30</b><span>Gel nº 5</span></li>
-    <li><b>15:34</b><span>km 11,3 — pied du mur à 14 %</span></li>
-    <li class="hold"><b>15:37</b><span><b>Le mur : 300 m à 14-17 % — tu MARCHES</b><span class="why">mains sur les cuisses, grandes enjambées. Personne ne court ça. 2 min 55, c'est le bon choix.</span></span><em>9:45/km</em></li>
-    <li class="hold"><b>15:46</b><span>km 13,4 — bas de la dernière descente<span class="why">−12 %, FC 184 l'an dernier, ton max. Freine encore.</span></span></li>
-    <li class="key"><b>15:46</b><span><b>4,2 km de plat. Là tu vides.</b><span class="why">4:55/km. Tu as fait 5:07 l'an dernier en étant en tétanie.</span></span></li>
-    <li class="big"><b>16:07</b><span>ARRIVÉE</span><em>5:56:54</em></li>
+    <li class="hold"><b>14:38</b><span>Départ CAP — <b>tu cours le premier kilomètre</b><span class="why">même moche, même à 5:30. L'an dernier tu as marché 4 min 43 ici, à plat. C'est 3 minutes.</span></span><em>5:15/km</em></li>
+    <li><b>14:48</b><span>km 2 — tu te cales<span class="why">plafond 5:00/km jusqu'au km 7. Tu peux plus vite, n'y va pas.</span></span></li>
+    <li class="eat"><b>14:55</b><span>Gel nº 4 + ravito<span class="why">coca et eau à chaque ravito, sel systématique</span></span></li>
+    <li><b>15:13</b><span>km 7 — pied du 1ᵉʳ mur<span class="why">2,5 km à 5,5 %. Petits pas, cadence 165 mini. 6:40/km.</span></span></li>
+    <li><b>15:30</b><span>km 9,5 — haut du 1ᵉʳ mur</span><em>6:40/km</em></li>
+    <li class="hold"><b>15:31</b><span><b>DESCENTE À −15 %</b> — tu freines<span class="why">3:38/km à FC 180 l'an dernier. C'est là que la tétanie s'est armée. 4:10/km, ça coûte 10 secondes.</span></span><em>4:10/km</em></li>
+    <li class="eat"><b>15:35</b><span>Gel nº 5</span></li>
+    <li><b>15:39</b><span>km 11,3 — pied du mur à 14 %</span></li>
+    <li class="hold"><b>15:42</b><span><b>Le mur : 300 m à 14-17 % — tu MARCHES</b><span class="why">mains sur les cuisses, grandes enjambées. Personne ne court ça. 2 min 55, c'est le bon choix.</span></span><em>9:45/km</em></li>
+    <li class="hold"><b>15:51</b><span>km 13,4 — bas de la dernière descente<span class="why">−12 %, FC 184 l'an dernier, ton max. Freine encore.</span></span></li>
+    <li class="key"><b>15:51</b><span><b>4,2 km de plat. Là tu vides.</b><span class="why">4:55/km. Tu as fait 5:07 l'an dernier en étant en tétanie.</span></span></li>
+    <li class="big"><b>16:12</b><span>ARRIVÉE</span><em>5:56:54</em></li>
   </ul>
   <div class="callout"><b>Premier fasciculement de quadriceps → −10 s/km et du sel immédiatement.</b>
     Tu ne serres pas les dents, tu corriges. Tu as 1 min 30 de marge sur les 6 heures : elle est là pour ça.</div>
@@ -181,27 +218,30 @@ footer{border-top:1px solid var(--rule);padding-top:14px;font-size:12.5px;color:
   <div class="scroll"><table>
     <thead><tr><th>Quand</th><th>Quoi</th><th class="n">Glucides</th></tr></thead>
     <tbody>
-      <tr><td class="k">9:45</td><td>1 pâte de fruits + 200 mL d'eau</td><td class="n">~22 g</td></tr>
-      <tr><td class="k">Vélo 11:20</td><td>pâte de fruits nº 1</td><td class="n">22 g</td></tr>
-      <tr><td class="k">Vélo 12:00</td><td>gel nº 1</td><td class="n">25 g</td></tr>
-      <tr><td class="k">Vélo 12:33</td><td><b>ravito km 40</b> — eau plate, banane, sel</td><td class="n">~20 g</td></tr>
-      <tr><td class="k">Vélo 12:38</td><td>gel nº 2</td><td class="n">25 g</td></tr>
-      <tr><td class="k">Vélo 13:14</td><td>pâte de fruits nº 2</td><td class="n">22 g</td></tr>
-      <tr><td class="k">Vélo 13:41</td><td>gel nº 3</td><td class="n">25 g</td></tr>
-      <tr><td class="k">Vélo, en continu</td><td><b>2 bidons</b> 80 g malto chacun<span class="sub">bidon 1 : 11:00 → 12:45 · bidon 2 : 12:45 → 14:20</span></td><td class="n">160 g</td></tr>
-      <tr><td class="k">CAP 14:50</td><td>gel nº 4 + coca au ravito</td><td class="n">~40 g</td></tr>
-      <tr><td class="k">CAP 15:30</td><td>gel nº 5 + coca</td><td class="n">~40 g</td></tr>
+      <tr><td class="k">9:50</td><td>1 pâte de fruits + 200 mL d'eau</td><td class="n">~22 g</td></tr>
+      <tr><td class="k">Vélo 11:25</td><td>pâte de fruits nº 1</td><td class="n">22 g</td></tr>
+      <tr><td class="k">Vélo 12:05</td><td>gel nº 1</td><td class="n">25 g</td></tr>
+      <tr><td class="k">Vélo 12:41</td><td><b>Ravito, sommet Tournier 1</b><span class="sub">tu remplis le bidon vide à l'eau plate — rien à manger</span></td><td class="n">0 g</td></tr>
+      <tr><td class="k">Vélo 12:43</td><td>pâte de fruits nº 2</td><td class="n">22 g</td></tr>
+      <tr><td class="k">Vélo 13:05</td><td>gel nº 2</td><td class="n">25 g</td></tr>
+      <tr><td class="k">Vélo 13:19</td><td>pâte de fruits nº 3</td><td class="n">22 g</td></tr>
+      <tr><td class="k">Vélo 13:46</td><td>gel nº 3 <b>avant le Banchet</b></td><td class="n">25 g</td></tr>
+      <tr><td class="k">Vélo 14:05</td><td>pâte de fruits nº 4</td><td class="n">22 g</td></tr>
+      <tr><td class="k">Vélo, en continu</td><td><b>2 bidons</b> 80 g malto chacun<span class="sub">bidon 1 : 11:04 → 12:41 · bidon 2 : 12:41 → 14:20 · bidon rempli à l'eau : à volonté</span></td><td class="n">160 g</td></tr>
+      <tr><td class="k">CAP 14:55</td><td>gel nº 4 + coca au ravito</td><td class="n">~40 g</td></tr>
+      <tr><td class="k">CAP 15:35</td><td>gel nº 5 + coca</td><td class="n">~40 g</td></tr>
       <tr><td class="k">CAP 3ᵉ ravito</td><td>coca + sel</td><td class="n">~15 g</td></tr>
     </tbody>
   </table></div>
-  <div class="callout ok"><b>Total vélo : ~299 g sur 3 h 30, soit 85 g/h.</b> Pile dans ta fourchette.
-    <b>CAP : ~95 g sur 1 h 34, soit 60 g/h</b> — suffisant sur cette durée, et c'est ce que ton estomac
-    supportera en courant.</div>
-  <p><b>Boisson :</b> 1 800 mL de bidons sur 3 h 30 = 510 mL/h. C'est juste. <b>Au ravito du km 40, prends
-    systématiquement de l'eau plate en plus</b> — ta boisson est à 8,9 %, elle a besoin d'être accompagnée.
-    Sur la CAP, la flasque de 250 mL se recharge à chaque ravito.</p>
-  <p><b>Ce que tu laisses :</b> les 8 barres choco et le reste des pâtes de fruits restent au sac. Trop
-    solide pour la course — elles sont pour après.</p>
+  <div class="callout ok"><b>Total vélo : 323 g sur 3 h 30, soit 92 g/h.</b> Haut de ta fourchette, et
+    atteignable parce que tu embarques <b>4 pâtes de fruits au lieu de 2</b> — tu en as en illimité, profites-en.
+    <b>CAP : ~95 g sur 1 h 34, soit 60 g/h</b> — ce que ton estomac supportera en courant.</div>
+  <p><b>Boisson.</b> Tes 2 bidons font 1 800 mL, soit 510 mL/h : trop juste. Le bidon rempli au ravito porte
+    le total à <b>~2 700 mL, 770 mL/h</b> — et l'eau plate est exactement ce qu'il faut pour accompagner une
+    boisson à 8,9 %. <b>Bois le bidon d'eau entre les rampes, pas pendant.</b></p>
+  <p><b>Ce que tu embarques :</b> 3 gels et 4 pâtes de fruits dans les poches arrière de la trifonction,
+    2 gels dans la ceinture posée en T2. <b>Ce que tu laisses :</b> les 8 barres choco — trop solides pour
+    la course, elles sont pour après.</p>
 </section>
 
 <section class="card">
@@ -221,19 +261,20 @@ footer{border-top:1px solid var(--rule);padding-top:14px;font-size:12.5px;color:
 <section class="card">
   <div class="sect"><h2>Les trois chiffres à retenir</h2></div>
   <ul class="tl">
-    <li class="big"><b>12:33</b><span>Ravito du km 40 — <b>pas plus de 4 min d'avance</b><span class="why">le seul contrôle du vélo</span></span></li>
-    <li class="big"><b>14:30</b><span>Fin du vélo<span class="why">si tu y es, le sub-6h est fait</span></span></li>
-    <li class="big"><b>16:07</b><span>Arrivée — <b>5 h 56 min 54</b></span></li>
+    <li class="big"><b>12:41</b><span>Ravito, sommet Tournier 1 — <b>pas plus de 4 min d'avance</b><span class="why">le seul contrôle du vélo</span></span></li>
+    <li class="big"><b>14:35</b><span>Fin du vélo<span class="why">si tu y es, le sub-6h est fait</span></span></li>
+    <li class="big"><b>16:12</b><span>Arrivée — <b>5 h 56 min 54</b></span></li>
   </ul>
-  <div class="callout ok"><b>Tout le plan tient en deux phrases.</b> Sur le vélo : tu lèves le pied sur R2 et
-    R7, tu attaques R5, R6 et R8. Sur la CAP : tu cours le premier kilomètre, tu marches les 300 m à 14 %,
+  <div class="callout ok"><b>Tout le plan tient en deux phrases.</b> Sur le vélo : tu lèves le pied sur <b>Tournier 1</b> et
+    <b>le Banchet</b>, tu attaques <b>Post-Tournier</b>, <b>Approche Banchet</b> et <b>La dernière</b>. Sur la CAP : tu cours le premier kilomètre, tu marches les 300 m à 14 %,
     et tu freines les deux descentes raides. Le reste suit tout seul.</div>
 </section>
 
 <footer>
-  <p>Temps issus de tes trois fichiers FIT de 2025, recalculés sur le plan de pacing. Départ supposé à 10 h 10 :
+  <p>Temps issus de tes trois fichiers FIT de 2025, recalculés sur le plan de pacing. Départ supposé à 10 h 15 :
     si le départ glisse, tous les horaires glissent d'autant — les écarts sur 2025 et les allures, eux,
-    restent valables.</p>
+    restent valables. <b>Les noms des rampes sont les tiens, complétés là où il m'en manquait</b> — dis-moi
+    les vrais pour « Approche Banchet » et « La dernière » et je corrige.</p>
 </footer>
 
 </div>
