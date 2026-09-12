@@ -83,6 +83,13 @@ th,td{text-align:left;padding:7px 10px 7px 0;border-bottom:1px solid var(--rule-
 th{font-family:var(--fm);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:500;white-space:nowrap}
 td.n{text-align:right;font-family:var(--fm);font-variant-numeric:tabular-nums;white-space:nowrap}
 td.k{font-weight:600}
+th.n{text-align:right}
+tr.tot td{border-top:1.5px solid var(--rule);border-bottom:none;background:var(--surface-2);font-weight:600}
+td.n.warn{color:var(--stop)}
+td.n.ok{color:var(--ok)}
+ol.steps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:9px;font-size:14.5px;color:var(--ink-2)}
+ol.steps b{color:var(--ink)}
+.callout.warn{border-color:var(--stop)}
 .sub{display:block;font-size:12px;color:var(--muted);font-weight:400}
 
 ul.chk{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
@@ -219,57 +226,72 @@ footer{border-top:1px solid var(--rule);padding-top:14px;font-size:12.5px;color:
 <text class="fk" x="3165.9" y="363" text-anchor="middle" fill="var(--run)">km 13,4<tspan class="fh" x="3165.9" dy="11">15:51</tspan></text>
 <line x1="3342.6" y1="346" x2="3342.6" y2="351" stroke="var(--rule)" stroke-width="1"/>
 <text class="fk" x="3342.6" y="363" text-anchor="middle" fill="var(--run)">km 17,3<tspan class="fh" x="3342.6" dy="11">16:11</tspan></text>
-<line x1="703.6" y1="350" x2="703.6" y2="387.0" stroke="var(--ok)" stroke-width="1.5" opacity=".45"/>
-<circle cx="703.6" cy="346" r="4" fill="var(--ok)"/>
-<text class="fe" x="703.6" y="396.0" text-anchor="middle" fill="var(--ok)">pâte de fruits 1 <tspan class="fh">11:25</tspan></text>
+<line x1="657.5" y1="350" x2="657.5" y2="387.0" stroke="var(--ok)" stroke-width="1.5" opacity=".45"/>
+<circle cx="657.5" cy="346" r="4" fill="var(--ok)"/>
+<text class="fe" x="657.5" y="396.0" text-anchor="middle" fill="var(--ok)">pâte 1 <tspan class="fh">11:20</tspan></text>
 <line x1="749.7" y1="350" x2="749.7" y2="403.0" stroke="var(--swim)" stroke-width="1.5" opacity=".45"/>
 <circle cx="749.7" cy="346" r="4" fill="var(--swim)"/>
 <text class="fe" x="749.7" y="412.0" text-anchor="middle" fill="var(--swim)">gélule 1 <tspan class="fh">11:30</tspan></text>
-<line x1="1072.5" y1="350" x2="1072.5" y2="387.0" stroke="var(--bike)" stroke-width="1.5" opacity=".45"/>
+<line x1="1008.0" y1="350" x2="1008.0" y2="387.0" stroke="var(--ok)" stroke-width="1.5" opacity=".45"/>
+<circle cx="1008.0" cy="346" r="4" fill="var(--ok)"/>
+<text class="fe" x="1008.0" y="396.0" text-anchor="middle" fill="var(--ok)">pâte 2 <tspan class="fh">11:58</tspan></text>
+<line x1="1072.5" y1="350" x2="1072.5" y2="403.0" stroke="var(--bike)" stroke-width="1.5" opacity=".45"/>
 <circle cx="1072.5" cy="346" r="4" fill="var(--bike)"/>
-<text class="fe" x="1072.5" y="396.0" text-anchor="middle" fill="var(--bike)">gel 1 <tspan class="fh">12:05</tspan></text>
-<line x1="1164.8" y1="350" x2="1164.8" y2="403.0" stroke="var(--swim)" stroke-width="1.5" opacity=".45"/>
-<circle cx="1164.8" cy="346" r="4" fill="var(--swim)"/>
-<text class="fe" x="1164.8" y="412.0" text-anchor="middle" fill="var(--swim)">gélule 2 <tspan class="fh">12:15</tspan></text>
+<text class="fe" x="1072.5" y="412.0" text-anchor="middle" fill="var(--bike)">gel 1 <tspan class="fh">12:05</tspan></text>
+<line x1="1164.8" y1="350" x2="1164.8" y2="387.0" stroke="var(--ok)" stroke-width="1.5" opacity=".45"/>
+<circle cx="1164.8" cy="346" r="4" fill="var(--ok)"/>
+<text class="fe" x="1164.8" y="396.0" text-anchor="middle" fill="var(--ok)">gélule 2 + pâte 3 <tspan class="fh">12:15</tspan></text>
+<line x1="1266.2" y1="350" x2="1266.2" y2="403.0" stroke="var(--ok)" stroke-width="1.5" opacity=".45"/>
+<circle cx="1266.2" cy="346" r="4" fill="var(--ok)"/>
+<text class="fe" x="1266.2" y="412.0" text-anchor="middle" fill="var(--ok)">pâte 4 <tspan class="fh">12:26</tspan></text>
 <line x1="1423.0" y1="350" x2="1423.0" y2="387.0" stroke="var(--stop)" stroke-width="1.5" opacity=".45"/>
 <circle cx="1423.0" cy="346" r="4" fill="var(--stop)"/>
 <text class="fe" x="1423.0" y="396.0" text-anchor="middle" fill="var(--stop)">RAVITO km 41,5 · bidon <tspan class="fh">12:43</tspan></text>
-<line x1="1441.5" y1="350" x2="1441.5" y2="403.0" stroke="var(--ok)" stroke-width="1.5" opacity=".45"/>
-<circle cx="1441.5" cy="346" r="4" fill="var(--ok)"/>
-<text class="fe" x="1441.5" y="412.0" text-anchor="middle" fill="var(--ok)">pâte de fruits 2 <tspan class="fh">12:45</tspan></text>
+<line x1="1450.7" y1="350" x2="1450.7" y2="403.0" stroke="var(--ok)" stroke-width="1.5" opacity=".45"/>
+<circle cx="1450.7" cy="346" r="4" fill="var(--ok)"/>
+<text class="fe" x="1450.7" y="412.0" text-anchor="middle" fill="var(--ok)">pâte 5 <tspan class="fh">12:46</tspan></text>
 <line x1="1579.8" y1="350" x2="1579.8" y2="387.0" stroke="var(--swim)" stroke-width="1.5" opacity=".45"/>
 <circle cx="1579.8" cy="346" r="4" fill="var(--swim)"/>
 <text class="fe" x="1579.8" y="396.0" text-anchor="middle" fill="var(--swim)">gélule 3 <tspan class="fh">13:00</tspan></text>
-<line x1="1653.6" y1="350" x2="1653.6" y2="403.0" stroke="var(--bike)" stroke-width="1.5" opacity=".45"/>
-<circle cx="1653.6" cy="346" r="4" fill="var(--bike)"/>
-<text class="fe" x="1653.6" y="412.0" text-anchor="middle" fill="var(--bike)">gel 2 <tspan class="fh">13:08</tspan></text>
-<line x1="1782.7" y1="350" x2="1782.7" y2="387.0" stroke="var(--ok)" stroke-width="1.5" opacity=".45"/>
-<circle cx="1782.7" cy="346" r="4" fill="var(--ok)"/>
-<text class="fe" x="1782.7" y="396.0" text-anchor="middle" fill="var(--ok)">pâte de fruits 3 <tspan class="fh">13:22</tspan></text>
-<line x1="1948.7" y1="350" x2="1948.7" y2="387.0" stroke="var(--swim)" stroke-width="1.5" opacity=".45"/>
+<line x1="1745.8" y1="350" x2="1745.8" y2="387.0" stroke="var(--bike)" stroke-width="1.5" opacity=".45"/>
+<circle cx="1745.8" cy="346" r="4" fill="var(--bike)"/>
+<text class="fe" x="1745.8" y="396.0" text-anchor="middle" fill="var(--bike)">gel 2 <tspan class="fh">13:18</tspan></text>
+<line x1="1884.2" y1="350" x2="1884.2" y2="387.0" stroke="var(--ok)" stroke-width="1.5" opacity=".45"/>
+<circle cx="1884.2" cy="346" r="4" fill="var(--ok)"/>
+<text class="fe" x="1884.2" y="396.0" text-anchor="middle" fill="var(--ok)">pâte 6 <tspan class="fh">13:33</tspan></text>
+<line x1="1948.7" y1="350" x2="1948.7" y2="403.0" stroke="var(--swim)" stroke-width="1.5" opacity=".45"/>
 <circle cx="1948.7" cy="346" r="4" fill="var(--swim)"/>
-<text class="fe" x="1948.7" y="396.0" text-anchor="middle" fill="var(--swim)">gélule 4 <tspan class="fh">13:40</tspan></text>
-<line x1="2013.3" y1="350" x2="2013.3" y2="403.0" stroke="var(--bike)" stroke-width="1.5" opacity=".45"/>
+<text class="fe" x="1948.7" y="412.0" text-anchor="middle" fill="var(--swim)">gélule 4 <tspan class="fh">13:40</tspan></text>
+<line x1="2013.3" y1="350" x2="2013.3" y2="419.0" stroke="var(--bike)" stroke-width="1.5" opacity=".45"/>
 <circle cx="2013.3" cy="346" r="4" fill="var(--bike)"/>
-<text class="fe" x="2013.3" y="412.0" text-anchor="middle" fill="var(--bike)">gel 3 <tspan class="fh">13:47</tspan></text>
+<text class="fe" x="2013.3" y="428.0" text-anchor="middle" fill="var(--bike)">gel 3 · AVANT LE BANCHET <tspan class="fh">13:47</tspan></text>
 <line x1="2179.3" y1="350" x2="2179.3" y2="387.0" stroke="var(--ok)" stroke-width="1.5" opacity=".45"/>
 <circle cx="2179.3" cy="346" r="4" fill="var(--ok)"/>
-<text class="fe" x="2179.3" y="396.0" text-anchor="middle" fill="var(--ok)">pâte de fruits 4 <tspan class="fh">14:05</tspan></text>
-<line x1="2290.0" y1="350" x2="2290.0" y2="403.0" stroke="var(--swim)" stroke-width="1.5" opacity=".45"/>
+<text class="fe" x="2179.3" y="396.0" text-anchor="middle" fill="var(--ok)">pâte 7 <tspan class="fh">14:05</tspan></text>
+<line x1="2290.0" y1="350" x2="2290.0" y2="387.0" stroke="var(--swim)" stroke-width="1.5" opacity=".45"/>
 <circle cx="2290.0" cy="346" r="4" fill="var(--swim)"/>
-<text class="fe" x="2290.0" y="412.0" text-anchor="middle" fill="var(--swim)">gélule 5 <tspan class="fh">14:17</tspan></text>
-<line x1="2658.9" y1="350" x2="2658.9" y2="387.0" stroke="var(--stop)" stroke-width="1.5" opacity=".45"/>
+<text class="fe" x="2290.0" y="396.0" text-anchor="middle" fill="var(--swim)">gélule 5 <tspan class="fh">14:17</tspan></text>
+<line x1="2336.1" y1="350" x2="2336.1" y2="403.0" stroke="var(--ok)" stroke-width="1.5" opacity=".45"/>
+<circle cx="2336.1" cy="346" r="4" fill="var(--ok)"/>
+<text class="fe" x="2336.1" y="412.0" text-anchor="middle" fill="var(--ok)">pâte 8 <tspan class="fh">14:22</tspan></text>
+<line x1="2566.7" y1="350" x2="2566.7" y2="387.0" stroke="var(--ok)" stroke-width="1.5" opacity=".45"/>
+<circle cx="2566.7" cy="346" r="4" fill="var(--ok)"/>
+<text class="fe" x="2566.7" y="396.0" text-anchor="middle" fill="var(--ok)">pâte 9 · km 2 <tspan class="fh">14:47</tspan></text>
+<line x1="2658.9" y1="350" x2="2658.9" y2="403.0" stroke="var(--stop)" stroke-width="1.5" opacity=".45"/>
 <circle cx="2658.9" cy="346" r="4" fill="var(--stop)"/>
-<text class="fe" x="2658.9" y="396.0" text-anchor="middle" fill="var(--stop)">ravito 3,75 · gel 4 + gélule <tspan class="fh">14:57</tspan></text>
-<line x1="2788.0" y1="350" x2="2788.0" y2="403.0" stroke="var(--stop)" stroke-width="1.5" opacity=".45"/>
+<text class="fe" x="2658.9" y="412.0" text-anchor="middle" fill="var(--stop)">ravito 3,75 · gel 4 + gélule <tspan class="fh">14:57</tspan></text>
+<line x1="2788.0" y1="350" x2="2788.0" y2="387.0" stroke="var(--stop)" stroke-width="1.5" opacity=".45"/>
 <circle cx="2788.0" cy="346" r="4" fill="var(--stop)"/>
-<text class="fe" x="2788.0" y="412.0" text-anchor="middle" fill="var(--stop)">ravito 6,5 · REMPLIS LA FLASQUE <tspan class="fh">15:11</tspan></text>
-<line x1="2963.3" y1="350" x2="2963.3" y2="387.0" stroke="var(--bike)" stroke-width="1.5" opacity=".45"/>
+<text class="fe" x="2788.0" y="396.0" text-anchor="middle" fill="var(--stop)">ravito 6,5 · FLASQUE À RAS + pâte 10 <tspan class="fh">15:11</tspan></text>
+<line x1="2963.3" y1="350" x2="2963.3" y2="403.0" stroke="var(--bike)" stroke-width="1.5" opacity=".45"/>
 <circle cx="2963.3" cy="346" r="4" fill="var(--bike)"/>
-<text class="fe" x="2963.3" y="396.0" text-anchor="middle" fill="var(--bike)">gel 5 · flasque <tspan class="fh">15:30</tspan></text>
-<line x1="3166.2" y1="350" x2="3166.2" y2="403.0" stroke="var(--stop)" stroke-width="1.5" opacity=".45"/>
+<text class="fe" x="2963.3" y="412.0" text-anchor="middle" fill="var(--bike)">gel 5 · flasque <tspan class="fh">15:30</tspan></text>
+<line x1="3073.9" y1="350" x2="3073.9" y2="387.0" stroke="var(--ok)" stroke-width="1.5" opacity=".45"/>
+<circle cx="3073.9" cy="346" r="4" fill="var(--ok)"/>
+<text class="fe" x="3073.9" y="396.0" text-anchor="middle" fill="var(--ok)">pâte 11 · PENDANT la marche du mur <tspan class="fh">15:42</tspan></text>
+<line x1="3166.2" y1="350" x2="3166.2" y2="419.0" stroke="var(--stop)" stroke-width="1.5" opacity=".45"/>
 <circle cx="3166.2" cy="346" r="4" fill="var(--stop)"/>
-<text class="fe" x="3166.2" y="412.0" text-anchor="middle" fill="var(--stop)">ravito 13,5 · coca + gélule · lâche la flasque <tspan class="fh">15:52</tspan></text>
+<text class="fe" x="3166.2" y="428.0" text-anchor="middle" fill="var(--stop)">ravito 13,5 · coca + gélule · lâche la flasque <tspan class="fh">15:52</tspan></text>
 </svg>
   </div>
   <ul class="legend">
@@ -361,7 +383,7 @@ footer{border-top:1px solid var(--rule);padding-top:14px;font-size:12.5px;color:
     <li><b>La ceinture Compressport n'a pas de poche</b> : elle ne porte que le dossard, rien d'autre</li>
     <li><b>Les 2 gels de la CAP</b> : tu les poses en T2 avec les chaussures, et tu les mets dans la poche arrière au moment d'enfiler la ceinture</li>
     <li>Secoue longuement les bidons — la maltodextrine se dissout mal à froid</li>
-    <li><b>3 gels + 4 pâtes de fruits</b> dans les poches arrière de la trifonction</li>
+    <li><b>Bidons à 50 g de malto</b> (pas 80) · <b>3 gels + 8 pâtes de fruits</b> dans les poches arrière</li>
     <li>Flasque 250 mL remplie, posée avec la ceinture et le dossard</li>
     <li><b>Crème solaire avant le départ</b> — UV 5,5 et ciel dégagé toute la journée</li>
   </ul>
@@ -454,15 +476,15 @@ footer{border-top:1px solid var(--rule);padding-top:14px;font-size:12.5px;color:
   <div class="sect"><span class="tag" style="--c:var(--run)">Course à pied</span><h2>17,6 km · 1 h 34 min 23</h2></div>
   <ul class="tl">
     <li class="hold"><b>14:38</b><span>Départ CAP — <b>tu cours le premier kilomètre</b><span class="why">même moche, même à 5:30. L'an dernier tu as marché 4 min 43 ici, à plat. C'est 3 minutes.</span></span><em>5:15/km</em></li>
-    <li><b>14:48</b><span>km 2 — tu te cales<span class="why">plafond 5:00/km jusqu'au km 7. Tu peux plus vite, n'y va pas.</span></span></li>
+    <li class="eat"><b>14:47</b><span>km 2 — tu te cales et tu manges la <b>pâte nº 9</b><span class="why">plafond 5:00/km jusqu'au km 7. Tu peux plus vite, n'y va pas. La pâte se mâche à plat, pas dans le mur.</span></span></li>
     <li class="eat"><b>14:57</b><span><b>Ravito km 3,75</b> — gel nº 4 + gélule + eau<span class="why">tu bois au stand, tu ne remplis pas encore</span></span></li>
-    <li class="eat"><b>15:11</b><span><b>Ravito km 6,5 — REMPLIS LA FLASQUE À RAS</b><span class="why">le prochain ravito est 7 km plus loin, soit 41 minutes, et il y a les deux murs dedans. C'est le seul remplissage qui compte.</span></span></li>
+    <li class="eat"><b>15:11</b><span><b>Ravito km 6,5 — REMPLIS LA FLASQUE À RAS</b> + pâte nº 10 + gélule<span class="why">le prochain ravito est 7 km plus loin, soit 41 minutes, et il y a les deux murs dedans. C'est le seul remplissage qui compte.</span></span></li>
     <li><b>15:13</b><span>km 7 — pied du 1ᵉʳ mur<span class="why">2,5 km à 5,5 %. Petits pas, cadence 165 mini. 6:40/km.</span></span></li>
     <li><b>15:30</b><span>km 9,5 — haut du 1ᵉʳ mur</span><em>6:40/km</em></li>
-    <li class="hold"><b>15:31</b><span><b>DESCENTE À −15 %</b> — tu freines<span class="why">3:38/km à FC 180 l'an dernier. C'est là que la tétanie s'est armée. 4:10/km, ça coûte 10 secondes.</span></span><em>4:10/km</em></li>
     <li class="eat"><b>15:30</b><span>Gel nº 5, avec la flasque<span class="why">en haut du 1ᵉʳ mur, juste avant la descente raide</span></span></li>
+    <li class="hold"><b>15:31</b><span><b>DESCENTE À −15 %</b> — tu freines<span class="why">3:38/km à FC 180 l'an dernier. C'est là que la tétanie s'est armée. 4:10/km, ça coûte 10 secondes.</span></span><em>4:10/km</em></li>
     <li><b>15:39</b><span>km 11,3 — pied du mur à 14 %</span></li>
-    <li class="hold"><b>15:42</b><span><b>Le mur : 300 m à 14-17 % — tu MARCHES</b><span class="why">mains sur les cuisses, grandes enjambées. Personne ne court ça. 2 min 55, c'est le bon choix.</span></span><em>9:45/km</em></li>
+    <li class="hold"><b>15:42</b><span><b>Le mur : 300 m à 14-17 % — tu MARCHES, et tu manges la pâte nº 11</b><span class="why">mains sur les cuisses, grandes enjambées. Personne ne court ça. 2 min 55, c'est le bon choix — et c'est le seul moment de la CAP où mâcher ne coûte rien.</span></span><em>9:45/km</em></li>
     <li class="hold"><b>15:51</b><span>km 13,4 — bas de la dernière descente<span class="why">−12 %, FC 184 l'an dernier, ton max. Freine encore.</span></span></li>
     <li class="eat"><b>15:52</b><span><b>Ravito km 13,5 — tu lâches la flasque</b><span class="why">coca + gélule au stand. 3,8 km à faire, 19 minutes : tu n'as plus besoin de porter quoi que ce soit.</span></span></li>
     <li class="key"><b>15:51</b><span><b>4,2 km de plat. Là tu vides.</b><span class="why">4:55/km. Tu as fait 5:07 l'an dernier en étant en tétanie.</span></span></li>
@@ -473,46 +495,117 @@ footer{border-top:1px solid var(--rule);padding-top:14px;font-size:12.5px;color:
 </section>
 
 <section class="card">
+  <div class="sect"><h2>Le sucre — combien il en faut vraiment</h2></div>
+  <p>Tu as raison, ce n'était pas assez. Voilà le calcul, en grammes.</p>
+
+  <h3>1. Ce que tu brûles</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>Discipline</th><th class="n">Durée</th><th class="n">Dépense</th><th class="n">Part glucides</th><th class="n">Glucides brûlés</th></tr></thead>
+    <tbody>
+      <tr><td>Nage 2,5 km</td><td class="n">45 min</td><td class="n">500 kcal</td><td class="n">60 %</td><td class="n">75 g</td></tr>
+      <tr><td>Vélo 84 km · 1 600 m</td><td class="n">3 h 31</td><td class="n">2 300 kcal</td><td class="n">58 %</td><td class="n">334 g</td></tr>
+      <tr><td>CAP 17,6 km</td><td class="n">1 h 34</td><td class="n">1 380 kcal</td><td class="n">68 %</td><td class="n">235 g</td></tr>
+      <tr class="tot"><td><b>Total</b></td><td class="n"><b>5 h 57</b></td><td class="n"><b>4 180 kcal</b></td><td class="n">—</td><td class="n"><b>643 g</b></td></tr>
+    </tbody>
+  </table></div>
+  <p class="sub">Le vélo est calculé sur le travail mécanique réel du plan : 2 187 kJ (dont 1 376 de gravité,
+    1 020 d'aéro, 300 de roulement), 173 W moyens, rendement 22 %. <b>643 g de glucides brûlés, c'est 108 g/h.</b>
+    Ton foie et tes jambes en stockent environ <b>350 g</b> utilisables. Tout le reste doit rentrer par la bouche.</p>
+
+  <h3>2. Le vrai problème : la moitié de ton sucre passait par la même porte</h3>
+  <p>Le glucose et le fructose n'empruntent pas le même transporteur intestinal. Le glucose sature à
+    <b>~60 g/h</b> (SGLT1), le fructose ouvre <b>~30 à 40 g/h</b> de plus (GLUT5). C'est pour ça que tes gels
+    et tes pâtes de fruits sont en <b>1:0,8</b>. Mais <b>la maltodextrine est du glucose pur</b> — et à 80 g
+    par bidon, elle mangeait tout le quota à elle seule.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Plan vélo</th><th class="n">Ingéré</th><th class="n">Glucose</th><th class="n">Fructose</th><th class="n">Vraiment absorbé</th></tr></thead>
+    <tbody>
+      <tr><td>v1 — bidons à 80 g, 4 pâtes</td><td class="n">91 g/h</td><td class="n warn">70,6 g/h</td><td class="n">20,1 g/h</td><td class="n warn">80 g/h</td></tr>
+      <tr><td><b>v2 — bidons à 50 g, 8 pâtes</b></td><td class="n">97,5 g/h</td><td class="n">66,8 g/h</td><td class="n">30,7 g/h</td><td class="n ok"><b>91 g/h</b></td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout warn"><b>En v1, 11 g/h de glucose restaient dans l'estomac</b> — pas absorbés, pas
+    utilisés, et c'est exactement le sucre qui te ballonne sans te nourrir. En échangeant 60 g de maltodextrine
+    contre 4 pâtes de fruits, tu ne changes presque rien au total ingéré mais tu <b>ouvres la deuxième porte</b>.</div>
+
+  <h3>3. Et la course à pied était le vrai trou</h3>
+  <p>2 gels et du coca sur 1 h 34, ça fait <b>60 g/h</b> — dans la discipline qui brûle le plus vite (150 g/h)
+    et où tu as tétanisé l'an dernier. On monte à <b>81 g/h</b> avec 3 pâtes de fruits, que tu manges sur le
+    plat et pas dans les murs.</p>
+
+  <h3>4. Le bilan</h3>
+  <div class="scroll"><table>
+    <thead><tr><th></th><th class="n">Ingéré</th><th class="n">Absorbé</th><th class="n">Oxydé</th><th class="n">À prendre au glycogène</th><th class="n">Marge</th></tr></thead>
+    <tbody>
+      <tr><td>v1</td><td class="n">435 g</td><td class="n">398 g</td><td class="n">310 g</td><td class="n warn">333 g</td><td class="n warn">+17 g</td></tr>
+      <tr><td><b>v2</b></td><td class="n"><b>492 g</b></td><td class="n"><b>468 g</b></td><td class="n">365 g</td><td class="n">278 g</td><td class="n ok"><b>+72 g</b></td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout ok"><b>+121 g de sucre réellement absorbé, soit 484 kcal.</b> En v1 tu arrivais au
+    bout du réservoir <b>pile à l'arrivée</b> — c'est-à-dire la tétanie des 2 derniers kilomètres de 2025,
+    au gramme près. En v2 il te reste 72 g dans les jambes en franchissant la ligne.</div>
+</section>
+
+<section class="card">
+  <div class="sect"><h2>Ce que tu changes avant de partir</h2></div>
+  <ol class="steps">
+    <li><b>Refais les bidons à 50 g de maltodextrine</b> chacun (au lieu de 80), électrolytes inchangés.
+      Bonus : la boisson passe de 8,9 % à 5,6 %, elle quitte l'estomac bien plus vite.</li>
+    <li><b>8 pâtes de fruits dans les poches arrière</b> pour le vélo, au lieu de 4.</li>
+    <li><b>3 pâtes de fruits de plus</b> pour la course, avec les 2 gels posés en T2.</li>
+    <li><b>1 pâte de fruits à 10 h 00</b>, 15 minutes avant le départ.</li>
+  </ol>
+  <p class="sub">Total embarqué : <b>12 pâtes de fruits</b> (tu en as en illimité), 5 gels, 2 bidons à 50 g,
+    7 gélules de sel. Les 8 barres choco restent au sac : trop solides à mâcher en course.</p>
+</section>
+
+<section class="card">
   <div class="sect"><h2>Le plan nutrition</h2></div>
   <div class="scroll"><table>
     <thead><tr><th>Quand</th><th>Quoi</th><th class="n">Glucides</th></tr></thead>
     <tbody>
-      <tr><td class="k">9:50</td><td>1 pâte de fruits + 200 mL d'eau</td><td class="n">21 g</td></tr>
-      <tr><td class="k">Vélo 11:25</td><td>pâte de fruits nº 1</td><td class="n">21 g</td></tr>
+      <tr><td class="k">10:00</td><td>1 pâte de fruits + 150 mL d'eau</td><td class="n">21 g</td></tr>
+      <tr><td class="k">Vélo 11:20</td><td>pâte nº 1 — plat de départ</td><td class="n">21 g</td></tr>
+      <tr><td class="k">Vélo 11:30</td><td>gélule nº 1</td><td class="n">—</td></tr>
+      <tr><td class="k">Vélo 11:58</td><td>pâte nº 2 — sortie de la Montée de Novalaise</td><td class="n">21 g</td></tr>
       <tr><td class="k">Vélo 12:05</td><td>gel nº 1</td><td class="n">25 g</td></tr>
-      <tr><td class="k">Vélo 12:43</td><td><b>RAVITO km 41,5</b> — bidon<span class="sub">entre Tournier 1 et Tournier 2, sur le plat. 30 s budgétées.</span></td><td class="n">0 g</td></tr>
-      <tr><td class="k">Vélo 12:45</td><td>pâte de fruits nº 2</td><td class="n">21 g</td></tr>
-      <tr><td class="k">Vélo 13:08</td><td>gel nº 2</td><td class="n">25 g</td></tr>
-      <tr><td class="k">Vélo 13:22</td><td>pâte de fruits nº 3</td><td class="n">21 g</td></tr>
-      <tr><td class="k">Vélo 13:47</td><td>gel nº 3 <b>avant Le Banchet</b></td><td class="n">25 g</td></tr>
-      <tr><td class="k">Vélo 14:05</td><td>pâte de fruits nº 4</td><td class="n">21 g</td></tr>
-      <tr><td class="k">Vélo, en continu</td><td><b>2 bidons</b> 80 g malto chacun<span class="sub">bidon 1 : 11:04 → 12:43 · bidon 2 : 12:43 → 14:20 · bidon d'eau du ravito : entre les rampes</span></td><td class="n">160 g</td></tr>
-      <tr><td class="k">CAP 14:57</td><td><b>ravito km 3,75</b> — gel nº 4 + coca + gélule</td><td class="n">~40 g</td></tr>
-      <tr><td class="k">CAP 15:11</td><td><b>ravito km 6,5</b> — coca + gélule + <b>flasque à ras</b></td><td class="n">~15 g</td></tr>
+      <tr><td class="k">Vélo 12:15</td><td>gélule nº 2 + pâte nº 3</td><td class="n">21 g</td></tr>
+      <tr><td class="k">Vélo 12:26</td><td>pâte nº 4 — avant Tournier 1</td><td class="n">21 g</td></tr>
+      <tr><td class="k">Vélo 12:43</td><td><b>RAVITO km 41,5</b> — bidon<span class="sub">en haut de Tournier 1, sur le plat. 30 s budgétées. Échange, ne remplis pas.</span></td><td class="n">0 g</td></tr>
+      <tr><td class="k">Vélo 12:46</td><td>pâte nº 5</td><td class="n">21 g</td></tr>
+      <tr><td class="k">Vélo 13:00</td><td>gélule nº 3</td><td class="n">—</td></tr>
+      <tr><td class="k">Vélo 13:18</td><td>gel nº 2 — replat après Tournier 3</td><td class="n">25 g</td></tr>
+      <tr><td class="k">Vélo 13:33</td><td>pâte nº 6 — faux plat avant le Banchet</td><td class="n">21 g</td></tr>
+      <tr><td class="k">Vélo 13:40</td><td>gélule nº 4</td><td class="n">—</td></tr>
+      <tr><td class="k">Vélo 13:47</td><td>gel nº 3 — <b>juste avant Le Banchet</b></td><td class="n">25 g</td></tr>
+      <tr><td class="k">Vélo 14:05</td><td>pâte nº 7 — descente du Banchet</td><td class="n">21 g</td></tr>
+      <tr><td class="k">Vélo 14:17</td><td>gélule nº 5</td><td class="n">—</td></tr>
+      <tr><td class="k">Vélo 14:22</td><td>pâte nº 8 — dernier plat avant T2</td><td class="n">21 g</td></tr>
+      <tr><td class="k">Vélo, en continu</td><td><b>2 bidons</b> à <b>50 g</b> de malto chacun<span class="sub">bidon 1 : 11:04 → 12:43 · bidon 2 : 12:43 → 14:20 · le bidon d'eau du ravito : entre les rampes</span></td><td class="n">100 g</td></tr>
+      <tr class="tot"><td class="k"><b>Vélo</b></td><td><b>3 gels · 8 pâtes · 2 bidons</b></td><td class="n"><b>343 g</b><span class="sub">97,5 g/h</span></td></tr>
+      <tr><td class="k">CAP 14:47</td><td>pâte nº 9 — km 2, sur le plat</td><td class="n">21 g</td></tr>
+      <tr><td class="k">CAP 14:57</td><td><b>ravito km 3,75</b> — gel nº 4 + gélule + eau</td><td class="n">25 g</td></tr>
+      <tr><td class="k">CAP 15:11</td><td><b>ravito km 6,5</b> — pâte nº 10 + gélule + <b>flasque à ras</b></td><td class="n">21 g</td></tr>
       <tr><td class="k">CAP 15:30</td><td>gel nº 5, en haut du 1ᵉʳ mur</td><td class="n">25 g</td></tr>
+      <tr><td class="k">CAP 15:42</td><td>pâte nº 11 — <b>pendant que tu marches le mur</b></td><td class="n">21 g</td></tr>
       <tr><td class="k">CAP 15:52</td><td><b>ravito km 13,5</b> — coca + gélule, tu lâches la flasque</td><td class="n">~15 g</td></tr>
+      <tr class="tot"><td class="k"><b>CAP</b></td><td><b>2 gels · 3 pâtes · coca</b></td><td class="n"><b>128 g</b><span class="sub">81 g/h</span></td></tr>
     </tbody>
   </table></div>
-  <div class="callout ok"><b>Total vélo : 319 g sur 3 h 31, soit 91 g/h.</b> Haut de ta fourchette, et
-    atteignable parce que tu embarques <b>4 pâtes de fruits au lieu de 2</b> (25 g dont 21 g de glucides,
-    tu en as en illimité). <b>CAP : ~95 g sur 1 h 34, soit 60 g/h</b> — ce que ton estomac supportera en courant.</div>
   <h3>L'eau, vélo puis course</h3>
   <p><b>Vélo.</b> Tes 2 bidons font 1 800 mL, soit 510 mL/h : trop juste. Le bidon récupéré au km 41,5 porte
-    le total à <b>~2 700 mL, 770 mL/h</b> — et l'eau plate est exactement ce qu'il faut pour accompagner une
-    boisson à 8,9 %. <b>Bois-la entre les rampes, pas pendant.</b></p>
+    le total à <b>~2 700 mL, 770 mL/h</b>. <b>Bois entre les rampes, pas pendant.</b></p>
   <p><b>Au ravito : échange, ne remplis pas.</b> Si on te tend un bidon, tu le prends et tu le mets dans le
     porte-bidon vide — 10 secondes. Si c'est un remplissage au jerrican, c'est 45 secondes. J'ai budgété
     <b>30 s</b> : c'est le seul arrêt de toute la journée.</p>
-  <p><b>Course à pied.</b> Les ravitos sont aux <b>km 3,75 · 6,5 · 13,5</b>. Les trois premiers écarts sont
+  <p><b>Course à pied.</b> Les ravitos sont aux <b>km 3,75 · 6,5 · 13,5</b>. Les deux premiers écarts sont
     courts, mais <b>entre le 6,5 et le 13,5 il y a 7 km, soit 41 minutes — et les deux murs sont dedans</b>.
     C'est le seul endroit où tu as besoin de porter de l'eau.</p>
   <div class="callout ok"><b>Le plan flasque :</b> tu pars de T2 avec la flasque à moitié pleine, tu bois au
-    stand aux km 3,75, <b>tu la remplis à ras au km 6,5</b>, elle te couvre les 41 minutes du gros écart, et
-    <b>tu la lâches au ravito du km 13,5</b>. Les 3,8 derniers kilomètres se font les mains libres, tu n'as
-    plus rien à porter.</div>
-  <p><b>Ce que tu embarques :</b> 3 gels et 4 pâtes de fruits dans les poches arrière de la trifonction,
-    2 gels dans la ceinture posée en T2. <b>Ce que tu laisses :</b> les 8 barres choco — trop solides pour
-    la course, elles sont pour après.</p>
+    stand du km 3,75, <b>tu la remplis à ras au km 6,5</b>, elle te couvre les 41 minutes du gros écart, et
+    <b>tu la lâches au ravito du km 13,5</b>. Les 3,8 derniers kilomètres se font les mains libres.</div>
+  <p><b>Ce que tu embarques :</b> 3 gels et <b>8 pâtes de fruits</b> dans les poches arrière de la trifonction,
+    2 gels et <b>3 pâtes</b> posés en T2. <b>Ce que tu laisses :</b> les 8 barres choco — elles sont pour après.</p>
 </section>
 
 <section class="card">
