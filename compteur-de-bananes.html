@@ -1,0 +1,1105 @@
+<title>Compteur de bananes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Archivo:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap">
+
+<style>
+:root{
+  --paper:#E5EADD;
+  --card:#F5F8EF;
+  --band:#EDF2E4;
+  --ink:#18201A;
+  --muted:#5D6B5B;
+  --faint:#8A9887;
+  --rule:#C6D0BA;
+  --rule-strong:#A3B096;
+  --banana:#C9950F;
+  --banana-fill:#E9C33F;
+  --stamp:#A93325;
+  --gain:#2B6647;
+  --shadow:0 1px 0 rgba(24,32,26,.05), 0 18px 34px -26px rgba(24,32,26,.55);
+  --sans:"Archivo", ui-sans-serif, system-ui, sans-serif;
+  --cond:"Archivo Narrow", "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --mono:"Courier Prime", ui-monospace, "Courier New", monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#10140E;
+    --card:#191F16;
+    --band:#1F261B;
+    --ink:#E9EEE1;
+    --muted:#9DAB96;
+    --faint:#75846E;
+    --rule:#2D372780;
+    --rule-strong:#47553E;
+    --banana:#EEC244;
+    --banana-fill:#D2A62B;
+    --stamp:#E2695B;
+    --gain:#69BF90;
+    --shadow:0 1px 0 rgba(0,0,0,.4), 0 18px 34px -26px #000;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#10140E;
+  --card:#191F16;
+  --band:#1F261B;
+  --ink:#E9EEE1;
+  --muted:#9DAB96;
+  --faint:#75846E;
+  --rule:#2D372780;
+  --rule-strong:#47553E;
+  --banana:#EEC244;
+  --banana-fill:#D2A62B;
+  --stamp:#E2695B;
+  --gain:#69BF90;
+  --shadow:0 1px 0 rgba(0,0,0,.4), 0 18px 34px -26px #000;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:15px;
+  line-height:1.5;
+  padding-inline:16px;
+  padding-block:22px 64px;
+  -webkit-font-smoothing:antialiased;
+}
+.sheet{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+
+/* ---------- masthead ---------- */
+.masthead{
+  border:1px solid var(--rule-strong);
+  background:var(--card);
+  box-shadow:var(--shadow);
+  padding:16px 18px 14px;
+  display:flex;flex-direction:column;gap:10px;
+}
+.eyebrow{
+  font-family:var(--cond);
+  font-size:11px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);
+  display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;
+}
+.eyebrow .dot{color:var(--rule-strong)}
+h1{
+  font-family:var(--cond);
+  font-weight:700;font-size:clamp(28px,7vw,40px);
+  letter-spacing:-.01em;line-height:1;margin:0;
+  text-wrap:balance;
+}
+.masthead-row{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;justify-content:space-between}
+.stamps{display:flex;flex-wrap:wrap;gap:6px}
+
+/* ---------- buttons ---------- */
+button{font:inherit;color:inherit;cursor:pointer}
+.btn{
+  font-family:var(--cond);font-weight:600;font-size:13px;
+  letter-spacing:.06em;text-transform:uppercase;
+  background:transparent;border:1px solid var(--rule-strong);
+  padding:7px 12px;border-radius:2px;
+  transition:background .15s, border-color .15s;
+}
+.btn:hover{background:var(--band);border-color:var(--ink)}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--card);border-color:var(--ink)}
+.btn-primary{
+  font-family:var(--cond);font-weight:700;font-size:16px;
+  letter-spacing:.08em;text-transform:uppercase;
+  background:var(--ink);color:var(--card);
+  border:1px solid var(--ink);border-radius:2px;
+  padding:15px 18px;width:100%;
+  transition:opacity .15s, transform .06s;
+}
+.btn-primary:hover{opacity:.88}
+.btn-primary:active{transform:translateY(1px)}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed}
+:focus-visible{outline:2px solid var(--banana);outline-offset:2px}
+
+/* ---------- crate ---------- */
+.crate{
+  border:1px solid var(--rule-strong);
+  background:var(--card);
+  box-shadow:var(--shadow);
+  padding:18px;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  position:relative;overflow:hidden;
+}
+.crate::before{
+  content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(90deg,transparent 0 13px,var(--rule) 13px 14px);
+  opacity:.5;pointer-events:none;
+}
+.crate > *{position:relative}
+.crate-label{
+  font-family:var(--cond);font-size:12px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+}
+.crate-note{font-size:12.5px;color:var(--muted);max-width:34ch;margin:5px 0 0}
+.crate-value{
+  font-family:var(--mono);font-weight:700;
+  font-size:clamp(46px,13vw,68px);line-height:.9;
+  color:var(--banana);font-variant-numeric:tabular-nums;
+  display:flex;align-items:baseline;gap:8px;
+}
+.crate-value small{font-family:var(--cond);font-size:14px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- ledger ---------- */
+.ledger{
+  border:1px solid var(--rule-strong);
+  background:var(--card);
+  box-shadow:var(--shadow);
+}
+.ledger-head{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;
+  padding:10px 16px;border-bottom:1px solid var(--rule-strong);
+  font-family:var(--cond);font-size:11px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+}
+.row{
+  padding:14px 16px;
+  border-bottom:1px solid var(--rule);
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:10px 16px;
+  align-items:center;
+}
+.row:nth-child(even){background:var(--band)}
+.row:last-child{border-bottom:0}
+.row.is-out{opacity:.55}
+.who{display:flex;flex-direction:column;gap:7px;min-width:0}
+.who-top{display:flex;align-items:center;gap:9px;min-width:0}
+.seat{
+  flex:none;width:22px;height:22px;border:1px solid var(--rule-strong);
+  display:grid;place-items:center;border-radius:2px;
+  font-family:var(--mono);font-size:12px;font-weight:700;color:var(--muted);
+}
+input.name{
+  font-family:var(--sans);font-size:16px;font-weight:600;
+  background:transparent;border:0;border-bottom:1px dashed transparent;
+  color:inherit;padding:1px 0;min-width:0;width:100%;max-width:15ch;
+}
+input.name:hover{border-bottom-color:var(--rule-strong)}
+input.name:focus{outline:none;border-bottom-color:var(--banana)}
+.track{height:5px;background:var(--band);border:1px solid var(--rule);position:relative;border-radius:2px;overflow:hidden}
+.row:nth-child(even) .track{background:var(--card)}
+.track i{position:absolute;inset:0 auto 0 0;background:var(--banana-fill);display:block}
+.margin-note{
+  font-family:var(--mono);font-size:11.5px;color:var(--faint);
+  display:flex;gap:6px;align-items:baseline;
+}
+.stash{
+  font-family:var(--mono);font-weight:700;
+  font-size:30px;line-height:1;text-align:right;
+  font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+.stash .delta{
+  display:block;font-family:var(--cond);font-size:12px;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;margin-top:5px;
+}
+.delta.up{color:var(--gain)}
+.delta.down{color:var(--stamp)}
+.delta.flat{color:var(--faint)}
+.bidcell{grid-column:1/-1;display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.bidcell label{
+  font-family:var(--cond);font-size:11px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+}
+input.bid{
+  font-family:var(--mono);font-size:16px;font-weight:700;
+  background:var(--paper);color:var(--ink);
+  border:1px solid var(--rule-strong);border-radius:2px;
+  padding:9px 11px;width:min(100%,190px);flex:1 1 130px;
+  letter-spacing:.06em;
+}
+input.bid:focus{outline:none;border-color:var(--banana);box-shadow:0 0 0 2px color-mix(in srgb, var(--banana) 28%, transparent)}
+input.bid.missing{border-color:var(--stamp);box-shadow:0 0 0 2px color-mix(in srgb, var(--stamp) 22%, transparent)}
+.bid-shown{
+  font-family:var(--mono);font-size:17px;font-weight:700;
+  letter-spacing:.06em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;
+}
+.ok{
+  font-family:var(--cond);font-size:11px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gain);white-space:nowrap;
+}
+
+/* ---------- tags ---------- */
+.tag{
+  font-family:var(--cond);font-size:10.5px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid currentColor;border-radius:2px;
+  padding:2px 6px;white-space:nowrap;
+}
+.tag.crate-tag{color:var(--banana)}
+.tag.bust{color:var(--stamp)}
+.tag.paid{color:var(--gain)}
+.tag.split{color:var(--ink)}
+.tag.quiet{color:var(--faint)}
+
+/* ---------- receipt ---------- */
+.receipt{
+  background:var(--card);
+  border:1px solid var(--rule-strong);
+  box-shadow:var(--shadow);
+  font-family:var(--mono);font-size:13.5px;
+  padding:0 0 4px;
+}
+.receipt-head{
+  padding:13px 16px 11px;
+  border-bottom:1px dashed var(--rule-strong);
+  display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline;
+}
+.receipt-title{
+  font-family:var(--cond);font-size:13px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+}
+.receipt-sub{font-size:12px;color:var(--muted)}
+.rank{padding:10px 16px;border-bottom:1px dashed var(--rule-strong);display:flex;flex-direction:column;gap:7px}
+.rank-line{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:baseline}
+.rank-line .n{color:var(--faint)}
+.rank-line .b{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.rank-line .nm{overflow-wrap:anywhere}
+.steps{padding:12px 16px;display:flex;flex-direction:column;gap:11px}
+.step{display:flex;gap:10px;align-items:flex-start;line-height:1.45}
+.step .mark{flex:none;font-weight:700;color:var(--faint)}
+.step b{font-weight:700}
+.step .amt{font-weight:700;font-variant-numeric:tabular-nums}
+.step.bust{color:var(--stamp)}
+.step.crate-step{color:var(--banana)}
+.ledger-out{
+  border-top:1px dashed var(--rule-strong);
+  padding:12px 16px;display:flex;flex-wrap:wrap;gap:8px 18px;
+}
+.out-item{display:flex;gap:8px;align-items:baseline;font-variant-numeric:tabular-nums}
+.out-item .nm{font-family:var(--sans);font-size:13px}
+
+/* ---------- misc panels ---------- */
+.panel{
+  border:1px solid var(--rule-strong);background:var(--card);
+  box-shadow:var(--shadow);padding:16px 18px;
+}
+.panel h2{
+  font-family:var(--cond);font-size:12px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  margin:0 0 10px;
+}
+.panel h3{font-family:var(--cond);font-size:15px;font-weight:700;letter-spacing:.02em;margin:18px 0 6px}
+.panel h3:first-of-type{margin-top:0}
+.panel p{margin:0 0 9px;max-width:66ch}
+.panel ul{margin:0 0 9px;padding-left:18px;max-width:66ch}
+.panel li{margin-bottom:5px}
+.panel .num{font-family:var(--mono);font-weight:700}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{
+  font-family:var(--cond);font-size:11px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+}
+.field input{
+  font-family:var(--mono);font-size:15px;
+  background:var(--paper);color:var(--ink);
+  border:1px solid var(--rule-strong);border-radius:2px;padding:8px 10px;width:100%;
+}
+.field input:focus{outline:none;border-color:var(--banana)}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
+.setup-players{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+.setup-player{display:flex;gap:8px;align-items:center}
+.setup-player input{
+  font-family:var(--sans);font-size:15px;flex:1;
+  background:var(--paper);color:var(--ink);
+  border:1px solid var(--rule-strong);border-radius:2px;padding:8px 10px;min-width:0;
+}
+.setup-player input:focus{outline:none;border-color:var(--banana)}
+.icon-btn{
+  flex:none;width:34px;height:34px;border:1px solid var(--rule-strong);
+  background:transparent;border-radius:2px;font-family:var(--mono);font-size:16px;line-height:1;
+}
+.icon-btn:hover{background:var(--band)}
+.icon-btn:disabled{opacity:.3;cursor:not-allowed}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+
+/* history */
+.hist details{border-bottom:1px solid var(--rule)}
+.hist details:last-child{border-bottom:0}
+.hist summary{
+  cursor:pointer;padding:10px 2px;list-style:none;
+  display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;
+  font-family:var(--mono);font-size:13px;
+}
+.hist summary::-webkit-details-marker{display:none}
+.hist summary::before{content:"▸";color:var(--faint);font-size:11px}
+.hist details[open] summary::before{content:"▾"}
+.hist summary .r{font-weight:700;color:var(--banana)}
+.hist summary .s{color:var(--muted);overflow-wrap:anywhere}
+.hist .receipt{box-shadow:none;border-color:var(--rule);margin:0 0 12px}
+
+/* victory */
+.victory{
+  border:2px solid var(--banana);background:var(--card);
+  box-shadow:var(--shadow);padding:20px 18px;text-align:center;
+}
+.victory .who-won{
+  font-family:var(--cond);font-weight:700;font-size:clamp(24px,6vw,34px);
+  line-height:1.05;margin:6px 0 4px;text-wrap:balance;
+}
+.victory .sub{font-family:var(--mono);font-size:13px;color:var(--muted)}
+
+.note{font-size:12.5px;color:var(--muted);max-width:66ch}
+.warn{
+  font-family:var(--cond);font-size:12px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--stamp);
+}
+footer{
+  font-size:12px;color:var(--faint);text-align:center;
+  padding-top:6px;max-width:60ch;margin:0 auto;
+}
+@media (max-width:430px){
+  .row{grid-template-columns:1fr auto}
+  .stash{font-size:25px}
+  input.name{max-width:11ch;font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+}
+</style>
+
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span>Régie des douanes bananières</span>
+      <span class="dot">·</span>
+      <span>Guts · hyperinflation</span>
+    </div>
+    <div class="masthead-row">
+      <h1>Compteur de bananes</h1>
+      <div class="stamps">
+        <button class="btn" id="btn-rules" aria-pressed="false">Règles</button>
+        <button class="btn" id="btn-new">Nouvelle partie</button>
+      </div>
+    </div>
+    <div class="eyebrow" id="meta"></div>
+  </header>
+
+  <section class="crate" aria-live="polite">
+    <div>
+      <div class="crate-label">Dans la caisse</div>
+      <div class="crate-value"><span id="crate-value">10</span> <small>bananes</small></div>
+      <p class="crate-note">En fin de manche, la caisse se recale sur le plus gros tas de la table.</p>
+    </div>
+    <div style="text-align:right">
+      <div class="crate-label">Objectif</div>
+      <div class="crate-value" style="color:var(--ink);font-size:clamp(28px,8vw,38px)"><span id="target-value">200</span></div>
+    </div>
+  </section>
+
+  <section class="panel" id="setup" hidden>
+    <h2>Nouvelle partie</h2>
+    <div class="setup-players" id="setup-players"></div>
+    <div class="actions" style="margin:0 0 16px">
+      <button class="btn" id="add-player">+ Ajouter un joueur</button>
+    </div>
+    <div class="grid3">
+      <div class="field">
+        <label for="f-stash">Tas de départ</label>
+        <input id="f-stash" type="text" inputmode="numeric" value="10">
+      </div>
+      <div class="field">
+        <label for="f-crate">Caisse de départ</label>
+        <input id="f-crate" type="text" inputmode="numeric" value="10">
+      </div>
+      <div class="field">
+        <label for="f-target">Objectif</label>
+        <input id="f-target" type="text" inputmode="numeric" value="200">
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn-primary" id="setup-start" style="width:auto;flex:1 1 200px">Lancer la partie</button>
+      <button class="btn" id="setup-cancel">Annuler</button>
+    </div>
+  </section>
+
+  <section class="panel" id="rules" hidden>
+    <h2>Le jeu</h2>
+    <h3>Le tour</h3>
+    <p>Chacun écrit en secret un nombre entre <span class="num">1</span> et un bananillion. La mise la plus haute rafle toute la caisse — mais paie un <b>tarif douanier</b> égal à sa mise moins la deuxième mise la plus haute, versé au deuxième.</p>
+    <p class="note">Exemple : tu mises 30, je mise 25. Tu prends la caisse (10) et me verses le tarif de 5. Tu passes de 10 à 15, moi aussi.</p>
+    <h3>La ruine</h3>
+    <p>Si le tarif dépasse ce que le gagnant possède — son tas <i>plus</i> la caisse qu'il vient de rafler — il est <b>banane-ruiné</b> : son tas tombe à zéro, il ne verse rien, et la caisse dégringole au deuxième, qui doit à son tour payer son propre tarif au troisième. Et ainsi de suite.</p>
+    <p class="note">Exemple : tu mises 90, je mise 10, elle mise 8. Ton tarif est de 80, tu n'as que 20 en poche : ruiné, tu tombes à 0. Je récupère la caisse (10 → 20) et je lui verse 10 − 8 = 2. Fin de manche : 18 et 12.</p>
+    <h3>Égalité</h3>
+    <p>Deux mises identiques au sommet : elles se partagent la caisse et ne paient aucun tarif.</p>
+    <h3>Fin de partie</h3>
+    <p>En fin de manche, la caisse est remise au niveau du plus gros tas de la table. Premier à <span class="num" id="rules-target">200</span> bananes : il gagne.</p>
+    <h3>Les trois arbitrages du compteur</h3>
+    <p>La règle d'origine ne tranche pas ces cas. Le compteur applique ceci :</p>
+    <ul>
+      <li>Tomber <b>pile à zéro</b> après avoir payé n'est pas une ruine — le tarif a été honoré jusqu'au dernier fruit.</li>
+      <li>Un joueur <b>ruiné reste en jeu</b> à zéro banane : il remise à la manche suivante et peut tout reprendre.</li>
+      <li>En cas d'<b>égalité pour la deuxième place</b>, le tarif est partagé entre les ex æquo (le reste va au joueur le plus haut dans la liste). Idem pour une caisse partagée qui ne tombe pas juste.</li>
+    </ul>
+    <div class="actions">
+      <button class="btn" id="rules-close">Fermer</button>
+    </div>
+  </section>
+
+  <section class="ledger">
+    <div class="ledger-head">
+      <span id="ledger-title">Mises de la manche</span>
+      <button class="btn" id="btn-mask" aria-pressed="true" style="padding:4px 9px;font-size:11px">Mises masquées</button>
+    </div>
+    <div id="rows"></div>
+  </section>
+
+  <div id="warnings" hidden class="warn" role="alert"></div>
+
+  <section id="receipt-slot"></section>
+
+  <button class="btn-primary" id="btn-main">Résoudre la manche</button>
+
+  <section id="victory-slot"></section>
+
+  <section class="panel hist" id="history-panel" hidden>
+    <h2>Manches précédentes</h2>
+    <div id="history"></div>
+  </section>
+
+  <footer>
+    Les mises sont saisies sur cet appareil : masquez-les, faites tourner le téléphone, puis résolvez.
+    La partie en cours est gardée dans ce navigateur.
+  </footer>
+</div>
+
+<script>
+(() => {
+  "use strict";
+
+  const NF = new Intl.NumberFormat("fr-FR");
+  const fmt = (n) => NF.format(n);
+  const MAX_DIGITS = 24;
+  const STORE_KEY = "compteur-bananes-v1";
+  const SEATS = ["A","B","C","D","E","F","G","H"];
+  const DEFAULT_NAMES = ["Joueur 1","Joueur 2","Joueur 3","Joueur 4","Joueur 5","Joueur 6","Joueur 7","Joueur 8"];
+
+  const $ = (id) => document.getElementById(id);
+  const el = (tag, cls, text) => {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  };
+
+  // ---------- state ----------
+  let state, masked = true, uid = 1;
+
+  const freshGame = (names, stash, crate, target) => ({
+    players: names.map((name) => ({ id: "p" + uid++, name, stash })),
+    crate, target,
+    round: 1,
+    bids: {},
+    phase: "bidding",   // bidding | resolved | over
+    result: null,
+    history: [],
+    winners: []
+  });
+
+  const defaultGame = () => freshGame(DEFAULT_NAMES.slice(0, 3), 10, 10, 200);
+
+  // ---------- bids ----------
+  function parseBid(raw) {
+    const digits = String(raw == null ? "" : raw).replace(/\D+/g, "").replace(/^0+(?=\d)/, "");
+    if (!digits || digits === "0") return null;
+    if (digits.length > MAX_DIGITS) return null;
+    return digits;
+  }
+
+  // ---------- resolution engine ----------
+  // Returns { steps, deltas, stashes, newCrate, ranking }
+  function resolve(players, crate, bids) {
+    const stash = {};
+    players.forEach((p) => { stash[p.id] = p.stash; });
+
+    // group by bid value, descending
+    const byValue = new Map();
+    players.forEach((p) => {
+      const v = bids[p.id];
+      if (!byValue.has(v)) byValue.set(v, []);
+      byValue.get(v).push(p);
+    });
+    const groups = [...byValue.entries()]
+      .map(([v, members]) => ({ v, big: BigInt(v), members }))
+      .sort((a, b) => (a.big < b.big ? 1 : a.big > b.big ? -1 : 0));
+
+    const steps = [];
+    const outcome = {};            // playerId -> tag key
+    players.forEach((p) => { outcome[p.id] = "none"; });
+
+    // split an integer amount over members, remainder to the earliest seats
+    const share = (amount, members) => {
+      const base = Math.floor(amount / members.length);
+      let rest = amount - base * members.length;
+      return members.map((m) => {
+        const extra = rest > 0 ? 1 : 0;
+        if (rest > 0) rest--;
+        return { id: m.id, name: m.name, amount: base + extra };
+      });
+    };
+
+    for (let i = 0; i < groups.length; i++) {
+      const g = groups[i];
+
+      if (g.members.length > 1) {
+        const parts = share(crate, g.members);
+        parts.forEach((s) => { stash[s.id] += s.amount; outcome[s.id] = "split"; });
+        steps.push({ kind: "split", bid: g.v, crate, parts });
+        break;
+      }
+
+      const p = g.members[0];
+      const next = groups[i + 1];
+
+      if (!next) {
+        stash[p.id] += crate;
+        outcome[p.id] = "crate";
+        steps.push({ kind: "takeAll", id: p.id, name: p.name, bid: g.v, crate });
+        break;
+      }
+
+      const tariff = g.big - next.big;
+      const available = BigInt(stash[p.id] + crate);
+
+      if (tariff <= available) {
+        const t = Number(tariff);
+        stash[p.id] += crate - t;
+        const parts = share(t, next.members);
+        parts.forEach((s) => { stash[s.id] += s.amount; outcome[s.id] = "paid"; });
+        outcome[p.id] = "crate";
+        steps.push({
+          kind: "pay", id: p.id, name: p.name, bid: g.v, crate,
+          tariff: t, nextBid: next.v, parts
+        });
+        break;
+      }
+
+      // banana bust
+      steps.push({
+        kind: "bust", id: p.id, name: p.name, bid: g.v,
+        tariff: tariff.toString(), had: stash[p.id], crate,
+        available: available.toString(), nextBid: next.v
+      });
+      stash[p.id] = 0;
+      outcome[p.id] = "bust";
+    }
+
+    const deltas = {};
+    players.forEach((p) => { deltas[p.id] = stash[p.id] - p.stash; });
+    const newCrate = Math.max(...players.map((p) => stash[p.id]));
+
+    const ranking = groups.flatMap((g) =>
+      g.members.map((m) => ({ id: m.id, name: m.name, bid: g.v, tied: g.members.length > 1, tag: outcome[m.id] }))
+    );
+
+    return { steps, deltas, stashes: stash, newCrate, ranking, crateBefore: crate };
+  }
+
+  // ---------- rendering ----------
+  function render() {
+    $("crate-value").textContent = fmt(state.crate);
+    $("target-value").textContent = fmt(state.target);
+    $("rules-target").textContent = fmt(state.target);
+
+    const leader = state.players.reduce((a, b) => (b.stash > a.stash ? b : a), state.players[0]);
+    $("meta").innerHTML = "";
+    const bits = [
+      "Manche " + state.round,
+      state.players.length + " joueurs",
+      "En tête : " + leader.name + " (" + fmt(leader.stash) + ")"
+    ];
+    bits.forEach((t, i) => {
+      if (i) $("meta").append(Object.assign(el("span", "dot"), { textContent: "·" }));
+      $("meta").append(el("span", null, t));
+    });
+
+    $("ledger-title").textContent =
+      state.phase === "bidding" ? "Mises de la manche " + state.round : "Mises révélées — manche " + state.round;
+    $("btn-mask").hidden = state.phase !== "bidding";
+
+    renderRows();
+    renderMain();
+    renderReceipt();
+    renderVictory();
+    renderHistory();
+    save();
+  }
+
+  function renderRows() {
+    const host = $("rows");
+    host.innerHTML = "";
+    const res = state.result ? state.result.entry.res : null;
+
+    state.players.forEach((p, idx) => {
+      const row = el("div", "row" + (p.stash === 0 ? " is-out" : ""));
+
+      const who = el("div", "who");
+      const top = el("div", "who-top");
+      top.append(el("span", "seat", SEATS[idx] || String(idx + 1)));
+      const name = el("input", "name");
+      name.value = p.name;
+      name.id = "name-" + p.id;
+      name.setAttribute("aria-label", "Nom du joueur " + (idx + 1));
+      name.addEventListener("input", () => { p.name = name.value.trim() || DEFAULT_NAMES[idx]; save(); });
+      name.addEventListener("blur", render);
+      top.append(name);
+
+      if (res) {
+        const r = res.ranking.find((x) => x.id === p.id);
+        if (r && r.tag !== "none") top.append(tagFor(r.tag));
+      }
+      who.append(top);
+
+      const track = el("div", "track");
+      const fill = el("i");
+      fill.style.width = Math.max(0, Math.min(100, (p.stash / state.target) * 100)) + "%";
+      track.append(fill);
+      who.append(track);
+
+      const margin = el("div", "margin-note");
+      margin.append(el("span", null, "marge de tarif " + fmt(p.stash + state.crate)));
+      who.append(margin);
+      row.append(who);
+
+      const stash = el("div", "stash", fmt(p.stash));
+      if (res) {
+        const d = res.deltas[p.id];
+        const chip = el("span", "delta " + (d > 0 ? "up" : d < 0 ? "down" : "flat"));
+        chip.textContent = d > 0 ? "+" + fmt(d) : d < 0 ? "−" + fmt(-d) : "±0";
+        stash.append(chip);
+      }
+      row.append(stash);
+
+      const cell = el("div", "bidcell");
+
+      if (state.phase !== "bidding") {
+        cell.append(el("label", null, "Mise"));
+        cell.append(el("span", "bid-shown", fmt(BigInt(state.bids[p.id] || "0"))));
+        row.append(cell);
+        host.append(row);
+        return;
+      }
+
+      const lab = el("label", null, "Mise");
+      lab.setAttribute("for", "bid-" + p.id);
+      cell.append(lab);
+
+      const input = el("input", "bid");
+      input.id = "bid-" + p.id;
+      input.autocomplete = "off";
+      input.spellcheck = false;
+      input.inputMode = "numeric";
+      input.setAttribute("aria-label", "Mise de " + p.name);
+
+      {
+        input.type = masked ? "password" : "text";
+        input.value = state.bids[p.id] || "";
+        input.placeholder = masked ? "secret" : "1 … bananillion";
+        input.addEventListener("input", () => {
+          const clean = input.value.replace(/\D+/g, "").slice(0, MAX_DIGITS);
+          if (clean !== input.value) input.value = clean;
+          state.bids[p.id] = clean;
+          input.classList.remove("missing");
+          const flag = input.nextElementSibling;
+          if (flag && flag.classList.contains("ok")) flag.hidden = !(masked && clean);
+          save();
+        });
+        input.addEventListener("keydown", (e) => { if (e.key === "Enter") focusNext(idx); });
+        cell.append(input);
+        const flag = el("span", "ok", "✓ saisie");
+        flag.hidden = !(masked && state.bids[p.id]);
+        cell.append(flag);
+      }
+
+      row.append(cell);
+      host.append(row);
+    });
+  }
+
+  function tagFor(kind) {
+    const map = {
+      crate: ["crate-tag", "prend la caisse"],
+      bust: ["bust", "ruiné"],
+      paid: ["paid", "tarif encaissé"],
+      split: ["split", "partage"]
+    };
+    const [cls, label] = map[kind] || ["quiet", "—"];
+    return el("span", "tag " + cls, label);
+  }
+
+  function focusNext(idx) {
+    const next = state.players[idx + 1];
+    const node = next ? $("bid-" + next.id) : $("btn-main");
+    if (node) node.focus();
+  }
+
+  function renderMain() {
+    const btn = $("btn-main");
+    btn.hidden = false;
+    if (state.phase === "bidding") {
+      btn.textContent = "Résoudre la manche " + state.round;
+    } else if (state.phase === "resolved") {
+      btn.textContent = "Manche " + (state.round + 1) + " →";
+    } else {
+      btn.hidden = true;
+    }
+  }
+
+  function receiptNode(entry) {
+    const { round, crateBefore, target, res, players } = entry;
+    const box = el("section", "receipt");
+
+    const head = el("div", "receipt-head");
+    head.append(el("div", "receipt-title", "Bordereau — manche " + round));
+    head.append(el("div", "receipt-sub", "caisse " + fmt(crateBefore) + " → " + fmt(res.newCrate)));
+    box.append(head);
+
+    const rank = el("div", "rank");
+    res.ranking.forEach((r, i) => {
+      const line = el("div", "rank-line");
+      line.append(el("span", "n", String(i + 1) + "."));
+      const nm = el("span", "nm");
+      nm.append(document.createTextNode(r.name + " "));
+      if (r.tag !== "none") nm.append(tagFor(r.tag));
+      line.append(nm);
+      line.append(el("span", "b", fmt(BigInt(r.bid))));
+      rank.append(line);
+    });
+    box.append(rank);
+
+    const steps = el("div", "steps");
+    res.steps.forEach((s) => {
+      if (s.kind === "bust") {
+        const n = el("div", "step bust");
+        n.append(el("span", "mark", "✕"));
+        const t = el("span");
+        t.innerHTML =
+          "<b>" + esc(s.name) + "</b> doit un tarif de <span class='amt'>" + fmt(BigInt(s.tariff)) +
+          "</span> (" + fmt(BigInt(s.bid)) + " − " + fmt(BigInt(s.nextBid)) + ") et ne dispose que de <span class='amt'>" +
+          fmt(BigInt(s.available)) + "</span> (tas " + fmt(s.had) + " + caisse " + fmt(s.crate) +
+          "). <b>Banane-ruiné</b> : tas à 0, rien n'est versé, la caisse descend d'un cran.";
+        n.append(t);
+        steps.append(n);
+      } else if (s.kind === "pay") {
+        const n = el("div", "step crate-step");
+        n.append(el("span", "mark", "▸"));
+        const to = s.parts.map((x) => esc(x.name) + " (+" + fmt(x.amount) + ")").join(", ");
+        const t = el("span");
+        t.innerHTML =
+          "<b>" + esc(s.name) + "</b> rafle la caisse <span class='amt'>+" + fmt(s.crate) +
+          "</span> puis règle un tarif de <span class='amt'>" + fmt(s.tariff) + "</span> (" +
+          fmt(BigInt(s.bid)) + " − " + fmt(BigInt(s.nextBid)) + ") à " + to + ".";
+        n.append(t);
+        steps.append(n);
+      } else if (s.kind === "takeAll") {
+        const n = el("div", "step crate-step");
+        n.append(el("span", "mark", "▸"));
+        const t = el("span");
+        t.innerHTML = "<b>" + esc(s.name) + "</b> rafle la caisse <span class='amt'>+" + fmt(s.crate) +
+          "</span> — plus personne en dessous, aucun tarif.";
+        n.append(t);
+        steps.append(n);
+      } else if (s.kind === "split") {
+        const n = el("div", "step");
+        n.append(el("span", "mark", "="));
+        const who = s.parts.map((x) => esc(x.name) + " (+" + fmt(x.amount) + ")").join(" et ");
+        const t = el("span");
+        t.innerHTML = "Égalité à <span class='amt'>" + fmt(BigInt(s.bid)) + "</span> : la caisse de <span class='amt'>" +
+          fmt(s.crate) + "</span> est partagée entre " + who + ", aucun tarif.";
+        n.append(t);
+        steps.append(n);
+      }
+    });
+
+    const last = el("div", "step crate-step");
+    last.append(el("span", "mark", "↺"));
+    const lt = el("span");
+    lt.innerHTML = "La caisse se recale sur le plus gros tas : <span class='amt'>" + fmt(res.newCrate) + "</span>.";
+    last.append(lt);
+    steps.append(last);
+    box.append(steps);
+
+    const out = el("div", "ledger-out");
+    players.forEach((p) => {
+      const item = el("div", "out-item");
+      item.append(el("span", "nm", p.name));
+      const d = res.deltas[p.id];
+      const chip = el("span", "delta " + (d > 0 ? "up" : d < 0 ? "down" : "flat"));
+      chip.style.display = "inline";
+      chip.textContent = (d > 0 ? "+" + fmt(d) : d < 0 ? "−" + fmt(-d) : "±0");
+      item.append(chip);
+      item.append(el("span", null, "→ " + fmt(res.stashes[p.id])));
+      out.append(item);
+    });
+    box.append(out);
+
+    return box;
+  }
+
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  function renderReceipt() {
+    const slot = $("receipt-slot");
+    slot.innerHTML = "";
+    if (!state.result) return;
+    slot.append(receiptNode(state.result.entry));
+    const acts = el("div", "actions");
+    const undo = el("button", "btn", "Annuler la manche");
+    undo.addEventListener("click", undoRound);
+    acts.append(undo);
+    slot.append(acts);
+  }
+
+  function renderVictory() {
+    const slot = $("victory-slot");
+    slot.innerHTML = "";
+    if (state.phase !== "over") return;
+    const box = el("section", "victory");
+    box.append(el("div", "crate-label", state.winners.length > 1 ? "Victoire partagée" : "Victoire"));
+    box.append(el("div", "who-won", state.winners.map((w) => w.name).join(" & ")));
+    box.append(el("div", "sub", "atteint " + fmt(state.winners[0].stash) + " bananes en " + state.round + " manches — objectif " + fmt(state.target)));
+    const acts = el("div", "actions");
+    acts.style.justifyContent = "center";
+    const again = el("button", "btn", "Rejouer");
+    again.addEventListener("click", openSetup);
+    const undo = el("button", "btn", "Annuler la manche");
+    undo.addEventListener("click", undoRound);
+    acts.append(again, undo);
+    box.append(acts);
+    slot.append(box);
+  }
+
+  function renderHistory() {
+    const panel = $("history-panel");
+    const host = $("history");
+    host.innerHTML = "";
+    panel.hidden = state.history.length === 0;
+    [...state.history].reverse().forEach((entry) => {
+      const d = el("details");
+      const s = el("summary");
+      s.append(el("span", "r", "M" + entry.round));
+      const highlights = entry.res.ranking
+        .filter((r) => r.tag === "crate" || r.tag === "bust" || r.tag === "split")
+        .map((r) => r.name + " " + (r.tag === "bust" ? "ruiné" : r.tag === "split" ? "partage" : "+caisse"))
+        .join(" · ");
+      s.append(el("span", "s", highlights || "—"));
+      d.append(s);
+      d.append(receiptNode(entry));
+      host.append(d);
+    });
+  }
+
+  // ---------- actions ----------
+  function doResolve() {
+    const missing = [];
+    state.players.forEach((p) => {
+      const b = parseBid(state.bids[p.id]);
+      if (!b) missing.push(p);
+      else state.bids[p.id] = b;
+    });
+
+    const warn = $("warnings");
+    if (missing.length) {
+      warn.hidden = false;
+      warn.textContent = "Mise manquante : " + missing.map((p) => p.name).join(", ") + " — un entier d'au moins 1.";
+      missing.forEach((p) => { const n = $("bid-" + p.id); if (n) n.classList.add("missing"); });
+      const first = $("bid-" + missing[0].id);
+      if (first) first.focus();
+      return;
+    }
+    warn.hidden = true;
+
+    const before = snapshot();
+    const res = resolve(state.players, state.crate, state.bids);
+    const entry = {
+      round: state.round,
+      crateBefore: state.crate,
+      target: state.target,
+      bids: { ...state.bids },
+      players: state.players.map((p) => ({ id: p.id, name: p.name })),
+      res
+    };
+
+    state.players.forEach((p) => { p.stash = res.stashes[p.id]; });
+    state.crate = res.newCrate;
+    state.result = { entry, before };
+
+    const reached = state.players.filter((p) => p.stash >= state.target);
+    if (reached.length) {
+      const best = Math.max(...reached.map((p) => p.stash));
+      state.winners = reached.filter((p) => p.stash === best).map((p) => ({ name: p.name, stash: p.stash }));
+      state.phase = "over";
+    } else {
+      state.phase = "resolved";
+    }
+    render();
+    $("receipt-slot").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  function nextRound() {
+    state.history.push(state.result.entry);
+    state.round += 1;
+    state.bids = {};
+    state.result = null;
+    state.phase = "bidding";
+    render();
+    const first = state.players[0];
+    const n = first && $("bid-" + first.id);
+    if (n) n.focus();
+  }
+
+  function undoRound() {
+    if (!state.result) return;
+    restore(state.result.before);
+    render();
+  }
+
+  const snapshot = () => JSON.stringify({
+    players: state.players, crate: state.crate, round: state.round,
+    bids: state.bids, phase: "bidding"
+  });
+
+  function restore(str) {
+    const s = JSON.parse(str);
+    state.players = s.players;
+    state.crate = s.crate;
+    state.round = s.round;
+    state.bids = s.bids;
+    state.phase = "bidding";
+    state.result = null;
+    state.winners = [];
+  }
+
+  // ---------- setup panel ----------
+  let setupNames = [];
+
+  function openSetup() {
+    setupNames = state.players.map((p) => p.name);
+    $("f-stash").value = String(state.players.length ? 10 : 10);
+    $("f-crate").value = String(10);
+    $("f-target").value = String(state.target);
+    renderSetupPlayers();
+    $("setup").hidden = false;
+    $("rules").hidden = true;
+    $("btn-rules").setAttribute("aria-pressed", "false");
+    $("setup").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  function renderSetupPlayers() {
+    const host = $("setup-players");
+    host.innerHTML = "";
+    setupNames.forEach((n, i) => {
+      const row = el("div", "setup-player");
+      row.append(el("span", "seat", SEATS[i] || String(i + 1)));
+      const input = el("input");
+      input.value = n;
+      input.id = "setup-name-" + i;
+      input.setAttribute("aria-label", "Nom du joueur " + (i + 1));
+      input.addEventListener("input", () => { setupNames[i] = input.value; });
+      row.append(input);
+      const del = el("button", "icon-btn", "×");
+      del.title = "Retirer";
+      del.setAttribute("aria-label", "Retirer le joueur " + (i + 1));
+      del.disabled = setupNames.length <= 2;
+      del.addEventListener("click", () => { setupNames.splice(i, 1); renderSetupPlayers(); });
+      row.append(del);
+      host.append(row);
+    });
+    $("add-player").disabled = setupNames.length >= 8;
+  }
+
+  function readInt(id, fallback, min) {
+    const v = parseInt(String($(id).value).replace(/\D+/g, ""), 10);
+    if (!Number.isFinite(v) || v < min) return fallback;
+    return v;
+  }
+
+  function startGame() {
+    const names = setupNames.map((n, i) => n.trim() || DEFAULT_NAMES[i]);
+    const stash = readInt("f-stash", 10, 0);
+    const crate = readInt("f-crate", 10, 0);
+    const target = readInt("f-target", 200, 1);
+    state = freshGame(names, stash, crate, target);
+    $("setup").hidden = true;
+    $("warnings").hidden = true;
+    render();
+  }
+
+  // ---------- persistence ----------
+  function save() {
+    try {
+      localStorage.setItem(STORE_KEY, JSON.stringify({ state, uid }));
+    } catch (e) { /* private mode, blocked storage: the game just won't persist */ }
+  }
+
+  function load() {
+    try {
+      const raw = localStorage.getItem(STORE_KEY);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      if (!parsed || !parsed.state || !Array.isArray(parsed.state.players) || !parsed.state.players.length) return null;
+      uid = parsed.uid || uid;
+      return parsed.state;
+    } catch (e) { return null; }
+  }
+
+  // ---------- wiring ----------
+  $("btn-main").addEventListener("click", () => {
+    if (state.phase === "bidding") doResolve();
+    else if (state.phase === "resolved") nextRound();
+  });
+
+  $("btn-mask").addEventListener("click", () => {
+    masked = !masked;
+    $("btn-mask").setAttribute("aria-pressed", String(masked));
+    $("btn-mask").textContent = masked ? "Mises masquées" : "Mises visibles";
+    renderRows();
+  });
+
+  $("btn-rules").addEventListener("click", () => {
+    const open = $("rules").hidden;
+    $("rules").hidden = !open;
+    $("btn-rules").setAttribute("aria-pressed", String(open));
+    if (open) { $("setup").hidden = true; $("rules").scrollIntoView({ behavior: "smooth", block: "nearest" }); }
+  });
+  $("rules-close").addEventListener("click", () => {
+    $("rules").hidden = true;
+    $("btn-rules").setAttribute("aria-pressed", "false");
+  });
+
+  $("btn-new").addEventListener("click", openSetup);
+  $("setup-cancel").addEventListener("click", () => { $("setup").hidden = true; });
+  $("setup-start").addEventListener("click", startGame);
+  $("add-player").addEventListener("click", () => {
+    setupNames.push(DEFAULT_NAMES[setupNames.length] || "Joueur " + (setupNames.length + 1));
+    renderSetupPlayers();
+  });
+
+  // ---------- boot ----------
+  function start(hot) {
+    state = (hot && hot.state) || load() || defaultGame();
+    if (!state.history) state.history = [];
+    if (!state.bids) state.bids = {};
+    masked = hot && typeof hot.masked === "boolean" ? hot.masked : true;
+    $("btn-mask").setAttribute("aria-pressed", String(masked));
+    $("btn-mask").textContent = masked ? "Mises masquées" : "Mises visibles";
+    render();
+  }
+
+  if (window.claude && window.claude.hot) {
+    window.claude.hot.snapshot(() => ({ state, masked }));
+  }
+  if (window.claude && window.claude.hot && window.claude.hot.ready) {
+    window.claude.hot.ready(start);
+  } else {
+    start((window.claude && window.claude.hot && window.claude.hot.data) || {});
+  }
+})();
+</script>
