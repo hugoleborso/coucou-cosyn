@@ -201,6 +201,7 @@ input.name:focus{outline:none;border-bottom-color:var(--banana)}
 .delta.up{color:var(--gain)}
 .delta.down{color:var(--stamp)}
 .delta.flat{color:var(--faint)}
+#ledger-hint{color:var(--faint);font-weight:500;letter-spacing:.1em}
 .bidcell{grid-column:1/-1;display:flex;gap:9px;align-items:center;flex-wrap:wrap}
 .bidcell label{
   font-family:var(--cond);font-size:11px;font-weight:600;
@@ -219,10 +220,56 @@ input.bid.missing{border-color:var(--stamp);box-shadow:0 0 0 2px color-mix(in sr
   font-family:var(--mono);font-size:17px;font-weight:700;
   letter-spacing:.06em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;
 }
-.ok{
-  font-family:var(--cond);font-size:11px;font-weight:700;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--gain);white-space:nowrap;
+/* ---------- animations ---------- */
+.row{position:relative}
+.row.anim-win,.row.anim-bust{overflow:hidden}
+.row.anim-win::after,.row.anim-bust::after{content:"";position:absolute;inset:0;pointer-events:none}
+@keyframes sweep{from{transform:translateX(-102%)}to{transform:translateX(102%)}}
+.row.anim-win::after{
+  background:linear-gradient(90deg,transparent 30%,color-mix(in srgb,var(--banana-fill) 42%,transparent) 50%,transparent 70%);
+  animation:sweep 1s ease-out both;
 }
+@keyframes wash{from{opacity:.3}to{opacity:0}}
+.row.anim-bust::after{background:var(--stamp);animation:wash 1.2s ease-out both}
+@keyframes shake{
+  0%,100%{transform:translateX(0)}
+  14%{transform:translateX(-7px)}
+  28%{transform:translateX(6px)}
+  43%{transform:translateX(-4px)}
+  60%{transform:translateX(3px)}
+  80%{transform:translateX(-2px)}
+}
+.row.anim-bust{animation:shake .5s .08s both}
+@keyframes stamp-in{
+  0%{opacity:0;transform:scale(2.8) rotate(-18deg)}
+  55%{opacity:1;transform:scale(.9) rotate(-2deg)}
+  78%{transform:scale(1.06) rotate(-6deg)}
+  100%{opacity:1;transform:scale(1) rotate(-4deg)}
+}
+@keyframes pop-in{
+  0%{opacity:0;transform:scale(1.9)}
+  60%{opacity:1;transform:scale(.95)}
+  100%{opacity:1;transform:scale(1)}
+}
+.tag.stamped{animation:stamp-in .5s .1s cubic-bezier(.2,.8,.3,1) both}
+.tag.popped{animation:pop-in .4s .08s cubic-bezier(.2,.8,.3,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+.delta.anim{animation:rise .45s .3s ease-out both}
+.track i{transition:width .85s cubic-bezier(.2,.8,.3,1)}
+@keyframes pop{0%{transform:scale(1)}35%{transform:scale(1.13)}100%{transform:scale(1)}}
+.crate-value{transform-origin:left center}
+.crate-value.pop{animation:pop .55s ease-out both}
+@keyframes victory-in{
+  0%{opacity:0;transform:scale(.85) rotate(-2.5deg)}
+  60%{opacity:1;transform:scale(1.03) rotate(.7deg)}
+  100%{opacity:1;transform:scale(1) rotate(0)}
+}
+@keyframes glow{
+  0%,100%{box-shadow:var(--shadow)}
+  50%{box-shadow:0 0 0 5px color-mix(in srgb,var(--banana) 32%,transparent),var(--shadow)}
+}
+.victory{animation:victory-in .62s cubic-bezier(.2,.9,.3,1) both, glow 1.7s .55s ease-in-out 2}
+canvas.rain{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60}
 
 /* ---------- tags ---------- */
 .tag{
@@ -446,7 +493,7 @@ footer{
   <section class="ledger">
     <div class="ledger-head">
       <span id="ledger-title">Mises de la manche</span>
-      <button class="btn" id="btn-mask" aria-pressed="true" style="padding:4px 9px;font-size:11px">Mises masquées</button>
+      <span id="ledger-hint">Chacun annonce, tu saisis</span>
     </div>
     <div id="rows"></div>
   </section>
@@ -465,7 +512,7 @@ footer{
   </section>
 
   <footer>
-    Les mises sont saisies sur cet appareil : masquez-les, faites tourner le téléphone, puis résolvez.
+    Chacun écrit son nombre de son côté, tout le monde révèle, tu saisis les mises ici.
     La partie en cours est gardée dans ce navigateur.
   </footer>
 </div>
@@ -490,7 +537,7 @@ footer{
   };
 
   // ---------- state ----------
-  let state, masked = true, uid = 1;
+  let state, uid = 1, animateNext = false;
 
   const freshGame = (names, stash, crate, target) => ({
     players: names.map((name) => ({ id: "p" + uid++, name, stash })),
@@ -602,9 +649,190 @@ footer{
     return { steps, deltas, stashes: stash, newCrate, ranking, crateBefore: crate };
   }
 
+  // ---------- animation ----------
+  const reduceMotion = () => {
+    try { return window.matchMedia("(prefers-reduced-motion: reduce)").matches; }
+    catch (e) { return false; }
+  };
+
+  const cssVar = (name, fallback) => {
+    try {
+      const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      return v || fallback;
+    } catch (e) { return fallback; }
+  };
+
+  function countTo(node, from, to, ms) {
+    if (reduceMotion() || from === to) { node.textContent = fmt(to); return; }
+    const t0 = performance.now();
+    node.textContent = fmt(from);
+    const step = (t) => {
+      const k = Math.min(1, (t - t0) / ms);
+      const e = 1 - Math.pow(1 - k, 3);
+      node.textContent = fmt(Math.round(from + (to - from) * e));
+      if (k < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  let canvas = null, ctx = null, parts = [], raf = 0;
+
+  function sizeCanvas() {
+    if (!canvas) return;
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    canvas.width = Math.floor(window.innerWidth * dpr);
+    canvas.height = Math.floor(window.innerHeight * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function ensureCanvas() {
+    if (canvas) return;
+    canvas = document.createElement("canvas");
+    canvas.className = "rain";
+    canvas.setAttribute("aria-hidden", "true");
+    document.body.append(canvas);
+    ctx = canvas.getContext("2d");
+    sizeCanvas();
+    window.addEventListener("resize", sizeCanvas);
+  }
+
+  // a banana: crescent between two arcs
+  function drawBanana(c, s, color) {
+    c.fillStyle = color;
+    c.beginPath();
+    c.arc(0, 0, s, Math.PI * 0.12, Math.PI * 0.98, false);
+    c.arc(0, -s * 0.32, s * 0.94, Math.PI * 0.98, Math.PI * 0.12, true);
+    c.closePath();
+    c.fill();
+  }
+
+  function tick(now) {
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    parts = parts.filter((p) => p.update(now));
+    parts.forEach((p) => p.draw(ctx));
+    raf = parts.length ? requestAnimationFrame(tick) : 0;
+    if (!raf) ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+  }
+
+  const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
+  const rand = (a, b) => a + Math.random() * (b - a);
+  const palette = () => [cssVar("--banana-fill", "#E9C33F"), cssVar("--banana", "#C9950F")];
+
+  function centerOf(node) {
+    const r = node.getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  }
+
+  // whole-screen banana rain — the general win
+  function bananaRain(n) {
+    if (reduceMotion()) return;
+    ensureCanvas();
+    const cols = palette();
+    for (let i = 0; i < n; i++) {
+      const p = {
+        x: rand(0, window.innerWidth),
+        y: rand(-window.innerHeight * 0.9, -20),
+        vy: rand(110, 260), vx: rand(-40, 40),
+        rot: rand(0, 6.28), vr: rand(-2.6, 2.6),
+        s: rand(6, 15), color: cols[i % cols.length], last: 0
+      };
+      p.update = (now) => {
+        if (!p.last) p.last = now;
+        const dt = Math.min(0.05, (now - p.last) / 1000);
+        p.last = now;
+        p.y += p.vy * dt; p.x += p.vx * dt; p.rot += p.vr * dt;
+        return p.y < window.innerHeight + 40;
+      };
+      p.draw = (c) => { c.save(); c.translate(p.x, p.y); c.rotate(p.rot); drawBanana(c, p.s, p.color); c.restore(); };
+      parts.push(p);
+    }
+    kick();
+  }
+
+  // bananas arcing from the crate to the winner — the round win
+  function bananaToss(fromNode, toNode, n) {
+    if (reduceMotion() || !fromNode || !toNode) return;
+    ensureCanvas();
+    const a = centerOf(fromNode), b = centerOf(toNode);
+    const cols = palette();
+    for (let i = 0; i < n; i++) {
+      const delay = i * 42, dur = rand(560, 820), lift = rand(70, 150);
+      const jx = rand(-26, 26), jy = rand(-16, 16);
+      const s = rand(7, 13), rot0 = rand(0, 6.28), vr = rand(-5, 5);
+      const color = cols[i % cols.length];
+      let t0 = 0;
+      const p = {
+        k: -1,
+        update(now) {
+          if (!t0) t0 = now + delay;
+          if (now < t0) return true;
+          p.k = Math.min(1, (now - t0) / dur);
+          p.x = a.x + (b.x + jx - a.x) * p.k;
+          p.y = a.y + (b.y + jy - a.y) * p.k - Math.sin(Math.PI * p.k) * lift;
+          p.rot = rot0 + vr * p.k;
+          p.alpha = p.k > 0.86 ? 1 - (p.k - 0.86) / 0.14 : 1;
+          return p.k < 1;
+        },
+        draw(c) {
+          if (p.k < 0) return;
+          c.save(); c.globalAlpha = p.alpha;
+          c.translate(p.x, p.y); c.rotate(p.rot);
+          drawBanana(c, s, color); c.restore();
+        }
+      };
+      parts.push(p);
+    }
+    kick();
+  }
+
+  // bananas blown off the table — the bust
+  function bananaScatter(node, n) {
+    if (reduceMotion() || !node) return;
+    ensureCanvas();
+    const o = centerOf(node);
+    const cols = palette();
+    for (let i = 0; i < n; i++) {
+      const p = {
+        x: o.x, y: o.y,
+        vx: rand(-230, 230), vy: rand(-320, -120),
+        rot: rand(0, 6.28), vr: rand(-8, 8),
+        s: rand(6, 12), color: cols[i % cols.length],
+        life: 0, last: 0
+      };
+      p.update = (now) => {
+        if (!p.last) p.last = now;
+        const dt = Math.min(0.05, (now - p.last) / 1000);
+        p.last = now; p.life += dt;
+        p.vy += 900 * dt;
+        p.x += p.vx * dt; p.y += p.vy * dt; p.rot += p.vr * dt;
+        p.alpha = Math.max(0, 1 - p.life / 1.3);
+        return p.alpha > 0.02 && p.y < window.innerHeight + 60;
+      };
+      p.draw = (c) => {
+        c.save(); c.globalAlpha = p.alpha;
+        c.translate(p.x, p.y); c.rotate(p.rot);
+        drawBanana(c, p.s, p.color); c.restore();
+      };
+      parts.push(p);
+    }
+    kick();
+  }
+
   // ---------- rendering ----------
   function render() {
-    $("crate-value").textContent = fmt(state.crate);
+    const anim = animateNext;
+    animateNext = false;
+
+    const crateNode = $("crate-value");
+    if (anim && state.result) {
+      const box = crateNode.parentNode;
+      box.classList.remove("pop");
+      void box.offsetWidth;
+      box.classList.add("pop");
+      countTo(crateNode, state.result.entry.crateBefore, state.crate, 850);
+    } else {
+      crateNode.textContent = fmt(state.crate);
+    }
     $("target-value").textContent = fmt(state.target);
     $("rules-target").textContent = fmt(state.target);
 
@@ -621,24 +849,43 @@ footer{
     });
 
     $("ledger-title").textContent =
-      state.phase === "bidding" ? "Mises de la manche " + state.round : "Mises révélées — manche " + state.round;
-    $("btn-mask").hidden = state.phase !== "bidding";
+      state.phase === "bidding" ? "Mises de la manche " + state.round : "Mises de la manche " + state.round;
+    $("ledger-hint").hidden = state.phase !== "bidding";
 
-    renderRows();
+    renderRows(anim);
     renderMain();
     renderReceipt();
-    renderVictory();
+    renderVictory(anim);
     renderHistory();
     save();
+
+    if (anim) requestAnimationFrame(() => playRoundEffects());
   }
 
-  function renderRows() {
+  // crate flies to the winner, the ruined player's stash blows away
+  function playRoundEffects() {
+    const res = state.result && state.result.entry.res;
+    if (!res) return;
+    res.ranking.forEach((r) => {
+      const node = $("stash-" + r.id);
+      if (!node) return;
+      if (r.tag === "crate" || r.tag === "split") bananaToss($("crate-value"), node, r.tag === "split" ? 5 : 9);
+      if (r.tag === "bust") setTimeout(() => bananaScatter(node, 14), 180);
+    });
+  }
+
+  function renderRows(anim) {
     const host = $("rows");
     host.innerHTML = "";
     const res = state.result ? state.result.entry.res : null;
 
     state.players.forEach((p, idx) => {
+      const r = res ? res.ranking.find((x) => x.id === p.id) : null;
       const row = el("div", "row" + (p.stash === 0 ? " is-out" : ""));
+      if (anim && r) {
+        if (r.tag === "bust") row.classList.add("anim-bust");
+        else if (r.tag === "crate" || r.tag === "split") row.classList.add("anim-win");
+      }
 
       const who = el("div", "who");
       const top = el("div", "who-top");
@@ -651,15 +898,22 @@ footer{
       name.addEventListener("blur", render);
       top.append(name);
 
-      if (res) {
-        const r = res.ranking.find((x) => x.id === p.id);
-        if (r && r.tag !== "none") top.append(tagFor(r.tag));
+      if (r && r.tag !== "none") {
+        const tag = tagFor(r.tag);
+        if (anim) tag.classList.add(r.tag === "bust" ? "stamped" : "popped");
+        top.append(tag);
       }
       who.append(top);
 
+      const pct = (v) => Math.max(0, Math.min(100, (v / state.target) * 100)) + "%";
       const track = el("div", "track");
       const fill = el("i");
-      fill.style.width = Math.max(0, Math.min(100, (p.stash / state.target) * 100)) + "%";
+      if (anim && res) {
+        fill.style.width = pct(p.stash - res.deltas[p.id]);
+        requestAnimationFrame(() => { fill.style.width = pct(p.stash); });
+      } else {
+        fill.style.width = pct(p.stash);
+      }
       track.append(fill);
       who.append(track);
 
@@ -668,12 +922,17 @@ footer{
       who.append(margin);
       row.append(who);
 
-      const stash = el("div", "stash", fmt(p.stash));
+      const stash = el("div", "stash");
+      stash.id = "stash-" + p.id;
+      const num = el("span", "num-val", fmt(p.stash));
+      stash.append(num);
       if (res) {
         const d = res.deltas[p.id];
         const chip = el("span", "delta " + (d > 0 ? "up" : d < 0 ? "down" : "flat"));
-        chip.textContent = d > 0 ? "+" + fmt(d) : d < 0 ? "−" + fmt(-d) : "±0";
+        chip.textContent = d > 0 ? "+" + fmt(d) : d < 0 ? "\u2212" + fmt(-d) : "\u00b10";
+        if (anim) chip.classList.add("anim");
         stash.append(chip);
+        if (anim) countTo(num, p.stash - d, p.stash, r && r.tag === "bust" ? 520 : 850);
       }
       row.append(stash);
 
@@ -693,30 +952,22 @@ footer{
 
       const input = el("input", "bid");
       input.id = "bid-" + p.id;
+      input.type = "text";
       input.autocomplete = "off";
       input.spellcheck = false;
       input.inputMode = "numeric";
+      input.placeholder = "1 \u2026 bananillion";
+      input.value = state.bids[p.id] || "";
       input.setAttribute("aria-label", "Mise de " + p.name);
-
-      {
-        input.type = masked ? "password" : "text";
-        input.value = state.bids[p.id] || "";
-        input.placeholder = masked ? "secret" : "1 … bananillion";
-        input.addEventListener("input", () => {
-          const clean = input.value.replace(/\D+/g, "").slice(0, MAX_DIGITS);
-          if (clean !== input.value) input.value = clean;
-          state.bids[p.id] = clean;
-          input.classList.remove("missing");
-          const flag = input.nextElementSibling;
-          if (flag && flag.classList.contains("ok")) flag.hidden = !(masked && clean);
-          save();
-        });
-        input.addEventListener("keydown", (e) => { if (e.key === "Enter") focusNext(idx); });
-        cell.append(input);
-        const flag = el("span", "ok", "✓ saisie");
-        flag.hidden = !(masked && state.bids[p.id]);
-        cell.append(flag);
-      }
+      input.addEventListener("input", () => {
+        const clean = input.value.replace(/\D+/g, "").slice(0, MAX_DIGITS);
+        if (clean !== input.value) input.value = clean;
+        state.bids[p.id] = clean;
+        input.classList.remove("missing");
+        save();
+      });
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") focusNext(idx); });
+      cell.append(input);
 
       row.append(cell);
       host.append(row);
@@ -850,6 +1101,7 @@ footer{
     slot.innerHTML = "";
     if (!state.result) return;
     slot.append(receiptNode(state.result.entry));
+    if (state.phase === "over") return;
     const acts = el("div", "actions");
     const undo = el("button", "btn", "Annuler la manche");
     undo.addEventListener("click", undoRound);
@@ -857,14 +1109,22 @@ footer{
     slot.append(acts);
   }
 
-  function renderVictory() {
+  function renderVictory(anim) {
     const slot = $("victory-slot");
     slot.innerHTML = "";
     if (state.phase !== "over") return;
+    if (anim) {
+      bananaRain(70);
+      setTimeout(() => bananaRain(50), 900);
+      setTimeout(() => bananaRain(40), 1900);
+    }
     const box = el("section", "victory");
     box.append(el("div", "crate-label", state.winners.length > 1 ? "Victoire partagée" : "Victoire"));
     box.append(el("div", "who-won", state.winners.map((w) => w.name).join(" & ")));
-    box.append(el("div", "sub", "atteint " + fmt(state.winners[0].stash) + " bananes en " + state.round + " manches — objectif " + fmt(state.target)));
+    box.append(el("div", "sub",
+      "atteint " + fmt(state.winners[0].stash) + " bananes en " +
+      state.round + (state.round > 1 ? " manches" : " manche") +
+      " — objectif " + fmt(state.target)));
     const acts = el("div", "actions");
     acts.style.justifyContent = "center";
     const again = el("button", "btn", "Rejouer");
@@ -939,8 +1199,11 @@ footer{
     } else {
       state.phase = "resolved";
     }
+    animateNext = true;
     render();
-    $("receipt-slot").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    if (state.phase === "over") {
+      setTimeout(() => $("victory-slot").scrollIntoView({ behavior: "smooth", block: "center" }), 260);
+    }
   }
 
   function nextRound() {
@@ -1056,13 +1319,6 @@ footer{
     else if (state.phase === "resolved") nextRound();
   });
 
-  $("btn-mask").addEventListener("click", () => {
-    masked = !masked;
-    $("btn-mask").setAttribute("aria-pressed", String(masked));
-    $("btn-mask").textContent = masked ? "Mises masquées" : "Mises visibles";
-    renderRows();
-  });
-
   $("btn-rules").addEventListener("click", () => {
     const open = $("rules").hidden;
     $("rules").hidden = !open;
@@ -1087,14 +1343,11 @@ footer{
     state = (hot && hot.state) || load() || defaultGame();
     if (!state.history) state.history = [];
     if (!state.bids) state.bids = {};
-    masked = hot && typeof hot.masked === "boolean" ? hot.masked : true;
-    $("btn-mask").setAttribute("aria-pressed", String(masked));
-    $("btn-mask").textContent = masked ? "Mises masquées" : "Mises visibles";
     render();
   }
 
   if (window.claude && window.claude.hot) {
-    window.claude.hot.snapshot(() => ({ state, masked }));
+    window.claude.hot.snapshot(() => ({ state }));
   }
   if (window.claude && window.claude.hot && window.claude.hot.ready) {
     window.claude.hot.ready(start);
