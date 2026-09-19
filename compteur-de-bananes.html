@@ -63,8 +63,10 @@ body{
   font-size:15px;
   line-height:1.5;
   padding-inline:16px;
-  padding-block:22px 64px;
+  padding-block:22px 28px;
   -webkit-font-smoothing:antialiased;
+  -webkit-text-size-adjust:100%;
+  touch-action:manipulation;
 }
 .sheet{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
 
@@ -94,12 +96,17 @@ h1{
 .stamps{display:flex;flex-wrap:wrap;gap:6px}
 
 /* ---------- buttons ---------- */
-button{font:inherit;color:inherit;cursor:pointer}
+button{
+  font:inherit;color:inherit;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+  -webkit-user-select:none;user-select:none;
+}
 .btn{
   font-family:var(--cond);font-weight:600;font-size:13px;
   letter-spacing:.06em;text-transform:uppercase;
   background:transparent;border:1px solid var(--rule-strong);
-  padding:7px 12px;border-radius:2px;
+  padding:9px 14px;min-height:44px;border-radius:2px;
   transition:background .15s, border-color .15s;
 }
 .btn:hover{background:var(--band);border-color:var(--ink)}
@@ -109,7 +116,7 @@ button{font:inherit;color:inherit;cursor:pointer}
   letter-spacing:.08em;text-transform:uppercase;
   background:var(--ink);color:var(--card);
   border:1px solid var(--ink);border-radius:2px;
-  padding:15px 18px;width:100%;
+  padding:16px 18px;min-height:54px;width:100%;
   transition:opacity .15s, transform .06s;
 }
 .btn-primary:hover{opacity:.88}
@@ -123,7 +130,7 @@ button{font:inherit;color:inherit;cursor:pointer}
   background:var(--card);
   box-shadow:var(--shadow);
   padding:18px;
-  display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  display:flex;align-items:flex-end;justify-content:space-between;gap:14px 18px;flex-wrap:wrap;
   position:relative;overflow:hidden;
 }
 .crate::before{
@@ -136,7 +143,10 @@ button{font:inherit;color:inherit;cursor:pointer}
   font-family:var(--cond);font-size:12px;font-weight:600;
   letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
 }
-.crate-note{font-size:12.5px;color:var(--muted);max-width:34ch;margin:5px 0 0}
+.crate-main{flex:1 1 auto;min-width:0}
+.crate-goal{flex:0 0 auto;text-align:right}
+.crate-goal .crate-value{color:var(--ink);font-size:clamp(28px,8vw,38px);justify-content:flex-end}
+.crate-note{flex:1 0 100%;font-size:12.5px;color:var(--muted);max-width:46ch;margin:0}
 .crate-value{
   font-family:var(--mono);font-weight:700;
   font-size:clamp(46px,13vw,68px);line-height:.9;
@@ -178,7 +188,8 @@ button{font:inherit;color:inherit;cursor:pointer}
 input.name{
   font-family:var(--sans);font-size:16px;font-weight:600;
   background:transparent;border:0;border-bottom:1px dashed transparent;
-  color:inherit;padding:1px 0;min-width:0;width:100%;max-width:15ch;
+  color:inherit;padding:7px 0;min-width:0;width:100%;max-width:15ch;
+  -webkit-tap-highlight-color:transparent;
 }
 input.name:hover{border-bottom-color:var(--rule-strong)}
 input.name:focus{outline:none;border-bottom-color:var(--banana)}
@@ -211,8 +222,8 @@ input.bid{
   font-family:var(--mono);font-size:16px;font-weight:700;
   background:var(--paper);color:var(--ink);
   border:1px solid var(--rule-strong);border-radius:2px;
-  padding:9px 11px;width:min(100%,190px);flex:1 1 130px;
-  letter-spacing:.06em;
+  padding:11px 12px;min-height:48px;width:min(100%,210px);flex:1 1 150px;
+  letter-spacing:.06em;-webkit-tap-highlight-color:transparent;
 }
 input.bid:focus{outline:none;border-color:var(--banana);box-shadow:0 0 0 2px color-mix(in srgb, var(--banana) 28%, transparent)}
 input.bid.missing{border-color:var(--stamp);box-shadow:0 0 0 2px color-mix(in srgb, var(--stamp) 22%, transparent)}
@@ -343,23 +354,25 @@ canvas.rain{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-
   letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
 }
 .field input{
-  font-family:var(--mono);font-size:15px;
+  font-family:var(--mono);font-size:16px;
   background:var(--paper);color:var(--ink);
-  border:1px solid var(--rule-strong);border-radius:2px;padding:8px 10px;width:100%;
+  border:1px solid var(--rule-strong);border-radius:2px;
+  padding:10px 12px;min-height:46px;width:100%;
 }
 .field input:focus{outline:none;border-color:var(--banana)}
 .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
 .setup-players{display:flex;flex-direction:column;gap:8px;margin:12px 0}
 .setup-player{display:flex;gap:8px;align-items:center}
 .setup-player input{
-  font-family:var(--sans);font-size:15px;flex:1;
+  font-family:var(--sans);font-size:16px;flex:1;
   background:var(--paper);color:var(--ink);
-  border:1px solid var(--rule-strong);border-radius:2px;padding:8px 10px;min-width:0;
+  border:1px solid var(--rule-strong);border-radius:2px;
+  padding:10px 12px;min-height:46px;min-width:0;
 }
 .setup-player input:focus{outline:none;border-color:var(--banana)}
 .icon-btn{
-  flex:none;width:34px;height:34px;border:1px solid var(--rule-strong);
-  background:transparent;border-radius:2px;font-family:var(--mono);font-size:16px;line-height:1;
+  flex:none;width:44px;height:44px;border:1px solid var(--rule-strong);
+  background:transparent;border-radius:2px;font-family:var(--mono);font-size:18px;line-height:1;
 }
 .icon-btn:hover{background:var(--band)}
 .icon-btn:disabled{opacity:.3;cursor:not-allowed}
@@ -369,7 +382,8 @@ canvas.rain{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-
 .hist details{border-bottom:1px solid var(--rule)}
 .hist details:last-child{border-bottom:0}
 .hist summary{
-  cursor:pointer;padding:10px 2px;list-style:none;
+  cursor:pointer;padding:13px 2px;min-height:44px;list-style:none;
+  -webkit-tap-highlight-color:transparent;
   display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;
   font-family:var(--mono);font-size:13px;
 }
@@ -398,12 +412,44 @@ canvas.rain{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-
 }
 footer{
   font-size:12px;color:var(--faint);text-align:center;
-  padding-top:6px;max-width:60ch;margin:0 auto;
+  padding-top:6px;padding-bottom:88px;max-width:60ch;margin:0 auto;
 }
-@media (max-width:430px){
-  .row{grid-template-columns:1fr auto}
-  .stash{font-size:25px}
-  input.name{max-width:11ch;font-size:15px}
+/* ---------- action bar ---------- */
+.action-bar{
+  position:sticky;bottom:0;z-index:20;
+  margin-inline:-16px;padding-inline:16px;
+  padding-block:14px calc(12px + env(safe-area-inset-bottom, 0px));
+  background:linear-gradient(to top,
+    var(--paper) 0 62%,
+    color-mix(in srgb, var(--paper) 0%, transparent) 100%);
+}
+
+@media (max-width:480px){
+  .masthead{padding:14px 15px 12px}
+  .crate{padding:15px;align-items:flex-end;gap:10px 14px}
+  .crate-main .crate-value{font-size:46px}
+  .crate-goal .crate-value{font-size:26px}
+  .crate-note{font-size:12px}
+  .ledger-head{padding:9px 15px}
+  #ledger-hint{display:none}
+  .row{padding:13px 15px;gap:9px 12px}
+  .stash{font-size:27px}
+  input.name{max-width:9ch}
+  .bidcell{gap:10px;flex-wrap:nowrap}
+  input.bid{flex:1 1 auto;width:auto;min-width:0;font-size:17px}
+  .phone-hide{display:none}
+  .crate-note{display:none}
+  .masthead{gap:8px}
+  .eyebrow{letter-spacing:.12em;gap:8px}
+  .who{gap:6px}
+  .margin-note{font-size:11px}
+  .panel{padding:15px}
+  .receipt{font-size:13px}
+  .rank{padding:10px 15px}
+  .steps{padding:11px 15px}
+  .ledger-out{padding:11px 15px}
+  .receipt-head{padding:12px 15px 10px}
+  footer{font-size:12px}
 }
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important}
@@ -415,8 +461,8 @@ footer{
   <header class="masthead">
     <div class="eyebrow">
       <span>Régie des douanes bananières</span>
-      <span class="dot">·</span>
-      <span>Guts · hyperinflation</span>
+      <span class="dot phone-hide">·</span>
+      <span class="phone-hide">Guts · hyperinflation</span>
     </div>
     <div class="masthead-row">
       <h1>Compteur de bananes</h1>
@@ -429,15 +475,15 @@ footer{
   </header>
 
   <section class="crate" aria-live="polite">
-    <div>
+    <div class="crate-main">
       <div class="crate-label">Dans la caisse</div>
       <div class="crate-value"><span id="crate-value">10</span> <small>bananes</small></div>
-      <p class="crate-note">En fin de manche, la caisse se recale sur le plus gros tas de la table.</p>
     </div>
-    <div style="text-align:right">
+    <div class="crate-goal">
       <div class="crate-label">Objectif</div>
-      <div class="crate-value" style="color:var(--ink);font-size:clamp(28px,8vw,38px)"><span id="target-value">200</span></div>
+      <div class="crate-value"><span id="target-value">200</span></div>
     </div>
+    <p class="crate-note">En fin de manche, la caisse se recale sur le plus gros tas de la table.</p>
   </section>
 
   <section class="panel" id="setup" hidden>
@@ -449,15 +495,15 @@ footer{
     <div class="grid3">
       <div class="field">
         <label for="f-stash">Tas de départ</label>
-        <input id="f-stash" type="text" inputmode="numeric" value="10">
+        <input id="f-stash" type="text" inputmode="numeric" pattern="[0-9]*" value="10">
       </div>
       <div class="field">
         <label for="f-crate">Caisse de départ</label>
-        <input id="f-crate" type="text" inputmode="numeric" value="10">
+        <input id="f-crate" type="text" inputmode="numeric" pattern="[0-9]*" value="10">
       </div>
       <div class="field">
         <label for="f-target">Objectif</label>
-        <input id="f-target" type="text" inputmode="numeric" value="200">
+        <input id="f-target" type="text" inputmode="numeric" pattern="[0-9]*" value="200">
       </div>
     </div>
     <div class="actions">
@@ -502,7 +548,9 @@ footer{
 
   <section id="receipt-slot"></section>
 
-  <button class="btn-primary" id="btn-main">Résoudre la manche</button>
+  <div class="action-bar" id="action-bar">
+    <button class="btn-primary" id="btn-main">Résoudre la manche</button>
+  </div>
 
   <section id="victory-slot"></section>
 
@@ -893,6 +941,9 @@ footer{
       const name = el("input", "name");
       name.value = p.name;
       name.id = "name-" + p.id;
+      name.autocomplete = "off";
+      name.setAttribute("autocapitalize", "words");
+      name.setAttribute("autocorrect", "off");
       name.setAttribute("aria-label", "Nom du joueur " + (idx + 1));
       name.addEventListener("input", () => { p.name = name.value.trim() || DEFAULT_NAMES[idx]; save(); });
       name.addEventListener("blur", render);
@@ -956,6 +1007,9 @@ footer{
       input.autocomplete = "off";
       input.spellcheck = false;
       input.inputMode = "numeric";
+      input.setAttribute("pattern", "[0-9]*");
+      input.setAttribute("enterkeyhint", idx === state.players.length - 1 ? "done" : "next");
+      input.setAttribute("autocorrect", "off");
       input.placeholder = "1 \u2026 bananillion";
       input.value = state.bids[p.id] || "";
       input.setAttribute("aria-label", "Mise de " + p.name);
@@ -994,12 +1048,14 @@ footer{
   function renderMain() {
     const btn = $("btn-main");
     btn.hidden = false;
+    $("action-bar").hidden = false;
     if (state.phase === "bidding") {
       btn.textContent = "Résoudre la manche " + state.round;
     } else if (state.phase === "resolved") {
       btn.textContent = "Manche " + (state.round + 1) + " →";
     } else {
       btn.hidden = true;
+      $("action-bar").hidden = true;
     }
   }
 
@@ -1264,6 +1320,9 @@ footer{
       const input = el("input");
       input.value = n;
       input.id = "setup-name-" + i;
+      input.autocomplete = "off";
+      input.setAttribute("autocapitalize", "words");
+      input.setAttribute("autocorrect", "off");
       input.setAttribute("aria-label", "Nom du joueur " + (i + 1));
       input.addEventListener("input", () => { setupNames[i] = input.value; });
       row.append(input);
