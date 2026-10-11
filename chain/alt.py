@@ -45,7 +45,7 @@ def paths(maxlen, limit=100000):
         if u == TARGET: out.append(path[:]); return
         for v in E.get(u, {}):
             if v in path: continue
-            if len(path) + db.get(v, 99) <= maxlen + 1:
+            if len(path) + db.get(v, 99) <= maxlen:
                 path.append(v); rec(v, path); path.pop()
     rec(START, [START]); return out
 ps = paths(L)
