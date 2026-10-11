@@ -10,6 +10,8 @@ import requests
 
 START, TARGET = sys.argv[1].lower(), sys.argv[2].lower()
 MONTHS = int(os.environ.get("MONTHS", 4))
+MIN_PLIES = int(os.environ.get("MIN_PLIES", 20))
+EXTRA_AFTER = int(os.environ.get("EXTRA_AFTER", 60))  # expansions supplémentaires pour raccourcir
 MAX_EXPANSIONS = int(os.environ.get("MAX_EXP", 400))
 CACHE = os.path.join(os.path.dirname(__file__), ".cache"); os.makedirs(CACHE, exist_ok=True)
 S = requests.Session(); S.headers["User-Agent"] = "win-chain-finder/1.0 (contact: hugoleborso on chess.com)"
@@ -36,6 +38,9 @@ def edges(user, want):  # want="win" -> adversaires battus ; "loss" -> vainqueur
     out = {}
     for g in games(user):
         if g.get("rules") != "chess": continue
+        # une vraie victoire : pas d'abandon de connexion, au moins MIN_PLIES demi-coups joués
+        if "abandoned" in (g["white"]["result"], g["black"]["result"]): continue
+        if g.get("pgn", "").count("[%clk") < MIN_PLIES: continue
         w, b = g["white"], g["black"]
         me, op = (w, b) if w["username"].lower() == user else (b, w)
         if me["username"].lower() != user: continue
@@ -85,18 +90,14 @@ for it in range(MAX_EXPANSIONS):
     for o, (r, url, tc, ur) in nb.items():
         seen_count[side][o] = seen_count[side].get(o, 0) + 1
         if o not in parent[side]:
-            parent[side][o] = (u, (url, tc, ur, r)); depth[side][o] = depth[side][u] + 1
+            parent[side][o] = (u, (url, tc, ur, r) if side == "f" else (url, tc, r, ur)); depth[side][o] = depth[side][u] + 1
             heapq.heappush(heap[side], (prio(side, r, depth[side][o], seen_count[side][o]), o))
         if o in parent[other]:
             L = depth[side][o] + depth[other][o]
             if best is None or L < best[0]:
-                best = (L, chain(o)); print(f"*** chaîne trouvée : {L} victoires via {o}", flush=True)
-    if best and min(depth["f"][x] for _, x in heap["f"][:1] or [(0, START)]) + 1 >= best[0]:
-        pass
-    if best and it > int(os.environ.get("EXTRA_AFTER", 0)) + best_it if (best_it := globals().get("best_it")) else False:
+                best = (L, chain(o)); best_it = it; print(f"*** chaîne trouvée : {L} victoires via {o}", flush=True)
+    if best and it >= best_it + EXTRA_AFTER:
         break
-    if best and "best_it" not in globals(): best_it = it
-
 if best:
     print(f"\n=== {best[0]} victoires ===")
     for a, b, (url, tc, ra, rb) in best[1]:

@@ -1,2 +1,3 @@
 .cache/
 best.json
+*.log
