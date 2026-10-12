@@ -1,7 +1,7 @@
 """Rejoue la recherche hors-ligne sur toutes les parties déjà en cache."""
 import json, glob, re, sys
 from collections import defaultdict, deque
-START, TARGET = "hugoleborso", "magnuscarlsen"
+START, TARGET = (sys.argv[1:3] + ["hugoleborso", "magnuscarlsen"][len(sys.argv[1:3]):])
 MIN_PLIES = 20
 games = {}
 for f in glob.glob(".cache/*.json"):
